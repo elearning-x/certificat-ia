@@ -1,0 +1,3 @@
+static-mappings:
+  - source: media
+    destination: media
