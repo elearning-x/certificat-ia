@@ -1,3 +1,5 @@
 static-mappings:
   - source: media
     destination: media
+  - source: data
+    destination: data
