@@ -10,7 +10,8 @@ import statsmodels.formula.api as smf
 
 ```python
 ### Importation des données
-Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
+# Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
+df = pd.read_csv ('data/eucalyptus.txt')
 ```
 
 ### Nuage de points
