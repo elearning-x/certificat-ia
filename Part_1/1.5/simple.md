@@ -22,7 +22,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Eric MATZNER-LOBER &amp;<br />Pierre Antoine Cornillon</span>
+<span>Eric MATZNER-LOBER &amp;<br />Pierre Antoine CORNILLON</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
