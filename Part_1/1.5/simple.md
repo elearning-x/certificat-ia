@@ -21,9 +21,9 @@ nbhosting:
 ---
 
 <div class="licence">
-<span>Licence CC BY-NC-ND</span>
-<span>Eric MATZNER-LOBER &amp; Pierre Antoine Cornillon</span>
 <span><img src="media/logo_IPParis.png" /></span>
+<span>Eric MATZNER-LOBER &amp;<br />Pierre Antoine Cornillon</span>
+<span>Licence CC BY-NC-ND</span>
 </div>
 
 ```{code-cell} ipython3
