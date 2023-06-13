@@ -39,7 +39,6 @@ import statsmodels.formula.api as smf
 
 # Régression simple
 
-
 ```{code-cell} ipython3
 ---
 vscode:
@@ -117,6 +116,7 @@ vscode:
 ---
 
 ```
+
 ### Variabilité de \$\hat \beta_2\$
 Représenter la variabilité de la variable aléatoire  \$\hat \beta_2\$.
 
