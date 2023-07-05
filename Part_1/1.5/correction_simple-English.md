@@ -26,6 +26,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 # Python modules
 Import modules pandas (as `pd`) numpy (as `np`)
 matplotlib.pyplot (as  `plt`) and statsmodels.formula.api (as `smf`)
