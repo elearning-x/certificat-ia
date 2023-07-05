@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Simple regression
+  title: Correction Simple regression
   version: '1.0'
 ---
 
@@ -59,7 +59,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 
 
     
-![png](correction_simple-English_files/correction_simple-English_6_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_6_1.png)
     
 
 
@@ -169,7 +169,7 @@ plt.plot(eucalypt['circ'], reg.resid, "o")
 
 
     
-![png](correction_simple-English_files/correction_simple-English_13_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_13_1.png)
     
 
 
@@ -191,7 +191,7 @@ plt.plot(reg.predict(), reg.resid, "o")
 
 
     
-![png](correction_simple-English_files/correction_simple-English_15_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_15_1.png)
     
 
 
@@ -209,7 +209,7 @@ plt.plot(np.arange(1,eucalypt.shape[0]+1), reg.resid , "o")
 
 
     
-![png](correction_simple-English_files/correction_simple-English_17_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_17_1.png)
     
 
 
@@ -267,7 +267,7 @@ plt.hist(beta2, bins=30)
 
 
     
-![png](correction_simple-English_files/correction_simple-English_25_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_25_1.png)
     
 
 
@@ -288,7 +288,7 @@ plt.plot(beta1, beta2, "o")
 
 
     
-![png](correction_simple-English_files/correction_simple-English_28_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_28_1.png)
     
 
 
@@ -322,7 +322,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 
 
     
-![png](correction_simple-English_files/correction_simple-English_34_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_34_1.png)
     
 
 
@@ -358,7 +358,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o", eucalypt['circ'], reg.predict(),
 
 
     
-![png](correction_simple-English_files/correction_simple-English_38_1.png)
+![png](media/Part_1/1.5/correction_simple-English_files/correction_simple-English_38_1.png)
     
 
 
