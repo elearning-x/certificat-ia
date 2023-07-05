@@ -223,7 +223,7 @@ The fluctuations in the mean of the residuals can be seen again, but this graph 
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 ```{code-cell} ipython3
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Estimation on \$n=100\$ data
@@ -306,7 +306,7 @@ sample is different from the others. Among all the trees in the field, some (a s
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 ```{code-cell} ipython3
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Point Cloud
