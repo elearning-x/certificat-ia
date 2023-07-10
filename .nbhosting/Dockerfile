@@ -7,9 +7,5 @@ FROM nbhosting/scipy-notebook:latest
 # install librosa, resampy and wavio
 RUN true \
     && apt-get update \
-    && apt-get install -y gcc portaudio19-dev python3-pyaudio \
-    && pip install librosa \
-    && pip install resampy \
-    && pip install wavio \
-    && pip install sounddevice \
+    && pip install graphviz \
     && true
