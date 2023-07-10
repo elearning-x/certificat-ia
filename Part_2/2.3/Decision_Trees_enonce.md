@@ -19,6 +19,7 @@ nbhosting:
   title: Decision Trees
   version: '1.0'
 ---
+
  
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
@@ -37,7 +38,7 @@ We want to study the influence of the different hyperparameters of a decision tr
 We first use the following lines to generate and plot our dataset, containing two input variables and one binary output. We are well aware that this is nothing like a real dataset. However, it is often better to look at a method applied on synthetic data to understand its behavior.  
 
 
-```python
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_circles
@@ -59,7 +60,7 @@ plt.show()
 **1) Using 'DecisionTreeClassifier', fit a decision tree with the default parameters on the training set. Compute its accuracy on the training set and test set. Comment.**
 
 
-```python
+```{code-cell} python
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 
@@ -71,7 +72,7 @@ from sklearn.metrics import accuracy_score
 **2) You can plot the decision frontier with the following lines. Comment.**
 
 
-```python
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -103,7 +104,7 @@ https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClass
 **4) Tuning of the depth. Train a tree of depth $15$. Between this tree and the first tree you trained, which one do you prefer?**
 
 
-```python
+```{code-cell} python
 # TO DO 
 
 # END TO DO 
@@ -112,7 +113,7 @@ https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClass
 **5) Now we want to find the optimal depth. To this aim, plot the test error as a function of the tree depth. Comment.**
 
 
-```python
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
@@ -132,7 +133,7 @@ errors_test = []
 **6) Now we want to find the optimal value for the parameter max-leaf-nodes. To this aim, plot the test error as a function of the number of leaves. Comment.** 
 
 
-```python
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
@@ -152,7 +153,7 @@ errors_test = []
 **7) Finally, we want to study the impact of pruning. To this aim, plot the test error as a function of the complexity parameter 'ccp_alpha'. Comment.**
 
 
-```python
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.tree import DecisionTreeClassifier
@@ -173,7 +174,7 @@ errors_test = []
 Now, we want to apply a decision tree to solve a real problem. Let us consider the following real estate data set.
 
 
-```python
+```{code-cell} python
 from sklearn.datasets import fetch_california_housing
 import numpy as np
 import matplotlib.pyplot as plt
@@ -197,7 +198,7 @@ feature_mapping = {
 **8) Use the command 'train_test_split' to split the data set into a training set and test set. The test set will only be used to assess the performance of our final estimator.** 
 
 
-```python
+```{code-cell} python
 from sklearn.model_selection import train_test_split
 
 # TO DO 
@@ -208,7 +209,7 @@ from sklearn.model_selection import train_test_split
 **9) Train a decision tree on the above data using default parameters. Evaluate its quadratic risk on the training set and on the test set. Comment.**
 
 
-```python
+```{code-cell} python
 from sklearn.metrics import mean_squared_error
 from sklearn.tree import DecisionTreeRegressor
 
@@ -220,7 +221,7 @@ from sklearn.tree import DecisionTreeRegressor
 **10) Tune the complexity parameter of the pruning by cross-validation by evaluating parameter values between 0.001 and 0.03. You can make use of the command 'cross_val_score'. Comment.**
 
 
-```python
+```{code-cell} python
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import cross_val_score
 
@@ -230,7 +231,7 @@ from sklearn.model_selection import cross_val_score
 ```
 
 
-```python
+```{code-cell} python
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import cross_val_score
 
@@ -242,7 +243,7 @@ from sklearn.model_selection import cross_val_score
 **11) Based on the previous question, find the pruning parameter that leads to the best predictive performance.**
 
 
-```python
+```{code-cell} python
 # TO DO 
 
 # END TO DO 
@@ -251,7 +252,7 @@ from sklearn.model_selection import cross_val_score
 **12) Train a tree on the whole training set with the best pruning complexity (the one determined above) and evaluate its performance on the test set.**
 
 
-```python
+```{code-cell} python
 from sklearn.metrics import mean_absolute_error
 
 # TO DO 
@@ -262,7 +263,7 @@ from sklearn.metrics import mean_absolute_error
 **13) Plot the first level of the tree. Comment.**
 
 
-```python
+```{code-cell} python
 import graphviz 
 from sklearn import tree
 
