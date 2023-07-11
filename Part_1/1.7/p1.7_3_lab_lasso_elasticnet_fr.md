@@ -39,7 +39,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -59,7 +59,7 @@ DataFrame]
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -73,7 +73,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -92,7 +92,7 @@ suivant
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -109,7 +109,7 @@ de $\lambda$
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -125,7 +125,7 @@ trouver le $\hat \lambda$ optimal avec un score  &ldquo;somme des erreurs quadra
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -139,7 +139,7 @@ le $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -154,7 +154,7 @@ $x^*=(18, 18, 18 ,5 ,5 , 6, 5 ,-4 ,-3, 90)'$
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -167,6 +167,6 @@ refaire avec les mêmes données les questions de l&rsquo;exercice précédent a
 
 
 
-```python
+```{code-cell} python
 
 ```

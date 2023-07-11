@@ -34,7 +34,7 @@ Load eucalyptus data into a pandas DataFrame `eucalypt`
 [`read_csv` of `pandas`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -43,7 +43,7 @@ Plot the point cloud with `circ` as abscissa and `ht` as ordinate
 [`plt.plot`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -60,7 +60,7 @@ method `summary` applied to the adjusted model,
 attributes `params` and `scale`.]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -73,7 +73,7 @@ Plot the residuals with
 [`plt.plot`, `predict` method for adjusted instance/model and `np.arange` to generate line numbers using the `shape` attribute attribute of the DataFrame]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -84,7 +84,7 @@ Load eucalyptus data into a pandas DataFrame `eucalypt`
 [`read_csv` of `pandas`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -98,7 +98,7 @@ Perform the following steps 500 times
 [create a random generator `np.random.default_rng` instance]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -107,7 +107,7 @@ Represent the variability of the random variable \$\hat \beta_2\$.
 [a fonction of `plt`...]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -118,7 +118,7 @@ between the two parameters.
 [a fonction of `plt`...]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -129,7 +129,7 @@ Load eucalyptus data into a pandas DataFrame `eucalypt`
 [`read_csv` of `pandas`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -140,7 +140,7 @@ a straight line, but rather a "square root" curve.
 [`plt.plot`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -157,7 +157,7 @@ a straight line, but rather a "square root" curve.
 `summary` method for the adjusted instance/model]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -167,6 +167,6 @@ and choose the best model.
 [method `argsort` on a DataFrame column and `plt.plot`]
 
 
-```python
+```{code-cell} python
 
 ```

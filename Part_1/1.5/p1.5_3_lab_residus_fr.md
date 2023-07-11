@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -41,7 +41,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -58,7 +58,7 @@ Estimer le modèle par MCO et faire le résumé.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -68,7 +68,7 @@ Afficher le graphique des résidus (attribut `resid` du modèle estimé)
 \[`plot` de plt\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -79,7 +79,7 @@ qui renverra un objet (que l'on nommera `infl`) avec un attribut `resid_studenti
 contenant les résidus souhaités.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -89,7 +89,7 @@ Représenter les \$h_{ii}\$ grâce à `plt.stem` en fonction du numéro de ligne
 `hat_matrix_diag` pour `infl`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -110,7 +110,7 @@ Estimer le modèle par MCO et faire le résumé.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -127,7 +127,7 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -136,7 +136,7 @@ Comparer les R2 des modèles à 3 et 6 variables
 et expliquer pourquoi cela était attendu.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -151,7 +151,7 @@ Vous avez une variable à expliquer \$Y\$
 et quatre variables explicatives dans le fichier `tprespartiel.dta`
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -162,7 +162,7 @@ Estimer par MCO les paramètres du modèle \$Y_i=\beta_0 + \beta_1 X_{i,1}+\cdot
 méthode `summary` pour l'instance/modèle ajusté]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -173,7 +173,7 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -188,7 +188,7 @@ opérations et fonctions dans les formules
 (voir https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -200,13 +200,13 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```python
+```{code-cell} python
 
 ```
 
 Faire le même travail pour `tp2bisrespartiel`.
 
 
-```python
+```{code-cell} python
 
 ```

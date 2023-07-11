@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -43,7 +43,7 @@ variables en variables qualitatives et faites un résumé numérique par variabl
 méthode `describe` sur l'instance DataFrame\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -52,7 +52,7 @@ méthode `describe` sur l'instance DataFrame\]
   combien estime t on de paramètres ?
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -71,7 +71,7 @@ Changer la modalité de référence du vent pour le vent du Nord,
 - Vérifier que les $Y$ ajustés sont les mêmes.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -83,7 +83,7 @@ Changer la modalité de référence du vent pour le vent du Nord,
   [`sm.stats.anova_lm`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -109,7 +109,7 @@ résumer les de façon numérique.
 méthode `describe` sur l'instance DataFrame\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -119,7 +119,7 @@ Représenter graphiquement les données.
 `boxplot` sur l'instance DataFrame groupé\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -128,7 +128,7 @@ Répondre à la question suivante: les trois méthodes de
   ventilation sont elles équivalentes ?
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -139,7 +139,7 @@ Analyser les résidus du modèle retenu et interpréter les
   `sm.qqplot`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -165,6 +165,6 @@ Nous souhaitons savoir si ces huit provenances sont identiques.
    Tracer les résidus en fonction de la variable `bloc`.
 
 
-```python
+```{code-cell} python
 
 ```
