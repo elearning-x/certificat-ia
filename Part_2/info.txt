@@ -1,1 +1,3 @@
 Jupyter notebook for Part 2: From Machine learning to Deep learning
+
+** create a folder corresponding to the course outline reference **

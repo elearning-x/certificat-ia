@@ -7,9 +7,7 @@ FROM nbhosting/scipy-notebook:latest
 # install librosa, resampy and wavio
 RUN true \
     && apt-get update \
-    && apt-get install -y gcc portaudio19-dev python3-pyaudio \
-    && pip install librosa \
-    && pip install resampy \
-    && pip install wavio \
-    && pip install sounddevice \
+    apt-get install -y graphviz \
+    && pip install graphviz \
+    && pip install torch==1.3.0+cpu torchvision==0.4.1+cpu -f https://download.pytorch.org/whl/torch_stable.html \
     && true
