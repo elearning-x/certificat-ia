@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -29,7 +29,7 @@ Import modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`) a
 Also import `Axes3D` from `mpl_toolkits.mplot3d`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -37,10 +37,10 @@ Also import `Axes3D` from `mpl_toolkits.mplot3d`.
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
-[`read_csv` of `pandas`]
+\[`read_csv` of `pandas`\]. On FunStudio the path is `data/ozone.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -56,7 +56,7 @@ Let's graph the data with `O3` on the z axis,
 [`figure` and its `add_subplot` method `scatter` method of the `Axes` class]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -71,7 +71,7 @@ Use OLS to estimate the parameters of the model described above and summarize th
 `summary` method for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -79,10 +79,10 @@ Use OLS to estimate the parameters of the model described above and summarize th
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
-[`read_csv` of `pandas`]
+\[`read_csv` of `pandas`\]. On FunStudio the path is `data/ozone.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -99,7 +99,7 @@ Estimate the OLS model and summarize.
 `summary` method for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -115,7 +115,7 @@ Estimate the OLS model and summarize.
 [`scale` attribute of the adjusted model]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -123,10 +123,10 @@ Estimate the OLS model and summarize.
 
 ### Data import
 Import ozone data into pandas `eucalypt` DataFrame
-[`read_csv` of `pandas`]
+\[`read_csv` of `pandas`\]. On FunStudio the path is `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -135,7 +135,7 @@ Represent point cloud
 [`plot` of plt and `xlabel` and `ylabel` of `plt`]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -147,7 +147,7 @@ operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -158,6 +158,6 @@ in the simple regression tutorial.
 [`argsort` instance method for DataFrame columns,`plot` and `xlabel` and `ylabel` from `plt`.]
 
 
-```{code-cell} python
+```python
 
 ```

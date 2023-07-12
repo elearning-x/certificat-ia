@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -39,7 +39,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -51,7 +51,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` et éliminer les deux dernières
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans FunStudio les données sont dans `data/`) et éliminer les deux dernières
 variables (qualitatives) et faites un résumé numérique par variable [méthode
 `astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
 DataFrame]
@@ -59,7 +59,7 @@ DataFrame]
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -73,7 +73,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -92,7 +92,7 @@ suivant
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -109,7 +109,7 @@ de $\lambda$
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -125,7 +125,7 @@ trouver le $\hat \lambda$ optimal avec un score  &ldquo;somme des erreurs quadra
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -139,7 +139,7 @@ le $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -154,7 +154,7 @@ $x^*=(18, 18, 18 ,5 ,5 , 6, 5 ,-4 ,-3, 90)'$
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -167,6 +167,6 @@ refaire avec les mêmes données les questions de l&rsquo;exercice précédent a
 
 
 
-```{code-cell} python
+```python
 
 ```

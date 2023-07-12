@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,20 +30,20 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```{code-cell} python
+```python
 
 ```
 
 # Variables qualitatives et quantitatives pour l'ozone
 
 ### Importation
-Importer les données `ozonecomplet.csv` et transformer les deux dernières 
+Importer les données `ozonecomplet.csv` (dans FunStudio les données sont dans le répertoire `data/`) et transformer les deux dernières 
 variables en variables qualitatives et faites un résumé numérique par variable
 \[méthode `astype` sur la colonne du DataFrame et
 méthode `describe` sur l'instance DataFrame\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -52,7 +52,7 @@ méthode `describe` sur l'instance DataFrame\]
   combien estime t on de paramètres ?
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -71,7 +71,7 @@ Changer la modalité de référence du vent pour le vent du Nord,
 - Vérifier que les $Y$ ajustés sont les mêmes.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -83,7 +83,7 @@ Changer la modalité de référence du vent pour le vent du Nord,
   [`sm.stats.anova_lm`]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -103,13 +103,13 @@ Nous cherchons à savoir si ces trois méthodes de ventilations sont
 équivalentes.
 
 ### Importation
-Importer les données qui sont dans le fichier `gr.csv` et
+Importer les données qui sont dans le fichier `gr.csv` (dans FunStudio les données sont dans le répertoire `data/`) et
 résumer les de façon numérique.
 \[méthode `astype` sur la colonne du DataFrame et
 méthode `describe` sur l'instance DataFrame\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -119,7 +119,7 @@ Représenter graphiquement les données.
 `boxplot` sur l'instance DataFrame groupé\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -128,7 +128,7 @@ Répondre à la question suivante: les trois méthodes de
   ventilation sont elles équivalentes ?
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -139,7 +139,7 @@ Analyser les résidus du modèle retenu et interpréter les
   `sm.qqplot`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -156,7 +156,7 @@ propose les hauteurs moyennes des arbres par bloc-provenance.
 
 Nous souhaitons savoir si ces huit provenances sont identiques.
 
-1. Importer les données qui sont dans le fichier `eucalyptus_camaldulensis.txt` et
+1. Importer les données qui sont dans le fichier `eucalyptus_camaldulensis.txt` (dans FunStudio les données sont dans le répertoire `data/`) et
    résumer les de façon numérique.
 2. Représenter graphiquement les données utilisées pour la réponse à la question.
 3. Répondre à la question posée (les huit provenances sont elles identiques ?).
@@ -165,6 +165,6 @@ Nous souhaitons savoir si ces huit provenances sont identiques.
    Tracer les résidus en fonction de la variable `bloc`.
 
 
-```{code-cell} python
+```python
 
 ```

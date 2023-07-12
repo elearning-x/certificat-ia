@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,7 +30,7 @@ matplotlib.pyplot (as `plt`), statsmodels.formula.api (as `smf`)
 and statsmodels.api (as `sm`)
 
 
-```{code-cell} python
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -45,8 +45,8 @@ Import ozone data into pandas `ozone` DataFrame
 [`read_csv` from `pandas`]
 
 
-```{code-cell} python
-ozone = pd.read_csv('ozone.txt', sep=';')
+```python
+ozone = pd.read_csv('data/ozone.txt', sep=';')
 ```
 
 ### Course model estimation
@@ -59,11 +59,11 @@ the maximum ozone concentration of the day (variable `O3`) by
 Traditionally, we always introduce the constant (and do so here too).
 Estimate the OLS model and summarize.
 
-[Use the `ols` method from `smf`, the `fit` method from the `OLS` class and the 
-method `summary` for the adjusted instance/model]
+\[Use the `ols` method from `smf`, the `fit` method from the `OLS` class and the 
+method `summary` for the adjusted instance/model\]
 
 
-```{code-cell} python
+```python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -139,10 +139,10 @@ reg.summary()
 Display residuals graph (`resid` attribute of estimated model)
 (with \$\hat y\$  (`predict` method of estimated model) on the x-axis and \$\varepsilon\$ on the y-axis).
 
-[plt `plot`]
+\[plt `plot`\]
 
 
-```{code-cell} python
+```python
 plt.plot(reg.predict(), reg.resid, 'o')
 ```
 
@@ -155,7 +155,7 @@ plt.plot(reg.predict(), reg.resid, 'o')
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_8_1.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_8_1.png)
     
 
 
@@ -170,7 +170,7 @@ Display the graph of residuals studentized by cross-validation (with \$\hat y\$ 
 which will return an object (let's call it `infl`) with a `resid_studentized_external` attribute containing the desired residues.
 
 
-```{code-cell} python
+```python
 infl = reg.get_influence()
 plt.plot(reg.predict(), infl.resid_studentized_external, 'o')
 ```
@@ -184,7 +184,7 @@ plt.plot(reg.predict(), infl.resid_studentized_external, 'o')
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_11_1.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_11_1.png)
     
 
 
@@ -197,7 +197,7 @@ Represent \$h_{ii}\$ with `plt.stem` according to line number
 `hat_matrix_diag` for `infl`]
 
 
-```{code-cell} python
+```python
 ozone.head()
 ```
 
@@ -325,7 +325,7 @@ ozone.head()
 
 
 
-```{code-cell} python
+```python
 n_data = ozone.shape[0]
 plt.stem(np.arange(n_data), infl.hat_matrix_diag)
 ```
@@ -339,7 +339,7 @@ plt.stem(np.arange(n_data), infl.hat_matrix_diag)
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_15_1.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_15_1.png)
     
 
 
@@ -364,7 +364,7 @@ Estimate the OLS model and summarize.
 method `summary` for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -436,11 +436,11 @@ reg.summary()
 
 
 
-### Estimation of the course model
+### Estimation of another model
 This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
-- the temperature at 3pm, `T15`
 - temperature at noon, noted `T12`
+- the temperature at 3pm, `T15`
 - cloudiness at noon, noted as `Ne12`
 - wind speed on east-west axis noted `Vx`
 - the maximum of the previous day `O3v`.
@@ -448,8 +448,8 @@ Traditionally, we always introduce the constant (do so here too).
 Estimate the OLS model and summarize.
 
 
-```{code-cell} python
-reg5 = smf.ols('O3~T15+T12+Ne12+Vx+O3v', data=ozone).fit()
+```python
+reg5 = smf.ols('O3~T12+T15+Ne12+Vx+O3v', data=ozone).fit()
 reg5.summary()
 ```
 
@@ -531,7 +531,7 @@ Compare the R2 of the 3- and 5-variable models
 and explain why this was expected.
 
 
-```{code-cell} python
+```python
 reg.rsquared, reg5.rsquared
 ```
 
@@ -555,8 +555,8 @@ You have one variable to explain \$Y\$
 and four explanatory variables in the file `tprespartiel.dta`.
 
 
-```{code-cell} python
-tpres = pd.read_csv('tprespartiel.dta', sep=';')
+```python
+tpres = pd.read_csv('data/tprespartiel.dta', sep=';')
 tpres.head()
 ```
 
@@ -642,7 +642,7 @@ OLS estimation of model parameters \$Y_i= \beta_0 + \beta_1 X_{i,1}+ \cdots+
 method `summary` for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 reg = smf.ols('Y~X1+X2+X3+X4', data=tpres).fit()
 reg.summary()
 ```
@@ -724,14 +724,14 @@ called "Component-Component plus Residual"
 (CCPR) in the statsmodels module...
 
 
-```{code-cell} python
+```python
 sm.graphics.plot_ccpr_grid(reg)
 plt.show()
 ```
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_31_0.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_31_0.png)
     
 
 
@@ -750,7 +750,7 @@ operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 reg2 = smf.ols('Y~X1+X2+X3+np.square(X4)', data=tpres).fit()
 reg2.summary()
 ```
@@ -833,14 +833,14 @@ called "Component-Component plus Residual"
 (CCPR) in the statsmodels module...
 
 
-```{code-cell} python
+```python
 sm.graphics.plot_ccpr_grid(reg2)
 plt.show()
 ```
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_36_0.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_36_0.png)
     
 
 
@@ -849,7 +849,7 @@ or arranged along straight lines. The model would appear to be correct. We can c
 compare them (same number of variables) by R2
 
 
-```{code-cell} python
+```python
 reg.rsquared, reg2.rsquared
 ```
 
@@ -863,8 +863,8 @@ reg.rsquared, reg2.rsquared
 Do the same for `tp2bisrespartiel`.
 
 
-```{code-cell} python
-tpbis = pd.read_csv('tpbisrespartiel.dta', sep=';')
+```python
+tpbis = pd.read_csv('data/tpbisrespartiel.dta', sep=';')
 tpbis.head()
 ```
 
@@ -944,7 +944,7 @@ tpbis.head()
 
 
 
-```{code-cell} python
+```python
 reg = smf.ols('Y~X1+X2+X3+X4', data=tpbis).fit()
 reg.summary()
 ```
@@ -1020,19 +1020,19 @@ reg.summary()
 
 
 
-```{code-cell} python
+```python
 sm.graphics.plot_ccpr_grid(reg)
 plt.show()
 ```
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_42_0.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_42_0.png)
     
 
 
 
-```{code-cell} python
+```python
 reg2 = smf.ols('Y~X1+X2+X3+np.sin(2*np.pi*X4)', data=tpbis).fit()
 reg2.summary()
 ```
@@ -1108,23 +1108,13 @@ reg2.summary()
 
 
 
-```{code-cell} python
+```python
 sm.graphics.plot_ccpr_grid(reg2)
 plt.show()
 ```
 
 
     
-![png](p1.5_3_lab_solutions_residuals_en_files/p1.5_3_lab_solutions_residuals_en_44_0.png)
+![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_44_0.png)
     
 
-
-
-```{code-cell} python
-
-```
-
-
-```{code-cell} python
-
-```

@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -38,10 +38,10 @@ et statsmodels.api (comme `sm`)
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -58,7 +58,7 @@ Estimer le modèle par MCO et faire le résumé.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -68,7 +68,7 @@ Afficher le graphique des résidus (attribut `resid` du modèle estimé)
 \[`plot` de plt\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -79,7 +79,7 @@ qui renverra un objet (que l'on nommera `infl`) avec un attribut `resid_studenti
 contenant les résidus souhaités.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -89,7 +89,7 @@ Représenter les \$h_{ii}\$ grâce à `plt.stem` en fonction du numéro de ligne
 `hat_matrix_diag` pour `infl`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -110,33 +110,32 @@ Estimer le modèle par MCO et faire le résumé.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```{code-cell} python
+```python
 
 ```
 
-### Estimation du modèle du cours
+### Estimation d'un modèle complémentaire
 Ce régression expliquera
 le maximum de la concentration en ozone du jour (variable `O3`) par 
-- la température à six heures notée `T6`
 - la température à midi notée `T12`
+- la température à six heures notée `T15`
 - la nébulosité à midi notée `Ne12`
-- la nébulosité à quinze heures notée `Ne15`
 - la vitesse du vent sur l'axe Est-Ouest notée `Vx`
 - le maximum du jour d'avant/la veille `O3v`
 Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```{code-cell} python
+```python
 
 ```
 
 ### Comparer les R2
-Comparer les R2 des modèles à 3 et 6 variables 
+Comparer les R2 des modèles à 3 et 5 variables 
 et expliquer pourquoi cela était attendu.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -148,10 +147,10 @@ des résidus partiels peut améliorer la modélisation.
 
 ### Importer les données
 Vous avez une variable à expliquer \$Y\$
-et quatre variables explicatives dans le fichier `tprespartiel.dta`
+et quatre variables explicatives dans le fichier `tprespartiel.dta`. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -162,7 +161,7 @@ Estimer par MCO les paramètres du modèle \$Y_i=\beta_0 + \beta_1 X_{i,1}+\cdot
 méthode `summary` pour l'instance/modèle ajusté]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -173,7 +172,7 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -188,7 +187,7 @@ opérations et fonctions dans les formules
 (voir https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -200,13 +199,13 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```{code-cell} python
+```python
 
 ```
 
 Faire le même travail pour `tp2bisrespartiel`.
 
 
-```{code-cell} python
+```python
 
 ```

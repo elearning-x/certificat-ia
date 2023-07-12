@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```{code-cell} python
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -47,8 +47,8 @@ variables en variables qualitatives et faites un résumé numérique par variabl
 méthode `describe` sur l'instance DataFrame\]
 
 
-```{code-cell} python
-ozone = pd.read_csv("ozonecomplet.csv", header=0, sep=";")
+```python
+ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
 ozone = ozone.drop(['nomligne'], axis=1)
 ozone.Ne = ozone.Ne.astype("category")
 ozone.Dv = ozone.Dv.astype("category")
@@ -279,7 +279,7 @@ ozone.describe(include="all")
   combien estime t on de paramètres ?
 
 
-```{code-cell} python
+```python
 reg = smf.ols("O3~T12+Ne+Dv", data=ozone).fit()
 reg.summary()
 ```
@@ -376,7 +376,7 @@ Changer la modalité de référence du vent pour le vent du Nord,
 - Vérifier que les $Y$ ajustés sont les mêmes.
 
 
-```{code-cell} python
+```python
 reg2 = smf.ols("O3~T12+Ne+C(Dv, Treatment(reference=1))", data=ozone).fit()
 reg2.summary()
 ```
@@ -455,7 +455,7 @@ reg2.summary()
 
 
 
-```{code-cell} python
+```python
 np.all(np.abs(reg.predict() -reg2.predict())<1e-10)
 ```
 
@@ -474,7 +474,7 @@ np.all(np.abs(reg.predict() -reg2.predict())<1e-10)
   [`sm.stats.anova_lm`]
 
 
-```{code-cell} python
+```python
 Dv2 = ozone.Dv.map({"E": "E+N", "N": "E+N", "O": "O", "S": "S"}).astype("category")
 ozone["Dv2"] = Dv2
 reg3 = smf.ols("O3~T12+Ne+Dv2", data=ozone).fit()
@@ -552,7 +552,7 @@ reg3.summary()
 
 
 
-```{code-cell} python
+```python
 sm.stats.anova_lm(reg3, reg)
 ```
 
@@ -637,8 +637,8 @@ résumer les de façon numérique.
 méthode `describe` sur l'instance DataFrame\]
 
 
-```{code-cell} python
-gr = pd.read_csv("gr.csv", header=0, sep=";")
+```python
+gr = pd.read_csv("data/gr.csv", header=0, sep=";")
 gr["ventilation"]=gr["ventilation"].astype("category")
 gr.describe(include="all")
 ```
@@ -738,7 +738,7 @@ Représenter graphiquement les données.
 Le plus simple est de faire soit des points par ventilation
 
 
-```{code-cell} python
+```python
 plt.plot(gr.ventilation, gr.folate, "o")
 ```
 
@@ -751,7 +751,7 @@ plt.plot(gr.ventilation, gr.folate, "o")
 
 
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_21_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_21_1.png)
     
 
 
@@ -763,23 +763,14 @@ Mais un boxplot est aussi intéressant
 quoique moins adapté pour ces faibles effectifs par groupe.
 
 
-```{code-cell} python
+```python
 gr.groupby(by='ventilation').boxplot(False)
+plt.show()
 ```
 
 
-
-
-    N2O+O2,24h         Axes(0.1,0.559091;0.363636x0.340909)
-    N2O+O2,op     Axes(0.536364,0.559091;0.363636x0.340909)
-    O2,24h                 Axes(0.1,0.15;0.363636x0.340909)
-    dtype: object
-
-
-
-
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_24_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_24_0.png)
     
 
 
@@ -791,7 +782,7 @@ Faisons un test $F$ entre les deux modèles emboités $\mathrm{H}_0: \ y_{ij}=\m
 $\mathrm{H}_1: \ y_{ij}=\mu + \alpha_i + \varepsilon_{ij}$ avec l'erreur de première espèce de $\alpha=5\%$.
 
 
-```{code-cell} python
+```python
 modele1 = smf.ols("folate ~ 1 + ventilation", data=gr).fit()
 modele0 = smf.ols("folate ~ 1", data=gr).fit()
 sm.stats.anova_lm(modele0, modele1)
@@ -868,7 +859,7 @@ en fonction de $\hat Y$ (qui est la moyenne du groupe
 de ventilation.)
 
 
-```{code-cell} python
+```python
 infl = modele1.get_influence()
 plt.plot(modele1.predict(), infl.resid_studentized_external, "o")
 ```
@@ -882,7 +873,7 @@ plt.plot(modele1.predict(), infl.resid_studentized_external, "o")
 
 
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_31_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_31_1.png)
     
 
 
@@ -900,7 +891,7 @@ Pour envisager la normalité il est classique de regarder un QQ-plot
 
 
 
-```{code-cell} python
+```python
 sm.qqplot(infl.resid_studentized_external, line ='s')
 ```
 
@@ -908,14 +899,14 @@ sm.qqplot(infl.resid_studentized_external, line ='s')
 
 
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_34_0.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_34_0.png)
     
 
 
 
 
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_34_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_34_1.png)
     
 
 
@@ -940,8 +931,8 @@ Nous souhaitons savoir si ces huit provenances sont identiques.
    résumer les de façon numérique.
 
 
-```{code-cell} python
-camal = pd.read_csv("eucalyptus_camaldulensis.txt", header=0, sep=" ", decimal=",")
+```python
+camal = pd.read_csv("data/eucalyptus_camaldulensis.txt", header=0, sep=" ", decimal=",")
 camal.bloc = camal.bloc.astype("category")
 camal.provenance = camal.provenance.astype("category")
 camal.describe(include="all")
@@ -1049,20 +1040,14 @@ camal.describe(include="all")
 2. Représenter graphiquement les données utilisées pour la réponse à la question.
 
 
-```{code-cell} python
+```python
 camal.groupby(by="provenance").boxplot(False)
+plt.show()
 ```
 
 
-
-
-    <Axes: >
-
-
-
-
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_40_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_40_0.png)
     
 
 
@@ -1072,7 +1057,7 @@ Les provenances 2 et 4 semblent nettement supérieures.
    Où intervient (indirectement) la variable `bloc` dans la statistique de test utilisée ?
 
 
-```{code-cell} python
+```python
 modele0 = smf.ols("hauteur~bloc", data=camal).fit()
 modele1 = smf.ols("hauteur~bloc+provenance", data=camal).fit()
 sm.stats.anova_lm(modele0, modele1)
@@ -1147,7 +1132,7 @@ dans le questionnement initial, ici la variable `bloc`.
    Tracer les résidus en fonction de la variable `bloc`. 
 
 
-```{code-cell} python
+```python
 camal["rstudent"] = modele1.get_influence().resid_studentized_external
 plt.plot(modele1.predict(), camal.rstudent, "*")
 #.boxplot()
@@ -1162,12 +1147,12 @@ plt.plot(modele1.predict(), camal.rstudent, "*")
 
 
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_46_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_46_1.png)
     
 
 
 
-```{code-cell} python
+```python
 camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
 ```
 
@@ -1180,7 +1165,7 @@ camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
 
 
     
-![png](p1.6_2_lab_correction_qualitatives_fr_files/p1.6_2_lab_correction_qualitatives_fr_47_1.png)
+![png](p1_6_2_lab_correction_qualitatives_fr_files/p1_6_2_lab_correction_qualitatives_fr_47_1.png)
     
 
 

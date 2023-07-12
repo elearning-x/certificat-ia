@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -29,7 +29,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`). 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -37,10 +37,10 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -49,7 +49,7 @@ Tracer le nuage de points avec `circ` en  abscisses et `ht` en ordonnées
 \[`plt.plot`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -65,7 +65,7 @@ méthode `summary` pour l'instance/modèle ajusté,
 attributs `params` et `scale`.\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -79,7 +79,7 @@ Représenter graphiquement les résidus avec
 du DataFrame\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -87,10 +87,10 @@ du DataFrame\]
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -103,7 +103,7 @@ Faire 500 fois les étapes suivantes
 \[créer une instance de générateur aléatoire `np.random.default_rng`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -112,7 +112,7 @@ Représenter la variabilité de la variable aléatoire  \$\hat \beta_2\$.
 \[une fonction de `plt`...\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -122,7 +122,7 @@ entre les deux paramètres.
 \[une fonction de `plt`...\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -130,10 +130,10 @@ entre les deux paramètres.
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -144,7 +144,7 @@ d'une droite mais plutôt une courbe qui est de type "racine carrée"
 \[`plt.plot`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -161,7 +161,7 @@ d'une droite mais plutôt une courbe qui est de type "racine carrée"
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -171,6 +171,6 @@ et choisir le meilleur modèle.
 \[méthode `argsort` sur une colonne du DataFrame et `plt.plot`\]
 
 
-```{code-cell} python
+```python
 
 ```

@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -29,7 +29,7 @@ Import modules pandas (as `pd`) numpy (as `np`)
 matplotlib.pyplot (as  `plt`) and statsmodels.formula.api (as `smf`)
 
 
-```{code-cell} python
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -42,28 +42,28 @@ import statsmodels.formula.api as smf
 Load eucalyptus data into a pandas DataFrame `eucalypt`
 
 
-```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+```python
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Point Cloud
 Plot the point cloud with `circ` as abscissa and `ht` as ordinate
 
 
-```{code-cell} python
+```python
 plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x11d4e72b0>]
+    [<matplotlib.lines.Line2D at 0x7f5d83a2eeb0>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_6_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_6_1.png)
     
 
 
@@ -81,7 +81,7 @@ in the `reg` object and
 3. display the attribute containing the estimated standard deviation of the error.
 
 
-```{code-cell} python
+```python
 reg = smf.ols('ht~circ', data=eucalypt).fit()
 reg.summary()
 ```
@@ -101,10 +101,10 @@ reg.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   4732.</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 15 Jun 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td> 
+  <th>Date:</th>             <td>Wed, 12 Jul 2023</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>10:45:46</td>     <th>  Log-Likelihood:    </th> <td> -2286.2</td>
+  <th>Time:</th>                 <td>15:29:05</td>     <th>  Log-Likelihood:    </th> <td> -2286.2</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1429</td>      <th>  AIC:               </th> <td>   4576.</td>
@@ -148,7 +148,7 @@ reg.summary()
 
 
 
-```{code-cell} python
+```python
 reg.params
 ```
 
@@ -162,7 +162,7 @@ reg.params
 
 
 
-```{code-cell} python
+```python
 reg.scale
 ```
 
@@ -180,20 +180,20 @@ Plot the residuals with
 3. on the x-axis, the table line number (index) and on the y-axis, the residuals.
 
 
-```{code-cell} python
+```python
 plt.plot(eucalypt['circ'], reg.resid, "o")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x10693a790>]
+    [<matplotlib.lines.Line2D at 0x7f5d818f4f10>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_13_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_13_1.png)
     
 
 
@@ -206,20 +206,20 @@ and the mean seems to fluctuate. However, these residuals
 are quite satisfactory.
 
 
-```{code-cell} python
+```python
 plt.plot(reg.predict(), reg.resid, "o")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x11d74f790>]
+    [<matplotlib.lines.Line2D at 0x7f5d8186c790>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_15_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_15_1.png)
     
 
 
@@ -228,20 +228,20 @@ and only the abscissa scale has changed, we obtain the same
 the same interpretation as in the previous graph.
 
 
-```{code-cell} python
+```python
 plt.plot(np.arange(1,eucalypt.shape[0]+1), reg.resid , "o")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x11d863e80>]
+    [<matplotlib.lines.Line2D at 0x7f5d818609a0>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_17_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_17_1.png)
     
 
 
@@ -253,8 +253,8 @@ The fluctuations in the mean of the residuals can be seen again, but this graph 
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 
-```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+```python
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Estimation on \$n=100\$ data
@@ -265,7 +265,7 @@ Perform the following steps 500 times
    where `circ` is the explanatory variable and `ht` the variable to be explained. Store estimated parameters in `beta1` and `beta2`.
 
 
-```{code-cell} python
+```python
 beta1 = []
 beta2 = []
 rng = np.random.default_rng(seed=123) # fixe la graine du générateur, les tirages seront les mêmes
@@ -282,30 +282,14 @@ for k in range(500):
 Represent the variability of the random variable \$\hat \beta_2\$.
 
 
-```{code-cell} python
+```python
 plt.hist(beta2, bins=30)
+plt.show()
 ```
 
 
-
-
-    (array([ 2.,  2.,  1.,  2.,  6., 10., 17., 22., 23., 31., 49., 43., 48.,
-            51., 47., 43., 30., 26., 20., 10.,  5.,  5.,  3.,  1.,  2.,  0.,
-             0.,  0.,  0.,  1.]),
-     array([0.0769774 , 0.09072128, 0.10446515, 0.11820903, 0.1319529 ,
-            0.14569678, 0.15944065, 0.17318453, 0.1869284 , 0.20067228,
-            0.21441615, 0.22816003, 0.2419039 , 0.25564778, 0.26939166,
-            0.28313553, 0.29687941, 0.31062328, 0.32436716, 0.33811103,
-            0.35185491, 0.36559878, 0.37934266, 0.39308653, 0.40683041,
-            0.42057428, 0.43431816, 0.44806203, 0.46180591, 0.47554978,
-            0.48929366]),
-     <BarContainer object of 30 artists>)
-
-
-
-
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_25_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_25_0.png)
     
 
 
@@ -317,20 +301,20 @@ note the variability of the estimate and the correlation
 between the two parameters.
 
 
-```{code-cell} python
+```python
 plt.plot(beta1, beta2, "o")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x11dacb370>]
+    [<matplotlib.lines.Line2D at 0x7f5d8170ba90>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_28_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_28_1.png)
     
 
 
@@ -346,8 +330,8 @@ sample is different from the others. Among all the trees in the field, some (a s
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 
-```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+```python
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Point Cloud
@@ -356,20 +340,20 @@ and note that the points are not exactly on a straight line
 a straight line, but rather a "square root" curve.
 
 
-```{code-cell} python
+```python
 plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x11dcb9670>]
+    [<matplotlib.lines.Line2D at 0x7f5d81749eb0>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_34_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_34_1.png)
     
 
 
@@ -384,7 +368,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
    (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 reg = smf.ols('ht~circ', data=eucalypt).fit()
 regsqrt = smf.ols('ht~I(np.sqrt(circ))', data=eucalypt).fit()
 ```
@@ -394,7 +378,7 @@ Add the 2 fits (the straight line and the square root) to the scatterplot
 and choose the best model.
 
 
-```{code-cell} python
+```python
 sel = eucalypt['circ'].argsort()
 plt.plot(eucalypt['circ'], eucalypt['ht'], "o", eucalypt['circ'], reg.predict(), "-", eucalypt.circ.iloc[sel], regsqrt.predict()[sel], "-"  )
 ```
@@ -402,15 +386,15 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o", eucalypt['circ'], reg.predict(),
 
 
 
-    [<matplotlib.lines.Line2D at 0x11db77d60>,
-     <matplotlib.lines.Line2D at 0x11db77b80>,
-     <matplotlib.lines.Line2D at 0x11db77d00>]
+    [<matplotlib.lines.Line2D at 0x7f5d816a1550>,
+     <matplotlib.lines.Line2D at 0x7f5d816a1520>,
+     <matplotlib.lines.Line2D at 0x7f5d816a1760>]
 
 
 
 
     
-![png](p1.5_1_lab_solutions_univariate_en_files/p1.5_1_lab_solutions_univariate_en_38_1.png)
+![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_38_1.png)
     
 
 
@@ -418,7 +402,7 @@ Graphically, the "square root" model seems to fit the points better.
 These two models can be compared using R².
 
 
-```{code-cell} python
+```python
 reg.rsquared
 ```
 
@@ -430,7 +414,7 @@ reg.rsquared
 
 
 
-```{code-cell} python
+```python
 regsqrt.rsquared
 ```
 
