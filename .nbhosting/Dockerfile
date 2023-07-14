@@ -4,10 +4,10 @@
 FROM nbhosting/scipy-notebook:latest
 
 # --------
-# install librosa, resampy and wavio
+
 RUN true \
-    && apt-get update \
-    && apt-get install -y graphviz \
+    && sudo apt-get update \
+    && sudo apt-get install -y graphviz \
     && pip install graphviz \
-    && pip install torch==1.3.0+cpu torchvision==0.4.1+cpu -f https://download.pytorch.org/whl/torch_stable.html \
+    && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu \
     && true
