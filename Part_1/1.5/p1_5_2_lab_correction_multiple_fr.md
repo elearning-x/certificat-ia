@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 Importer aussi `Axes3D` de `mpl_toolkits.mplot3d`.
 
 
-```
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -44,8 +44,8 @@ import statsmodels.formula.api as smf
 Importer les données d'ozone dans le DataFrame pandas `ozone`
 
 
-```
-ozone = pd.read_csv("ozone.txt", header=0, sep=";")
+```python
+ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
 ### Représention en 3D
@@ -58,7 +58,7 @@ Représentons graphiquement les données avec `O3` sur l'axe z,
 `T12` sur l'axe x et `Vx` sur l'axe y.
 
 
-```
+```python
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 #ax = Axes3D(fig)
@@ -100,7 +100,7 @@ Traditionnellement on introduit toujours comme c'est le cas ici la constante
 Estimer par MCO les paramètres du modèle décrit ci-dessus et faites en le résumé.
 
 
-```
+```python
 reg = smf.ols('O3~T12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -175,8 +175,8 @@ reg.summary()
 Importer les données d'ozone dans le DataFrame pandas `ozone`
 
 
-```
-ozone = pd.read_csv("ozone.txt", header=0, sep=";")
+```python
+ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
 ### Estimation du modèle du cours
@@ -190,7 +190,7 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```
+```python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -277,7 +277,7 @@ Par lecture du résumé la colonne `std err` donne les
 est celui associé à la variable `Ne12`.
 
 
-```
+```python
 reg.scale
 ```
 
@@ -294,15 +294,15 @@ reg.scale
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 
 
-```
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+```python
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### représentation des données
 Représenter le nuage de points
 
 
-```
+```python
 plt.plot(eucalypt["circ"],eucalypt["ht"],'o')
 plt.xlabel("circ")
 plt.ylabel("ht")
@@ -317,7 +317,7 @@ plt.ylabel("ht")
 
 
     
-![png](p1.5_2_lab_correction_multiple_fr_files/p1.5_2_lab_correction_multiple_fr_23_1.png)
+![png](p1_5_2_lab_correction_multiple_fr_files/p1_5_2_lab_correction_multiple_fr_23_1.png)
     
 
 
@@ -329,7 +329,7 @@ opérations et fonctions dans les formules
 (voir https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```
+```python
 regmult = smf.ols("ht ~ circ +  np.sqrt(circ)", data = eucalypt).fit()
 regmult.summary()
 ```
@@ -404,13 +404,13 @@ la prévision par les modèles de régression simple vus dans l'exercice « deux
 dans le TP de régression simple.
 
 
-```
+```python
 reg = smf.ols('ht~circ', data=eucalypt).fit()
 regsqrt = smf.ols('ht~I(np.sqrt(circ))', data=eucalypt).fit()
 ```
 
 
-```
+```python
 sel = eucalypt['circ'].argsort()
 xs = eucalypt.circ.iloc[sel]
 ys1 = regmult.predict()[sel]
@@ -431,6 +431,6 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o", xs, ys1, "-", xs, ys2, "--", xs,
 
 
     
-![png](p1.5_2_lab_correction_multiple_fr_files/p1.5_2_lab_correction_multiple_fr_28_1.png)
+![png](p1_5_2_lab_correction_multiple_fr_files/p1_5_2_lab_correction_multiple_fr_28_1.png)
     
 

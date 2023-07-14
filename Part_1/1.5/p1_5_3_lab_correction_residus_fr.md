@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```{code-cell} python
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -44,8 +44,8 @@ import statsmodels.api as sm
 Importer les données d'ozone dans le DataFrame pandas `ozone`
 
 
-```{code-cell} python
-ozone = pd.read_csv("ozone.txt", header=0, sep=";")
+```python
+ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
 ### Estimation du modèle du cours
@@ -59,7 +59,7 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```{code-cell} python
+```python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -79,10 +79,10 @@ reg.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   32.87</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 15 Jun 2023</td> <th>  Prob (F-statistic):</th> <td>1.66e-11</td>
+  <th>Date:</th>             <td>Wed, 12 Jul 2023</td> <th>  Prob (F-statistic):</th> <td>1.66e-11</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>13:01:42</td>     <th>  Log-Likelihood:    </th> <td> -200.50</td>
+  <th>Time:</th>                 <td>15:42:24</td>     <th>  Log-Likelihood:    </th> <td> -200.50</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    50</td>      <th>  AIC:               </th> <td>   409.0</td>
@@ -136,20 +136,20 @@ Afficher le graphique des résidus (attribut `resid` du modèle estimé)
 (avec \$\hat y\$ en abscisse et \$\varepsilon\$ en ordonnée).
 
 
-```{code-cell} python
+```python
 plt.plot(reg.predict(), reg.resid ,"+")
 ```
 
 
 
 
-    [<matplotlib.lines.Line2D at 0x11f086a90>]
+    [<matplotlib.lines.Line2D at 0x7fd7674f31c0>]
 
 
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_8_1.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_8_1.png)
     
 
 
@@ -166,7 +166,7 @@ qui renverra un objet (que l'on nommera `infl`) avec un attribut `resid_studenti
 contenant les résidus souhaités.
 
 
-```{code-cell} python
+```python
 infl = reg.get_influence()
 plt.plot(reg.predict(), infl.resid_studentized_external,"+")
 ```
@@ -174,13 +174,13 @@ plt.plot(reg.predict(), infl.resid_studentized_external,"+")
 
 
 
-    [<matplotlib.lines.Line2D at 0x11f184970>]
+    [<matplotlib.lines.Line2D at 0x7fd7674baee0>]
 
 
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_11_1.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_11_1.png)
     
 
 
@@ -192,7 +192,7 @@ correcte. Aucun point en dehors de -2,2 donc pas d'individus aberrant.
 Représenter les \$h_{ii}\$ grâce à `plt.stem` en fonction du numéro de ligne
 
 
-```{code-cell} python
+```python
 index=np.arange(1, ozone.shape[0]+1)
 plt.stem(index, infl.hat_matrix_diag)
 ```
@@ -206,7 +206,7 @@ plt.stem(index, infl.hat_matrix_diag)
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_14_1.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_14_1.png)
     
 
 
@@ -228,144 +228,91 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```{code-cell} python
-reg3 = smf.ols('O3~T12+Ne+Ne15+2++O3vVx', data=ozone).fit()
+```python
+reg3 = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg3.summary()
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    PatsyError                                Traceback (most recent call last)
-
-    /var/folders/rr/0nkmqmx92m7gl5wcxl5xqctc0000gn/T/ipykernel_1478/570361147.py in <module>
-    ----> 1 reg3 = smf.ols('OT6+3~T12+Ne+Ne15+2++O3vVx', data=ozone).fit()
-          2 reg3.summary()
 
 
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/statsmodels/base/model.py in from_formula(cls, formula, data, subset, drop_cols, *args, **kwargs)
-        167             missing = 'raise'
-        168 
-    --> 169         tmp = handle_formula_data(data, None, formula, depth=eval_env,
-        170                                   missing=missing)
-        171         ((endog, exog), missing_idx, design_info) = tmp
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>O3</td>        <th>  R-squared:         </th> <td>   0.682</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.661</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   32.87</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Wed, 12 Jul 2023</td> <th>  Prob (F-statistic):</th> <td>1.66e-11</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>15:43:23</td>     <th>  Log-Likelihood:    </th> <td> -200.50</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    50</td>      <th>  AIC:               </th> <td>   409.0</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    46</td>      <th>  BIC:               </th> <td>   416.7</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   84.5473</td> <td>   13.607</td> <td>    6.214</td> <td> 0.000</td> <td>   57.158</td> <td>  111.936</td>
+</tr>
+<tr>
+  <th>T12</th>       <td>    1.3150</td> <td>    0.497</td> <td>    2.644</td> <td> 0.011</td> <td>    0.314</td> <td>    2.316</td>
+</tr>
+<tr>
+  <th>Ne12</th>      <td>   -4.8934</td> <td>    1.027</td> <td>   -4.765</td> <td> 0.000</td> <td>   -6.961</td> <td>   -2.826</td>
+</tr>
+<tr>
+  <th>Vx</th>        <td>    0.4864</td> <td>    0.168</td> <td>    2.903</td> <td> 0.006</td> <td>    0.149</td> <td>    0.824</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 0.211</td> <th>  Durbin-Watson:     </th> <td>   1.758</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.900</td> <th>  Jarque-Bera (JB):  </th> <td>   0.411</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.050</td> <th>  Prob(JB):          </th> <td>   0.814</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.567</td> <th>  Cond. No.          </th> <td>    148.</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/statsmodels/formula/formulatools.py in handle_formula_data(Y, X, formula, depth, missing)
-         61     else:
-         62         if data_util._is_using_pandas(Y, None):
-    ---> 63             result = dmatrices(formula, Y, depth, return_type='dataframe',
-         64                                NA_action=na_action)
-         65         else:
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/highlevel.py in dmatrices(formula_like, data, eval_env, NA_action, return_type)
-        307     """
-        308     eval_env = EvalEnvironment.capture(eval_env, reference=1)
-    --> 309     (lhs, rhs) = _do_highlevel_design(formula_like, data, eval_env,
-        310                                       NA_action, return_type)
-        311     if lhs.shape[1] == 0:
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/highlevel.py in _do_highlevel_design(formula_like, data, eval_env, NA_action, return_type)
-        162     def data_iter_maker():
-        163         return iter([data])
-    --> 164     design_infos = _try_incr_builders(formula_like, data_iter_maker, eval_env,
-        165                                       NA_action)
-        166     if design_infos is not None:
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/highlevel.py in _try_incr_builders(formula_like, data_iter_maker, eval_env, NA_action)
-         60                 "ascii-only, or else upgrade to Python 3.")
-         61     if isinstance(formula_like, str):
-    ---> 62         formula_like = ModelDesc.from_formula(formula_like)
-         63         # fallthrough
-         64     if isinstance(formula_like, ModelDesc):
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in from_formula(cls, tree_or_string)
-        163         else:
-        164             tree = parse_formula(tree_or_string)
-    --> 165         value = Evaluator().eval(tree, require_evalexpr=False)
-        166         assert isinstance(value, cls)
-        167         return value
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in eval(self, tree, require_evalexpr)
-        398                                 "'%s' operator" % (tree.type,),
-        399                                 tree.token)
-    --> 400         result = self._evaluators[key](self, tree)
-        401         if require_evalexpr and not isinstance(result, IntermediateExpr):
-        402             if isinstance(result, ModelDesc):
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in _eval_any_tilde(evaluator, tree)
-        219 
-        220 def _eval_any_tilde(evaluator, tree):
-    --> 221     exprs = [evaluator.eval(arg) for arg in tree.args]
-        222     if len(exprs) == 1:
-        223         # Formula was like: "~ foo"
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in <listcomp>(.0)
-        219 
-        220 def _eval_any_tilde(evaluator, tree):
-    --> 221     exprs = [evaluator.eval(arg) for arg in tree.args]
-        222     if len(exprs) == 1:
-        223         # Formula was like: "~ foo"
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in eval(self, tree, require_evalexpr)
-        398                                 "'%s' operator" % (tree.type,),
-        399                                 tree.token)
-    --> 400         result = self._evaluators[key](self, tree)
-        401         if require_evalexpr and not isinstance(result, IntermediateExpr):
-        402             if isinstance(result, ModelDesc):
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in _eval_binary_plus(evaluator, tree)
-        235         return IntermediateExpr(False, None, True, left_expr.terms)
-        236     else:
-    --> 237         right_expr = evaluator.eval(tree.args[1])
-        238         if right_expr.intercept:
-        239             return IntermediateExpr(True, right_expr.intercept_origin, False,
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in eval(self, tree, require_evalexpr)
-        398                                 "'%s' operator" % (tree.type,),
-        399                                 tree.token)
-    --> 400         result = self._evaluators[key](self, tree)
-        401         if require_evalexpr and not isinstance(result, IntermediateExpr):
-        402             if isinstance(result, ModelDesc):
-
-
-    /opt/anaconda3/envs/pytorch_env/lib/python3.8/site-packages/patsy/desc.py in _eval_number(evaluator, tree)
-        352 
-        353 def _eval_number(evaluator, tree):
-    --> 354     raise PatsyError("numbers besides '0' and '1' are "
-        355                         "only allowed with **", tree)
-        356 
-
-
-    PatsyError: numbers besides '0' and '1' are only allowed with **
-        OT6+3~T12+Ne+Ne15+2++O3vVx
-            ^
 
 
 ### Estimation du modèle du cours
 Ce régression expliquera
 le maximum de la concentration en ozone du jour (variable `O3`) par 
-- la température à six heures notée `T6`
-- la température à midi notée `T12`
+- la température à six heures notée `T12`
+- la température à midi notée `T15`
 - la nébulosité à midi notée `Ne12`
-- la nébulosité à quinze heures notée `Ne15`
 - la vitesse du vent sur l'axe Est-Ouest notée `Vx`
 - le maximum du jour d'avant/la veille `O3v`
 Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```{code-cell} python
+```python
 ozone.head()
 ```
 
@@ -493,8 +440,8 @@ ozone.head()
 
 
 
-```{code-cell} python
-reg6 = smf.ols('O3~T15+T12+Ne12+Vx+O3v', data=ozone).fit()
+```python
+reg6 = smf.ols('O3~T12+T15+Ne12+Vx+O3v', data=ozone).fit()
 reg6.summary()
 ```
 
@@ -513,10 +460,10 @@ reg6.summary()
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   24.13</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 15 Jun 2023</td> <th>  Prob (F-statistic):</th> <td>1.34e-11</td>
+  <th>Date:</th>             <td>Wed, 12 Jul 2023</td> <th>  Prob (F-statistic):</th> <td>1.34e-11</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>13:02:59</td>     <th>  Log-Likelihood:    </th> <td> -196.15</td>
+  <th>Time:</th>                 <td>15:50:51</td>     <th>  Log-Likelihood:    </th> <td> -196.15</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>    50</td>      <th>  AIC:               </th> <td>   404.3</td>
@@ -539,10 +486,10 @@ reg6.summary()
   <th>Intercept</th> <td>   61.4744</td> <td>   15.088</td> <td>    4.074</td> <td> 0.000</td> <td>   31.067</td> <td>   91.882</td>
 </tr>
 <tr>
-  <th>T15</th>       <td>    0.6306</td> <td>    1.409</td> <td>    0.447</td> <td> 0.657</td> <td>   -2.210</td> <td>    3.471</td>
+  <th>T12</th>       <td>    0.4675</td> <td>    1.459</td> <td>    0.320</td> <td> 0.750</td> <td>   -2.474</td> <td>    3.409</td>
 </tr>
 <tr>
-  <th>T12</th>       <td>    0.4675</td> <td>    1.459</td> <td>    0.320</td> <td> 0.750</td> <td>   -2.474</td> <td>    3.409</td>
+  <th>T15</th>       <td>    0.6306</td> <td>    1.409</td> <td>    0.447</td> <td> 0.657</td> <td>   -2.210</td> <td>    3.471</td>
 </tr>
 <tr>
   <th>Ne12</th>      <td>   -3.9958</td> <td>    1.017</td> <td>   -3.927</td> <td> 0.000</td> <td>   -6.046</td> <td>   -1.945</td>
@@ -572,11 +519,11 @@ reg6.summary()
 
 
 ### Comparer les R2
-Comparer les R2 des modèles à 3 et 6 variables 
+Comparer les R2 des modèles à 3 et 5 variables 
 et expliquer pourquoi cela était attendu.
 
 Le R2 augmente avec le nombre de variables ajoutées. Le modèle à 6 variables 
-consiste à ajouter les variables `T6`, `Ne15` et `O3v` au modèle à 3 variables
+consiste à ajouter les variables `T15` et `O3v` au modèle à 3 variables
 et donc il est normal qu'il augmente. Il ne peut pas servir à comparer
 des ajustements pour des modèles ayant des nombres de variables différents.
 
@@ -591,7 +538,7 @@ Vous avez une variable à expliquer \$Y\$
 et quatre variables explicatives dans le fichier `tprespartiel.dta`
 
 
-```{code-cell} python
+```python
 tp = pd.read_csv("tprespartiel.dta", header=0, sep=";")
 tp.head()
 ```
@@ -678,7 +625,7 @@ Estimer par MCO les paramètres du modèle \$Y_i=\beta_0 + \beta_1 X_{i,1}+\cdot
 méthode `summary` pour l'instance/modèle ajusté]
 
 
-```{code-cell} python
+```python
 reg = smf.ols("Y~X1+X2+X3+X4", data=tp).fit()
 ```
 
@@ -689,7 +636,7 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```{code-cell} python
+```python
 sm.graphics.plot_ccpr_grid(reg)
 ```
 
@@ -697,14 +644,14 @@ sm.graphics.plot_ccpr_grid(reg)
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_30_0.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_30_0.png)
     
 
 
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_30_1.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_30_1.png)
     
 
 
@@ -723,7 +670,7 @@ opérations et fonctions dans les formules
 (voir https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 reg2 = smf.ols("Y~X1+X2+X3+I(X4**2)", data=tp).fit()
 ```
 
@@ -735,7 +682,7 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```{code-cell} python
+```python
 sm.graphics.plot_ccpr_grid(reg2)
 ```
 
@@ -756,7 +703,7 @@ or arranged along straight lines. The model would appear to be correct. We can c
 compare them (same number of variables) by R2
 
 
-```{code-cell} python
+```python
 reg.rsquared, reg2.rsquared
 ```
 
@@ -773,7 +720,7 @@ reg.rsquared, reg2.rsquared
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -789,7 +736,7 @@ et le R2 de la seconde modélisation apparait meilleur.
 Faire le même travail pour `tp2bisrespartiel`.
 
 
-```{code-cell} python
+```python
 tp = pd.read_csv("tprespartiel.dta", header=0, sep=";")
 tp.head()
 reg = smf.ols("Y~X1+X2+X3+X4", data=tp).fit()
@@ -800,7 +747,7 @@ Nous voyons clairement une sinusoïde de type \$\sin(-2\pi X_4)\$
 sur le dernier graphique. Changeons \$X_4\$
 
 
-```{code-cell} python
+```python
 reg2 = smf.ols("Y~X1+X2+X3+I(np.sin(-2*np.pi*X4))", data=tp).fit()
 sm.graphics.plot_ccpr_grid(reg2)
 ```
@@ -809,14 +756,14 @@ sm.graphics.plot_ccpr_grid(reg2)
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_43_0.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_43_0.png)
     
 
 
 
 
     
-![png](p1.5_3_lab_correction_residus_fr_files/p1.5_3_lab_correction_residus_fr_43_1.png)
+![png](p1_5_3_lab_correction_residus_fr_files/p1_5_3_lab_correction_residus_fr_43_1.png)
     
 
 
@@ -824,11 +771,11 @@ Là encore les graphiques deviennent corrects et nous pouvons comparer
 les R2 et constater que la seconde modélisation améliore le R2.
 
 
-```{code-cell} python
+```python
 reg.rsqared
 ```
 
 
-```{code-cell} python
+```python
 reg2.rsquared
 ```

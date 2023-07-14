@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -31,10 +31,10 @@ Load pandas (as pd) numpy (as np) matplotlib.pyplot (as plt) et statsmodels.form
 
 ### Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
-[`read_csv` of `pandas`]
+[`read_csv` of `pandas`]. On FunStudio the path is `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -43,7 +43,7 @@ Plot the point cloud with `circ` as abscissa and `ht` as ordinate
 [`plt.plot`]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -60,7 +60,7 @@ method `summary` applied to the adjusted model,
 attributes `params` and `scale`.]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -73,7 +73,7 @@ Plot the residuals with
 [`plt.plot`, `predict` method for adjusted instance/model and `np.arange` to generate line numbers using the `shape` attribute attribute of the DataFrame]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -81,14 +81,14 @@ Plot the residuals with
 
 ### Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
-[`read_csv` of `pandas`]
+[`read_csv` of `pandas`]. On FunStudio the path is `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
-### Estimation on \$n=100\$ data
+### Estimation on \$n=100\$ datapoints
 Create two empty lists `beta1` and `beta2`.
 Perform the following steps 500 times
 1. Randomly draw 100 rows from the table `eucalypt` without replacement.
@@ -98,7 +98,7 @@ Perform the following steps 500 times
 [create a random generator `np.random.default_rng` instance]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -107,7 +107,7 @@ Represent the variability of the random variable \$\hat \beta_2\$.
 [a fonction of `plt`...]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -118,7 +118,7 @@ between the two parameters.
 [a fonction of `plt`...]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -126,10 +126,10 @@ between the two parameters.
 
 ### Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
-[`read_csv` of `pandas`]
+[`read_csv` of `pandas`]. On FunStudio the path is `data/eucalyptus.txt`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -140,7 +140,7 @@ a straight line, but rather a "square root" curve.
 [`plt.plot`]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -157,7 +157,7 @@ a straight line, but rather a "square root" curve.
 `summary` method for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -167,6 +167,6 @@ and choose the best model.
 [method `argsort` on a DataFrame column and `plt.plot`]
 
 
-```{code-cell} python
+```python
 
 ```

@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -29,7 +29,7 @@ Import modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`) a
 Also import `Axes3D` from `mpl_toolkits.mplot3d`.
 
 
-```{code-cell} python
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -40,11 +40,11 @@ import statsmodels.formula.api as smf
 # Multiple Regression on Ozone data (2 variables)
 
 ### Data import
-Import ozone data into pandas `ozone` DataFrame
+Import ozone data into pandas `ozone` DataFrame.
 
 
-```{code-cell} python
-ozone = pd.read_csv("ozone.txt", header=0, sep=";")
+```python
+ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
 ### 3D representation
@@ -57,7 +57,7 @@ Let's graph the data with `O3` on the z axis,
 `T12` on the x-axis and `Vx` on the y-axis.
 
 
-```{code-cell} python
+```python
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 #ax = Axes3D(fig)
@@ -76,7 +76,7 @@ ax.set_zlabel('O3')
 
 
     
-![png](p1.5_2_lab_solutions_multivariate_en_files/p1.5_2_lab_solutions_multivariate_en_6_1.png)
+![png](p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_6_1.png)
     
 
 
@@ -97,7 +97,7 @@ Traditionally, as is the case here, we always introduce the constant
 Use OLS to estimate the parameters of the model described above and summarize them.
 
 
-```{code-cell} python
+```python
 reg = smf.ols('O3~T12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -172,8 +172,8 @@ reg.summary()
 Import ozone data into pandas `ozone` DataFrame
 
 
-```{code-cell} python
-ozone = pd.read_csv("ozone.txt", header=0, sep=";")
+```python
+ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
 ### Course model estimation
@@ -187,7 +187,7 @@ Traditionally, we always introduce the constant (and do so here too).
 Estimate the OLS model and summarize.
 
 
-```{code-cell} python
+```python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -274,7 +274,7 @@ estimated standard deviations of the coordinates of \$\hat \beta\$ and the large
 is that associated with the `Ne12` variable.
 
 
-```{code-cell} python
+```python
 reg.scale
 ```
 
@@ -291,15 +291,15 @@ reg.scale
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 
-```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+```python
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### data representation
 Represent point cloud
 
 
-```{code-cell} python
+```python
 plt.plot(eucalypt["circ"],eucalypt["ht"],'o')
 plt.xlabel("circ")
 plt.ylabel("ht")
@@ -314,7 +314,7 @@ plt.ylabel("ht")
 
 
     
-![png](p1.5_2_lab_solutions_multivariate_en_files/p1.5_2_lab_solutions_multivariate_en_23_1.png)
+![png](p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_23_1.png)
     
 
 
@@ -326,7 +326,7 @@ operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 regmult = smf.ols("ht ~ circ +  np.sqrt(circ)", data = eucalypt).fit()
 regmult.summary()
 ```
@@ -401,13 +401,13 @@ the forecast by the simple regression models seen in the "two models" exercise
 in the simple regression tutorial.
 
 
-```{code-cell} python
+```python
 reg = smf.ols('ht~circ', data=eucalypt).fit()
 regsqrt = smf.ols('ht~I(np.sqrt(circ))', data=eucalypt).fit()
 ```
 
 
-```{code-cell} python
+```python
 sel = eucalypt['circ'].argsort()
 xs = eucalypt.circ.iloc[sel]
 ys1 = regmult.predict()[sel]
@@ -428,6 +428,6 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o", xs, ys1, "-", xs, ys2, "--", xs,
 
 
     
-![png](p1.5_2_lab_solutions_multivariate_en_files/p1.5_2_lab_solutions_multivariate_en_28_1.png)
+![png](p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_28_1.png)
     
 

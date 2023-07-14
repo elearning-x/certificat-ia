@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -29,7 +29,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`)
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -37,10 +37,10 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`)
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -51,7 +51,7 @@ dans l'objet `reg`
 \[ols` de `smf`, méthode `fit` de la classe `OLS`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -60,7 +60,7 @@ Obtenir les IC des coefficients au niveau de 95%
 \[`méthode `conf_int` pour l'instance/modèle ajusté\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -72,7 +72,7 @@ grâce à la méthode `get_prediction` sur l'instance/modèle estimé et utilise
 la méthode `conf_int` sur le résultat de la prévision).
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -81,7 +81,7 @@ Pour la même grille de valeurs de `circ` que celle de la question précédente
 proposer l'IC à 95% sur les espérances \$X^*\beta\$
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -94,7 +94,7 @@ En utilisant les 100 observations prévues ci-dessus et leurs IC
 \[`plt.plot`, `plt.legend`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -105,17 +105,17 @@ Pour ce TP nous aurons besoin en plus des modules classiques
 de des modules suivants
 
 
-```{code-cell} python
+```python
 import math
 from scipy.stats import f
 ```
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -130,7 +130,7 @@ avec comme toujours la constante.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -151,7 +151,7 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    (méthode `isf`).
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -168,7 +168,7 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    `np.matmul`, `np.diag`, `np.sqrt`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -176,14 +176,14 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    \[`cos` et `sin` de `np`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
 4. Transformer ces points via la matrice donnant ainsi l'ellipse de confiance.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -191,7 +191,7 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    \[`plt.fill` (pour l'ellipse), `plt.plot` (pour le centre)\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -201,7 +201,7 @@ récupérant l'`Axe` via `plt.gca()`, en créant le `patch` rectangle avec
 `matplotlib.patches.Rectangle` et en l'ajoutant avec `ax.add_artist`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -210,10 +210,10 @@ L'objectif de ce TD est de construire un IC grâce au Bootstrap.
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -228,7 +228,7 @@ avec comme toujours la constante.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -238,7 +238,7 @@ méthode `summary` pour l'instance/modèle ajusté\]
 Stocker les résidus dans l'objet `residus`et les ajustememt dans `ychap`
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -256,7 +256,7 @@ niveau $\alpha/2$ et $1-\alpha/2$ et donc un intervalle de confiance.
 
 
 Bien entendu nous n'avons qu'un seul $n$-échantillon et si nous souhaitons
-générer $B$ échantillon il faudrait connaitre $\beta$ et $F$. L'idée du bootstrap
+générer $B$ échantillons il faudrait connaitre $\beta$ et $F$. L'idée du bootstrap
 est de remplacer $\beta$ et $F$ inconnus par $\hat\beta$ (l'estimateur des MCO)
 et $\hat F$ (un estimateur de $F$), de générer $B$ échantillons puis de calculer
 les  $B$ estimations $\hat\beta^*$
@@ -279,7 +279,7 @@ Générons  $B=1000$ échantillons bootstrap.
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -288,7 +288,7 @@ A partir des $B=1000$ valeurs $\hat\beta^{(b)}$ proposer un IC à 95%.
 \[`np.quantile`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -296,11 +296,10 @@ A partir des $B=1000$ valeurs $\hat\beta^{(b)}$ proposer un IC à 95%.
 
 ### Importation
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]
+\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-
-```{code-cell} python
+```python
 
 ```
 
@@ -319,7 +318,7 @@ régression multiple et nous allons maintenant comparer ces deux modèles.
 \[`ols` de `smf`, méthode `fit` de la classe `OLS`\]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -328,25 +327,17 @@ régression multiple et nous allons maintenant comparer ces deux modèles.
 1. Comparer ces deux modèles via un test $T$ \[méthode `summary`\]
 
 
-```{code-cell} python
+```python
 
 ```
-
-La ligne `circ` du tableau donne l'estimation du coefficient $\hat\beta_3$, 
-l'écart-type estimé du coefficient, la valeur de la statistique 
-$t$ du test $\mathrm{H}_0: \beta_3=0$ contre $\mathrm{H}_1: \beta_3\neq 0$
-qui vaut ici $-8.336$ et sa probabilité critique quasi nulle. Nous repoussons donc
-$\mathrm{H}_0$ et le modèle `reg` semble meilleur.
 
 2. Comparer ces deux modèles via un test $F$ \[`stats.anova_lm` du sous module
 `statsmodels.api`\]
 
 
-```{code-cell} python
+```python
 
 ```
-
-Nous retrouvons les mêmes résultats que précédemment (car $F=t^2$)
 
 # L'âge a t-il une influence sur le temps libre ?
 
@@ -354,78 +345,57 @@ Une enquête a été conduite sur 40 individus afin d'étudier le lien
 entre le temps libre (estimé par l'enquêté comme le temps, en nombre
 d'heures par jour, disponible pour soi) et l'âge. Les résultats de
 cette enquête sont contenus dans le fichier
-`temps_libre.csv`. Nous nous proposons de savoir si ces
+`temps_libre.csv` (dans FunStudio les jeux de données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
 deux variables sont liées.
 
 
 1. Quel est le type des variables ?
 
 
-```{code-cell} python
+```python
 
 ```
-
-Les deux variables sont quantitatives continues. Nous changeons les noms car le '.' est mal géré dans les formules…
 
 2. Comment calcule t-on le lien (le plus commun) entre ces deux variables ?
 
 
-```{code-cell} python
+```python
 
-```
-
-
-```{code-cell} python
-La mesure du lien est la corrélation linéaire (dont le carré vaut le R2), ici elle est très faible et tend à montrer qu'il n'y a pas de lien linéaire entre les 2 variables.
 ```
 
 3. Comment teste-t-on si l'âge à une influence sur le temps libre 
    à l'aide de la régression ? Effectuer ce test et conclure.
 
 
-```{code-cell} python
+```python
 
 ```
-
-La ligne `age` du tableau donne l'estimation du coefficient $\hat\beta_2$, 
-l'écart-type estimé du coefficient, la valeur de la statistique 
-$t$ du test $\mathrm{H}_0: \beta_2=0$ contre $\mathrm{H}_1: \beta_2\neq 0$
-qui vaut ici $0.285$ et sa probabilité critique qui est de 0.777. Nous conservons donc
-$\mathrm{H}_0$ et il ne semble pas y avoir de lien linéaire.
 
 4. Représentez les données et discuter du bien fondé du test précédent.
 
 
-```{code-cell} python
+```python
 
 ```
 
-Clairement on observe 2 régimes: entre 30 et 60 ans, peu de temps libre et avant 30 ou après 60 plus de temps libre. Il y a une influence de l'âge mais pas linéaire (plutôt constante par morceaux). Le test précédent est inadapté.
-
-# L'âge a t-il une influence sur le temps libre ?
-Une enquête a été conduite sur 40 individus afin d'étudier le lien
-entre le temps libre (estimé par l'enquêté comme le temps, en nombre
-d'heures par jour, disponible pour soi) et l'âge. Les résultats de
+# L'obésité a t-elle une influence sur la pression sanguine ?
+Une enquête a été conduite sur 102 individus afin d'étudier le lien
+entre l'obésité (estimée par le ratio du poids de la personne sur le poids idéal obtenu dans la \og New York Metropolitan Life Tables\fg{}) et la pression sanguine en mm de mercure. Les résultats de
 cette enquête sont contenus dans le fichier
-`temps_libre.csv`. Nous nous proposons de savoir si ces
+`obesite.csv` (dans FunStudio les données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
 deux variables sont liées.
 
 1. Quel est le type des variables ?
 
 
-```{code-cell} python
+```python
 
-```
-
-
-```{code-cell} python
-Les variables sont quantitatives.
 ```
 
 2. Comment calcule t-on le lien (le plus commun) entre ces deux variables ?
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -434,6 +404,6 @@ Les variables sont quantitatives.
    et conclure.
 
 
-```{code-cell} python
+```python
 
 ```

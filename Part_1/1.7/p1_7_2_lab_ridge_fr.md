@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -38,7 +38,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -50,7 +50,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` et éliminer les deux dernières
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans FunStudio les données sont dans `data/`) et éliminer les deux dernières
 variables (qualitatives) et faites un résumé numérique par variable [méthode
 `astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
 DataFrame]
@@ -58,7 +58,7 @@ DataFrame]
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -72,7 +72,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -91,7 +91,7 @@ suivant
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -111,7 +111,7 @@ suivant
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -142,7 +142,7 @@ la moyenne et diviser par l&rsquo;écart-type ce qui n&rsquo;est pas très prati
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -175,7 +175,7 @@ Créer cette grille avec `np.linspace`, méthode d&rsquo;instance `transpose`,
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -189,7 +189,7 @@ de la grille les coefficients $\hat\beta(\lambda)$
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -207,7 +207,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -228,7 +228,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -243,7 +243,7 @@ donner le meilleur modèle (et donc le $\hat \lambda$ optimal )
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -258,7 +258,7 @@ en question précédente.
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -274,12 +274,11 @@ en question précédente.
 3.  Construire un score &ldquo;somme des erreurs quadratiques par bloc&rdquo; en utilisant
     `make_scorer` (voir un des exemples de [scores scikit-learn](https://scikit-learn.org/stable/modules/model_evaluation.html#scoring-parameter)) et
     l&rsquo;utiliser dans `RidgeCV` pour obtenir le résultat du 1.
-    (la grille devra être calculée à la main). C'est cette méthode qui
-    est la plus rapide ici.
+    (la grille devra être calculée à la main)
 
 
 
 
-```{code-cell} python
+```python
 
 ```

@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -30,7 +30,7 @@ matplotlib.pyplot (as `plt`), statsmodels.formula.api (as `smf`)
 and statsmodels.api (as `sm`)
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -38,10 +38,10 @@ and statsmodels.api (as `sm`)
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
-[`read_csv` from `pandas`]
+\[`read_csv` from `pandas`\]. Datasets in FunStudio are located in `data/` directory.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -59,7 +59,7 @@ Estimate the OLS model and summarize.
 method `summary` for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -70,7 +70,7 @@ Display residuals graph (`resid` attribute of estimated model)
 [plt `plot`]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -80,7 +80,7 @@ Display the graph of residuals studentized by cross-validation (with \$\hat y\$ 
 which will return an object (let's call it `infl`) with a `resid_studentized_external` attribute containing the desired residues.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -90,7 +90,7 @@ Represent \$h_{ii}\$ with `plt.stem` according to line number
 `hat_matrix_diag` for `infl`]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -112,15 +112,15 @@ Estimate the OLS model and summarize.
 method `summary` for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 
 ```
 
-### Estimation of the course model
+### Estimation of another model
 This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
-- the temperature at 3pm, `T15`
 - temperature at noon, noted `T12`
+- the temperature at 3pm, `T15`
 - cloudiness at noon, noted as `Ne12`
 - wind speed on east-west axis noted `Vx`
 - the maximum of the previous day `O3v`.
@@ -128,7 +128,7 @@ Traditionally, we always introduce the constant (do so here too).
 Estimate the OLS model and summarize.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -137,8 +137,8 @@ Compare the R2 of the 3- and 5-variable models
 and explain why this was expected.
 
 
-```{code-cell} python
-
+```python
+.
 ```
 
 # Partial residuals (to go further)
@@ -149,10 +149,10 @@ of partial residuals can improve modeling.
 
 ### Import data
 You have one variable to explain \$Y\$
-and four explanatory variables in the file `tprespartiel.dta`.
+and four explanatory variables in the file `tprespartiel.dta`. Datasets in FunStudio are located in `data/` directory.
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -163,7 +163,7 @@ OLS estimation of model parameters \$Y_i= \beta_0 + \beta_1 X_{i,1}+ \cdots+
 method `summary` for the adjusted instance/model]
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -174,7 +174,7 @@ called "Component-Component plus Residual"
 (CCPR) in the statsmodels module...
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -189,7 +189,7 @@ operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -201,13 +201,13 @@ called "Component-Component plus Residual"
 (CCPR) in the statsmodels module...
 
 
-```{code-cell} python
+```python
 
 ```
 
 Do the same for `tp2bisrespartiel`.
 
 
-```{code-cell} python
+```python
 
 ```

@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin &amp;<br />Pierre André CORNILLON &amp;<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -32,7 +32,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -44,15 +44,15 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` et éliminer les deux dernières
-variables (qualitatives) et faites un résumé numérique par variable [méthode
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans FunStudio les données sont dans le répertoire `data/`) et éliminer les deux dernières
+variables (qualitatives) et faites un résumé numérique par variable \[méthode
 `astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
-DataFrame]
+DataFrame\]
 
 
 
 
-```{code-cell} python
+```python
 
 ```
 
@@ -68,6 +68,6 @@ La fonction retournera le modèle estimé via `smf.ols`
 
 
 
-```{code-cell} python
+```python
 
 ```
