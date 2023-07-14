@@ -5,7 +5,6 @@ FROM nbhosting/scipy-notebook:latest
 
 # --------
 USER root
-
 RUN true \
     && apt-get update \
     && apt-get install -y graphviz \
