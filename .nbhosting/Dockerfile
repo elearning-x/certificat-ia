@@ -4,10 +4,11 @@
 FROM nbhosting/scipy-notebook:latest
 
 # --------
+USER root
 
 RUN true \
-    && sudo apt-get update \
-    && sudo apt-get install -y graphviz \
+    && apt-get update \
+    && apt-get install -y graphviz \
     && pip install graphviz \
     && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu \
     && true
