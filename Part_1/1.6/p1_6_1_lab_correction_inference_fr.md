@@ -29,7 +29,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`)
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -43,7 +43,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]
 
 
-```python
+```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
@@ -54,7 +54,7 @@ dans l'objet `reg`
 \[ols` de `smf`, méthode `fit` de la classe `OLS`\]
 
 
-```python
+```{code-cell} python
 reg = smf.ols("ht ~ 1+ circ",data=eucalypt).fit()
 ```
 
@@ -63,7 +63,7 @@ Obtenir les IC des coefficients au niveau de 95%
 \[`méthode `conf_int` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 reg.conf_int(alpha=0.05)
 ```
 
@@ -117,7 +117,7 @@ grâce à la méthode `get_prediction` sur l'instance/modèle estimé et utilise
 la méthode `conf_int` sur le résultat de la prévision).
 
 
-```python
+```{code-cell} python
 grille = pd.DataFrame({"circ" : np.linspace(eucalypt["circ"].min(),eucalypt["circ"].max(), 100)})
 calculprev = reg.get_prediction(grille)
 ICobs = calculprev.conf_int(obs=True, alpha=0.05)
@@ -128,7 +128,7 @@ Pour la même grille de valeurs de `circ` que celle de la question précédente
 proposer l'IC à 95% sur les espérances \$X^*\beta\$
 
 
-```python
+```{code-cell} python
 ICdte = calculprev.conf_int(obs=False, alpha=0.05)
 ```
 
@@ -141,7 +141,7 @@ En utilisant les 100 observations prévues ci-dessus et leurs IC
 \[`plt.plot`, `plt.legend`\]
 
 
-```python
+```{code-cell} python
 prev = calculprev.predicted_mean
 plt.plot(eucalypt["circ"], eucalypt["ht"], 'o', color='xkcd:light grey')
 plt.plot(grille['circ'], prev, 'k-', lw=2, label="E(Y)")
@@ -172,7 +172,7 @@ Pour ce TP nous aurons besoin en plus des modules classiques
 de des modules suivants
 
 
-```python
+```{code-cell} python
 import math
 from scipy.stats import f
 ```
@@ -182,7 +182,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
@@ -197,7 +197,7 @@ avec comme toujours la constante.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 modele3 = smf.ols("O3 ~ T12 + Vx + Ne12",data=ozone).fit()
 ```
 
@@ -218,7 +218,7 @@ On notera aussi que \$\Sigma=U\Lambda U'\$ et \$\Sigma^{1/2}=U\Delta^{1/2} U'\$
    (méthode `isf`).
 
 
-```python
+```{code-cell} python
 f.isf(0.05, 2, modele3.nobs - 2)
 ```
 
@@ -235,7 +235,7 @@ f.isf(0.05, 2, modele3.nobs - 2)
    `np.matmul`, `np.diag`, `np.sqrt`\]
 
 
-```python
+```{code-cell} python
 hatSigma = modele3.cov_params().iloc[1:3,1:3]
 valpr,vectpr = np.linalg.eigh(hatSigma)
 hatSigmademi = np.matmul(vectpr, np.diag(np.sqrt(valpr)))
@@ -245,7 +245,7 @@ hatSigmademi = np.matmul(vectpr, np.diag(np.sqrt(valpr)))
    \[`cos` et `sin` de `np`\]
 
 
-```python
+```{code-cell} python
 theta = np.linspace(0, 2 * math.pi, 500)
 rho = (2 * f.isf(0.05, 2, modele3.nobs - 2))**0.5
 x = rho * np.cos(theta)
@@ -256,7 +256,7 @@ XX = np.array([x, y])
 4. Transformer ces points via la matrice donnant ainsi l'ellipse de confiance.
 
 
-```python
+```{code-cell} python
 ZZ = np.add(np.matmul(hatSigmademi, XX).transpose(), np.array(modele3.params[1:3]))
 ```
 
@@ -264,7 +264,7 @@ ZZ = np.add(np.matmul(hatSigmademi, XX).transpose(), np.array(modele3.params[1:3
    \[`plt.fill` (pour l'ellipse), `plt.plot` (pour le centre)\]
 
 
-```python
+```{code-cell} python
 plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
 plt.plot(modele3.params[1], modele3.params[2], "+")
 ```
@@ -288,7 +288,7 @@ récupérant l'`Axe` via `plt.gca()`, en créant le `patch` rectangle avec
 `matplotlib.patches.Rectangle` et en l'ajoutant avec `ax.add_artist`.
 
 
-```python
+```{code-cell} python
 ICparams = modele3.conf_int(alpha=0.025)
 from matplotlib.patches import Rectangle
 plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
@@ -324,7 +324,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
@@ -339,7 +339,7 @@ avec comme toujours la constante.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 modele3 = smf.ols("O3 ~ T12 + Vx + Ne12",data=ozone).fit()
 ```
 
@@ -349,7 +349,7 @@ modele3 = smf.ols("O3 ~ T12 + Vx + Ne12",data=ozone).fit()
 Stocker les résidus dans l'objet `residus`et les ajustememt dans `ychap`
 
 
-```python
+```{code-cell} python
 ychap = modele3.fittedvalues
 residus = modele3.resid
 ```
@@ -391,7 +391,7 @@ Générons  $B=1000$ échantillons bootstrap.
 
 
 
-```python
+```{code-cell} python
 B =1000
 COEFF = np.zeros((B, 4))
 n = ozone.shape[0]
@@ -419,7 +419,7 @@ A partir des $B=1000$ valeurs $\hat\beta^{(b)}$ proposer un IC à 95%.
 \[`np.quantile`\]
 
 
-```python
+```{code-cell} python
 pd.DataFrame(np.quantile(COEFF, [0.025, 0.975], axis=0).T)
 ```
 
@@ -483,7 +483,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 
 
 
-```python
+```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
@@ -502,7 +502,7 @@ régression multiple et nous allons maintenant comparer ces deux modèles.
 \[`ols` de `smf`, méthode `fit` de la classe `OLS`\]
 
 
-```python
+```{code-cell} python
 regsqrt = smf.ols('ht~I(np.sqrt(circ))', data=eucalypt).fit()
 reg = smf.ols('ht~I(np.sqrt(circ)) + circ', data=eucalypt).fit()
 ```
@@ -512,7 +512,7 @@ reg = smf.ols('ht~I(np.sqrt(circ)) + circ', data=eucalypt).fit()
 1. Comparer ces deux modèles via un test $T$ \[méthode `summary`\]
 
 
-```python
+```{code-cell} python
 reg.summary()
 ```
 
@@ -590,7 +590,7 @@ $\mathrm{H}_0$ et le modèle `reg` semble meilleur.
 `statsmodels.api`\]
 
 
-```python
+```{code-cell} python
 import statsmodels.api as sm
 sm.stats.anova_lm(regsqrt,reg)
 ```
@@ -664,7 +664,7 @@ deux variables sont liées.
 1. Quel est le type des variables ?
 
 
-```python
+```{code-cell} python
 tpslibre = pd.read_csv("data/temps_libre.csv", header=0, sep=";")
 tpslibre.columns = [ "age", "tempslibre" ]
 tpslibre.describe()
@@ -747,7 +747,7 @@ Les deux variables sont quantitatives continues. Nous changeons les noms car le 
 2. Comment calcule t-on le lien (le plus commun) entre ces deux variables ?
 
 
-```python
+```{code-cell} python
 tpslibre.corr()
 ```
 
@@ -799,7 +799,7 @@ La mesure du lien est la corrélation linéaire (dont le carré vaut le R2), ici
    à l'aide de la régression ? Effectuer ce test et conclure.
 
 
-```python
+```{code-cell} python
 reg = smf.ols("tempslibre~1+age", data=tpslibre).fit()
 reg.summary()
 ```
@@ -874,7 +874,7 @@ $\mathrm{H}_0$ et il ne semble pas y avoir de lien linéaire.
 4. Représentez les données et discuter du bien fondé du test précédent.
 
 
-```python
+```{code-cell} python
 plt.plot(tpslibre.age, tpslibre.tempslibre, "*")
 ```
 
@@ -903,7 +903,7 @@ deux variables sont liées.
 1. Quel est le type des variables ?
 
 
-```python
+```{code-cell} python
 obesite = pd.read_csv("data/obesite.csv", header=0, sep=";")
 obesite.describe()
 ```
@@ -987,7 +987,7 @@ Les variables sont quantitatives.
 Il s'agit de la corrélation linéaire qui vaut ici
 
 
-```python
+```{code-cell} python
 obesite.corr()
 ```
 
@@ -1042,7 +1042,7 @@ La corrélation semble modérée.
 Nous avons vu à l'exercice précédent qu'il semble raisonnable de faire d'abord le graphique pour voir si le modèle de régression linéaire est adapté:
 
 
-```python
+```{code-cell} python
 plt.plot(obesite.obesite, obesite.pression, "o")
 ```
 
@@ -1062,7 +1062,7 @@ plt.plot(obesite.obesite, obesite.pression, "o")
 Même si les points sont pas vraiment sur une droite nous pouvons quand même nous dire que ce modèle peut grossièrement convenir. Effectuons la régression simple et un test $t$ de nullité de pente
 
 
-```python
+```{code-cell} python
 reg = smf.ols("pression~1+obesite", data=obesite).fit()
 reg.summary()
 ```

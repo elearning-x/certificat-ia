@@ -29,7 +29,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`)
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -40,7 +40,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -51,7 +51,7 @@ dans l'objet `reg`
 \[ols` de `smf`, méthode `fit` de la classe `OLS`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -60,7 +60,7 @@ Obtenir les IC des coefficients au niveau de 95%
 \[`méthode `conf_int` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -72,7 +72,7 @@ grâce à la méthode `get_prediction` sur l'instance/modèle estimé et utilise
 la méthode `conf_int` sur le résultat de la prévision).
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -81,7 +81,7 @@ Pour la même grille de valeurs de `circ` que celle de la question précédente
 proposer l'IC à 95% sur les espérances \$X^*\beta\$
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -94,7 +94,7 @@ En utilisant les 100 observations prévues ci-dessus et leurs IC
 \[`plt.plot`, `plt.legend`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -105,7 +105,7 @@ Pour ce TP nous aurons besoin en plus des modules classiques
 de des modules suivants
 
 
-```python
+```{code-cell} python
 import math
 from scipy.stats import f
 ```
@@ -115,7 +115,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -130,7 +130,7 @@ avec comme toujours la constante.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -151,7 +151,7 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    (méthode `isf`).
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -168,7 +168,7 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    `np.matmul`, `np.diag`, `np.sqrt`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -176,14 +176,14 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    \[`cos` et `sin` de `np`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
 4. Transformer ces points via la matrice donnant ainsi l'ellipse de confiance.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -191,7 +191,7 @@ On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{1/2}=U\Delta^{1/2} U'$
    \[`plt.fill` (pour l'ellipse), `plt.plot` (pour le centre)\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -201,7 +201,7 @@ récupérant l'`Axe` via `plt.gca()`, en créant le `patch` rectangle avec
 `matplotlib.patches.Rectangle` et en l'ajoutant avec `ax.add_artist`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -213,7 +213,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -228,7 +228,7 @@ avec comme toujours la constante.
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -238,7 +238,7 @@ méthode `summary` pour l'instance/modèle ajusté\]
 Stocker les résidus dans l'objet `residus`et les ajustememt dans `ychap`
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -279,7 +279,7 @@ Générons  $B=1000$ échantillons bootstrap.
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -288,7 +288,7 @@ A partir des $B=1000$ valeurs $\hat\beta^{(b)}$ proposer un IC à 95%.
 \[`np.quantile`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -299,7 +299,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -318,7 +318,7 @@ régression multiple et nous allons maintenant comparer ces deux modèles.
 \[`ols` de `smf`, méthode `fit` de la classe `OLS`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -327,7 +327,7 @@ régression multiple et nous allons maintenant comparer ces deux modèles.
 1. Comparer ces deux modèles via un test $T$ \[méthode `summary`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -335,7 +335,7 @@ régression multiple et nous allons maintenant comparer ces deux modèles.
 `statsmodels.api`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -352,14 +352,14 @@ deux variables sont liées.
 1. Quel est le type des variables ?
 
 
-```python
+```{code-cell} python
 
 ```
 
 2. Comment calcule t-on le lien (le plus commun) entre ces deux variables ?
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -367,14 +367,14 @@ deux variables sont liées.
    à l'aide de la régression ? Effectuer ce test et conclure.
 
 
-```python
+```{code-cell} python
 
 ```
 
 4. Représentez les données et discuter du bien fondé du test précédent.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -388,14 +388,14 @@ deux variables sont liées.
 1. Quel est le type des variables ?
 
 
-```python
+```{code-cell} python
 
 ```
 
 2. Comment calcule t-on le lien (le plus commun) entre ces deux variables ?
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -404,6 +404,6 @@ deux variables sont liées.
    et conclure.
 
 
-```python
+```{code-cell} python
 
 ```

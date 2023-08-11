@@ -38,7 +38,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -58,7 +58,7 @@ DataFrame]
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -72,7 +72,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -91,7 +91,7 @@ suivant
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -111,7 +111,7 @@ suivant
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -142,7 +142,7 @@ la moyenne et diviser par l&rsquo;écart-type ce qui n&rsquo;est pas très prati
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -175,7 +175,7 @@ Créer cette grille avec `np.linspace`, méthode d&rsquo;instance `transpose`,
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -189,7 +189,7 @@ de la grille les coefficients $\hat\beta(\lambda)$
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -207,7 +207,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -228,7 +228,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -243,7 +243,7 @@ donner le meilleur modèle (et donc le $\hat \lambda$ optimal )
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -258,7 +258,7 @@ en question précédente.
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -279,6 +279,6 @@ en question précédente.
 
 
 
-```python
+```{code-cell} python
 
 ```

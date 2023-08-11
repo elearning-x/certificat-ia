@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -44,7 +44,7 @@ import statsmodels.api as sm
 Importer les données d'ozone dans le DataFrame pandas `ozone`
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
@@ -59,7 +59,7 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```python
+```{code-cell} python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -136,7 +136,7 @@ Afficher le graphique des résidus (attribut `resid` du modèle estimé)
 (avec \$\hat y\$ en abscisse et \$\varepsilon\$ en ordonnée).
 
 
-```python
+```{code-cell} python
 plt.plot(reg.predict(), reg.resid ,"+")
 ```
 
@@ -166,7 +166,7 @@ qui renverra un objet (que l'on nommera `infl`) avec un attribut `resid_studenti
 contenant les résidus souhaités.
 
 
-```python
+```{code-cell} python
 infl = reg.get_influence()
 plt.plot(reg.predict(), infl.resid_studentized_external,"+")
 ```
@@ -192,7 +192,7 @@ correcte. Aucun point en dehors de -2,2 donc pas d'individus aberrant.
 Représenter les \$h_{ii}\$ grâce à `plt.stem` en fonction du numéro de ligne
 
 
-```python
+```{code-cell} python
 index=np.arange(1, ozone.shape[0]+1)
 plt.stem(index, infl.hat_matrix_diag)
 ```
@@ -228,7 +228,7 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```python
+```{code-cell} python
 reg3 = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg3.summary()
 ```
@@ -312,7 +312,7 @@ Traditionnellement on introduit toujours la constante (le faire ici aussi).
 Estimer le modèle par MCO et faire le résumé.
 
 
-```python
+```{code-cell} python
 ozone.head()
 ```
 
@@ -440,7 +440,7 @@ ozone.head()
 
 
 
-```python
+```{code-cell} python
 reg6 = smf.ols('O3~T12+T15+Ne12+Vx+O3v', data=ozone).fit()
 reg6.summary()
 ```
@@ -538,7 +538,7 @@ Vous avez une variable à expliquer \$Y\$
 et quatre variables explicatives dans le fichier `tprespartiel.dta`
 
 
-```python
+```{code-cell} python
 tp = pd.read_csv("tprespartiel.dta", header=0, sep=";")
 tp.head()
 ```
@@ -625,7 +625,7 @@ Estimer par MCO les paramètres du modèle \$Y_i=\beta_0 + \beta_1 X_{i,1}+\cdot
 méthode `summary` pour l'instance/modèle ajusté]
 
 
-```python
+```{code-cell} python
 reg = smf.ols("Y~X1+X2+X3+X4", data=tp).fit()
 ```
 
@@ -636,7 +636,7 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```python
+```{code-cell} python
 sm.graphics.plot_ccpr_grid(reg)
 ```
 
@@ -670,7 +670,7 @@ opérations et fonctions dans les formules
 (voir https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```python
+```{code-cell} python
 reg2 = smf.ols("Y~X1+X2+X3+I(X4**2)", data=tp).fit()
 ```
 
@@ -682,7 +682,7 @@ appelés "Component-Component plus Residual"
 (CCPR) dans le module statsmodels…
 
 
-```python
+```{code-cell} python
 sm.graphics.plot_ccpr_grid(reg2)
 ```
 
@@ -703,7 +703,7 @@ or arranged along straight lines. The model would appear to be correct. We can c
 compare them (same number of variables) by R2
 
 
-```python
+```{code-cell} python
 reg.rsquared, reg2.rsquared
 ```
 
@@ -720,7 +720,7 @@ reg.rsquared, reg2.rsquared
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -736,7 +736,7 @@ et le R2 de la seconde modélisation apparait meilleur.
 Faire le même travail pour `tp2bisrespartiel`.
 
 
-```python
+```{code-cell} python
 tp = pd.read_csv("tprespartiel.dta", header=0, sep=";")
 tp.head()
 reg = smf.ols("Y~X1+X2+X3+X4", data=tp).fit()
@@ -747,7 +747,7 @@ Nous voyons clairement une sinusoïde de type \$\sin(-2\pi X_4)\$
 sur le dernier graphique. Changeons \$X_4\$
 
 
-```python
+```{code-cell} python
 reg2 = smf.ols("Y~X1+X2+X3+I(np.sin(-2*np.pi*X4))", data=tp).fit()
 sm.graphics.plot_ccpr_grid(reg2)
 ```
@@ -771,11 +771,11 @@ Là encore les graphiques deviennent corrects et nous pouvons comparer
 les R2 et constater que la seconde modélisation améliore le R2.
 
 
-```python
+```{code-cell} python
 reg.rsqared
 ```
 
 
-```python
+```{code-cell} python
 reg2.rsquared
 ```

@@ -32,7 +32,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -52,7 +52,7 @@ DataFrame\]
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -68,6 +68,6 @@ La fonction retournera le modèle estimé via `smf.ols`
 
 
 
-```python
+```{code-cell} python
 
 ```

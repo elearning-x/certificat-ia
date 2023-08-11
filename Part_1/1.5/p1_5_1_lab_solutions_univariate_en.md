@@ -29,7 +29,7 @@ Import modules pandas (as `pd`) numpy (as `np`)
 matplotlib.pyplot (as  `plt`) and statsmodels.formula.api (as `smf`)
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -42,7 +42,7 @@ import statsmodels.formula.api as smf
 Load eucalyptus data into a pandas DataFrame `eucalypt`
 
 
-```python
+```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
@@ -50,7 +50,7 @@ eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 Plot the point cloud with `circ` as abscissa and `ht` as ordinate
 
 
-```python
+```{code-cell} python
 plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 ```
 
@@ -81,7 +81,7 @@ in the `reg` object and
 3. display the attribute containing the estimated standard deviation of the error.
 
 
-```python
+```{code-cell} python
 reg = smf.ols('ht~circ', data=eucalypt).fit()
 reg.summary()
 ```
@@ -148,7 +148,7 @@ reg.summary()
 
 
 
-```python
+```{code-cell} python
 reg.params
 ```
 
@@ -162,7 +162,7 @@ reg.params
 
 
 
-```python
+```{code-cell} python
 reg.scale
 ```
 
@@ -180,7 +180,7 @@ Plot the residuals with
 3. on the x-axis, the table line number (index) and on the y-axis, the residuals.
 
 
-```python
+```{code-cell} python
 plt.plot(eucalypt['circ'], reg.resid, "o")
 ```
 
@@ -206,7 +206,7 @@ and the mean seems to fluctuate. However, these residuals
 are quite satisfactory.
 
 
-```python
+```{code-cell} python
 plt.plot(reg.predict(), reg.resid, "o")
 ```
 
@@ -228,7 +228,7 @@ and only the abscissa scale has changed, we obtain the same
 the same interpretation as in the previous graph.
 
 
-```python
+```{code-cell} python
 plt.plot(np.arange(1,eucalypt.shape[0]+1), reg.resid , "o")
 ```
 
@@ -253,7 +253,7 @@ The fluctuations in the mean of the residuals can be seen again, but this graph 
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 
-```python
+```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
@@ -265,7 +265,7 @@ Perform the following steps 500 times
    where `circ` is the explanatory variable and `ht` the variable to be explained. Store estimated parameters in `beta1` and `beta2`.
 
 
-```python
+```{code-cell} python
 beta1 = []
 beta2 = []
 rng = np.random.default_rng(seed=123) # fixe la graine du générateur, les tirages seront les mêmes
@@ -282,7 +282,7 @@ for k in range(500):
 Represent the variability of the random variable \$\hat \beta_2\$.
 
 
-```python
+```{code-cell} python
 plt.hist(beta2, bins=30)
 plt.show()
 ```
@@ -301,7 +301,7 @@ note the variability of the estimate and the correlation
 between the two parameters.
 
 
-```python
+```{code-cell} python
 plt.plot(beta1, beta2, "o")
 ```
 
@@ -330,7 +330,7 @@ sample is different from the others. Among all the trees in the field, some (a s
 Import eucalytus data into pandas `eucalypt` DataFrame
 
 
-```python
+```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
@@ -340,7 +340,7 @@ and note that the points are not exactly on a straight line
 a straight line, but rather a "square root" curve.
 
 
-```python
+```{code-cell} python
 plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 ```
 
@@ -368,7 +368,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
    (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```python
+```{code-cell} python
 reg = smf.ols('ht~circ', data=eucalypt).fit()
 regsqrt = smf.ols('ht~I(np.sqrt(circ))', data=eucalypt).fit()
 ```
@@ -378,7 +378,7 @@ Add the 2 fits (the straight line and the square root) to the scatterplot
 and choose the best model.
 
 
-```python
+```{code-cell} python
 sel = eucalypt['circ'].argsort()
 plt.plot(eucalypt['circ'], eucalypt['ht'], "o", eucalypt['circ'], reg.predict(), "-", eucalypt.circ.iloc[sel], regsqrt.predict()[sel], "-"  )
 ```
@@ -402,7 +402,7 @@ Graphically, the "square root" model seems to fit the points better.
 These two models can be compared using R².
 
 
-```python
+```{code-cell} python
 reg.rsquared
 ```
 
@@ -414,7 +414,7 @@ reg.rsquared
 
 
 
-```python
+```{code-cell} python
 regsqrt.rsquared
 ```
 

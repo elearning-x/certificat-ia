@@ -29,7 +29,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`). 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -40,7 +40,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -49,7 +49,7 @@ Tracer le nuage de points avec `circ` en  abscisses et `ht` en ordonnées
 \[`plt.plot`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -65,7 +65,7 @@ méthode `summary` pour l'instance/modèle ajusté,
 attributs `params` et `scale`.\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -79,7 +79,7 @@ Représenter graphiquement les résidus avec
 du DataFrame\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -90,7 +90,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -103,7 +103,7 @@ Faire 500 fois les étapes suivantes
 \[créer une instance de générateur aléatoire `np.random.default_rng`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -112,7 +112,7 @@ Représenter la variabilité de la variable aléatoire  \$\hat \beta_2\$.
 \[une fonction de `plt`...\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -122,7 +122,7 @@ entre les deux paramètres.
 \[une fonction de `plt`...\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -133,7 +133,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -144,7 +144,7 @@ d'une droite mais plutôt une courbe qui est de type "racine carrée"
 \[`plt.plot`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -161,7 +161,7 @@ d'une droite mais plutôt une courbe qui est de type "racine carrée"
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -171,6 +171,6 @@ et choisir le meilleur modèle.
 \[méthode `argsort` sur une colonne du DataFrame et `plt.plot`\]
 
 
-```python
+```{code-cell} python
 
 ```

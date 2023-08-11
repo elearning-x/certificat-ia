@@ -44,7 +44,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -73,7 +73,7 @@ DataFrame]
 
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
 ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
@@ -89,7 +89,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```python
+```{code-cell} python
 y = ozone.O3.values
 X = ozone.iloc[:,1:].values
 ```
@@ -109,7 +109,7 @@ suivant
 
 
 
-```python
+```{code-cell} python
 scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 ```
@@ -129,7 +129,7 @@ Ajustons le modèle pour chaque valeur de $\lambda$:
 
 
 
-```python
+```{code-cell} python
 rl = LassoCV().fit(Xcr,y)
 alphas_lasso = rl.alphas_
 lcoef = []
@@ -143,7 +143,7 @@ et traçons les coefficients:
 
 
 
-```python
+```{code-cell} python
 plt.plot(np.log(alphas_lasso), lcoef)
 plt.show()
 ```
@@ -165,7 +165,7 @@ trouver le $\hat \lambda$ optimal avec un score  &ldquo;somme des erreurs quadra
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 res = pd.DataFrame(np.zeros((X.shape[0], len(alphas_lasso))))
 for j, ll in enumerate(alphas_lasso):
@@ -186,7 +186,7 @@ le $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
-```python
+```{code-cell} python
 rl = LassoCV(cv=kf).fit(Xcr, y)
 print(rl.alpha_)
 ```
@@ -209,7 +209,7 @@ $x^*=(18, 18, 18 ,5 ,5 , 6, 5 ,-4 ,-3, 90)'$
 
 
 
-```python
+```{code-cell} python
 xet = np.array([[18, 18, 18 ,5 ,5 , 6, 5 ,-4 ,-3, 90]])
 xetcr = scalerX.transform(xet)
 print(rl.predict(xetcr))
@@ -230,7 +230,7 @@ refaire avec les mêmes données les questions de l&rsquo;exercice précédent a
 
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
 ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
@@ -246,7 +246,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```python
+```{code-cell} python
 y = ozone.O3.values
 X = ozone.iloc[:,1:].values
 ```
@@ -256,7 +256,7 @@ X = ozone.iloc[:,1:].values
 
 
 
-```python
+```{code-cell} python
 scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 ```
@@ -270,7 +270,7 @@ Ajustons le modèle pour chaque valeur de $\lambda$:
 
 
 
-```python
+```{code-cell} python
 ren = ElasticNetCV().fit(Xcr,y)
 alphas_elasticnet = ren.alphas_
 lcoef = []
@@ -284,7 +284,7 @@ et traçons les coefficients:
 
 
 
-```python
+```{code-cell} python
 plt.plot(np.log(alphas_elasticnet), lcoef)
 plt.show()
 ```
@@ -299,7 +299,7 @@ quand la pénalité augmente.
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 res = pd.DataFrame(np.zeros((X.shape[0], len(alphas_elasticnet))))
 for j, ll in enumerate(alphas_elasticnet):
@@ -320,7 +320,7 @@ le $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
-```python
+```{code-cell} python
 ren = ElasticNetCV(cv=kf).fit(Xcr, y)
 print(ren.alpha_)
 ```
@@ -343,7 +343,7 @@ $x^*=(18, 18, 18 ,5 ,5 , 6, 5 ,-4 ,-3, 90)'$
 
 
 
-```python
+```{code-cell} python
 xet = np.array([[18, 18, 18 ,5 ,5 , 6, 5 ,-4 ,-3, 90]])
 xetcr = scalerX.transform(xet)
 print(ren.predict(xetcr))

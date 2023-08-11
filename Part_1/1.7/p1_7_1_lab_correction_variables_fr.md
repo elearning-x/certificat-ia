@@ -32,7 +32,7 @@ Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -55,7 +55,7 @@ DataFrame]
 
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
 ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
@@ -226,7 +226,7 @@ La fonction retournera le modèle estimé via `smf.ols`
 
 
 
-```python
+```{code-cell} python
 def olsbackward(data, start, crit="aic", verbose=False):
     """Backward selection for linear model with smf (with formula).
 
@@ -303,7 +303,7 @@ def olsbackward(data, start, crit="aic", verbose=False):
 ```
 
 
-```python
+```{code-cell} python
 modelefinal = olsbackward(ozone,"O3~T9+T12+T15+Ne9+Ne12+Ne15+Vx9+Vx12+Vx15+O3v", verbose=True)
 ```
 
@@ -375,7 +375,7 @@ modelefinal = olsbackward(ozone,"O3~T9+T12+T15+Ne9+Ne12+Ne15+Vx9+Vx12+Vx15+O3v",
 
 
 
-```python
+```{code-cell} python
 modelefinal.summary()
 ```
 
@@ -450,6 +450,6 @@ modelefinal.summary()
 
 
 
-```python
+```{code-cell} python
 
 ```

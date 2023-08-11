@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 Importer aussi `Axes3D` de `mpl_toolkits.mplot3d`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -41,7 +41,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/ozone.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -56,7 +56,7 @@ Représentons graphiquement les données avec `O3` sur l'axe z,
 \[`figure` et sa méthode `add_subplot` méthode `scatter` de la classe `Axes`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -71,7 +71,7 @@ Estimer par MCO les paramètres du modèle décrit ci-dessus et faites en le ré
 méthode `summary` pour l'instance/modèle ajusté\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -82,7 +82,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/ozone.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -99,7 +99,7 @@ Estimer le modèle par MCO et faire le résumé.
 méthode `summary` pour l'instance\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -115,7 +115,7 @@ méthode `summary` pour l'instance\]
 \[attribut `scale` du modèle ajusté/instance\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -126,7 +126,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -135,7 +135,7 @@ Représenter le nuage de points
 \[`plot` de plt et `xlabel` et `ylabel` de `plt`\]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -147,7 +147,7 @@ opérations et fonctions dans les formules
 (voir https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -159,6 +159,6 @@ dans le TP de régression simple.
 `plot` de plt et `xlabel` et `ylabel` de `plt`\]
 
 
-```python
+```{code-cell} python
 
 ```

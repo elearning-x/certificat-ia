@@ -30,7 +30,7 @@ matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)
 et statsmodels.api (comme `sm`)
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -47,7 +47,7 @@ variables en variables qualitatives et faites un résumé numérique par variabl
 méthode `describe` sur l'instance DataFrame\]
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
 ozone = ozone.drop(['nomligne'], axis=1)
 ozone.Ne = ozone.Ne.astype("category")
@@ -279,7 +279,7 @@ ozone.describe(include="all")
   combien estime t on de paramètres ?
 
 
-```python
+```{code-cell} python
 reg = smf.ols("O3~T12+Ne+Dv", data=ozone).fit()
 reg.summary()
 ```
@@ -376,7 +376,7 @@ Changer la modalité de référence du vent pour le vent du Nord,
 - Vérifier que les $Y$ ajustés sont les mêmes.
 
 
-```python
+```{code-cell} python
 reg2 = smf.ols("O3~T12+Ne+C(Dv, Treatment(reference=1))", data=ozone).fit()
 reg2.summary()
 ```
@@ -455,7 +455,7 @@ reg2.summary()
 
 
 
-```python
+```{code-cell} python
 np.all(np.abs(reg.predict() -reg2.predict())<1e-10)
 ```
 
@@ -474,7 +474,7 @@ np.all(np.abs(reg.predict() -reg2.predict())<1e-10)
   [`sm.stats.anova_lm`]
 
 
-```python
+```{code-cell} python
 Dv2 = ozone.Dv.map({"E": "E+N", "N": "E+N", "O": "O", "S": "S"}).astype("category")
 ozone["Dv2"] = Dv2
 reg3 = smf.ols("O3~T12+Ne+Dv2", data=ozone).fit()
@@ -552,7 +552,7 @@ reg3.summary()
 
 
 
-```python
+```{code-cell} python
 sm.stats.anova_lm(reg3, reg)
 ```
 
@@ -637,7 +637,7 @@ résumer les de façon numérique.
 méthode `describe` sur l'instance DataFrame\]
 
 
-```python
+```{code-cell} python
 gr = pd.read_csv("data/gr.csv", header=0, sep=";")
 gr["ventilation"]=gr["ventilation"].astype("category")
 gr.describe(include="all")
@@ -738,7 +738,7 @@ Représenter graphiquement les données.
 Le plus simple est de faire soit des points par ventilation
 
 
-```python
+```{code-cell} python
 plt.plot(gr.ventilation, gr.folate, "o")
 ```
 
@@ -763,7 +763,7 @@ Mais un boxplot est aussi intéressant
 quoique moins adapté pour ces faibles effectifs par groupe.
 
 
-```python
+```{code-cell} python
 gr.groupby(by='ventilation').boxplot(False)
 plt.show()
 ```
@@ -782,7 +782,7 @@ Faisons un test $F$ entre les deux modèles emboités $\mathrm{H}_0: \ y_{ij}=\m
 $\mathrm{H}_1: \ y_{ij}=\mu + \alpha_i + \varepsilon_{ij}$ avec l'erreur de première espèce de $\alpha=5\%$.
 
 
-```python
+```{code-cell} python
 modele1 = smf.ols("folate ~ 1 + ventilation", data=gr).fit()
 modele0 = smf.ols("folate ~ 1", data=gr).fit()
 sm.stats.anova_lm(modele0, modele1)
@@ -859,7 +859,7 @@ en fonction de $\hat Y$ (qui est la moyenne du groupe
 de ventilation.)
 
 
-```python
+```{code-cell} python
 infl = modele1.get_influence()
 plt.plot(modele1.predict(), infl.resid_studentized_external, "o")
 ```
@@ -891,7 +891,7 @@ Pour envisager la normalité il est classique de regarder un QQ-plot
 
 
 
-```python
+```{code-cell} python
 sm.qqplot(infl.resid_studentized_external, line ='s')
 ```
 
@@ -931,7 +931,7 @@ Nous souhaitons savoir si ces huit provenances sont identiques.
    résumer les de façon numérique.
 
 
-```python
+```{code-cell} python
 camal = pd.read_csv("data/eucalyptus_camaldulensis.txt", header=0, sep=" ", decimal=",")
 camal.bloc = camal.bloc.astype("category")
 camal.provenance = camal.provenance.astype("category")
@@ -1040,7 +1040,7 @@ camal.describe(include="all")
 2. Représenter graphiquement les données utilisées pour la réponse à la question.
 
 
-```python
+```{code-cell} python
 camal.groupby(by="provenance").boxplot(False)
 plt.show()
 ```
@@ -1057,7 +1057,7 @@ Les provenances 2 et 4 semblent nettement supérieures.
    Où intervient (indirectement) la variable `bloc` dans la statistique de test utilisée ?
 
 
-```python
+```{code-cell} python
 modele0 = smf.ols("hauteur~bloc", data=camal).fit()
 modele1 = smf.ols("hauteur~bloc+provenance", data=camal).fit()
 sm.stats.anova_lm(modele0, modele1)
@@ -1132,7 +1132,7 @@ dans le questionnement initial, ici la variable `bloc`.
    Tracer les résidus en fonction de la variable `bloc`. 
 
 
-```python
+```{code-cell} python
 camal["rstudent"] = modele1.get_influence().resid_studentized_external
 plt.plot(modele1.predict(), camal.rstudent, "*")
 #.boxplot()
@@ -1152,7 +1152,7 @@ plt.plot(modele1.predict(), camal.rstudent, "*")
 
 
 
-```python
+```{code-cell} python
 camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
 ```
 

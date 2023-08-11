@@ -29,7 +29,7 @@ Import modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`) a
 Also import `Axes3D` from `mpl_toolkits.mplot3d`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -40,7 +40,7 @@ Import ozone data into pandas `ozone` DataFrame
 \[`read_csv` of `pandas`\]. On FunStudio the path is `data/ozone.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -56,7 +56,7 @@ Let's graph the data with `O3` on the z axis,
 [`figure` and its `add_subplot` method `scatter` method of the `Axes` class]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -71,7 +71,7 @@ Use OLS to estimate the parameters of the model described above and summarize th
 `summary` method for the adjusted instance/model]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -82,7 +82,7 @@ Import ozone data into pandas `ozone` DataFrame
 \[`read_csv` of `pandas`\]. On FunStudio the path is `data/ozone.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -99,7 +99,7 @@ Estimate the OLS model and summarize.
 `summary` method for the adjusted instance/model]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -115,7 +115,7 @@ Estimate the OLS model and summarize.
 [`scale` attribute of the adjusted model]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -126,7 +126,7 @@ Import ozone data into pandas `eucalypt` DataFrame
 \[`read_csv` of `pandas`\]. On FunStudio the path is `data/eucalyptus.txt`.
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -135,7 +135,7 @@ Represent point cloud
 [`plot` of plt and `xlabel` and `ylabel` of `plt`]
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -147,7 +147,7 @@ operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -158,6 +158,6 @@ in the simple regression tutorial.
 [`argsort` instance method for DataFrame columns,`plot` and `xlabel` and `ylabel` from `plt`.]
 
 
-```python
+```{code-cell} python
 
 ```

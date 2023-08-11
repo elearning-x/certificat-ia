@@ -30,7 +30,7 @@ matplotlib.pyplot (as `plt`), statsmodels.formula.api (as `smf`)
 and statsmodels.api (as `sm`)
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -45,7 +45,7 @@ Import ozone data into pandas `ozone` DataFrame
 [`read_csv` from `pandas`]
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv('data/ozone.txt', sep=';')
 ```
 
@@ -63,7 +63,7 @@ Estimate the OLS model and summarize.
 method `summary` for the adjusted instance/model\]
 
 
-```python
+```{code-cell} python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -142,7 +142,7 @@ Display residuals graph (`resid` attribute of estimated model)
 \[plt `plot`\]
 
 
-```python
+```{code-cell} python
 plt.plot(reg.predict(), reg.resid, 'o')
 ```
 
@@ -170,7 +170,7 @@ Display the graph of residuals studentized by cross-validation (with \$\hat y\$ 
 which will return an object (let's call it `infl`) with a `resid_studentized_external` attribute containing the desired residues.
 
 
-```python
+```{code-cell} python
 infl = reg.get_influence()
 plt.plot(reg.predict(), infl.resid_studentized_external, 'o')
 ```
@@ -197,7 +197,7 @@ Represent \$h_{ii}\$ with `plt.stem` according to line number
 `hat_matrix_diag` for `infl`]
 
 
-```python
+```{code-cell} python
 ozone.head()
 ```
 
@@ -325,7 +325,7 @@ ozone.head()
 
 
 
-```python
+```{code-cell} python
 n_data = ozone.shape[0]
 plt.stem(np.arange(n_data), infl.hat_matrix_diag)
 ```
@@ -364,7 +364,7 @@ Estimate the OLS model and summarize.
 method `summary` for the adjusted instance/model]
 
 
-```python
+```{code-cell} python
 reg = smf.ols('O3~T12+Ne12+Vx', data=ozone).fit()
 reg.summary()
 ```
@@ -448,7 +448,7 @@ Traditionally, we always introduce the constant (do so here too).
 Estimate the OLS model and summarize.
 
 
-```python
+```{code-cell} python
 reg5 = smf.ols('O3~T12+T15+Ne12+Vx+O3v', data=ozone).fit()
 reg5.summary()
 ```
@@ -531,7 +531,7 @@ Compare the R2 of the 3- and 5-variable models
 and explain why this was expected.
 
 
-```python
+```{code-cell} python
 reg.rsquared, reg5.rsquared
 ```
 
@@ -555,7 +555,7 @@ You have one variable to explain \$Y\$
 and four explanatory variables in the file `tprespartiel.dta`.
 
 
-```python
+```{code-cell} python
 tpres = pd.read_csv('data/tprespartiel.dta', sep=';')
 tpres.head()
 ```
@@ -642,7 +642,7 @@ OLS estimation of model parameters \$Y_i= \beta_0 + \beta_1 X_{i,1}+ \cdots+
 method `summary` for the adjusted instance/model]
 
 
-```python
+```{code-cell} python
 reg = smf.ols('Y~X1+X2+X3+X4', data=tpres).fit()
 reg.summary()
 ```
@@ -724,7 +724,7 @@ called "Component-Component plus Residual"
 (CCPR) in the statsmodels module...
 
 
-```python
+```{code-cell} python
 sm.graphics.plot_ccpr_grid(reg)
 plt.show()
 ```
@@ -750,7 +750,7 @@ operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
 
 
-```python
+```{code-cell} python
 reg2 = smf.ols('Y~X1+X2+X3+np.square(X4)', data=tpres).fit()
 reg2.summary()
 ```
@@ -833,7 +833,7 @@ called "Component-Component plus Residual"
 (CCPR) in the statsmodels module...
 
 
-```python
+```{code-cell} python
 sm.graphics.plot_ccpr_grid(reg2)
 plt.show()
 ```
@@ -849,7 +849,7 @@ or arranged along straight lines. The model would appear to be correct. We can c
 compare them (same number of variables) by R2
 
 
-```python
+```{code-cell} python
 reg.rsquared, reg2.rsquared
 ```
 
@@ -863,7 +863,7 @@ reg.rsquared, reg2.rsquared
 Do the same for `tp2bisrespartiel`.
 
 
-```python
+```{code-cell} python
 tpbis = pd.read_csv('data/tpbisrespartiel.dta', sep=';')
 tpbis.head()
 ```
@@ -944,7 +944,7 @@ tpbis.head()
 
 
 
-```python
+```{code-cell} python
 reg = smf.ols('Y~X1+X2+X3+X4', data=tpbis).fit()
 reg.summary()
 ```
@@ -1020,7 +1020,7 @@ reg.summary()
 
 
 
-```python
+```{code-cell} python
 sm.graphics.plot_ccpr_grid(reg)
 plt.show()
 ```
@@ -1032,7 +1032,7 @@ plt.show()
 
 
 
-```python
+```{code-cell} python
 reg2 = smf.ols('Y~X1+X2+X3+np.sin(2*np.pi*X4)', data=tpbis).fit()
 reg2.summary()
 ```
@@ -1108,7 +1108,7 @@ reg2.summary()
 
 
 
-```python
+```{code-cell} python
 sm.graphics.plot_ccpr_grid(reg2)
 plt.show()
 ```

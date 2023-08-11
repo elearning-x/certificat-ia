@@ -39,7 +39,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `make_scorer` de `sklearn.metrics`
 
 
-```python
+```{code-cell} python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -68,7 +68,7 @@ DataFrame]
 
 
 
-```python
+```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
 ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
@@ -84,7 +84,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 
 
-```python
+```{code-cell} python
 y = ozone.O3.values
 X = ozone.iloc[:,1:].values
 ```
@@ -104,7 +104,7 @@ suivant
 
 
 
-```python
+```{code-cell} python
 scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 ```
@@ -120,7 +120,7 @@ Xcr= scalerX.transform(X)
 
 
 
-```python
+```{code-cell} python
 ridge = Ridge(alpha=0.00485)
 ```
 
@@ -132,7 +132,7 @@ Attention dans `scikitlearn` le paramètre $\lambda$ de la ridge (et lasso
 
 
 
-```python
+```{code-cell} python
 ridge.fit(Xcr, y)
 ```
 
@@ -141,7 +141,7 @@ ridge.fit(Xcr, y)
 
 
 
-```python
+```{code-cell} python
 print(ridge.coef_)
 ```
 
@@ -153,7 +153,7 @@ print(ridge.coef_)
 
 
 
-```python
+```{code-cell} python
 print(ridge.predict(Xcr[1,:].reshape(1, 10)))
 ```
 
@@ -173,7 +173,7 @@ la moyenne et diviser par l&rsquo;écart-type ce qui n&rsquo;est pas très prati
 
 
 
-```python
+```{code-cell} python
 np.all(np.abs( scalerX.transform(X[1,:].reshape(1, 10))[0,:] - Xcr[1,:])<1e-10)
 ```
 
@@ -185,7 +185,7 @@ np.all(np.abs( scalerX.transform(X[1,:].reshape(1, 10))[0,:] - Xcr[1,:])<1e-10)
 
 
 
-```python
+```{code-cell} python
 cr = StandardScaler()
 ```
 
@@ -194,7 +194,7 @@ cr = StandardScaler()
 
 
 
-```python
+```{code-cell} python
 ridge = Ridge(alpha=0.00485)
 ```
 
@@ -205,7 +205,7 @@ ridge = Ridge(alpha=0.00485)
 
 
 
-```python
+```{code-cell} python
 pipe = Pipeline(steps=[("cr", cr) , ("ridge",  ridge)])
 ```
 
@@ -215,7 +215,7 @@ pipe = Pipeline(steps=[("cr", cr) , ("ridge",  ridge)])
 
 
 
-```python
+```{code-cell} python
 pipe.fit(X,y)
 ```
 
@@ -227,7 +227,7 @@ pipe.fit(X,y)
 
 
 
-```python
+```{code-cell} python
 er=pipe.named_steps["ridge"]
 print(er.coef_)
 ```
@@ -240,7 +240,7 @@ print(er.coef_)
 
 
 
-```python
+```{code-cell} python
 print(pipe.predict(X[1,:].reshape(1,10)))
 ```
 
@@ -275,7 +275,7 @@ Créer cette grille avec `np.linspace`, méthode d&rsquo;instance `transpose`,
 
 
 
-```python
+```{code-cell} python
 llc = np.linspace(0, -4, 100)
 l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
 alphas_ridge = l0*100*10**(llc)
@@ -293,7 +293,7 @@ D&rsquo;abord la liste des coefficients:
 
 
 
-```python
+```{code-cell} python
 lcoef = []
 for ll in alphas_ridge:
     pipe = Pipeline(steps=[("cr", StandardScaler()) , ("ridge",  Ridge(alpha=ll))]).fit(X,y)
@@ -306,7 +306,7 @@ ou sans le pipeline
 
 
 
-```python
+```{code-cell} python
 lcoef = []
 for ll in alphas_ridge:
     rr = Ridge(alpha=ll).fit(Xcr,y)
@@ -318,7 +318,7 @@ Puis le tracé
 
 
 
-```python
+```{code-cell} python
 plt.plot(np.log(alphas_ridge), lcoef)
 plt.show()
 ```
@@ -342,7 +342,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits = 10, shuffle=True, random_state=0)
 ```
 
@@ -363,7 +363,7 @@ kf = KFold(n_splits = 10, shuffle=True, random_state=0)
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 res = pd.DataFrame(np.zeros((X.shape[0], len(alphas_ridge))))
 for app_index, val_index in kf.split(X):
@@ -387,7 +387,7 @@ donner le meilleur modèle (et donc le $\hat \lambda$ optimal )
 
 
 
-```python
+```{code-cell} python
 sse = res.apply(lambda x: ((x-y)**2).sum(), axis=0)
 print(alphas_ridge[sse.argmin()])
 ```
@@ -405,7 +405,7 @@ en question précédente.
 
 
 
-```python
+```{code-cell} python
 plt.plot(np.log(alphas_ridge), sse, "-")
 ```
 
@@ -423,7 +423,7 @@ grâce à [=cross<sub>val</sub><sub>predict</sub>=]
 
 
 
-```python
+```{code-cell} python
 scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 llc = np.linspace(0, -4, 100)
@@ -436,7 +436,7 @@ Validation croisée 10 blocs
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 resbis = pd.DataFrame(np.zeros((X.shape[0], len(alphas_ridge))))
 for j, ll in enumerate(alphas_ridge):
@@ -450,7 +450,7 @@ et résultat comme dans les questions précédentes.
 
 
 
-```python
+```{code-cell} python
 scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 llc = np.linspace(0, -4, 100)
@@ -463,7 +463,7 @@ Ici on va utiliser la fonction RidgeCV avec toujours `kf`
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = 'neg_mean_squared_error').fit(Xcr, y)
 ```
@@ -474,7 +474,7 @@ Le résultat est un modèle ridge ajusté qui
 
 
 
-```python
+```{code-cell} python
 print(modele_ridge.alpha_)
 ```
 
@@ -485,7 +485,7 @@ ainsi que $\hat\beta(\hat\lambda)$
 
 
 
-```python
+```{code-cell} python
 print(modele_ridge.coef_)
 ```
 
@@ -498,7 +498,7 @@ print(modele_ridge.coef_)
 
 
 
-```python
+```{code-cell} python
 def my_custom_loss_func(y_true, y_pred):
     sse = np.sum((y_true - y_pred)**2)
     return sse
@@ -510,7 +510,7 @@ que l&rsquo;on peut utiliser ensuite
 
 
 
-```python
+```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = monscore).fit(Xcr, y)
 ```
@@ -521,7 +521,7 @@ Le résultat est un modèle ridge ajusté qui
 
 
 
-```python
+```{code-cell} python
 print(modele_ridge.alpha_)
 ```
 
