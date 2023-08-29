@@ -27,6 +27,11 @@ nbhosting:
 # Modules python
 Load pandas (as pd) numpy (as np) matplotlib.pyplot (as plt) et statsmodels.formula.api (as smf).
 
+
+```{code-cell} python
+
+```
+
 # Simple Regression
 
 ### Data Loading
