@@ -63,7 +63,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_6_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_6_1.png)
     
 
 
@@ -193,7 +193,7 @@ plt.plot(eucalypt['circ'], reg.resid, "o")
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_13_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_13_1.png)
     
 
 
@@ -219,7 +219,7 @@ plt.plot(reg.predict(), reg.resid, "o")
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_15_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_15_1.png)
     
 
 
@@ -241,7 +241,7 @@ plt.plot(np.arange(1,eucalypt.shape[0]+1), reg.resid , "o")
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_17_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_17_1.png)
     
 
 
@@ -289,7 +289,7 @@ plt.show()
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_25_0.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_25_0.png)
     
 
 
@@ -314,7 +314,7 @@ plt.plot(beta1, beta2, "o")
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_28_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_28_1.png)
     
 
 
@@ -353,7 +353,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o")
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_34_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_34_1.png)
     
 
 
@@ -394,7 +394,7 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o", eucalypt['circ'], reg.predict(),
 
 
     
-![png](p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_38_1.png)
+![png](media/Part_1/1.5/p1_5_1_lab_solutions_univariate_en_files/p1_5_1_lab_solutions_univariate_en_38_1.png)
     
 
 
