@@ -38,7 +38,7 @@ import statsmodels.formula.api as smf
 import statsmodels.api as sm
 ```
 
-# Multiple Rgression (course model)
+# Multiple Regression (course model)
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
@@ -155,7 +155,7 @@ plt.plot(reg.predict(), reg.resid, 'o')
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_8_1.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_8_1.png)
     
 
 
@@ -184,7 +184,7 @@ plt.plot(reg.predict(), infl.resid_studentized_external, 'o')
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_11_1.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_11_1.png)
     
 
 
@@ -339,7 +339,7 @@ plt.stem(np.arange(n_data), infl.hat_matrix_diag)
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_15_1.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_15_1.png)
     
 
 
@@ -731,7 +731,7 @@ plt.show()
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_31_0.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_31_0.png)
     
 
 
@@ -840,7 +840,7 @@ plt.show()
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_36_0.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_36_0.png)
     
 
 
@@ -1027,7 +1027,7 @@ plt.show()
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_42_0.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_42_0.png)
     
 
 
@@ -1115,6 +1115,6 @@ plt.show()
 
 
     
-![png](p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_44_0.png)
+![png](media/Part_1/1.5/p1_5_3_lab_solutions_residuals_en_files/p1_5_3_lab_solutions_residuals_en_44_0.png)
     
 

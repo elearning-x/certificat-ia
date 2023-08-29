@@ -76,7 +76,7 @@ ax.set_zlabel('O3')
 
 
     
-![png](p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_6_1.png)
+![png](media/Part_1/1.5/p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_6_1.png)
     
 
 
@@ -314,7 +314,7 @@ plt.ylabel("ht")
 
 
     
-![png](p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_23_1.png)
+![png](media/Part_1/1.5/p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_23_1.png)
     
 
 
@@ -428,6 +428,6 @@ plt.plot(eucalypt['circ'], eucalypt['ht'], "o", xs, ys1, "-", xs, ys2, "--", xs,
 
 
     
-![png](p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_28_1.png)
+![png](media/Part_1/1.5/p1_5_2_lab_solutions_multivariate_en_files/p1_5_2_lab_solutions_multivariate_en_28_1.png)
     
 
