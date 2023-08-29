@@ -38,7 +38,7 @@ et statsmodels.api (comme `sm`)
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
+\[`read_csv` de `numpy`\]. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
 
 ```{code-cell} python
@@ -147,7 +147,7 @@ des résidus partiels peut améliorer la modélisation.
 
 ### Importer les données
 Vous avez une variable à expliquer \$Y\$
-et quatre variables explicatives dans le fichier `tprespartiel.dta`. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
+et quatre variables explicatives dans le fichier `tprespartiel.dta`. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
 
 ```{code-cell} python

@@ -54,7 +54,7 @@ Import the function `KFold` from `sklearn.model_selection`
 
 
 
-Import the ozone data `ozonecomplet.csv` (in FunStudio, data is in `data/`) and remove the last two qualitative variables
+Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is in `data/`) and remove the last two qualitative variables
 Summarize each variable using methods `astype` on DataFrame columns and `describe` on DataFrame instance
 
 

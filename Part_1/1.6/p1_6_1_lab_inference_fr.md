@@ -37,7 +37,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`)
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
+\[`read_csv` de `numpy`\]. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
 
 ```{code-cell} python
@@ -112,7 +112,7 @@ from scipy.stats import f
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
+\[`read_csv` de `numpy`\]. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
 
 ```{code-cell} python
@@ -210,7 +210,7 @@ L'objectif de ce TD est de construire un IC grâce au Bootstrap.
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
+\[`read_csv` de `numpy`\]. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
 
 ```{code-cell} python
@@ -296,7 +296,7 @@ A partir des $B=1000$ valeurs $\hat\beta^{(b)}$ proposer un IC à 95%.
 
 ### Importation
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]. Dans FunStudio les jeux de données sont dans le répertoire `data/`.
+\[`read_csv` de `numpy`\]. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
 
 ```{code-cell} python
@@ -345,7 +345,7 @@ Une enquête a été conduite sur 40 individus afin d'étudier le lien
 entre le temps libre (estimé par l'enquêté comme le temps, en nombre
 d'heures par jour, disponible pour soi) et l'âge. Les résultats de
 cette enquête sont contenus dans le fichier
-`temps_libre.csv` (dans FunStudio les jeux de données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
+`temps_libre.csv` (dans Fun Campus les jeux de données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
 deux variables sont liées.
 
 
@@ -382,7 +382,7 @@ deux variables sont liées.
 Une enquête a été conduite sur 102 individus afin d'étudier le lien
 entre l'obésité (estimée par le ratio du poids de la personne sur le poids idéal obtenu dans la \og New York Metropolitan Life Tables\fg{}) et la pression sanguine en mm de mercure. Les résultats de
 cette enquête sont contenus dans le fichier
-`obesite.csv` (dans FunStudio les données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
+`obesite.csv` (dans Fun Campus les données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
 deux variables sont liées.
 
 1. Quel est le type des variables ?

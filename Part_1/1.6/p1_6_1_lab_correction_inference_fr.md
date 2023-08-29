@@ -897,7 +897,7 @@ Clairement on observe 2 régimes: entre 30 et 60 ans, peu de temps libre et avan
 Une enquête a été conduite sur 102 individus afin d'étudier le lien
 entre l'obésité (estimée par le ratio du poids de la personne sur le poids idéal obtenu dans la \og New York Metropolitan Life Tables\fg{}) et la pression sanguine en mm de mercure. Les résultats de
 cette enquête sont contenus dans le fichier
-`obesite.csv` (dans FunStudio les données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
+`obesite.csv` (dans Fun Campus les données sont dans le répertoire `data/`). Nous nous proposons de savoir si ces
 deux variables sont liées.
 
 1. Quel est le type des variables ?

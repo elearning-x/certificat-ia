@@ -37,7 +37,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
+\[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
 
 ```{code-cell} python
@@ -87,7 +87,7 @@ du DataFrame\]
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
+\[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
 
 ```{code-cell} python
@@ -130,7 +130,7 @@ entre les deux paramètres.
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
+\[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
 
 ```{code-cell} python

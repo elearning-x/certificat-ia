@@ -44,7 +44,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans FunStudio les données sont dans le répertoire `data/`) et éliminer les deux dernières
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les données sont dans le répertoire `data/`) et éliminer les deux dernières
 variables (qualitatives) et faites un résumé numérique par variable \[méthode
 `astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
 DataFrame\]

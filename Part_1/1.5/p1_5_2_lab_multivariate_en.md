@@ -37,7 +37,7 @@ Also import `Axes3D` from `mpl_toolkits.mplot3d`.
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
-\[`read_csv` of `pandas`\]. On FunStudio the path is `data/ozone.txt`.
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/ozone.txt`.
 
 
 ```{code-cell} python
@@ -79,7 +79,7 @@ Use OLS to estimate the parameters of the model described above and summarize th
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
-\[`read_csv` of `pandas`\]. On FunStudio the path is `data/ozone.txt`.
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/ozone.txt`.
 
 
 ```{code-cell} python
@@ -123,7 +123,7 @@ Estimate the OLS model and summarize.
 
 ### Data import
 Import ozone data into pandas `eucalypt` DataFrame
-\[`read_csv` of `pandas`\]. On FunStudio the path is `data/eucalyptus.txt`.
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python

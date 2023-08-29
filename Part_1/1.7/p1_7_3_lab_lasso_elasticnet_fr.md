@@ -51,7 +51,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans FunStudio les données sont dans `data/`) et éliminer les deux dernières
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les données sont dans `data/`) et éliminer les deux dernières
 variables (qualitatives) et faites un résumé numérique par variable [méthode
 `astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
 DataFrame]

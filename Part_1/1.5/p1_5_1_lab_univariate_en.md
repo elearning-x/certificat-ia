@@ -31,7 +31,7 @@ Load pandas (as pd) numpy (as np) matplotlib.pyplot (as plt) et statsmodels.form
 
 ### Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
-[`read_csv` of `pandas`]. On FunStudio the path is `data/eucalyptus.txt`.
+[`read_csv` of `pandas`]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python
@@ -81,7 +81,7 @@ Plot the residuals with
 
 ### Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
-[`read_csv` of `pandas`]. On FunStudio the path is `data/eucalyptus.txt`.
+[`read_csv` of `pandas`]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python
@@ -126,7 +126,7 @@ between the two parameters.
 
 ### Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
-[`read_csv` of `pandas`]. On FunStudio the path is `data/eucalyptus.txt`.
+[`read_csv` of `pandas`]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python

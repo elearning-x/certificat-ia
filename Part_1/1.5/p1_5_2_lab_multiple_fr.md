@@ -38,7 +38,7 @@ Importer aussi `Axes3D` de `mpl_toolkits.mplot3d`.
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/ozone.txt`.
+\[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/ozone.txt`.
 
 
 ```{code-cell} python
@@ -79,7 +79,7 @@ méthode `summary` pour l'instance/modèle ajusté\]
 
 ### Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
-\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/ozone.txt`.
+\[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/ozone.txt`.
 
 
 ```{code-cell} python
@@ -123,7 +123,7 @@ méthode `summary` pour l'instance\]
 
 ### Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
-\[`read_csv` de `numpy`\]. Sur FunStudio le chemin est `data/eucalyptus.txt`.
+\[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
 
 ```{code-cell} python

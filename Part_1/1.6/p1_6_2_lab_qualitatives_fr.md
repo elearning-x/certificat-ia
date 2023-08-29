@@ -37,7 +37,7 @@ et statsmodels.api (comme `sm`)
 # Variables qualitatives et quantitatives pour l'ozone
 
 ### Importation
-Importer les données `ozonecomplet.csv` (dans FunStudio les données sont dans le répertoire `data/`) et transformer les deux dernières 
+Importer les données `ozonecomplet.csv` (dans Fun Campus les données sont dans le répertoire `data/`) et transformer les deux dernières 
 variables en variables qualitatives et faites un résumé numérique par variable
 \[méthode `astype` sur la colonne du DataFrame et
 méthode `describe` sur l'instance DataFrame\]
@@ -103,7 +103,7 @@ Nous cherchons à savoir si ces trois méthodes de ventilations sont
 équivalentes.
 
 ### Importation
-Importer les données qui sont dans le fichier `gr.csv` (dans FunStudio les données sont dans le répertoire `data/`) et
+Importer les données qui sont dans le fichier `gr.csv` (dans Fun Campus les données sont dans le répertoire `data/`) et
 résumer les de façon numérique.
 \[méthode `astype` sur la colonne du DataFrame et
 méthode `describe` sur l'instance DataFrame\]
@@ -156,7 +156,7 @@ propose les hauteurs moyennes des arbres par bloc-provenance.
 
 Nous souhaitons savoir si ces huit provenances sont identiques.
 
-1. Importer les données qui sont dans le fichier `eucalyptus_camaldulensis.txt` (dans FunStudio les données sont dans le répertoire `data/`) et
+1. Importer les données qui sont dans le fichier `eucalyptus_camaldulensis.txt` (dans Fun Campus les données sont dans le répertoire `data/`) et
    résumer les de façon numérique.
 2. Représenter graphiquement les données utilisées pour la réponse à la question.
 3. Répondre à la question posée (les huit provenances sont elles identiques ?).

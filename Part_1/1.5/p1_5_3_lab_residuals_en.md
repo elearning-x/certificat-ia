@@ -38,7 +38,7 @@ and statsmodels.api (as `sm`)
 
 ### Data import
 Import ozone data into pandas `ozone` DataFrame
-\[`read_csv` from `pandas`\]. Datasets in FunStudio are located in `data/` directory.
+\[`read_csv` from `pandas`\]. Datasets in Fun Campus are located in `data/` directory.
 
 
 ```{code-cell} python
@@ -149,7 +149,7 @@ of partial residuals can improve modeling.
 
 ### Import data
 You have one variable to explain \$Y\$
-and four explanatory variables in the file `tprespartiel.dta`. Datasets in FunStudio are located in `data/` directory.
+and four explanatory variables in the file `tprespartiel.dta`. Datasets in Fun Campus are located in `data/` directory.
 
 
 ```{code-cell} python
