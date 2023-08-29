@@ -28,8 +28,8 @@ nbhosting:
 
 
 
-Importer les modules pandas (comme `pd`) numpy (commme `np`)
-matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
+-   Importer les modules pandas (comme `pd`) numpy (commme `np`)
+-   matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
 ```{code-cell} python

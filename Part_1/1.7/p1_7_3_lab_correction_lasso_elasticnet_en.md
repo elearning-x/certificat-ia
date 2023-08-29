@@ -43,15 +43,15 @@ nbhosting:
 
 ```{code-cell} python
 import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.linear_model import Lasso
-    from sklearn.linear_model import LassoCV
-    from sklearn.linear_model import ElasticNet
-    from sklearn.linear_model import ElasticNetCV
-    from sklearn.model_selection import cross_val_predict
-    from sklearn.model_selection import KFold
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Lasso
+from sklearn.linear_model import LassoCV
+from sklearn.linear_model import ElasticNet
+from sklearn.linear_model import ElasticNetCV
+from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import KFold
 ```
 
 ## Lasso Regression on Ozone Data
