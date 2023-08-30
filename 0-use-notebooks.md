@@ -38,7 +38,7 @@ In the following, we will use Python code, but we have not yet learned about the
 
 +++
 
-### Warning: browser settings
+## Warning: browser settings
 
 +++
 
@@ -46,7 +46,7 @@ First of all, for a good behavior of the notebooks, we remind you that it is nec
 
 +++
 
-### Advantages of notebooks
+## Advantages of notebooks
 
 +++
 
@@ -60,7 +60,7 @@ Also note that the Python code is interpreted **on a remote machine**, which all
 
 +++
 
-### How to use notebooks
+## How to use notebooks
 
 +++
 
@@ -118,7 +118,7 @@ You can also evaluate the whole notebook at once by using the *Cell -> Run All* 
 
 +++
 
-### Be careful to evaluate the cells in the right order
+## Be careful to evaluate the cells in the right order
 
 +++
 
@@ -161,7 +161,7 @@ which makes the `message` symbol undefined, then of course we can no longer eval
 
 +++
 
-### Reset the interpreter
+## Reset the interpreter
 
 +++
 
@@ -173,7 +173,7 @@ The *Kernel → Interrupt* menu, on the other hand, can be used if your fragment
 
 +++
 
-### You are working on a copy
+## You are working on a copy
 
 +++
 
@@ -183,7 +183,7 @@ For this reason, each student has their **own copy** of each notebook, so of cou
 
 +++
 
-### Go back to the course version
+## Go back to the course version
 
 +++
 
@@ -196,7 +196,7 @@ Be careful, with this function you restore **all the notebook** and therefore **
 
 +++
 
-### Download in Python format
+## Download in Python format
 
 +++
 
@@ -209,7 +209,7 @@ Text cells are preserved in the result as Python comments.
 
 +++
 
-### Share a read-only notebook
+## Share a read-only notebook
 
 +++
 
@@ -221,7 +221,7 @@ Note that when you use this feature multiple times, your classmates will always 
 
 +++
 
-### Add cells
+## Add cells
 
 +++
 

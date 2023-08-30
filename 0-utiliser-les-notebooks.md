@@ -38,7 +38,7 @@ Nous allons, dans la suite, utiliser du code Python, pourtant nous n'avons pas e
 
 +++
 
-### Avertissement : réglages du navigateur
+## Avertissement : réglages du navigateur
 
 +++
 
@@ -46,7 +46,7 @@ Avant toute chose, pour un bon fonctionnement des notebooks, on rappelle qu'il e
 
 +++
 
-### Avantages des notebooks
+## Avantages des notebooks
 
 +++
 
@@ -60,7 +60,7 @@ Notez bien également que le code Python est interprété **sur une machine dist
 
 +++
 
-### Comment utiliser les notebooks
+## Comment utiliser les notebooks
 
 +++
 
@@ -110,7 +110,7 @@ On peut également évaluer tout le notebook en une seule fois en utilisant le m
 
 +++
 
-### Attention à bien évaluer les cellules dans l'ordre
+## Attention à bien évaluer les cellules dans l'ordre
 
 +++
 
@@ -141,7 +141,7 @@ qui rend le symbole `message` indéfini, alors bien sûr on ne peut plus évalue
 
 +++
 
-### Réinitialiser l'interpréteur
+## Réinitialiser l'interpréteur
 
 +++
 
@@ -153,7 +153,7 @@ Le menu *Kernel → Interrupt* peut être quant à lui utilisé si votre fragm
 
 +++
 
-### Vous travaillez sur une copie
+## Vous travaillez sur une copie
 
 +++
 
@@ -163,7 +163,7 @@ Pour cette raison, chaque élève dispose de sa **propre copie** de chaque noteb
 
 +++
 
-### Revenir à la version du cours
+## Revenir à la version du cours
 
 +++
 
@@ -176,7 +176,7 @@ Attention, avec cette fonction vous restaurez **tout le notebook** et donc **vou
 
 +++
 
-### Télécharger au format Python
+## Télécharger au format Python
 
 +++
 
@@ -189,7 +189,7 @@ Les cellules de texte sont préservées dans le résultat sous forme de commenta
 
 +++
 
-### Partager un notebook en lecture seule
+## Partager un notebook en lecture seule
 
 +++
 
@@ -201,7 +201,7 @@ Notez que lorsque vous utilisez cette fonction plusieurs fois, c'est toujours la
 
 +++
 
-### Ajouter des cellules
+## Ajouter des cellules
 
 +++
 
