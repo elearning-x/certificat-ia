@@ -1,3 +1,31 @@
+---
+jupytext:
+  cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
+  notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version, -jupytext.text_representation.format_version, -language_info.version, -language_info.codemirror_mode.version, -language_info.codemirror_mode, -language_info.file_extension, -language_info.mimetype, -toc
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
+nbhosting:
+  title: ''
+  version: ''
+---
+
+<div class="licence">
+<span><img src="media/logo_IPParis.png" /></span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Licence CC BY-NC-ND</span>
+</div>
+
++++
+
 # Point Estimate
 Point estimation involves estimating a parameter of a distribution (e.g. the mean, or the parameters of the parametric density function...) from the observation of a sample. In this tutorial, we'll be:
 * observing numerically that the empirical mean is an asymptotically normal estimator of the mean,
