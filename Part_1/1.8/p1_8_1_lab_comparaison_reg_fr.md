@@ -24,6 +24,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 En utilisant les données `ozone_transf.txt` choisir le meilleur modèle
 de régression parmi ceux présentés (regréssion simple, multiple, choix de variables, ridge, lasso et elastic-net). Une validation croisée 10 blocs sera utilisée pour le choix de la meilleure régression. Un tableau regroupant
 les différentes prévisions (une colonne par modèle et autant de ligne que d&rsquo;observations) est une étape attendue.

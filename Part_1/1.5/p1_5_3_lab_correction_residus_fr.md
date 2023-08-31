@@ -24,6 +24,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 # Modules python
 Importer les modules pandas (comme `pd`) numpy (commme `np`)
 matplotlib.pyplot (comme  `plt`), statsmodels.formula.api (comme `smf`)

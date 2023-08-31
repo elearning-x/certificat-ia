@@ -24,6 +24,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 ```{code-cell} python
 import scipy
 import numpy as np

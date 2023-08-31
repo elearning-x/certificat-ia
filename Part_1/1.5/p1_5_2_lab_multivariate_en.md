@@ -24,6 +24,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 # Python Modules
 Import modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`) and statsmodels.formula.api (as `smf`). 
 Also import `Axes3D` from `mpl_toolkits.mplot3d`.
