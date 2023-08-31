@@ -14,8 +14,8 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: ''
-  version: ''
+  title: 'Solution to Statistical Tests'
+  version: '1.0'
 ---
 
 <div class="licence">
@@ -26,9 +26,7 @@ nbhosting:
 
 +++
 
-# Statistical Tests
-
-+++
+# Python Modules
 
 ```{code-cell} python
 import numpy as np
@@ -38,9 +36,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
-# Part I. Power Function of a Test
+# Power Function of a Test
 
-## I. A. For the mean $\mu$ knowing $\sigma$
+## For the mean $\mu$ knowing $\sigma$
 We start defining the two hypothesis we want to decide:
 
 * $H_0$: $\mu=\mu_0$
@@ -89,12 +87,6 @@ plt.ylabel('density')
 plt.show()
 ```
 
-
-    
-![png](output_6_0.png)
-    
-
-
 2. Test whether the mean of the underlying distribution is 0 or not. Try different values of mu or n for which the test is NOT successful.
 
 
@@ -115,9 +107,6 @@ if np.abs(t_value) <= c_alpha:
 else:
     print('The test is NOT passed')
 ```
-
-    The test is passed
-
 
 The test is NOT passed, for example for :
 * mu=0.3 and n=100
@@ -152,12 +141,6 @@ plt.ylabel('density')
 plt.show()
 ```
 
-
-    
-![png](output_12_0.png)
-    
-
-
 4. Write the statistic $T(Y)$ as a function of $N$ and deduce a simple way to plot the power function as function of $\mu$ for several $n$ and for $\alpha=0.05$. (Hint: you can use `scipy.stats.norm.cdf`)
 
 * We have $T(Y)=N- \frac{\mu_0 - \mu}{\sqrt{\frac{\sigma^2}{n}}}$
@@ -182,13 +165,7 @@ plt.legend()
 plt.show()
 ```
 
-
-    
-![png](output_15_0.png)
-    
-
-
-## I. B. For the std $\sigma$ when $\mu$ is known
+## For the std $\sigma$ when $\mu$ is known
 
 We start defining the two hypothesis we want to decide:
 
@@ -234,12 +211,6 @@ plt.ylabel('density')
 plt.show()
 ```
 
-
-    
-![png](output_20_0.png)
-    
-
-
 6. Test whether the std of the underlying distribution is less than 1 or not. Try different values of $\sigma$ or n for which the test is NOT successful.
 
 
@@ -259,9 +230,6 @@ if t_value <= c_alpha:
 else:
     print('The test is NOT passed')
 ```
-
-    The test is passed
-
 
 The test is NOT passed, for example for :
 * $\sigma^2=2$, $n=100$
@@ -294,12 +262,6 @@ plt.ylabel('density')
 plt.show()
 ```
 
-
-    
-![png](output_26_0.png)
-    
-
-
 8.  Write the statistic $T(Y)$ as a function of $W$ and deduce a simple way to plot the power function as function of $\sigma$ for several $n$ and for $\alpha=0.05$. (Hint: you can use `scipy.stats.chi2.cdf`)
 
 
@@ -323,15 +285,9 @@ plt.ylabel('power')
 plt.show()
 ```
 
+# Real Data Application
 
-    
-![png](output_28_0.png)
-    
-
-
-# Part II. Real Data Application
-
-## II. A. Loading the Data
+## Loading the Data
 
 We want to analyze the traveler's household income as a function of mode choice. To do this, we'll check whether household income is equal on average for travellers choosing different modes of transport.
 
@@ -345,88 +301,7 @@ df = pd.read_csv('travel_choice.csv')
 df.head()
 ```
 
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>individual</th>
-      <th>plane</th>
-      <th>train</th>
-      <th>bus</th>
-      <th>car</th>
-      <th>hinc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>35.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>30.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>70.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>45.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-## II. B. Testing the equality of the variance
+## Testing the equality of the variance
 
 We start defining the two hypothesis we want to decide:
 
@@ -481,7 +356,7 @@ for mode0 in ['plane', 'train', 'bus', 'car']:
                 print(mode0, mode1)
 ```
 
-## II. C. Testing the equality of the mean
+## Testing the equality of the mean
 
 We start defining the two hypothesis we want to decide:
 
@@ -539,10 +414,6 @@ for mode0 in ['plane', 'train', 'bus', 'car']:
                 print(mode0, mode1)
 ```
 
-    plane car
-    car plane
-
-
 In the rest of the course we'll look at other methods for studying how explanatory variables (e.g. choice of means of transport) influence an observed variable (e.g. household income). To this end, we will examine different regression methodologies.
 
 6. Add a new column called "mode" to the dataframe "df" with chosen mode ("plane", "train", "bus", or "car").
@@ -559,24 +430,10 @@ print(set_mode(row))
 df['mode'] = df.apply(set_mode, axis=1)
 ```
 
-    car
-
-
 7. Plot the "mean" and "standard" deviation for each mode chosen. (Tip: you can use again `sns.pointplot` with `errorbar='sd`.)
 
 
 ```{code-cell} python
 sns.pointplot(data=df,  x='mode', y='hinc', estimator='mean', errorbar='sd', order=['train', 'bus', 'car', 'plane'])
 plt.show()
-```
-
-
-    
-![png](output_50_0.png)
-    
-
-
-
-```{code-cell} python
-
 ```

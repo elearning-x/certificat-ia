@@ -14,8 +14,8 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: ''
-  version: ''
+  title: 'Solution to Confidence Intervals'
+  version: '1.0'
 ---
 
 <div class="licence">
@@ -26,7 +26,7 @@ nbhosting:
 
 +++
 
-# Confidence Intervals
+# Python Modules
 
 
 ```{code-cell} python
@@ -49,9 +49,9 @@ Finally, in Part III, we venture into confidence intervals for scenarios where t
 
 We will assess the coverage probability of these intervals, which measures their accuracy in capturing the true parameter. Additionally, we explore the confidence interval length as a measure of precision, helping us choose the most suitable method for a given situation.
 
-# Part I. Confidence Intervals for Binomial Proportion
+# Confidence Intervals for Binomial Proportion
 
-## I. A. Walds and Wilson Confidence Interval
+## Walds and Wilson Confidence Interval
 
 1. Simulate a sample named `sample_data` of 100 i.i.d. variables following a Bernouilli distribution with success probability `p=0.3` (hint: use `np.random.binomial` with argument `n=1`).
 
@@ -99,10 +99,6 @@ print(f'estimated success proba: {p_n:.2f}')
 print(f'Walds CI at 0.95 confidence level (numpy): [{CImin:.4f}, {CImax:.4f}]')
 ```
 
-    estimated success proba: 0.23
-    Walds CI at 0.95 confidence level (numpy): [0.1475, 0.3125]
-
-
 4. Use `statsmodels.stats.proportion.proportion_confint` to calculate Walds' CI at a confidence level of 0.95.
 
 
@@ -110,9 +106,6 @@ print(f'Walds CI at 0.95 confidence level (numpy): [{CImin:.4f}, {CImax:.4f}]')
 CImin, Cmax = proportion.proportion_confint(sample_data.sum(), n, alpha=0.05, method='normal')
 print(f'Walds CI at 0.95 confidence level (statsmodels): [{CImin:.4f}, {CImax:.4f}]')
 ```
-
-    Walds CI at 0.95 confidence level (statsmodels): [0.1475, 0.3125]
-
 
 We recall the Wilson CI expression at precision $\alpha$:
 $$I_{n, \alpha} = \frac{
@@ -140,9 +133,6 @@ CImax = (p_n + first_order + second_order) / denominator
 print(f'Wilson CI at 0.95 confidence level (numpy): [{CImin:.4f}, {CImax:.4f}]')
 ```
 
-    Wilson CI at 0.95 confidence level (numpy): [0.1584, 0.3215]
-
-
 6. Use `statsmodels.stats.proportion.proportion_confint` to calculate Wilson' CI at a confidence level of 0.95.
 
 
@@ -151,10 +141,7 @@ CImin, Cmax = proportion.proportion_confint(sample_data.sum(), n, alpha=0.05, me
 print(f'Wilson CI at 0.95 confidence level (statsmodels): [{CImin:.4f}, {CImax:.4f}]')
 ```
 
-    Wilson CI at 0.95 confidence level (statsmodels): [0.1584, 0.3215]
-
-
-## I. B. Coverage Probability
+## Coverage Probability
 
 In what follows, we will study the influence of sample size on the accuracy of different types of confidence intervals. To carry out the simulations efficiently, we must first ensure that we are able to calculate confidence intervals for T samples of size n in a vectorized way.
 
@@ -178,9 +165,6 @@ CImin, CImax = proportion.proportion_confint(sum_data, n, alpha=1-conf_level, me
 proba_covered = np.mean((CImin<=p)*(CImax>=p))
 print(f'the coverage probability is: {proba_covered:.4f}')
 ```
-
-    the coverage probability is: 0.9532
-
 
 9. Write a `get_Binomial_coverage` function which takes as argument
 * a probability of success p
@@ -228,13 +212,7 @@ plt.legend()
 plt.show()
 ```
 
-
-    
-![png](output_27_0.png)
-    
-
-
-## I. C. Confidence Interval Length
+## Confidence Interval Length
 
 12. Carry out questions 9 to 11, except that this time we're interested in the length of the confidence interval. We'll write a function `get_Binomial_length` that takes as its argument:
 * a probability of success p
@@ -278,15 +256,9 @@ plt.legend()
 plt.show()
 ```
 
-
-    
-![png](output_32_0.png)
-    
-
-
 13. Vary p and comment.
 
-# Part II. Asymptotic Confidence Intervals
+# Asymptotic Confidence Intervals
 
 We take as example the same bimodal distribution for the age of a population we used in last TP, with each mode following a Poisson distribution centered on 40 years and 10 years respectively. There are twice as many individuals in the first mode as in the second.
 
@@ -305,12 +277,6 @@ plt.xlabel('age')
 plt.show()
 ```
 
-
-    
-![png](output_36_0.png)
-    
-
-
 2. Draw a sample `sample_ages` of size 100 and calculate an estimate of the mean from this sample.
 
 
@@ -326,11 +292,7 @@ print(f"estimated mean: {mu_estimated:.2f}")
 print(f"real mean: {mu_star:.2f}")
 ```
 
-    estimated mean: 24.04
-    real mean: 23.33
-
-
-## II. A. CI with Normal Approximation
+## CI with Normal Approximation
 
 The standard deviation of the sample converges in probability to the standard deviation of the population. We'll construct a confidence interval similar to Walds', except that instead of expressing the standard deviation as a function of the estimated mean, we'll use the standard deviation directly estimated on the sample. (indeed, we do not know a closed form for expressing an estimation of the std as a fonction of the estimated mean in this case...)
 
@@ -349,9 +311,6 @@ CImax = mu_estimated + z_score*std_estimated/np.sqrt(sample_ages.shape[0])
 
 print(f"CI: [{CImin:.2f}, {CImax:.2f}]")
 ```
-
-    CI: [22.15, 25.93]
-
 
 4. As in the first part, we want to study the effect of sample size on coverage probability. Write a function `get_NormalCI_coverage` which takes as argument:
 * the population population_ages
@@ -397,7 +356,7 @@ def get_NormalCI_length(population_ages, T, n, conf_level=0.95):
     return interval_length
 ```
 
-## II. B. CI with Student Approximation
+## CI with Student Approximation
 
 Let $\hat{\mu}_n$, $\hat{\sigma}_n$ be the mean and standard deviation of the sample of size n. Let $\mu$ be the population mean. We want to know the distribution of $$U\sim \sqrt{n}\frac{\hat{\mu}_n-\mu}{\hat{\sigma}_n}.$$
 
@@ -430,9 +389,6 @@ log_likelihood = np.mean(np.log(student_pdf))
 print(f'The log-likelihood is: {log_likelihood:.2f}')
 ```
 
-    The log-likelihood is: -1.43
-
-
 8. Plot the histogram and the pdf.
 
 
@@ -444,12 +400,6 @@ plt.xlabel('normalized empirical mean')
 plt.ylabel('density')
 plt.show()
 ```
-
-
-    
-![png](output_52_0.png)
-    
-
 
 9. Carry out questions 4 and 5 using the student's approximation.
 
@@ -516,12 +466,6 @@ plt.title('coverage plot')
 plt.show()
 ```
 
-
-    
-![png](output_59_0.png)
-    
-
-
 12. Carry out questions 10 and 11 for CI interval length.
 
 
@@ -546,13 +490,7 @@ plt.title('coverage plot')
 plt.show()
 ```
 
-
-    
-![png](output_62_0.png)
-    
-
-
-# Part III. CI for Unknown Distributions: Boostrap Method
+# CI for Unknown Distributions: Boostrap Method
 
 Now we're interested in the median of the population, but we don't know a simple distribution to approximate the distribution.
 
@@ -574,12 +512,6 @@ plt.xlabel('normalized empirical mean')
 plt.ylabel('density')
 plt.show()
 ```
-
-
-    
-![png](output_65_0.png)
-    
-
 
 Bootstrap is a statistical resampling method used to estimate the sampling distribution of a statistic and to construct confidence intervals. It is particularly useful when the underlying distribution of the data is unknown or difficult to model. To calculate a confidence interval for the median of a population using the bootstrap method, we follow these steps:
 
@@ -615,9 +547,6 @@ upper_ci = np.quantile(bootstrap_sample_means, upper_quantile)
 
 print(f"Bootstrap CI: [{lower_ci:.2f}, {upper_ci:.2f}]")
 ```
-
-    Bootstrap CI: [24.00, 29.00]
-
 
 4. Plot proba coverage as a function of sample size, for B=1000 and for a size in the interval (2, 200, 10). (Hint: np.quantile with axis=1).
 
@@ -657,9 +586,6 @@ BOOTSTRAP_proba_covered = [get_BootstrapCI_coverage(population_ages, T, B, n, co
 
 ```
 
-    100%|████████████████████████████████████████████████████████████████| 20/20 [00:05<00:00,  3.64it/s]
-
-
 
 ```{code-cell} python
 plt.plot(population_sizes, BOOTSTRAP_proba_covered, color='g', label='boostrap method')
@@ -671,13 +597,7 @@ plt.title('coverage plot')
 plt.show()
 ```
 
-
-    
-![png](output_74_0.png)
-    
-
-
-## Part IV. Real Data Analysis
+# Real Data Analysis
 The following data is derived from an available dataset in statmodels:
 
 "The data, collected as part of a 1987 intercity mode choice study, are a sub-sample of 210 non-business trips between Sydney, Canberra and Melbourne in which the traveler chooses a mode from four alternatives (plane, car, bus and train). The sample, 840 observations, is choice based with over-sampling of the less popular modes (plane, train and bus) and under-sampling of the more popular mode, car. The level of service data was derived from highway and transport networks in Sydney, Melbourne, non-metropolitan N.S.W. and Victoria, including the Australian Capital Territory."
@@ -689,87 +609,6 @@ The following data is derived from an available dataset in statmodels:
 df = pd.read_csv('travel_choice.csv')
 df.head()
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>individual</th>
-      <th>plane</th>
-      <th>train</th>
-      <th>bus</th>
-      <th>car</th>
-      <th>hinc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>35.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>30.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>40.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>70.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>45.0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 The aim of this part is to add a new column called "mode" to the dataframe "df" with chosen mode ("plane", "train", "bus", or "car").
 
@@ -789,9 +628,6 @@ row = df.iloc[0]
 print(set_mode(row))
 ```
 
-    car
-
-
 3. Create the new "mode" column by applying "set_mode" to each row of df. (Tip: you can use the `df.apply` method with the correct axis). 
 
 
@@ -806,9 +642,3 @@ df['mode'] = df.apply(set_mode, axis=1)
 sns.pointplot(data=df,  x='mode', y='hinc', estimator='mean', errorbar='ci', order=['train', 'bus', 'car', 'plane'])
 plt.show()
 ```
-
-
-    
-![png](output_84_0.png)
-    
-

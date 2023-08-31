@@ -14,8 +14,8 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: ''
-  version: ''
+  title: 'Solution to Point Estimation'
+  version: '1.0'
 ---
 
 <div class="licence">
@@ -26,11 +26,12 @@ nbhosting:
 
 +++
 
-# Point Estimate
 Point estimation involves estimating a parameter of a distribution (e.g. the mean, or the parameters of the parametric density function...) from the observation of a sample. In this tutorial, we'll be:
 * observing numerically that the empirical mean is an asymptotically normal estimator of the mean,
 * looking at several methods for performing point estimation on simulated data,
 * comparing several fitted distributions on real data.
+
+# Python Modules
 
 
 ```{code-cell} python
@@ -42,8 +43,8 @@ import matplotlib.pyplot as plt
 import random
 ```
 
-# Part I. Empirical Mean
-## I. A. Data Simulation
+# Empirical Mean
+## Data Simulation
 
 We are interested in the age of the population in a given location. We assume that the population is bimodal, with each mode following a Poisson distribution centered on 40 and 10 respectively. There are twice as many individuals in the first mode as in the second.
 
@@ -67,13 +68,7 @@ plt.xlabel('age')
 plt.show()
 ```
 
-
-    
-![png](output_6_0.png)
-    
-
-
-## I. B. Point Estimation
+## Point Estimation
 
 3. We assume we can access only $n=100$ individuals. Create a vector named `sample_ages` containing the ages of these individuals (you can use `np.random.choice` and set the parameter size to 100).
 
@@ -92,11 +87,7 @@ print(f"estimated mean: {sample_ages.mean():.2f}")
 print(f"real mean: {population_ages.mean():.2f}")
 ```
 
-    estimated mean: 24.04
-    real mean: 23.33
-
-
-## I. C. Asymptotic Normality
+## Asymptotic Normality
 
 Now we would like to study the distribution of the empirical mean $\mu_n$ for a given size of observed populations. To do so, we will sample populations of size `n`, `T` times. Then we will compute the `number_trials` corresponding empirical means.
 
@@ -129,12 +120,6 @@ plt.ylabel('density')
 plt.show()
 ```
 
-
-    
-![png](output_19_0.png)
-    
-
-
 8. What do you observe when you change `n` ? What is the Fischer information of the age of the population ?
 
 We observe that $\sqrt{n}(\mu_n-\mu) \sim \mathcal{N}(0, V)$ where $V$ does not depend on $n$ **(asymptotic normality)**.
@@ -145,17 +130,14 @@ fischer = 1 / np.std(np.sqrt(n)*(mu_n-mu_star))
 print(f'fischer={fischer:.2f}')
 ```
 
-    fischer=0.09
-
-
-# Part II. MOM and MLE applied to Gamma Distribution
+# MOM and MLE applied to Gamma Distribution
 
 The probability density function of Gamma distribution with shape parameter $k$ and scale parameter $\theta$ is:
 $$f:x\in\mathbb{R}_+ \mapsto \frac{1}{\Gamma(k)\theta^k} x^{k-1} e^{-\frac{x}{\theta}},$$
 where the $\Gamma$ function is defined as follow:
 $$\Gamma:z\in\mathbb{R}_+ \mapsto \int_0^{+\infty} t^{z-1} e^{-t}.$$
 
-## II. A. Data Simulation
+## Data Simulation
 
 1. Simulate `n=1000` observations following a gamma distribution with parameter $\theta=0.2$ and $k=3$. You can use `scipy.stats.gamma.rvs` with argument `size=n`, `a=k` and `scale=theta` to draw `n` samples from a gamma distribution with paramters `k`, `theta`.
 
@@ -184,13 +166,7 @@ plt.legend()
 plt.show()
 ```
 
-
-    
-![png](output_29_0.png)
-    
-
-
-## II. B. Method of Moments
+## Method of Moments
 
 3. Show that if $X$ follows a Gamma distribution of parameters $(k, \theta)$ the two first orders moments verify:
 $$\mu_1:=\mathbb{E}[X] = k \theta$$
@@ -213,11 +189,7 @@ print("k_MOM = ", k_MOM)
 print("theta_MOM = ", theta_MOM)
 ```
 
-    k_MOM =  3.2103093839660595
-    theta_MOM =  0.18448491711639992
-
-
-## II. C. Maximum Likelihood Estimation (numpy)
+## Maximum Likelihood Estimation (numpy)
 
 6. Write the log-likelihood function for the samples $x=(x_1, \dots, x_n)$.
 
@@ -260,12 +232,6 @@ plt.ylabel('log likelihood')
 plt.show()
 ```
 
-
-    
-![png](output_42_0.png)
-    
-
-
 9. Estimate `k_MLE` and `theta_MLE`. (you cane use `np.argmax` to get the index of the maximum of the log-likelihood)
 
 
@@ -276,11 +242,7 @@ print("k_MLE = ", k_MLE)
 print("theta_MLE = ", theta_MLE)
 ```
 
-    k_MLE =  3.228040000002149
-    theta_MLE =  0.1834715990565746
-
-
-## II. D. Maximum Likelihood Estimation (scipy)
+## Maximum Likelihood Estimation (scipy)
 
 10. Use the `scipy.stats.gamma.fit` function to estimate the parameters of the gamma distribution.
 
@@ -311,12 +273,6 @@ plt.ylabel('pdf')
 plt.show()
 ```
 
-
-    
-![png](output_49_0.png)
-    
-
-
 12. Print the entropy between the estimated distributions and the real distribution. (You can use `scipy.stats.entropy(p,q)` which gives $\sum_{i=1}^n p_i \log(\frac{p_i}{q_i})$ where $p=(p_1, \dots, p_n)$ [resp. $q=(q_1, \dots, q_n)$] are the values of estimated [resp. real] pdf evaluated on $n$ points).
 
 
@@ -327,15 +283,9 @@ print(f'entropy MLE (numpy): {stats.entropy(pdf_MLE, pdf_real):.6f}')
 print(f'entropy MLE (scipy): {stats.entropy(pdf_MLE_s, pdf_real):.6f}')
 ```
 
-    entropy real: 0.000000
-    entropy MOM : 0.001336
-    entropy MLE (numpy): 0.001526
-    entropy MLE (scipy): 0.001712
+# Real Data Application
 
-
-# Part III. Real Data Application
-
-## III. A. Loading data
+## Loading data
 1. Load into a `pandas` data frame named `df_monthly`, the `minimal_temperature_GB.txt` table of the 30-year average monthly minimum temperature at 84291 locations in Great Britain. You can use `pd.read_csv`. (for information, the data come from: https://www.met.ie/climate/30-year-averages)
 
 
@@ -343,165 +293,6 @@ print(f'entropy MLE (scipy): {stats.entropy(pdf_MLE_s, pdf_real):.6f}')
 df_monthly = pd.read_csv('minimal_temperature_GB.txt')#[:100]
 df_monthly.head()
 ```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>east</th>
-      <th>north</th>
-      <th>m1Tmin</th>
-      <th>m2Tmin</th>
-      <th>m3Tmin</th>
-      <th>m4Tmin</th>
-      <th>m5Tmin</th>
-      <th>m6Tmin</th>
-      <th>m7Tmin</th>
-      <th>m8Tmin</th>
-      <th>m9Tmin</th>
-      <th>m10Tmin</th>
-      <th>m11Tmin</th>
-      <th>m12Tmin</th>
-      <th>ANN</th>
-      <th>DJF</th>
-      <th>MAM</th>
-      <th>JJA</th>
-      <th>SON</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>25000</td>
-      <td>61000</td>
-      <td>5.9</td>
-      <td>5.8</td>
-      <td>6.2</td>
-      <td>7.4</td>
-      <td>9.2</td>
-      <td>11.6</td>
-      <td>13.3</td>
-      <td>13.4</td>
-      <td>12.4</td>
-      <td>10.3</td>
-      <td>8.2</td>
-      <td>6.6</td>
-      <td>9.3</td>
-      <td>6.1</td>
-      <td>7.6</td>
-      <td>12.8</td>
-      <td>10.3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>25000</td>
-      <td>96000</td>
-      <td>4.4</td>
-      <td>4.2</td>
-      <td>4.8</td>
-      <td>6.0</td>
-      <td>7.6</td>
-      <td>10.2</td>
-      <td>12.0</td>
-      <td>12.1</td>
-      <td>11.0</td>
-      <td>8.7</td>
-      <td>6.6</td>
-      <td>5.0</td>
-      <td>7.8</td>
-      <td>4.5</td>
-      <td>6.1</td>
-      <td>11.4</td>
-      <td>8.8</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>26000</td>
-      <td>96000</td>
-      <td>5.1</td>
-      <td>4.9</td>
-      <td>5.5</td>
-      <td>6.6</td>
-      <td>8.3</td>
-      <td>10.9</td>
-      <td>12.7</td>
-      <td>12.8</td>
-      <td>11.5</td>
-      <td>9.4</td>
-      <td>7.3</td>
-      <td>5.6</td>
-      <td>8.4</td>
-      <td>5.2</td>
-      <td>6.8</td>
-      <td>12.1</td>
-      <td>9.4</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>27000</td>
-      <td>97000</td>
-      <td>4.1</td>
-      <td>4.0</td>
-      <td>4.6</td>
-      <td>5.8</td>
-      <td>7.5</td>
-      <td>9.9</td>
-      <td>11.7</td>
-      <td>11.8</td>
-      <td>10.7</td>
-      <td>8.5</td>
-      <td>6.3</td>
-      <td>4.8</td>
-      <td>7.6</td>
-      <td>4.3</td>
-      <td>6.0</td>
-      <td>11.1</td>
-      <td>8.5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>27000</td>
-      <td>100000</td>
-      <td>5.5</td>
-      <td>5.3</td>
-      <td>6.0</td>
-      <td>7.1</td>
-      <td>8.8</td>
-      <td>11.3</td>
-      <td>13.1</td>
-      <td>13.2</td>
-      <td>12.0</td>
-      <td>9.9</td>
-      <td>7.7</td>
-      <td>6.1</td>
-      <td>8.9</td>
-      <td>5.6</td>
-      <td>7.3</td>
-      <td>12.5</td>
-      <td>9.9</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 2. Draw the histogram (with 10 bins) for each month and extract the pdf for each bin. To extract the pdf per bin, you'll notice that `plt.hist` returns 3 results:
 * values (size 10)
@@ -523,19 +314,7 @@ for month in [f'm{k}Tmin' for k in range(1, 3)]:
     plt.show()
 ```
 
-
-    
-![png](output_56_0.png)
-    
-
-
-
-    
-![png](output_56_1.png)
-    
-
-
-## III. B. Parameter Estimation
+## Parameter Estimation
 3. Adjust the optimal parameters of the **normal** distribution using MLE on each month's data. You need to record the following scores:
 * store in a list `entropy_norm`,
 the entropy between the estimated pdf and the actual pdf over the 10 bins (the actual pdf is obtained as in the previous question).
@@ -579,78 +358,6 @@ for month in month_lst:
     plt.show()
 ```
 
-
-    
-![png](output_58_0.png)
-    
-
-
-
-    
-![png](output_58_1.png)
-    
-
-
-
-    
-![png](output_58_2.png)
-    
-
-
-
-    
-![png](output_58_3.png)
-    
-
-
-
-    
-![png](output_58_4.png)
-    
-
-
-
-    
-![png](output_58_5.png)
-    
-
-
-
-    
-![png](output_58_6.png)
-    
-
-
-
-    
-![png](output_58_7.png)
-    
-
-
-
-    
-![png](output_58_8.png)
-    
-
-
-
-    
-![png](output_58_9.png)
-    
-
-
-
-    
-![png](output_58_10.png)
-    
-
-
-
-    
-![png](output_58_11.png)
-    
-
-
 4. Do the same with the **cauchy** distribution. Be sure to use the suffix `_cauchy` (not `_norm`) to store the scores.
 
 
@@ -689,78 +396,6 @@ for month in month_lst:
     plt.show()
 ```
 
-
-    
-![png](output_60_0.png)
-    
-
-
-
-    
-![png](output_60_1.png)
-    
-
-
-
-    
-![png](output_60_2.png)
-    
-
-
-
-    
-![png](output_60_3.png)
-    
-
-
-
-    
-![png](output_60_4.png)
-    
-
-
-
-    
-![png](output_60_5.png)
-    
-
-
-
-    
-![png](output_60_6.png)
-    
-
-
-
-    
-![png](output_60_7.png)
-    
-
-
-
-    
-![png](output_60_8.png)
-    
-
-
-
-    
-![png](output_60_9.png)
-    
-
-
-
-    
-![png](output_60_10.png)
-    
-
-
-
-    
-![png](output_60_11.png)
-    
-
-
 5. Plot the entropy per month for the two estimated distributions.
 
 
@@ -773,12 +408,6 @@ plt.ylabel('entropy')
 plt.show()
 ```
 
-
-    
-![png](output_62_0.png)
-    
-
-
 6. Plot the log-likelihood per month for the two estimated distributions.
 
 
@@ -790,9 +419,3 @@ plt.xlabel('month')
 plt.ylabel('log-likelihood')
 plt.show()
 ```
-
-
-    
-![png](output_64_0.png)
-    
-
