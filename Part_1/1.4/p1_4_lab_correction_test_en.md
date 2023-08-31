@@ -28,8 +28,9 @@ nbhosting:
 
 # Statistical Tests
 
++++
 
-```python
+```{code-cell} python
 import numpy as np
 from  scipy import stats
 import pandas as pd
@@ -67,7 +68,7 @@ We want to study the effect of sample size and true mean value on the statistica
 1. Draw n=100 samples from a normal distribution of $\mu=0.1$ and $\sigma^2=1$ and plot the histogram of the data along with the pdf of a centered reducted normal.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 mu = 0.01
 sigma = 1
@@ -76,7 +77,7 @@ normal_samples = stats.norm.rvs(loc=mu, scale=sigma, size=(n,))
 ```
 
 
-```python
+```{code-cell} python
 plt.hist(normal_samples, bins=10, density=True, edgecolor='k', label='observations ~ N(0.1, 1)')
 
 plot_samples = np.arange(normal_samples.min(), normal_samples.max(), 0.1)
@@ -97,7 +98,7 @@ plt.show()
 2. Test whether the mean of the underlying distribution is 0 or not. Try different values of mu or n for which the test is NOT successful.
 
 
-```python
+```{code-cell} python
 mu = 0.1
 
 sigma = 1
@@ -132,7 +133,7 @@ We recall that the Power function is defined as $\mu\mapsto 1-P_{\mu}(T(Y)\in [-
 We have $\sum_{i=1}^n Y_i \sim \mathcal{N}(n\mu, \sqrt{n}\sigma)$ so $N \sim \mathcal{N}(0,1)$
 
 
-```python
+```{code-cell} python
 mu = 10
 sigma = 42
 T = 10000 # number of simulations
@@ -163,7 +164,7 @@ plt.show()
 * Setting $t_{\mu}:=\frac{\mu_0 - \mu}{\sqrt{\frac{\sigma^2}{n}}}$, We deduce $P_{\mu}(T(Y) \in [-c_{\alpha}, c_{\alpha}])= P(N\in [t_{\mu}-c_{\alpha}, t_{\mu}+c_{\alpha}] )$ which can be easily calculated using `scipy.stats.norm.cdf`.
 
 
-```python
+```{code-cell} python
 sigma = 1
 mu0 = 0
 alpha = 0.05
@@ -212,7 +213,7 @@ We want to study the effect of sample size and true mean value on the statistica
 5. Draw n=100 samples from a normal distribution of $\mu=0$ and $\sigma^2=1.1$ and plot the histogram of the data along with the pdf of a centered reducted normal.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 mu = 0
 sigma = np.sqrt(1.1)
@@ -221,7 +222,7 @@ normal_samples = stats.norm.rvs(loc=mu, scale=sigma, size=(n,))
 ```
 
 
-```python
+```{code-cell} python
 plt.hist(normal_samples, bins=10, density=True, edgecolor='k', label='observations ~ N(0, 1.1)')
 
 plot_samples = np.arange(normal_samples.min(), normal_samples.max(), 0.1)
@@ -242,7 +243,7 @@ plt.show()
 6. Test whether the std of the underlying distribution is less than 1 or not. Try different values of $\sigma$ or n for which the test is NOT successful.
 
 
-```python
+```{code-cell} python
 mu = 0
 sigma = np.sqrt(1.1)
 n = 100
@@ -271,7 +272,7 @@ The test is NOT passed, for example for :
 $W$ is the sum of $n$ squared independent standard normal distribution, so it follows a Chi-squared distribution of $n-1$ degrees of freedom.
 
 
-```python
+```{code-cell} python
 mu = 2
 sigma = 10
 T = 1000000 # number of simulations
@@ -302,7 +303,7 @@ plt.show()
 8.  Write the statistic $T(Y)$ as a function of $W$ and deduce a simple way to plot the power function as function of $\sigma$ for several $n$ and for $\alpha=0.05$. (Hint: you can use `scipy.stats.chi2.cdf`)
 
 
-```python
+```{code-cell} python
 sigma0 = 1
 mu = 0
 alpha = 0.05
@@ -339,7 +340,7 @@ We'll always assume that the underlying distribution is normal, so that we can a
 1. Load the dataset 'travel_choice.csv' into a pandas DataFrame (hint: use `pd.read_csv`)
 
 
-```python
+```{code-cell} python
 df = pd.read_csv('travel_choice.csv')
 df.head()
 ```
@@ -453,7 +454,7 @@ where $\alpha$ is the level of the test and $(c_{\alpha}, d_{\alpha})$ verifies 
 2. Write a function that takes two vector samples `Y0` and `Y1` as arguments and tests whether the two samples have the same std at the `alpha=0.05` level.
 
 
-```python
+```{code-cell} python
 def is_std_equal(Y0, Y1, alpha=0.05):
     Y0_bar, Y1_bar = Y0.mean(), Y1.mean()
     n0, n1 = Y0.shape[0], Y1.shape[0]
@@ -470,7 +471,7 @@ def is_std_equal(Y0, Y1, alpha=0.05):
 3. For each pair mode0 and mode1, test whether the household incomes of individuals taking each of these modes have the same stds. Tip 1: to go through all possible mode pairs, you can use two "for loops": `for mode1 in ['plane', 'train', 'bus', 'car']` and `for mode2 in ['plane', 'train', 'bus', 'car']`. Tip 2: to obtain the household income of people using mode0, you can use: `Y0 = df[df[mode0]==1.]['hinc']`.
 
 
-```python
+```{code-cell} python
 for mode0 in ['plane', 'train', 'bus', 'car']:
     for mode1 in ['plane', 'train', 'bus', 'car']:
         if mode0 != mode1:
@@ -509,7 +510,7 @@ where $\alpha$ is the level of the test and $c_{\alpha}$ verifies $P(|Z|> c_{\al
 4. Write a function that takes two vector samples `Y0` and `Y1` as arguments and tests whether the two samples have the same mean at the `alpha=0.05` level.
 
 
-```python
+```{code-cell} python
 def is_mean_equal(Y0, Y1, alpha=0.05):
     Y0_bar, Y1_bar = Y0.mean(), Y1.mean()
     n0, n1 = Y0.shape[0], Y1.shape[0]
@@ -528,7 +529,7 @@ def is_mean_equal(Y0, Y1, alpha=0.05):
 5. Find out which pair of modes has the same average.
 
 
-```python
+```{code-cell} python
 for mode0 in ['plane', 'train', 'bus', 'car']:
     for mode1 in ['plane', 'train', 'bus', 'car']:
         if mode0 != mode1:
@@ -547,7 +548,7 @@ In the rest of the course we'll look at other methods for studying how explanato
 6. Add a new column called "mode" to the dataframe "df" with chosen mode ("plane", "train", "bus", or "car").
 
 
-```python
+```{code-cell} python
 def set_mode(row):
     for mode in ['plane', 'train', 'bus', 'car']:
         if row[mode] > 0:
@@ -564,7 +565,7 @@ df['mode'] = df.apply(set_mode, axis=1)
 7. Plot the "mean" and "standard" deviation for each mode chosen. (Tip: you can use again `sns.pointplot` with `errorbar='sd`.)
 
 
-```python
+```{code-cell} python
 sns.pointplot(data=df,  x='mode', y='hinc', estimator='mean', errorbar='sd', order=['train', 'bus', 'car', 'plane'])
 plt.show()
 ```
@@ -576,6 +577,6 @@ plt.show()
 
 
 
-```python
+```{code-cell} python
 
 ```

@@ -33,7 +33,7 @@ Point estimation involves estimating a parameter of a distribution (e.g. the mea
 * comparing several fitted distributions on real data.
 
 
-```python
+```{code-cell} python
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
@@ -50,7 +50,7 @@ We are interested in the age of the population in a given location. We assume th
 1. Simulate the age of the population for 300000 individuals with `stats.poisson.rvs`. You can use `np.concatenate` to merge the two tables.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 population_ages1 = stats.poisson.rvs(loc=0, mu=30, size=2000000)
 population_ages2 = stats.poisson.rvs(loc=0, mu=10, size=1000000)
@@ -60,7 +60,7 @@ population_ages = np.concatenate((population_ages1, population_ages2))
 2. Plot the histogram of age $X$ in the population (you can use `plt.histogram` with the argument `density=True` and well-chosen `bins`).
 
 
-```python
+```{code-cell} python
 plt.hist(population_ages, bins=30, density=True, edgecolor="k")
 plt.ylabel('density')
 plt.xlabel('age')
@@ -78,7 +78,7 @@ plt.show()
 3. We assume we can access only $n=100$ individuals. Create a vector named `sample_ages` containing the ages of these individuals (you can use `np.random.choice` and set the parameter size to 100).
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 n = 100
 sample_ages = np.random.choice(a=population_ages, size=n)
@@ -87,7 +87,7 @@ sample_ages = np.random.choice(a=population_ages, size=n)
 4. We note by $(x_1, \dots, x_n)$ the ages of the $n$ observed individuals. Print both the empirical mean $\mu_n = \frac{1}{n}\sum_{i=1}^n x_i$ and the theoretical mean $\mu=\mathbb{E}[X]$.
 
 
-```python
+```{code-cell} python
 print(f"estimated mean: {sample_ages.mean():.2f}")
 print(f"real mean: {population_ages.mean():.2f}")
 ```
@@ -103,7 +103,7 @@ Now we would like to study the distribution of the empirical mean $\mu_n$ for a 
 5. Create a table of shape Txn with elements sampled from `population_ages`. You can use the `np.random.choice` with the argument `size=(T, n)`. You can set `T=10000` and `n=100`.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000 # number of trials
 n = 100 # population size
@@ -114,14 +114,14 @@ trials_samples = np.random.choice(a=population_ages, size=(T, n))
 6. Create a vector of size `T` containing the emperical mean of each trial. You can use `np.mean` with the argument `axis=1`.
 
 
-```python
+```{code-cell} python
 mu_n = np.mean(trials_samples, axis=1)
 ```
 
 7. Plot the histogram of $\sqrt{n}(\mu_n-\mu)$.
 
 
-```python
+```{code-cell} python
 mu_star = population_ages.mean()
 plt.hist(np.sqrt(n)*(mu_n-mu_star), bins=30, density=True, edgecolor="k")
 plt.xlabel('normalized empirical mean')
@@ -140,7 +140,7 @@ plt.show()
 We observe that $\sqrt{n}(\mu_n-\mu) \sim \mathcal{N}(0, V)$ where $V$ does not depend on $n$ **(asymptotic normality)**.
 
 
-```python
+```{code-cell} python
 fischer = 1 / np.std(np.sqrt(n)*(mu_n-mu_star))
 print(f'fischer={fischer:.2f}')
 ```
@@ -160,7 +160,7 @@ $$\Gamma:z\in\mathbb{R}_+ \mapsto \int_0^{+\infty} t^{z-1} e^{-t}.$$
 1. Simulate `n=1000` observations following a gamma distribution with parameter $\theta=0.2$ and $k=3$. You can use `scipy.stats.gamma.rvs` with argument `size=n`, `a=k` and `scale=theta` to draw `n` samples from a gamma distribution with paramters `k`, `theta`.
 
 
-```python
+```{code-cell} python
 np.random.seed(0) 
 k_real, theta_real = 3, 0.2
 n = 1000
@@ -170,7 +170,7 @@ gamma_sample = stats.gamma.rvs(a=k_real, scale=theta_real, size=n)
 2. Plot the histogram of these samples along with the probability density function of the gamma law (you can compute the pdf of a gamma function `scipy.stats.gamma.pdf`. You can set the argument `x` to a range from 0 to 2 with steps 0.001, using the `numpy` function `np.arange`).
 
 
-```python
+```{code-cell} python
 # calculate pdf
 plot_samples = np.arange(0, 2, 0.001)
 pdf_real = stats.gamma.pdf(x=plot_samples, a=k_real, scale=theta_real)
@@ -203,7 +203,7 @@ $$\theta=\frac{\mu_2}{\mu_1}-\mu_1$$
 5. Estimate `k_MOM` and `theta_MOM`.
 
 
-```python
+```{code-cell} python
 mu1 = np.mean(gamma_sample)
 mu2 = np.mean(gamma_sample**2)
 
@@ -232,7 +232,7 @@ $$\theta = \frac{\overline{x}}{k}$$
 8. Plot the log-likelihood with respect to $k$. You can use `scipy.special.gamma` to get the gamma function, and you can create a vector `k_samples` containing values from 2.9 to 3.5 with step 0.00001 (use `np.arange`).
 
 
-```python
+```{code-cell} python
 k_sample = np.arange(2.9, 3.5, 0.00001)
 n = gamma_sample.shape[0]
 
@@ -253,7 +253,7 @@ log_likelihood *= n
 ```
 
 
-```python
+```{code-cell} python
 plt.plot(k_sample, log_likelihood)
 plt.xlabel('k')
 plt.ylabel('log likelihood')
@@ -269,7 +269,7 @@ plt.show()
 9. Estimate `k_MLE` and `theta_MLE`. (you cane use `np.argmax` to get the index of the maximum of the log-likelihood)
 
 
-```python
+```{code-cell} python
 k_MLE = k_sample[log_likelihood.argmax()]
 theta_MLE = x_bar / k_MLE
 print("k_MLE = ", k_MLE)
@@ -285,14 +285,14 @@ print("theta_MLE = ", theta_MLE)
 10. Use the `scipy.stats.gamma.fit` function to estimate the parameters of the gamma distribution.
 
 
-```python
+```{code-cell} python
 k_MLE_s, loc_MLE_s, theta_MLE_s = stats.gamma.fit(gamma_sample)
 ```
 
 11. Plot the pdfs of all the estimations (MOM, MLE numpy, MLE scipy) along with the pdf of the real distribution.
 
 
-```python
+```{code-cell} python
 # calculate pdfs
 plot_samples = np.arange(0, 2, 0.001) # where we evaluate the distibution
 pdf_real = stats.gamma.pdf(x=plot_samples, a=k_real, scale=theta_real)
@@ -320,7 +320,7 @@ plt.show()
 12. Print the entropy between the estimated distributions and the real distribution. (You can use `scipy.stats.entropy(p,q)` which gives $\sum_{i=1}^n p_i \log(\frac{p_i}{q_i})$ where $p=(p_1, \dots, p_n)$ [resp. $q=(q_1, \dots, q_n)$] are the values of estimated [resp. real] pdf evaluated on $n$ points).
 
 
-```python
+```{code-cell} python
 print(f'entropy real: {stats.entropy(pdf_real, pdf_real):.6f}')
 print(f'entropy MOM : {stats.entropy(pdf_MOM, pdf_real):.6f}')
 print(f'entropy MLE (numpy): {stats.entropy(pdf_MLE, pdf_real):.6f}')
@@ -339,7 +339,7 @@ print(f'entropy MLE (scipy): {stats.entropy(pdf_MLE_s, pdf_real):.6f}')
 1. Load into a `pandas` data frame named `df_monthly`, the `minimal_temperature_GB.txt` table of the 30-year average monthly minimum temperature at 84291 locations in Great Britain. You can use `pd.read_csv`. (for information, the data come from: https://www.met.ie/climate/30-year-averages)
 
 
-```python
+```{code-cell} python
 df_monthly = pd.read_csv('minimal_temperature_GB.txt')#[:100]
 df_monthly.head()
 ```
@@ -509,7 +509,7 @@ df_monthly.head()
 * The plot
 
 
-```python
+```{code-cell} python
 for month in [f'm{k}Tmin' for k in range(1, 3)]:
     month_sample = df_monthly[month]
     
@@ -544,7 +544,7 @@ the entropy between the estimated pdf and the actual pdf over the 10 bins (the a
 You can also plot the estimated pdf with histograms by month.
 
 
-```python
+```{code-cell} python
 month_lst = [f'm{k}Tmin' for k in range(1, 13)]
 entropy_norm, lll_norm, loc_norm, scale_norm = [], [], [], []
 
@@ -654,7 +654,7 @@ for month in month_lst:
 4. Do the same with the **cauchy** distribution. Be sure to use the suffix `_cauchy` (not `_norm`) to store the scores.
 
 
-```python
+```{code-cell} python
 month_lst = [f'm{k}Tmin' for k in range(1, 13)]
 entropy_cauchy, lll_cauchy, loc_cauchy, scale_cauchy = [], [], [], []
 
@@ -764,7 +764,7 @@ for month in month_lst:
 5. Plot the entropy per month for the two estimated distributions.
 
 
-```python
+```{code-cell} python
 plt.plot(np.arange(1, len(entropy_norm)+1), entropy_norm, label='normal MLE')
 plt.plot(np.arange(1, len(entropy_norm)+1), entropy_cauchy, label='cauchy MLE')
 plt.legend()
@@ -782,7 +782,7 @@ plt.show()
 6. Plot the log-likelihood per month for the two estimated distributions.
 
 
-```python
+```{code-cell} python
 plt.plot(np.arange(1, len(lll_norm)+1), lll_norm, label='normal MLE')
 plt.plot(np.arange(1, len(lll_norm)+1), lll_cauchy, label='cauchy MLE')
 plt.legend()

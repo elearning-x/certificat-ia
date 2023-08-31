@@ -29,7 +29,7 @@ nbhosting:
 # Confidence Intervals
 
 
-```python
+```{code-cell} python
 from tqdm import tqdm
 import numpy as np
 from scipy import stats
@@ -56,7 +56,7 @@ We will assess the coverage probability of these intervals, which measures their
 1. Simulate a sample named `sample_data` of 100 i.i.d. variables following a Bernouilli distribution with success probability `p=0.3` (hint: use `np.random.binomial` with argument `n=1`).
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 p = 0.3
 n = 100
@@ -79,7 +79,7 @@ where $z_{\alpha}$ verifies for $Z\sim \mathcal{N}(0, 1)$: $\mathbb{P}(Z\in[-z_{
 2. Estimate the probability of success from `sample_data` (hint: you can use `np.mean` on sample_data) and calculate $z_{\alpha}$ for $\alpha=0.05$ (hint: you can use `scipy.stats.norm.ppf` to calculate the inverse of the normal cumulative distribution function).
 
 
-```python
+```{code-cell} python
 p_n = np.mean(sample_data)
 
 conf_level = 0.95
@@ -89,7 +89,7 @@ z_score = stats.norm.ppf(1 - (1 - conf_level) / 2)
 3. Calculate the Walds confidence interval at the 0.95 confidence level. 
 
 
-```python
+```{code-cell} python
 std_n = np.sqrt(p_n * (1 - p_n))
 
 CImin = p_n - z_score * std_n / np.sqrt(n)
@@ -106,7 +106,7 @@ print(f'Walds CI at 0.95 confidence level (numpy): [{CImin:.4f}, {CImax:.4f}]')
 4. Use `statsmodels.stats.proportion.proportion_confint` to calculate Walds' CI at a confidence level of 0.95.
 
 
-```python
+```{code-cell} python
 CImin, Cmax = proportion.proportion_confint(sample_data.sum(), n, alpha=0.05, method='normal')
 print(f'Walds CI at 0.95 confidence level (statsmodels): [{CImin:.4f}, {CImax:.4f}]')
 ```
@@ -129,7 +129,7 @@ z_{\alpha}\sqrt{
 5. Calculate the Wilson confidence interval at the 0.95 confidence level.
 
 
-```python
+```{code-cell} python
 first_order =  z_score**2 / (2 * n)
 second_order = z_score * np.sqrt(p_n*(1-p_n)/n + z_score**2 / (4*n**2))
 denominator = 1 + z_score**2 / n
@@ -146,7 +146,7 @@ print(f'Wilson CI at 0.95 confidence level (numpy): [{CImin:.4f}, {CImax:.4f}]')
 6. Use `statsmodels.stats.proportion.proportion_confint` to calculate Wilson' CI at a confidence level of 0.95.
 
 
-```python
+```{code-cell} python
 CImin, Cmax = proportion.proportion_confint(sample_data.sum(), n, alpha=0.05, method='wilson')
 print(f'Wilson CI at 0.95 confidence level (statsmodels): [{CImin:.4f}, {CImax:.4f}]')
 ```
@@ -161,7 +161,7 @@ In what follows, we will study the influence of sample size on the accuracy of d
 7.  Fortunately, `proportion_confint` can take an array of size T as an argument and calculate the corresponding T confidence intervals. Using np.random.binomial, simulate an array of samples of size `Txn` following a Bernouilli distribution and calculate the number of successes per simulation (hint `np.sum` with `axis=1`). Then use proportion_confint to calculate T walds confidence intervals. Take T=10000 and n=100
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000
 n = 100
@@ -174,7 +174,7 @@ CImin, CImax = proportion.proportion_confint(sum_data, n, alpha=1-conf_level, me
 8. Calculate the probability that the value of parameter p lies within the confidence interval (named the coverage probability). (hint: `(CImin<=p)*(CImax>=p)` returns an array containing for each index i: 1 if p is between CImin[i] and CImax[i], 0 otherwise).
 
 
-```python
+```{code-cell} python
 proba_covered = np.mean((CImin<=p)*(CImax>=p))
 print(f'the coverage probability is: {proba_covered:.4f}')
 ```
@@ -192,7 +192,7 @@ print(f'the coverage probability is: {proba_covered:.4f}')
 and returns the probability that p is within the confidence interval calculated with method m for a sample of size n with confidence level conv_level.
 
 
-```python
+```{code-cell} python
 def get_Binomial_coverage(p, T, n, conf_level=0.95, m='wilson'):
     sample_data = np.random.binomial(n=1, p=p, size=(T, n))
     sum_data = np.sum(sample_data, axis=1)
@@ -206,7 +206,7 @@ def get_Binomial_coverage(p, T, n, conf_level=0.95, m='wilson'):
 10. Calculate a list containing the probability of coverage for n in the interval 2, 100 (hint: you can use the comprehension list for more efficient calculations). Make two lists, one for the Walds confidence interval and the other for the Wilson confidence interval.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000
 sample_sizes = np.arange(2, 100)
@@ -219,7 +219,7 @@ WILSON_proba_covered = [get_Binomial_coverage(p, T, n, m='wilson') for n in samp
 11. Plot the probability as a function of sample size for both CI methods.
 
 
-```python
+```{code-cell} python
 plt.plot(sample_sizes, WILSON_proba_covered, label='wilson')
 plt.plot(sample_sizes, NORMAL_proba_covered, label='normal')
 plt.xlabel('sample size')
@@ -246,7 +246,7 @@ plt.show()
 and returns the average length of confidence intervals estimated with method m at conf_level on T samples of size n.
 
 
-```python
+```{code-cell} python
 def get_Binomial_length(p, T, n, conf_level=0.95, m='wilson'):
     sample_data = np.random.binomial(n=1, p=p, size=(T, n))
     sum_data = np.sum(sample_data, axis=1)
@@ -258,7 +258,7 @@ def get_Binomial_length(p, T, n, conf_level=0.95, m='wilson'):
 ```
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000
 sample_sizes = np.arange(2, 100)
@@ -269,7 +269,7 @@ WILSON_length = [get_Binomial_length(p, T, n, m='wilson') for n in sample_sizes]
 ```
 
 
-```python
+```{code-cell} python
 plt.plot(sample_sizes, NORMAL_length, label='wilson')
 plt.plot(sample_sizes, WILSON_length, label='normal')
 plt.xlabel('sample size')
@@ -293,7 +293,7 @@ We take as example the same bimodal distribution for the age of a population we 
 1. Model the distribution for 3000000 indivudals and plot the histogram.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 population_ages1 = stats.poisson.rvs(loc=0, mu=30, size=2000000)
 population_ages2 = stats.poisson.rvs(loc=0, mu=10, size=1000000)
@@ -314,7 +314,7 @@ plt.show()
 2. Draw a sample `sample_ages` of size 100 and calculate an estimate of the mean from this sample.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 n = 100
 sample_ages = np.random.choice(a=population_ages, size=n)
@@ -337,7 +337,7 @@ The standard deviation of the sample converges in probability to the standard de
 3. Calculate the confidence interval using the normal approximation.
 
 
-```python
+```{code-cell} python
 std_estimated = sample_ages.std()
 
 conf_level = 0.95
@@ -362,7 +362,7 @@ print(f"CI: [{CImin:.2f}, {CImax:.2f}]")
 and returns the coverage probability for size n of the normal confidence interval. (Hint: np.random.choice can be used with the argument size=(T, n) to draw T samples of size n. np.mean and np.std should be used with the argument axis=1).
 
 
-```python
+```{code-cell} python
 def get_NormalCI_coverage(population_ages, T, n, conf_level=0.95):
     mean_star = np.mean(population_ages)
     trials_samples = np.random.choice(a=population_ages, size=(T, n))
@@ -381,7 +381,7 @@ def get_NormalCI_coverage(population_ages, T, n, conf_level=0.95):
 5. Write the same style of function, but this time return the average length of the CI for T simulations of samples of size n.
 
 
-```python
+```{code-cell} python
 def get_NormalCI_length(population_ages, T, n, conf_level=0.95):
     mean_star = np.mean(population_ages)
     trials_samples = np.random.choice(a=population_ages, size=(T, n))
@@ -404,7 +404,7 @@ Let $\hat{\mu}_n$, $\hat{\sigma}_n$ be the mean and standard deviation of the sa
 6. To do this, draw T samples of size n from population_ages (np.random.choice) and calculate T values of the random variable $U$ (Hint use np.mean, np.std with axis=1).
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000 # number of trials
 n = 1000 # population size
@@ -423,7 +423,7 @@ U = np.sqrt(n)*(mu_n-mu_star)/std_n
 7. For each value of U, calculate the pdf of a Student distribution with n-1 degrees of freedom (hint: use scipy.stats.t.pdf). Print the log-likelihood of the Student distribution on the observed values of U (Hint: np.log followed by np.mean on the student_pdf table).
 
 
-```python
+```{code-cell} python
 student_pdf = stats.t.pdf(x=U, df=n-1)
 
 log_likelihood = np.mean(np.log(student_pdf))
@@ -436,7 +436,7 @@ print(f'The log-likelihood is: {log_likelihood:.2f}')
 8. Plot the histogram and the pdf.
 
 
-```python
+```{code-cell} python
 plt.title(f'log-likelihood: {log_likelihood:.2f}')
 plt.hist(U, bins=100, density=True, edgecolor='k')
 plt.plot(U, student_pdf, label='pdf', linestyle='', marker='.', markersize=1)
@@ -454,7 +454,7 @@ plt.show()
 9. Carry out questions 4 and 5 using the student's approximation.
 
 
-```python
+```{code-cell} python
 def get_StudentCI_coverage(population_ages, T, n, conf_level=0.95):
     mean_star = np.mean(population_ages)
     trials_samples = np.random.choice(a=population_ages, size=(T, n))
@@ -472,7 +472,7 @@ def get_StudentCI_coverage(population_ages, T, n, conf_level=0.95):
 ```
 
 
-```python
+```{code-cell} python
 def get_StudentCI_length(population_ages, T, n, conf_level=0.95):
     mean_star = np.mean(population_ages)
     trials_samples = np.random.choice(a=population_ages, size=(T, n))
@@ -492,7 +492,7 @@ def get_StudentCI_length(population_ages, T, n, conf_level=0.95):
 10. Calculate a list containing the probability of coverage for n in the interval 2, 100 (hint: you can use the comprehension list for more efficient calculations). Make two lists, one for the Normal approximation and the other for Student approximation.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000 # number of trials
 conf_level = 0.95
@@ -505,7 +505,7 @@ STUDENT_proba_covered = [get_StudentCI_coverage(population_ages, T, n, conf_leve
 11. Plot the probability as a function of sample size for both CI methods.
 
 
-```python
+```{code-cell} python
 plt.plot(population_sizes, NORMAL_proba_covered, color='b', label='normal approx')
 plt.plot(population_sizes, STUDENT_proba_covered, color='k', label='student approx')
 plt.plot(population_sizes, [conf_level]*len(population_sizes), color='darkred', linestyle='--', label='conf level')
@@ -525,7 +525,7 @@ plt.show()
 12. Carry out questions 10 and 11 for CI interval length.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 10000 # number of trials
 conf_level = 0.95
@@ -536,7 +536,7 @@ STUDENT_length = [get_StudentCI_length(population_ages, T, n, conf_level) for n 
 ```
 
 
-```python
+```{code-cell} python
 plt.plot(population_sizes, NORMAL_length, color='b', label='normal approx')
 plt.plot(population_sizes, STUDENT_length, color='k', label='student approx')
 plt.legend()
@@ -559,7 +559,7 @@ Now we're interested in the median of the population, but we don't know a simple
 1. To see for yourself, plot for T=10000 samples of size n=20 the histogram of the estimated median minus the population median. (hint: np.random.choice with size=(T,n) and np.median with axis=1).
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 100000 # number of trials
 n = 20 # population size
@@ -593,7 +593,7 @@ Final Result: The confidence interval is given by the range between the percenti
 2. Perform steps 1 to 3 of the boostrap method with B=10000 boostrap samples. (Hint: you can use np.random.choice with arguments size=(B, n) and replace=True, then np.median with axis=1).
 
 
-```python
+```{code-cell} python
 # Number of bootstrap samples
 np.random.seed(0)
 B = 10000
@@ -606,7 +606,7 @@ bootstrap_sample_means = np.median(bootstrap_sample, axis=1)
 3. Perform step 4 and print the confidence interval (Hint: you can use np.quantile).
 
 
-```python
+```{code-cell} python
 conf_level = 0.95
 lower_quantile = (1 - conf_level) / 2
 upper_quantile = 1 - lower_quantile
@@ -622,7 +622,7 @@ print(f"Bootstrap CI: [{lower_ci:.2f}, {upper_ci:.2f}]")
 4. Plot proba coverage as a function of sample size, for B=1000 and for a size in the interval (2, 200, 10). (Hint: np.quantile with axis=1).
 
 
-```python
+```{code-cell} python
 def get_BootstrapCI_coverage(population_ages, T, B, n, conf_level=0.95):
     mean_star = np.median(population_ages)
     trials_samples = np.random.choice(a=population_ages, size=(T, n))
@@ -645,7 +645,7 @@ def get_BootstrapCI_coverage(population_ages, T, B, n, conf_level=0.95):
 ```
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T = 100 # number of trials
 conf_level = 0.95
@@ -661,7 +661,7 @@ BOOTSTRAP_proba_covered = [get_BootstrapCI_coverage(population_ages, T, B, n, co
 
 
 
-```python
+```{code-cell} python
 plt.plot(population_sizes, BOOTSTRAP_proba_covered, color='g', label='boostrap method')
 plt.plot(population_sizes, [conf_level]*len(population_sizes), color='darkred', linestyle='--', label='conf level')
 plt.legend()
@@ -685,7 +685,7 @@ The following data is derived from an available dataset in statmodels:
 1. Load into a pandas dataframe named "df" the dataset travel_choice.csv with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
 
 
-```python
+```{code-cell} python
 df = pd.read_csv('travel_choice.csv')
 df.head()
 ```
@@ -778,7 +778,7 @@ The steps outlined in questions 3 and 4 are not the only way to achieve this, so
 2. Write a function called "set_mode" which takes a row of the dataframe as argument and returns the mode chosen for this row. You can test your function on the first dataset row obtained with `df.iloc[0]`.
 
 
-```python
+```{code-cell} python
 # Define a function to map the values
 def set_mode(row):
     for mode in ['plane', 'train', 'bus', 'car']:
@@ -795,14 +795,14 @@ print(set_mode(row))
 3. Create the new "mode" column by applying "set_mode" to each row of df. (Tip: you can use the `df.apply` method with the correct axis). 
 
 
-```python
+```{code-cell} python
 df['mode'] = df.apply(set_mode, axis=1)
 ```
 
 4. Plot the confidence intervals of the "mean" for each mode chosen. (Tip: you can use seaborn's `sns.pointplot` with `estimator='mean'` and `errorbar='ci'` and 'mode' on the x-axis and 'hinc' on the y-axis).
 
 
-```python
+```{code-cell} python
 sns.pointplot(data=df,  x='mode', y='hinc', estimator='mean', errorbar='ci', order=['train', 'bus', 'car', 'plane'])
 plt.show()
 ```
