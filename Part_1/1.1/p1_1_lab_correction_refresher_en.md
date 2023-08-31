@@ -29,7 +29,7 @@ nbhosting:
 # Probabibility Refresher
 
 
-```python
+```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats, special
@@ -46,7 +46,7 @@ In this section, we'll use the numpy and scipy packages to generate samples foll
 To ensure that each time you run the cell, you get exactly the same numpy array, write `np.random.seed(0)` in the first row of the cell (you can choose any seed you like).
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 N = 500
 mu = 5
@@ -57,7 +57,7 @@ normal_samples = np.random.normal(loc=mu, scale=sigma, size=N)
 2. Same question but using `stats.norm.rvs` from scipy instead of numpy. Don't forget to define the seed as in the previous question.
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 normal_samples_scipy = stats.norm.rvs(loc=mu, scale=sigma, size=N)
 ```
@@ -65,7 +65,7 @@ normal_samples_scipy = stats.norm.rvs(loc=mu, scale=sigma, size=N)
 3. Check that normal_samples and normal_samples_scipy are equal (tip: you can add the difference between the two arrays and check that it's close to zero, or you can use `np.allclose`).
 
 
-```python
+```{code-cell} python
 np.allclose(normal_samples, normal_samples_scipy)
 ```
 
@@ -79,7 +79,7 @@ np.allclose(normal_samples, normal_samples_scipy)
 4. Plot the histogram of normal samples using matplotlib's `plt.hist` (tip: you can set the arguments bins=10 and density=True).
 
 
-```python
+```{code-cell} python
 plt.hist(normal_samples, bins=10, edgecolor='k', density=True)
 plt.xlabel('values')
 plt.ylabel('density')
@@ -95,7 +95,7 @@ plt.show()
 5. Calculate numerically using scipy's function ̀`stats.norm.ppf` (which gives the inverse of the cumulative distribution function) the values $x_1$ and $x_{99}$ such that if $X$ follows a normal distribution of mean mu and variance sigma, then $P(X\leq x_1) = 0.01$ and $P(X\leq x_{99}) = 0.99$.
 
 
-```python
+```{code-cell} python
 x1 = stats.norm.ppf(0.01, loc=mu, scale=sigma)
 x99 = stats.norm.ppf(0.99, loc=mu, scale=sigma)
 ```
@@ -105,7 +105,7 @@ x99 = stats.norm.ppf(0.99, loc=mu, scale=sigma)
 $$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
 
 
-```python
+```{code-cell} python
 x_samples = np.arange(x1, x99+0.1, 0.1)
 #x_samples = np.linspace(x1, x99, 1000)
 pdf_express = np.exp(-(x_samples - mu)**2/(2*sigma**2)) / np.sqrt(2*np.pi * sigma**2)
@@ -114,7 +114,7 @@ pdf_express = np.exp(-(x_samples - mu)**2/(2*sigma**2)) / np.sqrt(2*np.pi * sigm
 7. Create a numpy array "pdf_scipy" containing the density values of $f(x)$ for $x\in[x_1, x_{99}]$  using `stats.norm.pdf`. Verify that "pdf_express" and "pdf_scipy" are equal. (Hint: you can use the same "x_samples" created in the previous question)
 
 
-```python
+```{code-cell} python
 pdf_scipy = stats.norm.pdf(x_samples, loc=mu, scale=sigma)
 print(np.allclose(pdf_express, pdf_scipy))
 ```
@@ -134,7 +134,7 @@ Question: Create two tables: "bin_centers" and "pdf_estimated" containing the bi
 NB: In the following tutorials, we'll use this density estimation technique for samples whose distribution is unknown. This will be particularly useful for tutorial 2.
 
 
-```python
+```{code-cell} python
 pdf_estimated, edges, _ = plt.hist(normal_samples, bins=10, edgecolor='k', density=True)
 bin_centers = (edges[1:]+edges[:-1]) / 2
 plt.plot(x_samples, pdf_express, label='closed form', linestyle='dashed')
@@ -162,7 +162,7 @@ where "erf" is the "error function" and $\text{erf}(x) = \frac{2}{ \sqrt{\pi} } 
 * the bin_centers and cdf_estimated computed in the previous question. (hint: you can use `np.cumsum` to obtain the cumulative sum on the cdf_estimated and then multiply by the number of bins).
 
 
-```python
+```{code-cell} python
 cdf_scipy = stats.norm.cdf(x_samples, loc=mu, scale=sigma)
 
 cdf_express = ( 1 + special.erf( (x_samples - mu)/(sigma*np.sqrt(2))) )  /2
@@ -194,7 +194,7 @@ where $E_1 \sim \mathcal{B}(\frac{1}{2})$ is a bernouilli random variable and $(
 1. Generate T=20000 sequences $[u_1, \dots, u_N]$ with N=100. Tip: use `np.cumsum` and be careful: to avoid numerical overflow when calculating the powers of 2, divide successively by 2 in a for loop. What's more, if you manage to vectorize the calculation on simulations (for instance, using numpy arrays of size T), the calculation should be faster...
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T, N = 20000, 100
 all_En = np.random.choice([0., 1.], size=(N, T), replace=True, p=[0.5, 0.5])
@@ -218,7 +218,7 @@ u_n.shape, all_En[:2, 0]
 2. Plot several sequences $[u_1, \dots, u_N]$ as a function of $n \in [1, N]$. What convergence does this plot illustrate?
 
 
-```python
+```{code-cell} python
 for sim in tqdm(range(1000)):
     plt.plot(np.arange(1, N+1), u_n[:, sim], alpha=0.5)
 plt.xlabel('n')
@@ -243,7 +243,7 @@ We observe that all trajectories converge. This illustrates asymptotically sure 
 What convergence does this plot illustrate?
 
 
-```python
+```{code-cell} python
 epsilon = 0.001
 prob = np.sum(np.abs(u_n - u_n[-1][np.newaxis])<epsilon, axis=1) / T
 plt.plot(np.arange(1, N+1), prob)
@@ -263,7 +263,7 @@ This graph illustrates convergence in probability (in fact, convergence a.s. imp
 4. Plot the histogram of $u_N$. What convergence does this plot illustrate? To which law does $u_n$ converge?
 
 
-```python
+```{code-cell} python
 plt.hist(u_n[-1], bins=30, density=True, edgecolor='k')
 plt.xlabel('u_n value')
 plt.ylabel('Density')
@@ -286,7 +286,7 @@ $$X_n = X+ B_n.$$
 5. Plot the probability $\mathbb{P}(|X_n-X|<\frac{1}{2})$ for $n \in[1, N]$ with $N=100$. What is the convergence of $X_n$ ?
 
 
-```python
+```{code-cell} python
 N = 100
 N_range = np.arange(1, N+1)
 plt.plot(N_range, 1. / N_range)
@@ -306,7 +306,7 @@ $X_n$ converges in probability to $X$. Note that if the $X_n$ are independent, t
 6. Simulate for several $(X_n-X)_{n\leq N}$ T times for $N=100$ (Optional tip: if you want to vectorize your operations you can, for instance, use a "for loop" over N and use `np.random.choice` with arguments `p=[1-1/n, 1/n]` and `size=T` and append the result to a list. Then use `np.stack` to obtain a numpy array of size NxT from the completed list) 
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 T, N = 2000, 100
 all_Xn = []
@@ -328,7 +328,7 @@ all_Xn.shape
 7. Plot some of the simulations as in II.A.2 and justify why $X_n$ does not converge almost surely to $X$.
 
 
-```python
+```{code-cell} python
 for sim in tqdm(range(100)):
     plt.plot(np.arange(1, N+1), all_Xn[:, sim]-X[sim], linestyle='', marker='.', alpha=0.2)
 plt.xlabel('n')
@@ -357,7 +357,7 @@ where $\lambda>0$.
 8. Simulate for several $(X_n)_{n\leq N}$ T times for $N=1000$ and $\lambda=10$ (Optional tip: if you want to vectorize your operations, you can use a for loop over N and use `np.random.binomial` with arguments `p=lambd/n` and `size=T` and append the result to a list. Then use `np.stack` to obtain a numpy array of size NxT from that list)
 
 
-```python
+```{code-cell} python
 np.random.seed(0)
 lambd = 10
 N = 1000
@@ -382,7 +382,7 @@ all_Xn.shape
 * to plot probabilities, you can use `sns.histplot` with the argument 'stat=probability' from the seaborn package (optional: you can also use `plt.hist` with the argument "density=False" and a well-chosen "weights").
 
 
-```python
+```{code-cell} python
 xmin = stats.poisson.ppf(0.000001, mu=lambd)
 xmax = stats.poisson.ppf(0.999999, mu=lambd)
 x_samples = np.arange(xmin, xmax, 1)
@@ -406,7 +406,7 @@ plt.show()
 10. Plot $X_n - X_{n-1}$ as a function of $n$ for several simulations and justify the $X_n$ that do not converge almost-surely.
 
 
-```python
+```{code-cell} python
 for sim in tqdm(range(3)):
     plt.plot(np.arange(2, N+1), all_Xn[1:, sim]-all_Xn[:-1, sim], marker='.', linestyle='')#, alpha=0.2)
 plt.xlabel('n')
@@ -431,7 +431,7 @@ We simulate a throw of dice with a random variable $X$ of uniform distribution o
 11. What is the expectation $m$ and standard deviation $\sigma$ of $X$? Hint: you can calculate numerically using `np.mean` and `np.std` applied to the array `np.arange(1, 7)`.
 
 
-```python
+```{code-cell} python
 mu = np.arange(1, 7).mean()
 sigma = np.arange(1, 7).std()
 print(f'mean={mu}, std={sigma:.2f}')
@@ -444,7 +444,7 @@ print(f'mean={mu}, std={sigma:.2f}')
 successive values of $p_n = \frac{1}{n}\sum_{i=1}^n X_i$ for $n \in [1, N]$.
 
 
-```python
+```{code-cell} python
 N = 5000
 T = 20000
 X = np.random.choice(np.arange(1, 7), size=(N, T))
@@ -454,7 +454,7 @@ p_n = np.cumsum(X, axis=0) / np.arange(1, N+1)[:, np.newaxis]
 13. Plot several simulations of $[p_1, \dots, p_N]$ as a function of $n\in [1, N]$, as well as a horizontal line to identify the expectation of $X$ (hint: use `plt.hlines`). What theorem does this plot illustrate? What convergence is associated with this theorem?
 
 
-```python
+```{code-cell} python
 for sim in tqdm(range(20)):
     plt.plot(np.arange(1, N+1), p_n[:, sim], alpha=0.5)
 plt.hlines(y=mu, xmin=1, xmax=N, label='mu', color='k')
@@ -479,7 +479,7 @@ This plot illustrate the strong law of large numberss that states that $p_n$ con
 14. Plot several simulations of $[p_1-m, \dots, \sqrt{N}(p_N-m)]$ as a function of $n\in [1, N]$ (where $m$ is the expectation of $X$) and justify what $\sqrt{n}(p_n - m)$ doesn't converge almost-surely.
 
 
-```python
+```{code-cell} python
 for sim in tqdm(range(20)):
     plt.plot(np.arange(1, N+1), np.sqrt(np.arange(1, N+1))*(p_n[:, sim]-mu), alpha=0.5)
 plt.xlabel('n')
@@ -500,7 +500,7 @@ plt.show()
 15. Plot the histogram of $\sqrt{N}(p_N-m)$ with the fdc of $\mathcal{N}(0, \sigma^2)$. Which theorem does this plot illustrate?
 
 
-```python
+```{code-cell} python
 x1 = stats.norm.ppf(0.01, loc=0, scale=sigma)
 x99 = stats.norm.ppf(0.99, loc=0, scale=sigma)
 x_samples = np.linspace(x1, x99, 100)
@@ -531,7 +531,7 @@ For information the data comes from: https://www.met.ie/climate/30-year-averages
 1. Load into a pandas dataframe named "df" the dataset minimal_temperature_GB.txt with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
 
 
-```python
+```{code-cell} python
 df = pd.read_csv('minimal_temperature_GB.txt')
 df.head()
 ```
@@ -698,7 +698,7 @@ df.head()
 2. Print the length L of the dataframe and the columns of the dataframe.
 
 
-```python
+```{code-cell} python
 print(f'The length of the dataframe is: {len(df)}')
 print(f'The columns of the dataframe are: {list(df.columns)}')
 ```
@@ -714,7 +714,7 @@ The steps described in questions 3 to 6 are not the only way to achieve this, so
 3. Write a "get_month_name" function that takes as input an integer month_id between 1 and 13 and returns the name of the corresponding column. (Hint: you can use python "f-strings" or the python method `.format()`)
 
 
-```python
+```{code-cell} python
 def get_month_name(month_id):
     return f'm{month_id}Tmin'
 print(get_month_name(1))
@@ -726,7 +726,7 @@ print(get_month_name(1))
 4. Write a "get_month_df" function that takes month_id as input and returns a pandas DataFrame of length L, but with only two columns: one containing the month_id and the other containing the minimum temperature. (Tip: you can start by creating two lists or arrays of equal length L: one containing the minimum temperature for the month in question and the other containing only the "month_id". Then create a pandas dataframe using `pd.DataFrame` using these lists)
 
 
-```python
+```{code-cell} python
 def get_month_df(month_id):
     temp_column = df[get_month_name(month_id)]
     month_id_column = [month_id] * len(temp_column)
@@ -797,7 +797,7 @@ df_month.head()
 5. Create a pandas dataframe of length 12L with only two columns: one containing the month_id and the other containing the minimum temperature. (Hint: you can create an "all_months" list of 12 dataframes by calling the function get_month_df(month_id) for month_id ranging from 1 to 13. You can then use pd.concat(all_months) to create the expected dataframe).
 
 
-```python
+```{code-cell} python
 all_months = []
 for month in range(1, 13):
     df_month = get_month_df(month)
@@ -866,7 +866,7 @@ df_month.head()
 6. Use the `sns.boxplot` function from the `seaborn` package to display quantiles of minimum temperature as a function of month.
 
 
-```python
+```{code-cell} python
 sns.boxplot(data=df_month, x='month', y='Tmin')
 plt.show()
 ```
