@@ -286,11 +286,11 @@ print(f'entropy MLE (scipy): {stats.entropy(pdf_MLE_s, pdf_real):.6f}')
 # Real Data Application
 
 ## Loading data
-1. Load into a `pandas` data frame named `df_monthly`, the `minimal_temperature_GB.txt` table of the 30-year average monthly minimum temperature at 84291 locations in Great Britain. You can use `pd.read_csv`. (for information, the data come from: https://www.met.ie/climate/30-year-averages)
+1. Load into a `pandas` data frame named `df_monthly`, the `minimal_temperature_GB.txt` table of the 30-year average monthly minimum temperature at 84291 locations in Great Britain located in the `data/` folder. You can use `pd.read_csv`. (for information, the data come from: https://www.met.ie/climate/30-year-averages)
 
 
 ```{code-cell} python
-df_monthly = pd.read_csv('minimal_temperature_GB.txt')#[:100]
+df_monthly = pd.read_csv('data/minimal_temperature_GB.txt')#[:100]
 df_monthly.head()
 ```
 

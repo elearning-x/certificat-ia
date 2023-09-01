@@ -602,11 +602,11 @@ The following data is derived from an available dataset in statmodels:
 
 "The data, collected as part of a 1987 intercity mode choice study, are a sub-sample of 210 non-business trips between Sydney, Canberra and Melbourne in which the traveler chooses a mode from four alternatives (plane, car, bus and train). The sample, 840 observations, is choice based with over-sampling of the less popular modes (plane, train and bus) and under-sampling of the more popular mode, car. The level of service data was derived from highway and transport networks in Sydney, Melbourne, non-metropolitan N.S.W. and Victoria, including the Australian Capital Territory."
 
-1. Load into a pandas dataframe named "df" the dataset travel_choice.csv with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
+1. Load into a pandas dataframe named "df" the dataset travel_choice.csv located in the `data/` folder with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
 
 
 ```{code-cell} python
-df = pd.read_csv('travel_choice.csv')
+df = pd.read_csv('data/travel_choice.csv')
 df.head()
 ```
 

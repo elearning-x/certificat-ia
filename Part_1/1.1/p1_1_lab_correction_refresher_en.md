@@ -398,11 +398,11 @@ This section introduces a dataset we'll be studying in the next lab sessions. In
 
 For information the data comes from: https://www.met.ie/climate/30-year-averages
 
-1. Load into a pandas dataframe named "df" the dataset minimal_temperature_GB.txt with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
+1. Load into a pandas dataframe named "df" the dataset minimal_temperature_GB.txt located in the `data/` folder with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
 
 
 ```{code-cell} python
-df = pd.read_csv('minimal_temperature_GB.txt')
+df = pd.read_csv('data/minimal_temperature_GB.txt')
 df.head()
 ```
 

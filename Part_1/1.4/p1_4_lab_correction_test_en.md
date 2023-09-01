@@ -293,11 +293,11 @@ We want to analyze the traveler's household income as a function of mode choice.
 
 We'll always assume that the underlying distribution is normal, so that we can apply the methods we've seen in class.
 
-1. Load the dataset 'travel_choice.csv' into a pandas DataFrame (hint: use `pd.read_csv`)
+1. Load the dataset 'travel_choice.csv' located in the `data/` folder into a pandas DataFrame (hint: use `pd.read_csv`)
 
 
 ```{code-cell} python
-df = pd.read_csv('travel_choice.csv')
+df = pd.read_csv('data/travel_choice.csv')
 df.head()
 ```
 
