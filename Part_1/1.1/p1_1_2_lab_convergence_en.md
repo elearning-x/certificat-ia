@@ -163,14 +163,7 @@ successive values of $p_n = \frac{1}{n}\sum_{i=1}^n X_i$ for $n \in [1, N]$.
 
 
 ```{code-cell} python
-for sim in tqdm(range(20)):
-    plt.plot(np.arange(1, N+1), p_n[:, sim], alpha=0.5)
-plt.hlines(y=mu, xmin=1, xmax=N, label='mu', color='k')
-plt.xlabel('n')
-plt.ylabel('p_n')
-plt.legend()
-plt.title('Multiple Simulations of p_n')
-plt.show()
+
 ```
 
 This plot illustrate the strong law of large numberss that states that $p_n$ converges almost surely to the expectation of $X$.
