@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Solution to Probability Refresher'
+  title: 'Probability Refresher'
   version: '1.0'
 ---
 
