@@ -20,11 +20,21 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
 +++
+
+Confidence intervals are powerful tools that provide estimates of population parameters along with measures of uncertainty. In this Python tutorial, we explore different methods to construct confidence intervals for binomial proportions, bimodal distributions, and scenarios with unknown distributions using the bootstrap method.
+
+Part I focuses on confidence intervals for binomial proportions. We begin by examining two popular techniques, Wald's and Wilson's confidence intervals, which are commonly used when dealing with binary outcomes.
+
+Moving on to Part II, we delve into asymptotic confidence intervals. 
+
+Finally, in Part III, we venture into confidence intervals for scenarios where the underlying distribution is unknown. Here, we introduce the bootstrap method, a resampling technique that relies on empirical data to estimate confidence intervals. Through random sampling with replacement, we create a distribution of sample statistics to obtain robust estimates, regardless of the population's true distribution.
+
+We will assess the coverage probability of these intervals, which measures their accuracy in capturing the true parameter. Additionally, we explore the confidence interval length as a measure of precision, helping us choose the most suitable method for a given situation.
 
 # Python Modules
 
@@ -38,16 +48,6 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 ```
-
-Confidence intervals are powerful tools that provide estimates of population parameters along with measures of uncertainty. In this Python tutorial, we explore different methods to construct confidence intervals for binomial proportions, bimodal distributions, and scenarios with unknown distributions using the bootstrap method.
-
-Part I focuses on confidence intervals for binomial proportions. We begin by examining two popular techniques, Wald's and Wilson's confidence intervals, which are commonly used when dealing with binary outcomes.
-
-Moving on to Part II, we delve into asymptotic confidence intervals. 
-
-Finally, in Part III, we venture into confidence intervals for scenarios where the underlying distribution is unknown. Here, we introduce the bootstrap method, a resampling technique that relies on empirical data to estimate confidence intervals. Through random sampling with replacement, we create a distribution of sample statistics to obtain robust estimates, regardless of the population's true distribution.
-
-We will assess the coverage probability of these intervals, which measures their accuracy in capturing the true parameter. Additionally, we explore the confidence interval length as a measure of precision, helping us choose the most suitable method for a given situation.
 
 # Confidence Intervals for Binomial Proportion
 

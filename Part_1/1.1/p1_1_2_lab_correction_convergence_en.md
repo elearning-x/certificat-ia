@@ -20,11 +20,14 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
 +++
+
+In this tutorial, we will explore two key aspects of probability theory: the convergence of random variables and the crucial distinction between different types of convergence.
+We will delve into the practical implications of these concepts within the context of two prominent theorems: the Strong Law of Large Numbers and the Central Limit Theorem.
 
 # Python Modules
 
@@ -32,130 +35,15 @@ nbhosting:
 ```{code-cell} python
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy import stats, special
-import pandas as pd
+from scipy import stats
 import seaborn as sns
 from tqdm import tqdm
 ```
 
-# Normal Law
-
-In this section, we'll use the numpy and scipy packages to generate samples following a normal distribution. We will then display the histogram of the sample and use different methods to display the distribution and the cumulative function: using the explicit formula, using the scipy library and using an approximation from the histogram.
-
-1. Create a numpy array called "normal_samples" containing N=500 samples extracted from a normal distribution of mean mu=5 and standard deviation sigma=20, using `np.random.normal` from the numpy package.
-To ensure that each time you run the cell, you get exactly the same numpy array, write `np.random.seed(0)` in the first row of the cell (you can choose any seed you like).
-
-
-```{code-cell} python
-np.random.seed(0)
-N = 500
-mu = 5
-sigma = 20
-normal_samples = np.random.normal(loc=mu, scale=sigma, size=N)
-```
-
-2. Same question but using `stats.norm.rvs` from scipy instead of numpy. Don't forget to define the seed as in the previous question.
-
-
-```{code-cell} python
-np.random.seed(0)
-normal_samples_scipy = stats.norm.rvs(loc=mu, scale=sigma, size=N)
-```
-
-3. Check that normal_samples and normal_samples_scipy are equal (tip: you can add the difference between the two arrays and check that it's close to zero, or you can use `np.allclose`).
-
-
-```{code-cell} python
-np.allclose(normal_samples, normal_samples_scipy)
-```
-
-4. Plot the histogram of normal samples using matplotlib's `plt.hist` (tip: you can set the arguments bins=10 and density=True).
-
-
-```{code-cell} python
-plt.hist(normal_samples, bins=10, edgecolor='k', density=True)
-plt.xlabel('values')
-plt.ylabel('density')
-plt.show()
-```
-
-5. Calculate numerically using scipy's function ̀`stats.norm.ppf` (which gives the inverse of the cumulative distribution function) the values $x_1$ and $x_{99}$ such that if $X$ follows a normal distribution of mean mu and variance sigma, then $P(X\leq x_1) = 0.01$ and $P(X\leq x_{99}) = 0.99$.
-
-
-```{code-cell} python
-x1 = stats.norm.ppf(0.01, loc=mu, scale=sigma)
-x99 = stats.norm.ppf(0.99, loc=mu, scale=sigma)
-```
-
-6. Recall the expression for the density $f$ of a normal distribution $\mathcal{N}(\mu, \sigma^2)$. Create a numpy array "pdf_express" containing the density values of $f(x)$ for $x\in[x_1, x_{99}]$ (hint: You can start by defining a numpy array "x_samples" of evenly spaced values between $x_1$ and $x_{99}$ with `np.arange` or `np.linspace`. Then you can use the usual numpy array operations such as `np.exp`)
-
-$$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
-
-
-```{code-cell} python
-x_samples = np.arange(x1, x99+0.1, 0.1)
-#x_samples = np.linspace(x1, x99, 1000)
-pdf_express = np.exp(-(x_samples - mu)**2/(2*sigma**2)) / np.sqrt(2*np.pi * sigma**2)
-```
-
-7. Create a numpy array "pdf_scipy" containing the density values of $f(x)$ for $x\in[x_1, x_{99}]$  using `stats.norm.pdf`. Verify that "pdf_express" and "pdf_scipy" are equal. (Hint: you can use the same "x_samples" created in the previous question)
-
-
-```{code-cell} python
-pdf_scipy = stats.norm.pdf(x_samples, loc=mu, scale=sigma)
-print(np.allclose(pdf_express, pdf_scipy))
-```
-
-In the following tutorials, we'll often use `stats.[law_name].pdf` to calculate the density of a law (very useful when we don't know or remember its explicit form).
-
-8. In this question, we'd like to extract the pdf directly from the histogram. We first notice that `plt.hist` returns 3 results:
-* values (size 10). In fact, this array is an estimate (based on "normal_samples" observations) of the density value at the center of the bin.
-* bin edges (size 11). `(edges[1:]+edges[:-1])/2` gives the histogram centers.
-* Plotting the histogram
-
-Question: Create two tables: "bin_centers" and "pdf_estimated" containing the bin center values and the bin center density function values respectively. Plot the histogram along with the pdfs calculated with the closed form, scipy and with estimation.
-
-NB: In the following tutorials, we'll use this density estimation technique for samples whose distribution is unknown. This will be particularly useful for tutorial 2.
-
-
-```{code-cell} python
-pdf_estimated, edges, _ = plt.hist(normal_samples, bins=10, edgecolor='k', density=True)
-bin_centers = (edges[1:]+edges[:-1]) / 2
-plt.plot(x_samples, pdf_express, label='closed form', linestyle='dashed')
-plt.plot(x_samples, pdf_scipy, label='scipy', linestyle='dotted')
-plt.plot(bin_centers, pdf_estimated, label='estimated')
-plt.legend()
-plt.xlabel('values')
-plt.ylabel('density')
-plt.show()
-```
-
-We recall the closed form of the cumulative distribution function of a normal distribution:
-$$\mathbb{P}(X\leq x) = \int_{-\infty}^x f(y) dy = \frac{1}{2} [ 1+ \text{erf}(\frac{x-\mu}{\sigma \sqrt{2}})]$$
-where "erf" is the "error function" and $\text{erf}(x) = \frac{2}{ \sqrt{\pi} } \int_0^x e^{-t^2} dt$ and can be computed with `scipy.special.erf`.
-
-9. Plot the cumulative distribution obtained with:
-* the closed form (use the form recalled above)
-* the function `stats.norm.cdf` from scipy
-* the bin_centers and cdf_estimated computed in the previous question. (hint: you can use `np.cumsum` to obtain the cumulative sum on the cdf_estimated and then multiply by the number of bins).
-
-
-```{code-cell} python
-cdf_scipy = stats.norm.cdf(x_samples, loc=mu, scale=sigma)
-
-cdf_express = ( 1 + special.erf( (x_samples - mu)/(sigma*np.sqrt(2))) )  /2
-
-cdf_estimated = np.cumsum(pdf_estimated)*pdf_estimated.shape[0]
-plt.plot(x_samples, cdf_express, label='closed form', linestyle='dashed', color='orange')
-plt.plot(x_samples, cdf_scipy, label='scipy', linestyle='dotted', color='green')
-plt.plot(bin_centers, cdf_estimated, label='estimated', color='darkred')
-plt.xlabel('values')
-plt.ylabel('probability')
-plt.legend()
-plt.show()
-```
-
 # Limits of Random Variables
+
+In the first part of this tutorial, we will lay the foundation by examining the limits of random variables.
+We will simulate sequences of random variables and visualize their behavior to gain insight into convergence properties.
 
 ## Almost-Sure Convergence
 
@@ -290,7 +178,7 @@ all_Xn.shape
 ```
 
 9. Plot the proability mass function (pmf) of a Poisson distribution with parameters $\lambda$, and the probabilities of the observed values for simulations of $X_N$. Hints:
-* to plot the pmf, it's almost like question I.A.7, except that you should use `scipy.poisson.pmf`.
+* to plot the pmf, it's almost like question I.A.7 in the previous tutorial, except that you should use `scipy.poisson.pmf`.
 * to plot probabilities, you can use `sns.histplot` with the argument 'stat=probability' from the seaborn package (optional: you can also use `plt.hist` with the argument "density=False" and a well-chosen "weights").
 
 
@@ -321,7 +209,11 @@ plt.title('Multiple Simulations of u_n - u_{n-1}')
 plt.show()
 ```
 
-## Strong Law of Large Numbers and Central Limit Theorem
+# Strong Law of Large Numbers and Central Limit Theorem
+
+Moving on to the second part, we will apply our knowledge of convergence to explore two cornerstone theorems in probability theory.
+We will not only understand the statements of these theorems but also use simulations to witness their practical significance.
+
 
 We simulate a throw of dice with a random variable $X$ of uniform distribution on {1, 2, 3, 4, 5, 6}.
 
@@ -392,71 +284,3 @@ plt.show()
 
 This plot illustrates the central limit theorem: $\sqrt{n}(p_n-m)$ converges to a normal distribution.
 
-# Real Data Analysis
-
-This section introduces a dataset we'll be studying in the next lab sessions. In this section we'll have the opportunity to see how to use the pandas library to manipulate data structure.
-
-For information the data comes from: https://www.met.ie/climate/30-year-averages
-
-1. Load into a pandas dataframe named "df" the dataset minimal_temperature_GB.txt located in the `data/` folder with `pd.read_csv` and display the first 5 rows by writing `df.head()` on the last cell.
-
-
-```{code-cell} python
-df = pd.read_csv('data/minimal_temperature_GB.txt')
-df.head()
-```
-
-2. Print the length L of the dataframe and the columns of the dataframe.
-
-
-```{code-cell} python
-print(f'The length of the dataframe is: {len(df)}')
-print(f'The columns of the dataframe are: {list(df.columns)}')
-```
-
-The aim of questions 3 to 6 is to transform the dataframe into a dataframe of length 12L with 2 columns: the month number "month", the minimum temperature for that month "Tmin".
-
-The steps described in questions 3 to 6 are not the only way to achieve this, so you can skip these questions and adopt your own steps.
-
-3. Write a "get_month_name" function that takes as input an integer month_id between 1 and 13 and returns the name of the corresponding column. (Hint: you can use python "f-strings" or the python method `.format()`)
-
-
-```{code-cell} python
-def get_month_name(month_id):
-    return f'm{month_id}Tmin'
-print(get_month_name(1))
-```
-
-4. Write a "get_month_df" function that takes month_id as input and returns a pandas DataFrame of length L, but with only two columns: one containing the month_id and the other containing the minimum temperature. (Tip: you can start by creating two lists or arrays of equal length L: one containing the minimum temperature for the month in question and the other containing only the "month_id". Then create a pandas dataframe using `pd.DataFrame` using these lists)
-
-
-```{code-cell} python
-def get_month_df(month_id):
-    temp_column = df[get_month_name(month_id)]
-    month_id_column = [month_id] * len(temp_column)
-    df_month = pd.DataFrame({'month': month_id_column, 'Tmin': temp_column})
-    return df_month
-
-df_month = get_month_df(1)
-df_month.head()
-```
-
-5. Create a pandas dataframe of length 12L with only two columns: one containing the month_id and the other containing the minimum temperature. (Hint: you can create an "all_months" list of 12 dataframes by calling the function get_month_df(month_id) for month_id ranging from 1 to 13. You can then use pd.concat(all_months) to create the expected dataframe).
-
-
-```{code-cell} python
-all_months = []
-for month in range(1, 13):
-    df_month = get_month_df(month)
-    all_months.append(df_month)
-df_month = pd.concat(all_months)
-df_month.head()
-```
-
-6. Use the `sns.boxplot` function from the `seaborn` package to display quantiles of minimum temperature as a function of month.
-
-
-```{code-cell} python
-sns.boxplot(data=df_month, x='month', y='Tmin')
-plt.show()
-```

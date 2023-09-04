@@ -20,16 +20,15 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
 +++
 
-Point estimation involves estimating a parameter of a distribution (e.g. the mean, or the parameters of the parametric density function...) from the observation of a sample. In this tutorial, we'll be:
-* observing numerically that the empirical mean is an asymptotically normal estimator of the mean,
-* looking at several methods for performing point estimation on simulated data,
-* comparing several fitted distributions on real data.
+Point estimation is a fundamental concept in statistics, where we endeavor to estimate a parameter of a distribution based on observations from a sample.
+This parameter could be anything from the mean, variance, or even the parameters of a parametric density function that best describes the underlying population distribution.
+In this tutorial, we will explore various methods for making these estimations.
 
 # Python Modules
 
@@ -44,6 +43,11 @@ import random
 ```
 
 # Empirical Mean
+
+In this first section, we will numerically demonstrate that the empirical mean approaches a normal distribution as the sample size increases—an essential insight for understanding the behavior of estimators.
+To make this concept more tangible, we will analyze a bimodal distribution.
+Bimodal distributions are often encountered in real-world scenarios, and they present unique challenges compared to the more common theoretical distributions like the Normal or Bernoulli distributions discussed in our previous tutorials.
+
 ## Data Simulation
 
 We are interested in the age of the population in a given location. We assume that the population is bimodal, with each mode following a Poisson distribution centered on 40 and 10 respectively. There are twice as many individuals in the first mode as in the second.
@@ -131,6 +135,11 @@ print(f'fischer={fischer:.2f}')
 ```
 
 # MOM and MLE applied to Gamma Distribution
+
+In this section, we will explore various methods for performing point estimation using simulated data.
+Specifically, we will implement two widely-used techniques, the Method of Moments and Maximum Likelihood Estimation (MLE), to estimate the parameters of a Gamma Distribution.
+We will implement these methods using the versatile numpy library and compare our results with the implementations available in Scipy.
+
 
 The probability density function of Gamma distribution with shape parameter $k$ and scale parameter $\theta$ is:
 $$f:x\in\mathbb{R}_+ \mapsto \frac{1}{\Gamma(k)\theta^k} x^{k-1} e^{-\frac{x}{\theta}},$$
@@ -284,6 +293,10 @@ print(f'entropy MLE (scipy): {stats.entropy(pdf_MLE_s, pdf_real):.6f}')
 ```
 
 # Real Data Application
+
+In this section, we will extend our exploration to real data analysis.
+We'll compare several fitted distributions using two essential metrics: entropy and likelihood.
+This hands-on experience will provide valuable insights into the practical application of point estimation techniques and the assessment of their accuracy on real-world datasets.
 
 ## Loading data
 1. Load into a `pandas` data frame named `df_monthly`, the `minimal_temperature_GB.txt` table of the 30-year average monthly minimum temperature at 84291 locations in Great Britain located in the `data/` folder. You can use `pd.read_csv`. (for information, the data come from: https://www.met.ie/climate/30-year-averages)
