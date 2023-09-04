@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -47,7 +47,7 @@ Import the modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt
 
 
 
-Import the ozone data `ozonecomplet.csv` (in FunStudio, data is located in the `data/` directory) and remove the last two variables (categorical). Then provide a summary of numerical variables.
+Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and remove the last two variables (categorical). Then provide a summary of numerical variables.
 [Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.]
 
 

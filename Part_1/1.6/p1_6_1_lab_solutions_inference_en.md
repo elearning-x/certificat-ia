@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -286,7 +286,7 @@ The goal of this lab is to construct a confidence interval using the Bootstrap.
 
 
 
-Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= from `numpy=]. In FunStudio, the datasets are located in the =data/` directory.
+Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
 
 
 
@@ -391,7 +391,7 @@ pd.DataFrame(np.quantile(COEFF, [0.025, 0.975], axis=0).T)
 
 
 
-Import the eucalyptus data into the pandas DataFrame `eucalypt` using [=read<sub>csv</sub>= from `numpy=]. In FunStudio, the datasets are located in the =data/` directory.
+Import the eucalyptus data into the pandas DataFrame `eucalypt` using [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
 
 
 
@@ -455,7 +455,7 @@ We obtain the same results as before (since $F=t^2$).
 
 
 
-An investigation was conducted on 40 individuals to study the relationship between leisure time (estimated by the respondent as the number of hours per day available for oneself) and age. The results of this survey are contained in the file `temps_libre.csv` (in FunStudio, datasets are located in the `data/` directory). We aim to determine if these two variables are related.
+An investigation was conducted on 40 individuals to study the relationship between leisure time (estimated by the respondent as the number of hours per day available for oneself) and age. The results of this survey are contained in the file `temps_libre.csv` (in Fun Campus, datasets are located in the `data/` directory). We aim to determine if these two variables are related.
 
 1.  What is the data type of the variables?
 
@@ -514,7 +514,7 @@ Clearly, we observe two regimes: between 30 and 60 years, there is little leisur
 
 
 
-An investigation was conducted on 102 individuals to study the relationship between obesity (estimated by the ratio of a person&rsquo;s weight to the ideal weight obtained from the &ldquo;New York Metropolitan Life Tables&rdquo;) and blood pressure in millimeters of mercury. The results of this survey are contained in the file `obesite.csv` (in FunStudio, data is located in the `data/` directory). We aim to determine if these two variables are related.
+An investigation was conducted on 102 individuals to study the relationship between obesity (estimated by the ratio of a person&rsquo;s weight to the ideal weight obtained from the &ldquo;New York Metropolitan Life Tables&rdquo;) and blood pressure in millimeters of mercury. The results of this survey are contained in the file `obesite.csv` (in Fun Campus, data is located in the `data/` directory). We aim to determine if these two variables are related.
 
 1.  What is the data type of the variables?
 

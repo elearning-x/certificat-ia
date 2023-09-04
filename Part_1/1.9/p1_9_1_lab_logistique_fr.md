@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -49,7 +49,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
 Importer les données `artere.txt` dans le DataFrame pandas `artere`
-[ `read_csv` de `numpy` ]. Sur FunStudio le chemin est `data/artere.txt`. Outre l&rsquo;age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne
+[ `read_csv` de `numpy` ]. Sur Fun Campus le chemin est `data/artere.txt`. Outre l&rsquo;age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne
 les classes d&rsquo;age (`agegrp`)
 
 
@@ -169,7 +169,7 @@ Refaire les deux questions ci-dessus 500 fois et constater par un graphique adap
 
 
 Importer les données `artere.txt` dans le DataFrame pandas `artere`
-[ `read_csv` de `numpy` ]. Sur FunStudio le chemin est `data/artere.txt`. Outre l&rsquo;age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne
+[ `read_csv` de `numpy` ]. Sur Fun Campus le chemin est `data/artere.txt`. Outre l&rsquo;age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne
 les classes d&rsquo;age (`agegrp`)
 
 

@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -34,14 +34,14 @@ nbhosting:
 
 
 
-Import the modules pandas (as `pd`) and numpy (as `np`)
-Import the sub-module `pyplot` from `matplotlib` as `plt`
-Import the function `StandardScaler` from `sklearn.preprocessing`
-Import the function `Ridge` from `sklearn.linear_model`
-Import the function `RidgeCV` from `sklearn.linear_model`
-Import the function `Pipeline` from `sklearn.pipeline`
-Import the function `cross_val_predict` from `sklearn.model_selection`
-Import the function `KFold` from `sklearn.model_selection`
+-   Import the modules pandas (as `pd`) and numpy (as `np`)
+-   Import the sub-module `pyplot` from `matplotlib` as `plt`
+-   Import the function `StandardScaler` from `sklearn.preprocessing`
+-   Import the function `Ridge` from `sklearn.linear_model`
+-   Import the function `RidgeCV` from `sklearn.linear_model`
+-   Import the function `Pipeline` from `sklearn.pipeline`
+-   Import the function `cross_val_predict` from `sklearn.model_selection`
+-   Import the function `KFold` from `sklearn.model_selection`
 
 
 ```{code-cell} python
