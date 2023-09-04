@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Python Modules
 
@@ -43,7 +41,7 @@ Import the modules: pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `pl
 
 
 
-#### Data Importation
+### Data Importation
 
 
 
@@ -56,24 +54,11 @@ Import the data from eucalyptus into the pandas DataFrame `eucalypt`. Use `read_
 
 ```
 
-#### Simple Regression
+### Simple Regression
 
 
 
-Perform a simple linear regression where `circ` is the explanatory variable and `ht` is the dependent variable. Store the result in the object `reg` [using `ols` from `smf`, `fit` method of the `OLS` class].
-
-
-
-
-```{code-cell} python
-
-```
-
-#### Coefficient CIs
-
-
-
-Obtain the 95% confidence intervals for the coefficients [using the `conf_int` method for the fitted instance/model].
+Perform a simple linear regression where `circ` is the explanatory variable and `ht` is the dependent variable. Store the result in the object `reg` [ using `ols` from `smf`, `fit` method of the `OLS` class ].
 
 
 
@@ -82,7 +67,20 @@ Obtain the 95% confidence intervals for the coefficients [using the `conf_int` m
 
 ```
 
-#### Prediction CIs
+### Coefficient CIs
+
+
+
+Obtain the 95% confidence intervals for the coefficients [ using the `conf_int` method for the fitted instance/model ].
+
+
+
+
+```{code-cell} python
+
+```
+
+### Prediction CIs
 
 
 
@@ -95,7 +93,7 @@ Create a grid of 100 new observations evenly spaced between the minimum and maxi
 
 ```
 
-#### Expectation CI
+### Expectation CI
 
 
 
@@ -108,7 +106,7 @@ For the same grid of `circ` values as in the previous question, propose a 95% CI
 
 ```
 
-#### Representation of CIs
+### Representation of CIs
 
 
 
@@ -118,7 +116,7 @@ Using the 100 predicted observations above and their CIs (both observations and 
 -   The CI for the predictions
 -   The CI for the expectations.
 
-[Use `plt.plot` and =plt.legend=]
+[ Use `plt.plot` and `plt.legend` ]
 
 
 
@@ -138,14 +136,14 @@ The objective of this lab is to plot the confidence region for parameters and ob
 
 ```{code-cell} python
 import math
-  from scipy.stats import f
+from scipy.stats import f
 ```
 
-#### Data Import
+### Data Import
 
 
 
-Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
+Import the ozone data into the pandas DataFrame `ozone` [ `read_csv` from `numpy` ]. In Fun Campus, the datasets are located in the `data/` directory.
 
 
 
@@ -154,7 +152,7 @@ Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= fr
 
 ```
 
-#### Model with 3 Variables
+### Model with 3 Variables
 
 
 
@@ -165,7 +163,7 @@ Estimate a regression model explaining the maximum ozone concentration of the da
 -   the noon cloudiness `Ne12`
 
 along with the constant term as always.
-[Use `ols` from `smf`, `fit` method of the `OLS` class, and `summary` method for the fitted instance/model.]
+[ Use `ols` from `smf`, `fit` method of the `OLS` class, and `summary` method for the fitted instance/model. ]
 
 
 
@@ -174,7 +172,7 @@ along with the constant term as always.
 
 ```
 
-#### Confidence Region for All Variables
+### Confidence Region for All Variables
 
 
 
@@ -197,7 +195,7 @@ $\Sigma^{1/2}=U\Delta^{1/2} U'$ ($U$ is an orthogonal matrix of the eigenvectors
 ```
 
 1.  Deduce that the confidence region for $\beta_{1:2}$ is the image of a
-    disk by a matrix. Calculate this matrix in Python [use the `cov_params` method for the `modele3` instance, functions `eigh` from the `np.linalg` sub-module, `np.matmul`, `np.diag`, `np.sqrt` ].
+    disk by a matrix. Calculate this matrix in Python [ use the `cov_params` method for the `modele3` instance, functions `eigh` from the `np.linalg` sub-module, `np.matmul`, `np.diag`, `np.sqrt` ].
 
 
 
@@ -206,7 +204,7 @@ $\Sigma^{1/2}=U\Delta^{1/2} U'$ ($U$ is an orthogonal matrix of the eigenvectors
 
 ```
 
-1.  Generate 500 points on the circle [=cos= and `sin` from =np=]
+1.  Generate 500 points on the circle [ `cos` and `sin` from `np` ]
 
 
 
@@ -224,7 +222,7 @@ $\Sigma^{1/2}=U\Delta^{1/2} U'$ ($U$ is an orthogonal matrix of the eigenvectors
 
 ```
 
-1.  Plot the ellipse [ `plt.fill` (for the ellipse), `plt.plot` (for the center) ]
+1.  Plot the ellipse [  `plt.fill` (for the ellipse), `plt.plot` (for the center) ]
 
 
 
@@ -233,7 +231,7 @@ $\Sigma^{1/2}=U\Delta^{1/2} U'$ ($U$ is an orthogonal matrix of the eigenvectors
 
 ```
 
-#### Univariate CIs
+### Univariate CIs
 
 
 
@@ -258,7 +256,7 @@ The goal of this lab is to construct a confidence interval using the Bootstrap.
 
 
 
-Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
+Import the ozone data into the pandas DataFrame `ozone` [ `read_csv` from `numpy` ]. In Fun Campus, the datasets are located in the `data/` directory.
 
 
 
@@ -278,7 +276,7 @@ Estimate a regression model explaining the maximum ozone concentration of the da
 -   the noon cloudiness `Ne12`
 
 along with the constant term as always.
-[Use `ols` from `smf`, `fit` method of the `OLS` class, and `summary` method for the fitted instance/model.]
+[ Use `ols` from `smf`, `fit` method of the `OLS` class, and `summary` method for the fitted instance/model. ]
 
 
 
@@ -294,7 +292,7 @@ Store the residuals in the object `residus` and the adjustments in `ychap`
 
 
 
-##### Bootstrap Sample Generation
+#### Bootstrap Sample Generation
 
 
 
@@ -313,7 +311,7 @@ Let&rsquo;s generate $B=1000$ bootstrap samples.
 1.  For each value of $b\in\{1,\cdots,B\}$, draw independently with replacement from the residuals of the regression $n$ values. Let $\hat\varepsilon^{(b)}$ be the resulting vector.
 2.  Add these residuals to the adjustment $\hat Y$ to obtain a new sample $Y^*$. Using the data $X$ and $Y^*$, obtain the least squares estimation $\hat\beta^{(b)}$.
 3.  Store the value $\hat\beta^{(b)}$ in row $b$ of the numpy array `COEFF`.
-    [Create an instance of the random number generator using `np.random.default_rng`, use the `randint` method on this instance; create a copy of the appropriate columns from `ozone` using the `copy` method to use `smf.ols`, and populate this DataFrame with the sample.]
+    [ Create an instance of the random number generator using `np.random.default_rng`, use the `randint` method on this instance; create a copy of the appropriate columns from `ozone` using the `copy` method to use `smf.ols`, and populate this DataFrame with the sample. ]
 
 
 
@@ -326,7 +324,7 @@ Let&rsquo;s generate $B=1000$ bootstrap samples.
 
 
 
-From the $B=1000$ values $\hat\beta^{(b)}$, propose a 95% confidence interval using [=np.quantile=].
+From the $B=1000$ values $\hat\beta^{(b)}$, propose a 95% confidence interval using [ `np.quantile` ].
 
 
 
@@ -339,11 +337,11 @@ From the $B=1000$ values $\hat\beta^{(b)}$, propose a 95% confidence interval us
 
 
 
-#### Data Import
+### Data Import
 
 
 
-Import the eucalyptus data into the pandas DataFrame `eucalypt` using [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
+Import the eucalyptus data into the pandas DataFrame `eucalypt` using [ `read_csv` from `numpy` ]. In Fun Campus, the datasets are located in the `data/` directory.
 
 
 
@@ -352,7 +350,7 @@ Import the eucalyptus data into the pandas DataFrame `eucalypt` using [=read<sub
 
 ```
 
-#### Two Regressions
+### Two Regressions
 
 
 
@@ -360,7 +358,7 @@ In previous labs, we performed various modeling tasks. For single-variable model
 
 1.  Perform a simple linear regression where the square root of `circ` is the explanatory variable and `ht` is the dependent variable. Store the result in the object `regsqrt`.
 2.  Perform a multiple linear regression where the square root of `circ` and `circ` itself are the explanatory variables, and `ht` is the dependent variable. Store the result in the object `reg`.
-    [Use `ols` from `smf`, `fit` method of the `OLS` class.]
+    [ Use `ols` from `smf`, `fit` method of the `OLS` class. ]
 
 
 
@@ -369,11 +367,11 @@ In previous labs, we performed various modeling tasks. For single-variable model
 
 ```
 
-#### Comparison
+### Comparison
 
 
 
-1.  Compare these two models using a $T$ test [use the `summary` method].
+1.  Compare these two models using a $T$ test [ use the `summary` method ].
 
 
 
@@ -382,7 +380,7 @@ In previous labs, we performed various modeling tasks. For single-variable model
 
 ```
 
-1.  Compare these two models using an $F$ test [=stats.anova<sub>lm</sub>= from the `statsmodels.api` submodule].
+1.  Compare these two models using an $F$ test [ `stats.anova_lm` from the `statsmodels.api` submodule ].
 
 
 
@@ -437,7 +435,7 @@ An investigation was conducted on 40 individuals to study the relationship betwe
 
 
 
-An investigation was conducted on 102 individuals to study the relationship between obesity (estimated by the ratio of a person&rsquo;s weight to the ideal weight obtained from the &ldquo;New York Metropolitan Life Tables&rdquo;) and blood pressure in millimeters of mercury. The results of this survey are contained in the file `obesite.csv` (in Fun Campus, data is located in the `data/` directory). We aim to determine if these two variables are related.
+An investigation was conducted on 102 individuals to study the relationship between obesity (estimated by the ratio of a person&rsquo;s weight to the ideal weight obtained from the New York Metropolitan Life Tables) and blood pressure in millimeters of mercury. The results of this survey are contained in the file `obesite.csv` (in Fun Campus, data is located in the `data/` directory). We aim to determine if these two variables are related.
 
 1.  What is the data type of the variables?
 

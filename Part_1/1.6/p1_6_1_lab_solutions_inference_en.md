@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Python Modules
 
@@ -50,7 +48,7 @@ import statsmodels.formula.api as smf
 
 
 
-#### Importing Data
+### Importing Data
 
 
 
@@ -63,7 +61,7 @@ Import the &rsquo;eucalyptus.txt&rsquo; data into the pandas DataFrame `eucalypt
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
-#### Simple Regression
+### Simple Regression
 
 
 
@@ -76,7 +74,7 @@ Perform a simple linear regression where `circ` is the explanatory variable and 
 reg = smf.ols("ht ~ 1 + circ", data=eucalypt).fit()
 ```
 
-#### Confidence Intervals for Coefficients
+### Confidence Intervals for Coefficients
 
 
 
@@ -89,11 +87,11 @@ Obtain the 95% confidence intervals for the coefficients using the `conf_int` me
 reg.conf_int(alpha=0.05)
 ```
 
-#### Prediction Intervals
+### Prediction Intervals
 
 
 
-##### Creating a Grid of New Observations
+#### Creating a Grid of New Observations
 
 
 
@@ -108,7 +106,7 @@ calculprev = reg.get_prediction(grille)
 ICobs = calculprev.conf_int(obs=True, alpha=0.05)
 ```
 
-##### Confidence Intervals for Expected Values
+#### Confidence Intervals for Expected Values
 
 
 
@@ -121,7 +119,7 @@ For the same grid of `circ` values as in the previous question, propose a 95% co
 ICdte = calculprev.conf_int(obs=False, alpha=0.05)
 ```
 
-#### Plotting Confidence Intervals
+### Plotting Confidence Intervals
 
 
 
@@ -149,7 +147,7 @@ plt.legend(handles=[lesic, lesic2], loc='upper left')
 
 
 
-#### Data Import
+### Data Import
 
 
 
@@ -162,7 +160,7 @@ Import the &rsquo;ozone.txt&rsquo; data into the pandas DataFrame `ozone`.
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
-#### Model with 3 Variables
+### Model with 3 Variables
 
 
 
@@ -182,7 +180,7 @@ along with the constant term as always.
 modele3 = smf.ols("O3 ~ T12 + Vx + Ne12",data=ozone).fit()
 ```
 
-#### Confidence Region for All Variables
+### Confidence Region for All Variables
 
 
 
@@ -248,7 +246,7 @@ plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
    plt.plot(modele3.params[1], modele3.params[2], "+")
 ```
 
-#### Univariate CIs
+### Univariate CIs
 
 
 
@@ -259,15 +257,15 @@ Add the &ldquo;confidence rectangle&rdquo; from the 2 univariate CIs to the elli
 
 ```{code-cell} python
 ICparams = modele3.conf_int(alpha=0.025)
-  from matplotlib.patches import Rectangle
-  plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
-  plt.plot(modele3.params[1], modele3.params[2], "+")
-  ax = plt.gca()
-  r = Rectangle(ICparams.iloc[1:3, 0],
-                ICparams.diff(axis=1).iloc[1, 1],
-                ICparams.diff(axis=1).iloc[2, 1],
-                fill=False)
-  ax.add_artist(r)
+from matplotlib.patches import Rectangle
+plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
+plt.plot(modele3.params[1], modele3.params[2], "+")
+ax = plt.gca()
+r = Rectangle(ICparams.iloc[1:3, 0],
+              ICparams.diff(axis=1).iloc[1, 1],
+              ICparams.diff(axis=1).iloc[2, 1],
+              fill=False)
+ax.add_artist(r)
 ```
 
 We can see that using 2 univariate confidence intervals (and thus assuming that the variables are independent) is not suitable, and there are points within the rectangular confidence region that are not within the confidence ellipse and vice versa.
@@ -282,7 +280,7 @@ The goal of this lab is to construct a confidence interval using the Bootstrap.
 
 
 
-#### Data Import
+### Data Import
 
 
 
@@ -295,7 +293,7 @@ Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= fr
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
 ```
 
-#### Model with 3 Variables
+### Model with 3 Variables
 
 
 
@@ -312,11 +310,11 @@ along with the constant term as always.
 
 
 
-#### Bootstrap and CI
+### Bootstrap and CI
 
 
 
-##### Calculation of the Empirical Model: $\hat Y$ and $\hat\varepsilon$
+#### Calculation of the Empirical Model: $\hat Y$ and $\hat\varepsilon$
 
 
 
@@ -330,7 +328,7 @@ ychap = modele3.fittedvalues
 residus = modele3.resid
 ```
 
-##### Bootstrap Sample Generation
+#### Bootstrap Sample Generation
 
 
 
@@ -370,7 +368,7 @@ for  b in range(B):
 COEFF.shape
 ```
 
-#### Bootstrap CI
+### Bootstrap CI
 
 
 
@@ -387,7 +385,7 @@ pd.DataFrame(np.quantile(COEFF, [0.025, 0.975], axis=0).T)
 
 
 
-#### Data Import
+### Data Import
 
 
 
@@ -400,7 +398,7 @@ Import the eucalyptus data into the pandas DataFrame `eucalypt` using [=read<sub
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
-#### Two Regressions
+### Two Regressions
 
 
 
@@ -418,7 +416,7 @@ regsqrt = smf.ols('ht~I(np.sqrt(circ))', data=eucalypt).fit()
 reg = smf.ols('ht~I(np.sqrt(circ)) + circ', data=eucalypt).fit()
 ```
 
-#### Comparison
+### Comparison
 
 
 
@@ -492,10 +490,10 @@ reg = smf.ols("tempslibre~1+age", data=tpslibre).fit()
 ```
 
 The row `age` of the table provides the estimation of the coefficient
-    $\hat\beta_2$, the estimated standard deviation of the coefficient, the value of the
-    $t$ statistic for the test $\mathrm{H}_0: \beta_2=0$ against
-    $\mathrm{H}_1: \beta_2\neq 0$, which is 0.285 in this case, and its critical probability
-    which is 0.777. Therefore, we retain $\mathrm{H}_0$, and it seems that there is no linear relationship.
+   $\hat\beta_2$, the estimated standard deviation of the coefficient, the value of the
+   $t$ statistic for the test $\mathrm{H}_0: \beta_2=0$ against
+   $\mathrm{H}_1: \beta_2\neq 0$, which is 0.285 in this case, and its critical probability
+   which is 0.777. Therefore, we retain $\mathrm{H}_0$, and it seems that there is no linear relationship.
 
 1.  Represent the data and discuss the rationale behind the previous test.
 

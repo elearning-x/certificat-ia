@@ -20,17 +20,36 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-+++
-
-### Modules
+## Modules
 
 
 
 Import the modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`), and statsmodels.formula.api (as `smf`).
+
+
+
+
+```{code-cell} python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.formula.api as smf
+```
+
+## Ridge Regression on Ozone Data
+
+
+
+### Data Import
+
+
+
+Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and remove the last two variables (categorical). Then provide a summary of numerical variables.
+[ Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.  fs]
 
 
 
@@ -41,16 +60,34 @@ ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
 ```
 
-### Ridge Regression on Ozone Data
+### Backward Selection
 
 
 
-#### Data Import
+Propose a function that performs backward selection. It will use the formulas from `statsmodels` and will always include the intercept. The function will take three arguments as input: the DataFrame of data, the initial formula, and the criterion (AIC or BIC). The function will return the estimated model
 
+The function start with the full model.
 
+-   We separe the response variable (object `response`) from the explanatory variables,
+-   These variables are transformed in a set (object `start_explanatory`),
+-   The lower set is the empty set (object `lower_explanatory`),
+-   The potential variable to be removed are obtained as the difference (object `remove`),
 
-Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and remove the last two variables (categorical). Then provide a summary of numerical variables.
-[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.]
+We initialize the set of selected variables (object `selected`) and make our first
+formula using all selected variables and add the intercept in the last position. Using
+`smf.ols` and  using `smf.ols` we get AIC or BIC of the starting model (`current_score`).
+
+The while loop begins:
+
+-   for every variable (for loop) to be removed we make a regression modeling with the current set
+    of variables minus that candidate variable. We constuct a list of triplet `score` (AIC/BIC) sign (always &ldquo;-&rdquo;
+    as we are doing backward selection) and candidate variable to remove from the current model.
+
+-   at the end of the for loop , we sort all the list of triplet using score and if the best triplet have
+    a `score` better than `current_score` we update `remove` `selected` and `current_score`, if not we
+    break the while loop.
+
+At the end we fit the current model and return it.
 
 
 
@@ -131,11 +168,7 @@ def olsbackward(data, start, crit="aic", verbose=False):
     return model
 ```
 
-#### Backward Selection
-
-
-
-Propose a function that performs backward selection. It will use the formulas from `statsmodels` and will always include the intercept. The function will take three arguments as input: the DataFrame of data, the initial formula, and the criterion (AIC or BIC). The function will return the estimated model using `smf.ols`.
+Using the function:
 
 
 
@@ -143,6 +176,10 @@ Propose a function that performs backward selection. It will use the formulas fr
 ```{code-cell} python
 modelefinal = olsbackward(ozone,"O3~T9+T12+T15+Ne9+Ne12+Ne15+Vx9+Vx12+Vx15+O3v", verbose=True)
 ```
+
+And the final/selected model:
+
+
 
 
 ```{code-cell} python

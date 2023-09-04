@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Python Modules
 
@@ -43,12 +41,12 @@ Import the modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt
 
 
 
-#### Data Import
+### Data Import
 
 
 
 Import the data `ozonecomplet.csv` and convert the last two variables into qualitative variables. Then, provide a numerical summary for each variable.
-[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.]
+[ Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance. ]
 
 
 
@@ -57,7 +55,7 @@ Import the data `ozonecomplet.csv` and convert the last two variables into quali
 
 ```
 
-#### First Model
+### First Model
 
 
 
@@ -70,7 +68,7 @@ Perform a regression with explanatory variables `T12`, `Ne`, and `Dv`. How many 
 
 ```
 
-#### Model Summary
+### Model Summary
 
 
 
@@ -78,11 +76,11 @@ Where did the coefficients associated with East wind and cloudy weather go in th
 
 
 
-#### Change of Reference Modality
+### Change of Reference Modality
 
 
 
-Change the reference modality to North wind. [Use the `C` function in the regression formula, see [https://www.statsmodels.org/stable/example_formulas.html](https://www.statsmodels.org/stable/example_formulas.html)) with the `Treatment` option =reference=].
+Change the reference modality to North wind. [ Use the `C` function in the regression formula, see [https://www.statsmodels.org/stable/example_formulas.html](https://www.statsmodels.org/stable/example_formulas.html)) with the `Treatment` option `reference` ].
 
 -   Verify that the value of the intercept has changed, as well as all the parameter estimator values associated with wind.
 -   Verify that the adjusted $Y$ values remain the same.
@@ -94,12 +92,12 @@ Change the reference modality to North wind. [Use the `C` function in the regres
 
 ```
 
-#### Modalities Grouping
+### Modalities Grouping
 
 
 
--   Group East and North winds and create a new model. [Use the `map` method on the column, then =astype=]
--   Which model is preferred between this one and the previous one? Propose two tests to answer this question. [=sm.stats.anova<sub>lm</sub>=]
+-   Group East and North winds and create a new model. [ Use the `map` method on the column, then `astype` ]
+-   Which model is preferred between this one and the previous one? Propose two tests to answer this question. [ `sm.stats.anova_lm` ]
 
 
 
@@ -126,7 +124,7 @@ We aim to determine if these three ventilation methods are equivalent.
 
 
 
-#### Data Import
+### Data Import
 
 
 
@@ -140,12 +138,12 @@ Import the data from the file `gr.csv` and provide a numerical summary.
 
 ```
 
-#### Graphical Representation
+### Graphical Representation
 
 
 
 Graphically represent the data.
-[Use `plt.plot` or the `groupby` method on the DataFrame instance and the `boxplot` method on the grouped DataFrame instance.]
+[ Use `plt.plot` or the `groupby` method on the DataFrame instance and the `boxplot` method on the grouped DataFrame instance. ]
 The simplest way is to create points for each ventilation method.
 
 
@@ -164,7 +162,7 @@ We observe that the sample sizes in each group are small, the means seem differe
 
 ```
 
-#### Ventilation Method
+### Ventilation Method
 
 
 
@@ -182,7 +180,7 @@ The test statistic value is $3.71$, and its critical probability is $0.04$, smal
 
 
 
-#### Model Analysis
+### Model Analysis
 
 
 

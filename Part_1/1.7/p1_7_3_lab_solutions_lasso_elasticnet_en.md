@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -40,6 +38,7 @@ nbhosting:
 -   Import the `ElasticNetCV` function from `sklearn.linear_model`
 -   Import the `cross_val_predict` function from `sklearn.model_selection`
 -   Import the `KFold` class from `sklearn.model_selection`
+
 
 
 
@@ -157,7 +156,7 @@ print(alphas_lasso[sse.argmin()])
 
     0.7727174033372736
 
-#### Retrieve the results of the previous question
+### Retrieve the results of the previous question
 
 
 
@@ -300,7 +299,7 @@ print(alphas_elasticnet[sse.argmin()])
 
     0.41048105093488396
 
-#### Retrieve the results of previous question
+### Retrieve the results of previous question
 
 
 

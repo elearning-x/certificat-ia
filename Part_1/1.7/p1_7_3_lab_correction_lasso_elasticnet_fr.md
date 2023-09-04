@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 Correction_lasso_elasticnet
 ===========================
@@ -46,6 +44,8 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
+
+
 ```{code-cell} python
 import pandas as pd
 import numpy as np
@@ -63,7 +63,7 @@ from sklearn.model_selection import KFold
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
@@ -81,7 +81,7 @@ ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
 ```
 
-#### Création des tableaux `numpy`
+### Création des tableaux `numpy`
 
 
 
@@ -96,7 +96,7 @@ y = ozone.O3.values
 X = ozone.iloc[:,1:].values
 ```
 
-#### Centrage et réduction
+### Centrage et réduction
 
 
 
@@ -116,7 +116,7 @@ scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 ```
 
-#### Evolution des coefficients selon $\lambda$
+### Evolution des coefficients selon $\lambda$
 
 
 
@@ -155,7 +155,7 @@ coefficients sont nuls.
 
 
 
-#### Choix du $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
+### Choix du $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
@@ -178,7 +178,7 @@ print(alphas_lasso[sse.argmin()])
 
     0.7727174033372736
 
-#### Retrouver les résultats de la question précédente
+### Retrouver les résultats de la question précédente
 
 
 
@@ -200,7 +200,7 @@ Ici la fonction objectif est le $\mathrm{R}^2$ par bloc (et pas la somme des éc
 
 
 
-#### Prévision
+### Prévision
 
 
 
@@ -227,7 +227,7 @@ refaire avec les mêmes données les questions de l&rsquo;exercice précédent a
 
 
 
-#### Importation
+### Importation
 
 
 
@@ -238,7 +238,7 @@ ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
 ```
 
-#### Création des tableaux `numpy`
+### Création des tableaux `numpy`
 
 
 
@@ -253,7 +253,7 @@ y = ozone.O3.values
 X = ozone.iloc[:,1:].values
 ```
 
-#### Centrage et réduction
+### Centrage et réduction
 
 
 
@@ -263,7 +263,7 @@ scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 ```
 
-#### Evolution des coefficients selon $\lambda$
+### Evolution des coefficients selon $\lambda$
 
 
 
@@ -296,7 +296,7 @@ quand la pénalité augmente.
 
 
 
-#### Choix du $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
+### Choix du $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
@@ -312,7 +312,7 @@ print(alphas_elasticnet[sse.argmin()])
 
     0.41048105093488396
 
-#### Retrouver les résultats de la question précédente
+### Retrouver les résultats de la question précédente
 
 
 
@@ -334,7 +334,7 @@ Ici la fonction objectif est le $\mathrm{R}^2$ par bloc (et pas la somme des éc
 
 
 
-#### Prévision
+### Prévision
 
 
 

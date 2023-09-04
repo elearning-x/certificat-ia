@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Python Modules
 
@@ -47,12 +45,12 @@ import statsmodels.api as sm
 
 
 
-#### Data Import
+### Data Import
 
 
 
 Import the data `ozonecomplet.csv` and convert the last two variables into qualitative variables. Then, provide a numerical summary for each variable.
-[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.]
+[ Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance. ]
 
 
 
@@ -65,7 +63,7 @@ ozone.Dv = ozone.Dv.astype("category")
 ozone.describe(include="all")
 ```
 
-#### First Model
+### First Model
 
 
 
@@ -79,7 +77,7 @@ reg = smf.ols("O3~T12+Ne+Dv", data=ozone).fit()
 reg.summary()
 ```
 
-#### Model Summary
+### Model Summary
 
 
 
@@ -89,11 +87,11 @@ These are reference modalities (the first in alphabetical order). The constant (
 
 
 
-#### Change of Reference Modality
+### Change of Reference Modality
 
 
 
-Change the reference modality to North wind. [Use the `C` function in the regression formula, see [https://www.statsmodels.org/stable/example_formulas.html](https://www.statsmodels.org/stable/example_formulas.html)) with the `Treatment` option =reference=].
+Change the reference modality to North wind. [ Use the `C` function in the regression formula, see [https://www.statsmodels.org/stable/example_formulas.html](https://www.statsmodels.org/stable/example_formulas.html)) with the `Treatment` option `reference` ].
 
 -   Verify that the value of the intercept has changed, as well as all the parameter estimator values associated with wind.
 -   Verify that the adjusted $Y$ values remain the same.
@@ -107,12 +105,12 @@ reg2.summary()
 np.all(np.abs(reg.predict() - reg2.predict()) < 1e-10)
 ```
 
-#### Modalities Grouping
+### Modalities Grouping
 
 
 
--   Group East and North winds and create a new model. [Use the `map` method on the column, then =astype=]
--   Which model is preferred between this one and the previous one? Propose two tests to answer this question. [=sm.stats.anova<sub>lm</sub>=]
+-   Group East and North winds and create a new model. [ Use the `map` method on the column, then `astype` ]
+-   Which model is preferred between this one and the previous one? Propose two tests to answer this question. [ `sm.stats.anova_lm` ]
 
 
 
@@ -143,12 +141,12 @@ We aim to determine if these three ventilation methods are equivalent.
 
 
 
-#### Data Import
+### Data Import
 
 
 
 Import the data from the file `gr.csv` and provide a numerical summary.
-[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.]
+[ Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance. ]
 
 
 
@@ -159,12 +157,12 @@ gr["ventilation"] = gr["ventilation"].astype("category")
 gr.describe(include="all")
 ```
 
-#### Graphical Representation
+### Graphical Representation
 
 
 
 Graphically represent the data.
-[Use `plt.plot` or the `groupby` method on the DataFrame instance and the `boxplot` method on the grouped DataFrame instance.]
+[ Use `plt.plot` or the `groupby` method on the DataFrame instance and the `boxplot` method on the grouped DataFrame instance. ]
 The simplest way is to create points for each ventilation method.
 
 
@@ -184,7 +182,7 @@ gr.groupby(by='ventilation').boxplot(False)
 plt.show()
 ```
 
-#### Ventilation Method
+### Ventilation Method
 
 
 
@@ -204,12 +202,12 @@ The test statistic value is $3.71$, and its critical probability is $0.04$, smal
 
 
 
-#### Model Analysis
+### Model Analysis
 
 
 
 Analyze the residuals of the retained model and interpret the coefficients.
-[Use `plt.plot`, `get_influence`, `resid_studentized_external`, =sm.qqplot=]
+[ Use `plt.plot`, `get_influence`, `resid_studentized_external`, `sm.qqplot` ]
 
 The model errors are expected to be independently and identically distributed with a normal distribution of mean $0$ and variance $\sigma^2$. The studentized residuals (by VC) can be plotted against the predicted values $\hat Y$ (the group ventilation mean).
 

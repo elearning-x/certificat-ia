@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -40,6 +38,8 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
+
+
 ```{code-cell} python
 
 ```
@@ -48,7 +48,7 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
@@ -64,7 +64,7 @@ DataFrame]
 
 ```
 
-#### Création des tableaux `numpy`
+### Création des tableaux `numpy`
 
 
 
@@ -78,7 +78,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 ```
 
-#### Centrage et réduction
+### Centrage et réduction
 
 
 
@@ -97,7 +97,7 @@ suivant
 
 ```
 
-#### Calcul de la régression Ridge pour $\lambda=0.00485$
+### Calcul de la régression Ridge pour $\lambda=0.00485$
 
 
 
@@ -117,7 +117,7 @@ suivant
 
 ```
 
-#### Pipeline
+### Pipeline
 
 
 
@@ -148,11 +148,11 @@ la moyenne et diviser par l&rsquo;écart-type ce qui n&rsquo;est pas très prati
 
 ```
 
-#### Evolution des coefficients selon $\lambda$
+### Evolution des coefficients selon $\lambda$
 
 
 
-##### Calcul d&rsquo;une grille de $\lambda$
+#### Calcul d&rsquo;une grille de $\lambda$
 
 
 
@@ -181,7 +181,7 @@ Créer cette grille avec `np.linspace`, méthode d&rsquo;instance `transpose`,
 
 ```
 
-##### Tracer l&rsquo;évolution des $\hat\beta(\lambda)$
+#### Tracer l&rsquo;évolution des $\hat\beta(\lambda)$
 
 
 
@@ -195,11 +195,11 @@ de la grille les coefficients $\hat\beta(\lambda)$
 
 ```
 
-#### $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
+### $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
-##### Séparation en 10 blocs
+#### Séparation en 10 blocs
 
 
 
@@ -213,7 +213,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 ```
 
-##### Sélection du $\hat \lambda$ optimal
+#### Sélection du $\hat \lambda$ optimal
 
 
 
@@ -234,7 +234,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 
 ```
 
-#### Sélection du $\hat \lambda$ optimal
+### Sélection du $\hat \lambda$ optimal
 
 
 
@@ -249,7 +249,7 @@ donner le meilleur modèle (et donc le $\hat \lambda$ optimal )
 
 ```
 
-#### Représentation graphique
+### Représentation graphique
 
 
 
@@ -264,7 +264,7 @@ en question précédente.
 
 ```
 
-#### Modéliser rapidement
+### Modéliser rapidement
 
 
 

@@ -20,15 +20,14 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 Using the data from `ozone_transf.txt`, select the best regression model among all modeling already presented (simple regression, multiple regression, variable selection, ridge, lasso, and elastic-net). A 10 fold cross validation
 will be used to make the selection.
 A data-frame containing the various predictions (one column per model and as many rows as there are observations) is mandatory.
+
 
 
 

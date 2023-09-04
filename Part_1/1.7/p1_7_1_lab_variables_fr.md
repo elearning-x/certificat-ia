@@ -20,18 +20,19 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
 
 
 Importer les modules pandas (comme `pd`) numpy (commme `np`)
-matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
+matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme
+`smf`).
+
+
 
 
 ```{code-cell} python
@@ -42,14 +43,15 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les données sont dans le répertoire `data/`) et éliminer les deux dernières
-variables (qualitatives) et faites un résumé numérique par variable \[méthode
-`astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
-DataFrame\]
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les
+données sont dans le répertoire `data/`) et éliminer les deux dernières
+variables (qualitatives) et faites un résumé numérique par variable
+[ méthode `astype` sur la colonne du DataFrame et méthode `describe` sur
+l&rsquo;instance DataFrame ]
 
 
 
@@ -58,14 +60,15 @@ DataFrame\]
 
 ```
 
-#### Sélection descendante/backward
+### Sélection descendante/backward
 
 
 
-Proposer une fonction qui permet la sélection descendante/backward. Elle utilisera
-les formules de `statsmodels` et incluera toujours la constante. En entrée serviront
-trois arguments: le DataFrame des données, la formule de départ et le critère (AIC ou BIC).
-La fonction retournera le modèle estimé via `smf.ols`
+Proposer une fonction qui permet la sélection descendante/backward. Elle
+utilisera les formules de `statsmodels` et incluera toujours la
+constante. En entrée serviront trois arguments: le DataFrame des
+données, la formule de départ et le critère (AIC ou BIC). La fonction
+retournera le modèle estimé via `smf.ols`
 
 
 

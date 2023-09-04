@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 # Python modules
 Import modules pandas (as `pd`) numpy (as `np`)
@@ -38,7 +36,7 @@ and statsmodels.api (as `sm`)
 
 # Multiple Rgression (course model)
 
-### Data import
+## Data import
 Import ozone data into pandas `ozone` DataFrame
 \[`read_csv` from `pandas`\]. Datasets in Fun Campus are located in `data/` directory.
 
@@ -47,7 +45,7 @@ Import ozone data into pandas `ozone` DataFrame
 
 ```
 
-### Course model estimation
+## Course model estimation
 We are interested in building an ozone forecasting model using 
 multiple regression. This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
@@ -57,26 +55,26 @@ the maximum ozone concentration of the day (variable `O3`) by
 Traditionally, we always introduce the constant (and do so here too).
 Estimate the OLS model and summarize.
 
-[Use the `ols` method from `smf`, the `fit` method from the `OLS` class and the 
-method `summary` for the adjusted instance/model]
+\[Use the `ols` method from `smf`, the `fit` method from the `OLS` class and the 
+method `summary` for the adjusted instance/model\]
 
 
 ```{code-cell} python
 
 ```
 
-### Residuals \$\varepsilon\$
+## Residuals \$\varepsilon\$
 Display residuals graph (`resid` attribute of estimated model)
 (with \$\hat y\$  (`predict` method of estimated model) on the x-axis and \$\varepsilon\$ on the y-axis).
 
-[plt `plot`]
+\[`plt.plot`\]
 
 
 ```{code-cell} python
 
 ```
 
-### Studentized Residuals
+## Studentized Residuals
 Display the graph of residuals studentized by cross-validation (with \$\hat y\$ on the x-axis and 
 \$\varepsilon\$ on the ordinate). To do this, use the `get_influence` function/method 
 which will return an object (let's call it `infl`) with a `resid_studentized_external` attribute containing the desired residues.
@@ -86,10 +84,10 @@ which will return an object (let's call it `infl`) with a `resid_studentized_ext
 
 ```
 
-### Leverage points
+## Leverage points
 Represent \$h_{ii}\$ with `plt.stem` according to line number
-[`np.arange`, DataFrame `shape` attribute, instance attribute 
-`hat_matrix_diag` for `infl`]
+\[`np.arange`, DataFrame `shape` attribute, instance attribute 
+`hat_matrix_diag` for `infl`\]
 
 
 ```{code-cell} python
@@ -101,7 +99,7 @@ We are interested in building an ozone forecasting model using
 multiple regression. However, we're not sure a priori
 which variables are useful. Let's build several models.
 
-### Estimation of the course model
+## Estimation of the course model
 This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
 - temperature at noon, noted `T12`
@@ -110,15 +108,15 @@ the maximum ozone concentration of the day (variable `O3`) by
 Traditionally, we always introduce the constant (and do so here too).
 Estimate the OLS model and summarize.
 
-[Use the `ols` method from `smf`, the `fit` method from the `OLS` class and the 
-method `summary` for the adjusted instance/model]
+\[Use the `ols` method from `smf`, the `fit` method from the `OLS` class and the 
+method `summary` for the adjusted instance/model\]
 
 
 ```{code-cell} python
 
 ```
 
-### Estimation of another model
+## Estimation of another model
 This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
 - temperature at noon, noted `T12`
@@ -134,7 +132,7 @@ Estimate the OLS model and summarize.
 
 ```
 
-### Compare R2
+## Compare R2
 Compare the R2 of the 3- and 5-variable models 
 and explain why this was expected.
 
@@ -149,7 +147,7 @@ The data are in the files `tprespartial.dta` and
 `tpbisrespartiel.dta`, the aim of this exercise is to show that the analysis of partial
 of partial residuals can improve modeling.
 
-### Import data
+## Import data
 You have one variable to explain \$Y\$
 and four explanatory variables in the file `tprespartiel.dta`. Datasets in Fun Campus are located in `data/` directory.
 
@@ -158,34 +156,34 @@ and four explanatory variables in the file `tprespartiel.dta`. Datasets in Fun C
 
 ```
 
-### Estimation
+## Estimation
 OLS estimation of model parameters \$Y_i= \beta_0 + \beta_1 X_{i,1}+ \cdots+
 \beta_4 X_{i,4} + \varepsilon_i.\$
-[`ols` from `smf`, method `fit` from class `OLS` and 
-method `summary` for the adjusted instance/model]
+\[`ols` from `smf`, method `fit` from class `OLS` and 
+method `summary` for the adjusted instance/model\]
 
 
 ```{code-cell} python
 
 ```
 
-### Analyze partial residuals
+## Analyze partial residuals
 What do you think of the results?
-[In the `plot_ccpr_grid` sub-module of `sm.graphics`, partial residuals are called
+\[In the `plot_ccpr_grid` sub-module of `sm.graphics`, partial residuals are called
 called "Component-Component plus Residual"
-(CCPR) in the statsmodels module...
+(CCPR) in the statsmodels module...\]
 
 
 ```{code-cell} python
 
 ```
 
-### Model improvement 
+## Model improvement 
 Replace $X_4$ by $X_5=X_4^2$ in the previous model. What do you think of
   the new model? You can compare this model with the one
   previous question.
-[the `ols` method of the `smf` class, the `fit` method of the `OLS` class and the 
- instance attribute `rsquared`]
+\[the `ols` method of the `smf` class, the `fit` method of the `OLS` class and the 
+ instance attribute `rsquared`\]
 You can use the
 operations and functions in formulas
 (see https://www.statsmodels.org/stable/example_formulas.html)
@@ -195,19 +193,19 @@ operations and functions in formulas
 
 ```
 
-### Analyze partial residuals
+## Analyze partial residuals
 Analyze the partial residuals of the new model and note that
 that they appear to be correct.
-[In the `plot_ccpr_grid` sub-module of `sm.graphics`, partial residuals are called
+\[In the `plot_ccpr_grid` sub-module of `sm.graphics`, partial residuals are called
 called "Component-Component plus Residual"
-(CCPR) in the statsmodels module...
+(CCPR) in the statsmodels module...\]
 
 
 ```{code-cell} python
 
 ```
 
-Do the same for `tp2bisrespartiel`.
+## Do the same for `tp2bisrespartiel`.
 
 
 ```{code-cell} python

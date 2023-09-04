@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ```{code-cell} python
 import scipy
@@ -68,7 +66,7 @@ RES = pd.DataFrame(ozone.maxO3)
 
 
 
-#### MCO complet
+### MCO complet
 
 
 
@@ -84,7 +82,7 @@ for app_index, val_index in kf.split(X):
     RES.MCO.iloc[val_index] = reg_lin.predict(Xval).ravel()
 ```
 
-#### MCO choix par BIC
+### MCO choix par BIC
 
 
 

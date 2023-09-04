@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 # Python Modules
 Import modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`) and statsmodels.formula.api (as `smf`). 
@@ -37,7 +35,7 @@ Also import `Axes3D` from `mpl_toolkits.mplot3d`.
 
 # Multiple Regression on Ozone data (2 variables)
 
-### Data import
+## Data import
 Import ozone data into pandas `ozone` DataFrame
 \[`read_csv` of `pandas`\]. On Fun Campus the path is `data/ozone.txt`.
 
@@ -46,7 +44,7 @@ Import ozone data into pandas `ozone` DataFrame
 
 ```
 
-### 3D representation
+## 3D representation
 We're interested in building an ozone forecasting model using 
 multiple regression. This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
@@ -62,12 +60,12 @@ Let's graph the data with `O3` on the z axis,
 
 ```
 
-### Forecasting model
+## Forecasting model
 Write the above model.
 
 
 
-### Model estimation
+## Model estimation
 Use OLS to estimate the parameters of the model described above and summarize them.
 [`ols` from `smf`, `fit` method from the `OLS` class and 
 `summary` method for the adjusted instance/model]
@@ -79,7 +77,7 @@ Use OLS to estimate the parameters of the model described above and summarize th
 
 # Multiple Regression (course model) for Ozone Data
 
-### Data import
+## Data import
 Import ozone data into pandas `ozone` DataFrame
 \[`read_csv` of `pandas`\]. On Fun Campus the path is `data/ozone.txt`.
 
@@ -88,7 +86,7 @@ Import ozone data into pandas `ozone` DataFrame
 
 ```
 
-### Course model estimation
+## Course model estimation
 We are interested in building an ozone forecasting model using 
 multiple regression. This regression will explain
 the maximum ozone concentration of the day (variable `O3`) by 
@@ -105,7 +103,7 @@ Estimate the OLS model and summarize.
 
 ```
 
-### Variability 
+## Variability 
 - Among the estimators of the coefficients of the effects of the variables
 (excluding the constant) that is the most variable.
 - Variability is indicated by
@@ -123,7 +121,7 @@ Estimate the OLS model and summarize.
 
 # Multiple regression on eucalyptus data
 
-### Data import
+## Data import
 Import ozone data into pandas `eucalypt` DataFrame
 \[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
@@ -132,7 +130,7 @@ Import ozone data into pandas `eucalypt` DataFrame
 
 ```
 
-### data representation
+## data representation
 Represent point cloud
 [`plot` of plt and `xlabel` and `ylabel` of `plt`]
 
@@ -141,7 +139,7 @@ Represent point cloud
 
 ```
 
-### Forecast model
+## Forecast model
 Estimate (by OLS) the linear model explaining the height (`ht`) 
 by the circumference variable (`circ`) and the square root of circumference.
 circumference.  You can use
@@ -153,7 +151,7 @@ operations and functions in formulas
 
 ```
 
-### Graphical representation of the model
+## Graphical representation of the model
 Graph the data, the forecast using the above model and the forecast using the
 the forecast by the simple regression models seen in the "two models" exercise
 in the simple regression tutorial.

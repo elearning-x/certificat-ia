@@ -20,13 +20,11 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-+++
-
-### Modules
+## Modules
 
 
 
@@ -39,11 +37,11 @@ Import the modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt
 
 ```
 
-### Ridge Regression on Ozone Data
+## Ridge Regression on Ozone Data
 
 
 
-#### Data Import
+### Data Import
 
 
 
@@ -57,7 +55,7 @@ Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is located in the 
 
 ```
 
-#### Backward Selection
+### Backward Selection
 
 
 

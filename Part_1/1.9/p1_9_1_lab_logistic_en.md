@@ -20,15 +20,13 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-+++
-
 ## Python Modules
 
-+++
+
 
 ### Importing Python Modules
 
@@ -82,6 +80,10 @@ Perform a logistic regression with `age` as the explanatory variable and `chd` a
 1.  Perform a summary of the model.
 2.  Display the parameters estimated by logistic regression.
 
+[ `logit` de `smf`, méthode `fit`,
+méthode `summary` pour l&rsquo;instance/modèle ajusté,
+attributs `params`. ]
+
 
 
 
@@ -106,7 +108,7 @@ Display the predictions for the sample data using the `predict` method (without 
 
 ```
 
-Numerically verify that the prediction with the argument `which='prob'` is simply an indicator that $\hat p(x)>s$, where $s$ is the classic threshold of 0.5.
+Display the prediction of the disease status (sick/healthy) with the indicator that $\hat p(x)>s$, where $s$ is the classic threshold of 0.5.
 
 
 
@@ -135,7 +137,9 @@ Display the estimated confusion matrix for the sample data using a threshold of 
 Graphically represent the deviance residuals:
 
 1.  Age on the x-axis and deviance residuals on the y-axis (using the `resid_dev` attribute of the model).
-2.  Row index on the x-axis and residuals on the y-axis (using `plt.plot`, `predict` method on the fitted model, and `np.arange` to generate row numbers using the `shape` attribute of the DataFrame).
+2.  Make a random permutation on row index and use it on the x-axis and use the residuals on the y-axis (using `plt.plot`, `predict` method on the fitted model, and `np.arange` to generate row numbers using the `shape` attribute of the DataFrame ; create an instance of the default random generator using `np.random.default_rng` and use `rng.permutation`
+
+on row index).
 
 
 
@@ -154,6 +158,8 @@ Graphically represent the deviance residuals:
 
 1.  Generate $n=100$ values of $X$ uniformly between 0 and 1.
 2.  For each value $X_i$, simulate $Y_i$ according to a logistic model with parameters $\beta_1=-5$ and $\beta_2=10$.
+
+[  create an instance of the default random generator using `np.random.default_rng` and use `rng.binomial` ]
 
 
 

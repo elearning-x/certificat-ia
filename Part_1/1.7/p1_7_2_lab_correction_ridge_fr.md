@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -39,6 +37,8 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `cross_val_predict` de `sklearn.model_selection`,
 `KFold` de `sklearn.model_selection`
 `make_scorer` de `sklearn.metrics`
+
+
 
 
 ```{code-cell} python
@@ -58,7 +58,7 @@ from sklearn.metrics import make_scorer
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
@@ -76,7 +76,7 @@ ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
 ```
 
-#### Création des tableaux `numpy`
+### Création des tableaux `numpy`
 
 
 
@@ -91,7 +91,7 @@ y = ozone.O3.values
 X = ozone.iloc[:,1:].values
 ```
 
-#### Centrage et réduction
+### Centrage et réduction
 
 
 
@@ -111,7 +111,7 @@ scalerX = StandardScaler().fit(X)
 Xcr= scalerX.transform(X)
 ```
 
-#### Calcul de la régression Ridge pour $\lambda=0.00485$
+### Calcul de la régression Ridge pour $\lambda=0.00485$
 
 
 
@@ -161,7 +161,7 @@ print(ridge.predict(Xcr[1,:].reshape(1, 10)))
 
     : [76.0489625]
 
-#### Pipeline
+### Pipeline
 
 
 
@@ -248,11 +248,11 @@ print(pipe.predict(X[1,:].reshape(1,10)))
 
     : [76.0489625]
 
-#### Evolution des coefficients selon $\lambda$
+### Evolution des coefficients selon $\lambda$
 
 
 
-##### Calcul d&rsquo;une grille de $\lambda$
+#### Calcul d&rsquo;une grille de $\lambda$
 
 
 
@@ -283,7 +283,7 @@ l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
 alphas_ridge = l0*100*10**(llc)
 ```
 
-##### Tracer l&rsquo;évolution des $\hat\beta(\lambda)$
+#### Tracer l&rsquo;évolution des $\hat\beta(\lambda)$
 
 
 
@@ -330,11 +330,11 @@ la valeur de $\lambda$ augmente.
 
 
 
-#### $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
+### $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
-##### Séparation en 10 blocs
+#### Séparation en 10 blocs
 
 
 
@@ -348,7 +348,7 @@ Nous allons séparer le jeu de données en 10 blocs grâce
 kf = KFold(n_splits = 10, shuffle=True, random_state=0)
 ```
 
-##### Sélection du $\hat \lambda$ optimal
+#### Sélection du $\hat \lambda$ optimal
 
 
 
@@ -378,7 +378,7 @@ for app_index, val_index in kf.split(X):
         res.iloc[val_index,j] = rr.predict(Xval)
 ```
 
-#### Sélection du $\hat \lambda$ optimal
+### Sélection du $\hat \lambda$ optimal
 
 
 
@@ -396,7 +396,7 @@ print(alphas_ridge[sse.argmin()])
 
     23.05516147986161
 
-#### Représentation graphique
+### Représentation graphique
 
 
 
@@ -411,7 +411,7 @@ en question précédente.
 plt.plot(np.log(alphas_ridge), sse, "-")
 ```
 
-#### Modéliser rapidement
+### Modéliser rapidement
 
 
 

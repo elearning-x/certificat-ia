@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules python
 
@@ -44,7 +42,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
@@ -59,7 +57,7 @@ les classes d&rsquo;age (`agegrp`)
 
 ```
 
-#### Nuage de points
+### Nuage de points
 
 
 
@@ -73,7 +71,7 @@ Tracer le nuage de points avec `age` en  abscisses et `chd` en ordonnées
 
 ```
 
-#### Régression logistique
+### Régression logistique
 
 
 
@@ -90,11 +88,52 @@ attributs `params`. ]
 
 
 
+
 ```{code-cell} python
 
 ```
 
-#### Résidus
+### Prévision et probabilités estimées
+
+
+
+Afficher l&rsquo;ajustement/prévision pour les données de l&rsquo;échantillon via la méthode `predict` (sans arguments) sur le modèle `reg`. Que représente ce vecteur:
+
+-   une probabilité d&rsquo;être malade pour chaque valeur de l&rsquo;age de l&rsquo;échantillon
+-   une probabilité d&rsquo;être non-malade pour chaque valeur de l&rsquo;age de l&rsquo;échantillon
+-   une prévision de l&rsquo;état malade/non-malade pour chaque valeur de l&rsquo;age de l&rsquo;échantillon.
+
+
+
+
+```{code-cell} python
+
+```
+
+Donner la prévision de l&rsquo;état malade/non-malade avec l&rsquo;indicatrice que $\hat p(x)>s$ où $s$ est le seuil classique de 0.5.
+
+
+
+
+```{code-cell} python
+
+```
+
+### Matrice de confusion
+
+
+
+Afficher la matrice de confusion estimée sur les données de
+l&rsquo;échantillon pour un seuil choisi à 0.5.
+
+
+
+
+```{code-cell} python
+
+```
+
+### Résidus
 
 
 
@@ -102,11 +141,12 @@ Représenter graphiquement les résidus de déviance avec
 
 1.  en abscisse la variable `age` et en ordonnée les résidus
     [ attribut `resid_dev` du modèle ];
-2.  en abscisse le numéro de ligne du tableau (index) et en ordonnées les résidus.
+2.  en abscisse le numéro de ligne du tableau (index) après permutation aléatoire et en ordonnées les résidus.
 
 [ `plt.plot`, méthode `predict` pour l&rsquo;instance/modèle ajusté et
-`np.arange` pour générer les numéros de ligne avec l&rsquo;attribut `shape`
-du DataFrame ]
+`np.arange` pour générer iles numéros de ligne avec l&rsquo;attribut `shape`
+du DataFrame ; créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.permutation`
+sur les numéros de ligne ]
 
 
 
@@ -119,13 +159,15 @@ du DataFrame ]
 
 
 
-#### Simulation
+### Simulation
 
 
 
 1.  Générer $n=100$ valeurs de $X$ uniformément entre 0 et 1.
 2.  Pour chaque valeur $X_i$ simuler $Y_i$ selon un modèle logistique
     de paramètres $\beta_1=-5$ et $\beta_2=10$
+
+[ créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.uniform` et `rng.binomial` ]
 
 
 
@@ -134,7 +176,7 @@ du DataFrame ]
 
 ```
 
-#### Estimation
+### Estimation
 
 
 
@@ -147,7 +189,7 @@ Estimer les paramètres $\beta_1$ et $\beta_2$
 
 ```
 
-#### Variabilité de l&rsquo;estimation
+### Variabilité de l&rsquo;estimation
 
 
 
@@ -164,7 +206,7 @@ Refaire les deux questions ci-dessus 500 fois et constater par un graphique adap
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
@@ -179,7 +221,7 @@ les classes d&rsquo;age (`agegrp`)
 
 ```
 
-#### Deux régressions logistiques
+### Deux régressions logistiques
 
 
 
@@ -195,13 +237,13 @@ les classes d&rsquo;age (`agegrp`)
 
 ```
 
-#### Comparaison
+### Comparaison
 
 
 
 Ajouter au nuage de points les 2 ajustements (la droite et la &ldquo;racine carrée&rdquo;)
 et choisir le meilleur modèle via un critère numérique.
-[ méthode `argsort` sur une colonne du DataFrame et `plt.plot` ]
+[ méthode `argsort` sur une colonne du DataFrame et `plt.plot` ; utiliser le résumé des modèles ]
 
 
 

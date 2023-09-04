@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -41,6 +39,8 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 `KFold` de `sklearn.model_selection`
 
 
+
+
 ```{code-cell} python
 
 ```
@@ -49,14 +49,14 @@ les fonctions `StandardScaler` de `sklearn.preprocessing`,
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
 Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les données sont dans `data/`) et éliminer les deux dernières
-variables (qualitatives) et faites un résumé numérique par variable [méthode
+variables (qualitatives) et faites un résumé numérique par variable [ méthode
 `astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
-DataFrame]
+DataFrame  fs]
 
 
 
@@ -65,7 +65,7 @@ DataFrame]
 
 ```
 
-#### Création des tableaux `numpy`
+### Création des tableaux `numpy`
 
 
 
@@ -79,7 +79,7 @@ avec l&rsquo;aide des méthodes d&rsquo;instance `iloc` ou `loc` créer les tabl
 
 ```
 
-#### Centrage et réduction
+### Centrage et réduction
 
 
 
@@ -98,7 +98,7 @@ suivant
 
 ```
 
-#### Evolution des coefficients selon $\lambda$
+### Evolution des coefficients selon $\lambda$
 
 
 
@@ -115,7 +115,7 @@ de $\lambda$
 
 ```
 
-#### Choix du $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
+### Choix du $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 
 
@@ -131,7 +131,7 @@ trouver le $\hat \lambda$ optimal avec un score  &ldquo;somme des erreurs quadra
 
 ```
 
-#### Retrouver les résultats de la question précédente
+### Retrouver les résultats de la question précédente
 
 
 
@@ -145,7 +145,7 @@ le $\hat \lambda$ optimal (par validation croisée 10 blocs/fold)
 
 ```
 
-#### Prévision
+### Prévision
 
 
 

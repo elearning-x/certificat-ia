@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 # Modules python
 Importer les modules pandas (comme `pd`) numpy (commme `np`)
@@ -38,7 +36,7 @@ et statsmodels.api (comme `sm`)
 
 # Régression multiple (modèle du cours)
 
-### Importation des données
+###Importation des données
 Importer les données d'ozone dans le DataFrame pandas `ozone`
 \[`read_csv` de `numpy`\]. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
@@ -47,7 +45,7 @@ Importer les données d'ozone dans le DataFrame pandas `ozone`
 
 ```
 
-### Estimation du modèle du cours
+## Estimation du modèle du cours
 Nous sommes intéressé par batir un modèle de prévision de l'ozone par 
 une régression multiple. Ce régression expliquera
 le maximum de la concentration en ozone du jour (variable `O3`) par 
@@ -64,7 +62,7 @@ méthode `summary` pour l'instance/modèle ajusté\]
 
 ```
 
-### Résidus \$\varepsilon\$
+## Résidus \$\varepsilon\$
 Afficher le graphique des résidus (attribut `resid` du modèle estimé)
 (avec \$\hat y\$ en abscisse et \$\varepsilon\$ en ordonnée).
 \[`plot` de plt\]
@@ -74,7 +72,7 @@ Afficher le graphique des résidus (attribut `resid` du modèle estimé)
 
 ```
 
-### Résidus \$\varepsilon\$
+## Résidus \$\varepsilon\$
 Afficher le graphique des résidus studentisés par validation croisée (avec \$\hat y\$ en abscisse et 
 \$\varepsilon\$ en ordonnée). Pour cela utiliser la fonction/méthode `get_influence` 
 qui renverra un objet (que l'on nommera `infl`) avec un attribut `resid_studentized_external`
@@ -85,7 +83,7 @@ contenant les résidus souhaités.
 
 ```
 
-### Points leviers
+## Points leviers
 Représenter les \$h_{ii}\$ grâce à `plt.stem` en fonction du numéro de ligne
 \[`np.arange`, attribut `shape` d'un DataFrame, attribut d'instance 
 `hat_matrix_diag` pour `infl`\]
@@ -100,7 +98,7 @@ Nous sommes intéressé par batir un modèle de prévision de l'ozone par
 une régression multiple. Cependant nous ne savons pas trop a priori
 quelles sont les variables utiles. Batissons plusieurs modèles.
 
-### Estimation du modèle du cours
+## Estimation du modèle du cours
 Ce régression expliquera
 le maximum de la concentration en ozone du jour (variable `O3`) par 
 - la température à midi notée `T12`
@@ -116,7 +114,7 @@ méthode `summary` pour l'instance/modèle ajusté\]
 
 ```
 
-### Estimation d'un modèle complémentaire
+## Estimation d'un modèle complémentaire
 Ce régression expliquera
 le maximum de la concentration en ozone du jour (variable `O3`) par 
 - la température à midi notée `T12`
@@ -132,7 +130,7 @@ Estimer le modèle par MCO et faire le résumé.
 
 ```
 
-### Comparer les R2
+## Comparer les R2
 Comparer les R2 des modèles à 3 et 5 variables 
 et expliquer pourquoi cela était attendu.
 
@@ -147,7 +145,7 @@ Les données se trouvent dans le fichier `tprespartiel.dta` et
 `tpbisrespartiel.dta`, l'objectif de ce TP est de montrer que l'analyse
 des résidus partiels peut améliorer la modélisation.
 
-### Importer les données
+## Importer les données
 Vous avez une variable à expliquer \$Y\$
 et quatre variables explicatives dans le fichier `tprespartiel.dta`. Dans Fun Campus les jeux de données sont dans le répertoire `data/`.
 
@@ -156,18 +154,18 @@ et quatre variables explicatives dans le fichier `tprespartiel.dta`. Dans Fun Ca
 
 ```
 
-### Estimation
+## Estimation
 Estimer par MCO les paramètres du modèle \$Y_i=\beta_0 + \beta_1 X_{i,1}+\cdots+
 \beta_4 X_{i,4} + \varepsilon_i.\$
-[`ols` de `smf`, méthode `fit` de la classe `OLS` et 
-méthode `summary` pour l'instance/modèle ajusté]
+\[`ols` de `smf`, méthode `fit` de la classe `OLS` et 
+méthode `summary` pour l'instance/modèle ajusté\]
 
 
 ```{code-cell} python
 
 ```
 
-### Analyser les résidus partiels
+## Analyser les résidus partiels
 Que pensez-vous des résultats ?
 \[`plot_ccpr_grid` du sous module `sm.graphics`\], les résidus partiels sont
 appelés "Component-Component plus Residual"
@@ -178,7 +176,7 @@ appelés "Component-Component plus Residual"
 
 ```
 
-### Amélioration du modèle 
+## Amélioration du modèle 
 Remplacer $X_4$ par $X_5=X_4^2$ dans le modèle précédent. Que pensez-vous de
   la nouvelle modélisation ? On pourra comparer ce modèle à celui de la
   question précédente.
@@ -193,7 +191,7 @@ opérations et fonctions dans les formules
 
 ```
 
-### Analyser les résidus partiels
+## Analyser les résidus partiels
 Analyser les résidus partiels du nouveau modèle et constater
 qu'ils semblent corrects.
 \[`plot_ccpr_grid` du sous module `sm.graphics`\], les résidus partiels sont
@@ -205,7 +203,7 @@ appelés "Component-Component plus Residual"
 
 ```
 
-Faire le même travail pour `tp2bisrespartiel`.
+## Faire le même travail pour `tp2bisrespartiel`.
 
 
 ```{code-cell} python

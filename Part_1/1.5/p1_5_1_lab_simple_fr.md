@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 # Modules python
 Importer les modules pandas (comme `pd`) numpy (commme `np`)
@@ -37,7 +35,7 @@ matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
 
 # Régression simple
 
-### Importation des données
+## Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
@@ -46,7 +44,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 
 ```
 
-### Nuage de points
+## Nuage de points
 Tracer le nuage de points avec `circ` en  abscisses et `ht` en ordonnées
 \[`plt.plot`\]
 
@@ -55,7 +53,7 @@ Tracer le nuage de points avec `circ` en  abscisses et `ht` en ordonnées
 
 ```
 
-### Régression simple
+## Régression simple
 Effectuer une régression linéaire simple où `circ` est  la variable
 explicative et `ht` la variable à expliquer. Stocker le résultat
 dans l'objet `reg` et 
@@ -71,7 +69,7 @@ attributs `params` et `scale`.\]
 
 ```
 
-### Résidus
+## Résidus
 Représenter graphiquement les résidus avec
 1. en abscisse la variable `circ` et en ordonnée les résidus;
 2. en abscisse l'ajustement \$\hat y\$ et en ordonnée les résidus;
@@ -87,7 +85,7 @@ du DataFrame\]
 
 # Variabilité de l'estimation
 
-### Importation des données
+## Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
@@ -109,7 +107,7 @@ Faire 500 fois les étapes suivantes
 
 ```
 
-### Variabilité de \$\hat \beta_2\$
+## Variabilité de \$\hat \beta_2\$
 Représenter la variabilité de la variable aléatoire  \$\hat \beta_2\$.
 \[une fonction de `plt`...\]
 
@@ -130,7 +128,7 @@ entre les deux paramètres.
 
 # Deux modèles
 
-### Importation des données
+## Importation des données
 Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 \[`read_csv` de `numpy`\]. Sur Fun Campus le chemin est `data/eucalyptus.txt`.
 
@@ -139,7 +137,7 @@ Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
 
 ```
 
-### Nuage de points
+## Nuage de points
 Tracer le nuage de points avec `circ` en  abscisses et `ht` en ordonnées
 et constater que les points ne sont pas exactement autour
 d'une droite mais plutôt une courbe qui est de type "racine carrée"
@@ -150,7 +148,7 @@ d'une droite mais plutôt une courbe qui est de type "racine carrée"
 
 ```
 
-### Deux régressions simples
+## Deux régressions simples
 1. Effectuer une régression linéaire simple où `circ` est
    la variable explicative et `ht` la variable à expliquer.
    Stocker le résultat dans l'objet `reg`
@@ -167,7 +165,7 @@ méthode `summary` pour l'instance/modèle ajusté\]
 
 ```
 
-### Comparaison
+## Comparaison
 Ajouter au nuage de points les 2 ajustements (la droite et la "racine carrée")
 et choisir le meilleur modèle.
 \[méthode `argsort` sur une colonne du DataFrame et `plt.plot`\]

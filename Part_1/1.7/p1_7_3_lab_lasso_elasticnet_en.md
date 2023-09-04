@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -34,15 +32,16 @@ nbhosting:
 
 
 
--   Import the modules pandas (as `pd`) and numpy (as `np`)
--   Import the sub-module `pyplot` from `matplotlib` as `plt`
--   Import the function `StandardScaler` from `sklearn.preprocessing`
--   Import the function `Lasso` from `sklearn.linear_model`
--   Import the function `LassoCV` from `sklearn.linear_model`
--   Import the function `ElasticNet` from `sklearn.linear_model`
--   Import the function `ElasticNetCV` from `sklearn.linear_model`
--   Import the function `cross_val_predict` from `sklearn.model_selection`
--   Import the function `KFold` from `sklearn.model_selection`
+Import the modules pandas (as `pd`) and numpy (as `np`)
+Import the sub-module `pyplot` from `matplotlib` as `plt`
+Import the function `StandardScaler` from `sklearn.preprocessing`
+Import the function `Lasso` from `sklearn.linear_model`
+Import the function `LassoCV` from `sklearn.linear_model`
+Import the function `ElasticNet` from `sklearn.linear_model`
+Import the function `ElasticNetCV` from `sklearn.linear_model`
+Import the function `cross_val_predict` from `sklearn.model_selection`
+Import the function `KFold` from `sklearn.model_selection`
+
 
 
 
@@ -115,7 +114,7 @@ The function `LassoCV` directly provides the $\lambda$ grid (unlike Ridge). Use 
 
 
 
-#### Splitting into 10 Blocks
+### Splitting into 10 Blocks
 
 
 
@@ -128,7 +127,7 @@ Split the dataset into 10 blocks using the [KFold](https://scikit-learn.org/stab
 
 ```
 
-#### Optimal $\hat\lambda$ Selection
+### Optimal $\hat\lambda$ Selection
 
 
 
@@ -141,7 +140,7 @@ Find the optimal $\hat\lambda$ by computing the &ldquo;sum of quadratic errors p
 
 ```
 
-#### Retrieving Results from Previous Step
+### Retrieving Results from Previous Step
 
 
 
@@ -154,7 +153,7 @@ Use the `LassoCV` function and the `kf` object to retrieve the optimal $\hat\lam
 
 ```
 
-#### Prediction
+### Prediction
 
 
 

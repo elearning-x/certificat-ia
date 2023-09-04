@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -70,6 +68,8 @@ from sklearn.metrics import make_scorer
 
 Import the ozone data `ozonecomplet.csv` and remove the last two qualitative variables
 Summarize each variable using methods `astype` on DataFrame columns and `describe` on DataFrame instance
+
+
 
 
 ```{code-cell} python
@@ -223,11 +223,11 @@ print(er.coef_)
 print(pipe.predict(X[1,:].reshape(1,10)))
 ```
 
-#### Coefficient Evolution with $\lambda$
+### Coefficient Evolution with $\lambda$
 
 
 
-##### Calculating a $\lambda$ Grid
+#### Calculating a $\lambda$ Grid
 
 
 
@@ -247,7 +247,7 @@ l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
 alphas_ridge = l0*100*10**(llc)
 ```
 
-##### Plotting the Evolution of $\hat\beta(\lambda)$
+#### Plotting the Evolution of $\hat\beta(\lambda)$
 
 
 
@@ -290,11 +290,11 @@ As $\lambda$ increase the values of  $\hat\beta(\lambda)$ are shrunk (toward the
 
 
 
-#### Optimal $\hat\lambda$ (10-fold Cross Validation)
+### Optimal $\hat\lambda$ (10-fold Cross Validation)
 
 
 
-##### Separating into 10 Blocks
+#### Separating into 10 Blocks
 
 
 
@@ -307,7 +307,7 @@ Split the dataset into 10 blocks using the [KFold](https://scikit-learn.org/stab
 kf = KFold(n_splits = 10, shuffle=True, random_state=0)
 ```
 
-##### Selecting the Optimal $\hat\lambda$
+#### Selecting the Optimal $\hat\lambda$
 
 
 
@@ -334,7 +334,7 @@ for app_index, val_index in kf.split(X):
         res.iloc[val_index,j] = rr.predict(Xval)
 ```
 
-##### Optimal $\hat\lambda$ Selection
+#### Optimal $\hat\lambda$ Selection
 
 
 
@@ -348,7 +348,7 @@ sse = res.apply(lambda x: ((x-y)**2).sum(), axis=0)
 print(alphas_ridge[sse.argmin()])
 ```
 
-##### Graphical Representation
+#### Graphical Representation
 
 
 
@@ -361,7 +361,7 @@ Plot the logarithms of the values of $\lambda$ on the grid against the calculate
 plt.plot(np.log(alphas_ridge), sse, "-")
 ```
 
-#### Quick Modeling
+### Quick Modeling
 
 
 

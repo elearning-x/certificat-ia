@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -66,7 +66,7 @@ RES = pd.DataFrame(ozone.maxO3)
 
 
 
-#### Full OLS
+### Full OLS
 
 
 
@@ -82,7 +82,7 @@ for app_index, val_index in kf.split(X):
     RES.MCO.iloc[val_index] = reg_lin.predict(Xval).ravel()
 ```
 
-#### BIC-based Model Selection for OLS
+### BIC-based Model Selection for OLS
 
 
 

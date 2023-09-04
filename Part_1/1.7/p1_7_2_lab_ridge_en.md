@@ -20,11 +20,9 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
@@ -34,14 +32,16 @@ nbhosting:
 
 
 
--   Import the modules pandas (as `pd`) and numpy (as `np`)
--   Import the sub-module `pyplot` from `matplotlib` as `plt`
--   Import the function `StandardScaler` from `sklearn.preprocessing`
--   Import the function `Ridge` from `sklearn.linear_model`
--   Import the function `RidgeCV` from `sklearn.linear_model`
--   Import the function `Pipeline` from `sklearn.pipeline`
--   Import the function `cross_val_predict` from `sklearn.model_selection`
--   Import the function `KFold` from `sklearn.model_selection`
+Import the modules pandas (as `pd`) and numpy (as `np`)
+Import the sub-module `pyplot` from `matplotlib` as `plt`
+Import the function `StandardScaler` from `sklearn.preprocessing`
+Import the function `Ridge` from `sklearn.linear_model`
+Import the function `RidgeCV` from `sklearn.linear_model`
+Import the function `Pipeline` from `sklearn.pipeline`
+Import the function `cross_val_predict` from `sklearn.model_selection`
+Import the function `KFold` from `sklearn.model_selection`
+
+
 
 
 ```{code-cell} python
@@ -139,7 +139,7 @@ Since we need to remove mean and divide by standard deviation for new values, le
 
 
 
-#### Calculating a $\lambda$ grid
+### Calculating a $\lambda$ grid
 
 
 
@@ -159,7 +159,7 @@ Create this grid using `np.linspace`, `transpose` method, `dot` and `max` (don&r
 
 ```
 
-#### Plotting Coefficient Evolution with $\lambda$
+### Plotting Coefficient Evolution with $\lambda$
 
 
 
@@ -176,7 +176,7 @@ Plot the coefficients $\hat\beta(\lambda)$ against the logarithm of $\lambda$ va
 
 
 
-#### Splitting into 10 Folds
+### Splitting into 10 Folds
 
 
 
@@ -189,7 +189,7 @@ Split the data into 10 folds using the [KFold](https://scikit-learn.org/stable/m
 
 ```
 
-#### Selecting Optimal $\hat\lambda$
+### Selecting Optimal $\hat\lambda$
 
 
 
@@ -210,7 +210,7 @@ Split the data into 10 folds using the [KFold](https://scikit-learn.org/stable/m
 
 ```
 
-#### Visualizing SSE evolution with $\lambda$
+### Visualizing SSE evolution with $\lambda$
 
 
 
@@ -223,7 +223,7 @@ Plot the logarithm of $\lambda$ values from the grid on the x-axis and the calcu
 
 ```
 
-#### Quick Modeling
+### Quick Modeling
 
 
 

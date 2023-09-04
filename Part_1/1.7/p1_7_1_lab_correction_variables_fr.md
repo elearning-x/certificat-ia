@@ -20,18 +20,19 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
 
 ## Modules
 
 
 
--   Importer les modules pandas (comme `pd`) numpy (commme `np`)
--   matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
+Importer les modules pandas (comme `pd`) numpy (commme `np`)
+matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme
+`smf`).
+
+
 
 
 ```{code-cell} python
@@ -45,14 +46,15 @@ import statsmodels.formula.api as smf
 
 
 
-#### Importation des données
+### Importation des données
 
 
 
-Importer les données d&rsquo;ozone `ozonecomplet.csv` et éliminer les deux dernières
-variables (qualitatives) et faites un résumé numérique par variable [méthode
-`astype` sur la colonne du DataFrame et méthode `describe` sur l&rsquo;instance
-DataFrame]
+Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les
+données sont dans le répertoire `data/`) et éliminer les deux dernières
+variables (qualitatives) et faites un résumé numérique par variable
+[ méthode `astype` sur la colonne du DataFrame et méthode `describe` sur
+l&rsquo;instance DataFrame ]
 
 
 
@@ -63,167 +65,35 @@ ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
 ```
 
+### Sélection descendante/backward
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+Proposer une fonction qui permet la sélection descendante/backward. Elle
+utilisera les formules de `statsmodels` et incluera toujours la
+constante. En entrée serviront trois arguments: le DataFrame des
+données, la formule de départ et le critère (AIC ou BIC). La fonction
+retournera le modèle estimé via `smf.ols`
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+La fonction commence avec le modèle complet.
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>O3</th>
-      <th>T9</th>
-      <th>T12</th>
-      <th>T15</th>
-      <th>Ne9</th>
-      <th>Ne12</th>
-      <th>Ne15</th>
-      <th>Vx9</th>
-      <th>Vx12</th>
-      <th>Vx15</th>
-      <th>O3v</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-      <td>112.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>90.303571</td>
-      <td>18.360714</td>
-      <td>21.526786</td>
-      <td>22.627679</td>
-      <td>4.928571</td>
-      <td>5.017857</td>
-      <td>4.830357</td>
-      <td>-1.214346</td>
-      <td>-1.611004</td>
-      <td>-1.690683</td>
-      <td>90.571429</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>28.187225</td>
-      <td>3.122726</td>
-      <td>4.042321</td>
-      <td>4.530859</td>
-      <td>2.594916</td>
-      <td>2.281860</td>
-      <td>2.332259</td>
-      <td>2.632742</td>
-      <td>2.795673</td>
-      <td>2.810198</td>
-      <td>28.276853</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>42.000000</td>
-      <td>11.300000</td>
-      <td>14.000000</td>
-      <td>14.900000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>-7.878500</td>
-      <td>-7.878500</td>
-      <td>-9.000000</td>
-      <td>42.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>70.750000</td>
-      <td>16.200000</td>
-      <td>18.600000</td>
-      <td>19.275000</td>
-      <td>3.000000</td>
-      <td>4.000000</td>
-      <td>3.000000</td>
-      <td>-3.276450</td>
-      <td>-3.564700</td>
-      <td>-3.939200</td>
-      <td>71.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>81.500000</td>
-      <td>17.800000</td>
-      <td>20.550000</td>
-      <td>22.050000</td>
-      <td>6.000000</td>
-      <td>5.000000</td>
-      <td>5.000000</td>
-      <td>-0.866000</td>
-      <td>-1.879400</td>
-      <td>-1.549650</td>
-      <td>82.500000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>106.000000</td>
-      <td>19.925000</td>
-      <td>23.550000</td>
-      <td>25.400000</td>
-      <td>7.000000</td>
-      <td>7.000000</td>
-      <td>7.000000</td>
-      <td>0.694600</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>106.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>166.000000</td>
-      <td>27.000000</td>
-      <td>33.500000</td>
-      <td>35.500000</td>
-      <td>8.000000</td>
-      <td>8.000000</td>
-      <td>8.000000</td>
-      <td>5.196200</td>
-      <td>6.577800</td>
-      <td>5.000000</td>
-      <td>166.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+-   Nous séparons la variable réponse (objet `response`) des variables explicatives,
+-   Ces dernières sont transformées en un ensemble (objet `start_explanatory`),
+-   L&rsquo;ensemble le plus petit est l&rsquo;ensemble vide (objet `lower_explanatory`),
+-   Les variables potentielles à supprimer sont obtenues par différence (objet `remove`),
 
+Nous initialisons l&rsquo;ensemble des variables sélectionnées (objet `selected`) et réalisons notre première formule en utilisant toutes les variables sélectionnées. En utilisant `smf.ols` nous obtenons l&rsquo;AIC ou le BIC du modèle de départ (`current_score`).
 
+La boucle while commence :
 
-#### Sélection descendante/backward
+-   pour chaque variable (boucle for) à supprimer, nous effectuons une régression avec l&rsquo;ensemble actuel des variables moins cette variable candidate.
+    Nous construisons une liste de triplets `score` (AIC/BIC), signe (toujours &ldquo;-&rdquo;  car nous effectuons une sélection backward) et la variable candidate à supprimer du modèle actuel.
 
+-   A la fin de la boucle for, nous trions toute la liste des triplets en utilisant le score et si le meilleur triplet a
+    un `score` meilleur que `current_score` nous mettons à jour `remove`, `selected` et `current_score`,
+    si ce n&rsquo;est pas le cas, nous interrompons la boucle while.
 
-
-Proposer une fonction qui permet la sélection descendante/backward. Elle utilisera
-les formules de `statsmodels` et incluera toujours la constante. En entrée serviront
-trois arguments: le DataFrame des données, la formule de départ et le critère (AIC ou BIC).
-La fonction retournera le modèle estimé via `smf.ols`
+A la fin, nous ajustons le modèle actuel et le renvoyons comme résultat.
 
 
 
@@ -304,154 +174,20 @@ def olsbackward(data, start, crit="aic", verbose=False):
     return model
 ```
 
+La mise en oeuvre
+
+
+
 
 ```{code-cell} python
 modelefinal = olsbackward(ozone,"O3~T9+T12+T15+Ne9+Ne12+Ne15+Vx9+Vx12+Vx15+O3v", verbose=True)
 ```
 
-    ----------------------------------------------
-    (925.1002020679311, 'Starting', {'Vx15', 'O3v', 'T15', 'Vx12', 'T12', 'Ne15', 'Ne12', 'T9', 'Ne9', 'Vx9'})
-    (923.3317000545144, '-', 'Vx15')
-    (953.3560377543913, '-', 'O3v')
-    (923.363923324606, '-', 'T15')
-    (923.1011713799451, '-', 'Vx12')
-    (925.7333732341065, '-', 'T12')
-    (923.1374214147936, '-', 'Ne15')
-    (923.2052359512816, '-', 'Ne12')
-    (923.1005187562648, '-', 'T9')
-    (928.9798518527307, '-', 'Ne9')
-    (924.2910760882157, '-', 'Vx9')
-    ----------------------------------------------
-    (923.1005187562648, 'New Current', {'Vx15', 'O3v', 'T15', 'Vx12', 'T12', 'Ne15', 'Ne12', 'Ne9', 'Vx9'})
-    (921.3343370195821, '-', 'Vx15')
-    (954.0035689902516, '-', 'O3v')
-    (921.3657520095587, '-', 'T15')
-    (921.1012966914407, '-', 'Vx12')
-    (924.4976674984907, '-', 'T12')
-    (921.1374374227578, '-', 'Ne15')
-    (921.2193530155344, '-', 'Ne12')
-    (927.2908775332714, '-', 'Ne9')
-    (922.5113099067607, '-', 'Vx9')
-    ----------------------------------------------
-    (921.1012966914407, 'New Current', {'Vx15', 'O3v', 'T15', 'T12', 'Ne15', 'Ne12', 'Ne9', 'Vx9'})
-    (919.5284389936069, '-', 'Vx15')
-    (952.0058285995476, '-', 'O3v')
-    (919.3697661183905, '-', 'T15')
-    (922.529192489462, '-', 'T12')
-    (919.1382882547716, '-', 'Ne15')
-    (919.2255235409766, '-', 'Ne12')
-    (925.2995877582118, '-', 'Ne9')
-    (920.8093672514524, '-', 'Vx9')
-    ----------------------------------------------
-    (919.1382882547716, 'New Current', {'Vx15', 'O3v', 'T15', 'T12', 'Ne12', 'Ne9', 'Vx9'})
-    (917.5415291187271, '-', 'Vx15')
-    (950.0081756555403, '-', 'O3v')
-    (917.3810597522813, '-', 'T15')
-    (922.2442506031016, '-', 'T12')
-    (917.2255825403324, '-', 'Ne12')
-    (923.4905604684955, '-', 'Ne9')
-    (918.8728607212622, '-', 'Vx9')
-    ----------------------------------------------
-    (917.2255825403324, 'New Current', {'Vx15', 'O3v', 'T15', 'T12', 'Ne9', 'Vx9'})
-    (915.6416421263025, '-', 'Vx15')
-    (948.1690191516109, '-', 'O3v')
-    (915.4700257339703, '-', 'T15')
-    (920.6465496282251, '-', 'T12')
-    (926.2439264465465, '-', 'Ne9')
-    (917.0243089102432, '-', 'Vx9')
-    ----------------------------------------------
-    (915.4700257339703, 'New Current', {'Vx15', 'O3v', 'T12', 'Ne9', 'Vx9'})
-    (913.8666234696386, '-', 'Vx15')
-    (947.3509351899581, '-', 'O3v')
-    (944.669544463007, '-', 'T12')
-    (924.8804583198719, '-', 'Ne9')
-    (915.4175462175649, '-', 'Vx9')
-    ----------------------------------------------
-    (913.8666234696386, 'New Current', {'T12', 'O3v', 'Vx9', 'Ne9'})
-    (942.7179924848651, '-', 'T12')
-    (945.5729308215273, '-', 'O3v')
-    (916.5904254533016, '-', 'Vx9')
-    (925.5014911907435, '-', 'Ne9')
-    ----------------------------------------------
-    (913.8666234696386, 'Final', {'T12', 'O3v', 'Vx9', 'Ne9'})
+Le modèle sélectionné
+
 
 
 
 ```{code-cell} python
 modelefinal.summary()
-```
-
-
-
-
-<table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>O3</td>        <th>  R-squared:         </th> <td>   0.762</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.753</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   85.75</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Wed, 12 Jul 2023</td> <th>  Prob (F-statistic):</th> <td>1.76e-32</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>16:34:59</td>     <th>  Log-Likelihood:    </th> <td> -451.93</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   112</td>      <th>  AIC:               </th> <td>   913.9</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>   107</td>      <th>  BIC:               </th> <td>   927.5</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     4</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td>   12.6313</td> <td>   11.001</td> <td>    1.148</td> <td> 0.253</td> <td>   -9.177</td> <td>   34.439</td>
-</tr>
-<tr>
-  <th>T12</th>       <td>    2.7641</td> <td>    0.475</td> <td>    5.825</td> <td> 0.000</td> <td>    1.823</td> <td>    3.705</td>
-</tr>
-<tr>
-  <th>O3v</th>       <td>    0.3548</td> <td>    0.058</td> <td>    6.130</td> <td> 0.000</td> <td>    0.240</td> <td>    0.470</td>
-</tr>
-<tr>
-  <th>Vx9</th>       <td>    1.2929</td> <td>    0.602</td> <td>    2.147</td> <td> 0.034</td> <td>    0.099</td> <td>    2.487</td>
-</tr>
-<tr>
-  <th>Ne9</th>       <td>   -2.5154</td> <td>    0.676</td> <td>   -3.722</td> <td> 0.000</td> <td>   -3.855</td> <td>   -1.176</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 8.790</td> <th>  Durbin-Watson:     </th> <td>   1.944</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.012</td> <th>  Jarque-Bera (JB):  </th> <td>  17.762</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.156</td> <th>  Prob(JB):          </th> <td>0.000139</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 4.926</td> <th>  Cond. No.          </th> <td>    810.</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-
-
-
-
-```{code-cell} python
-
 ```
