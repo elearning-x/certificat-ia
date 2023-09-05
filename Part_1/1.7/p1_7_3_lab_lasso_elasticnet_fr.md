@@ -20,9 +20,11 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
 
 ## Modules
 

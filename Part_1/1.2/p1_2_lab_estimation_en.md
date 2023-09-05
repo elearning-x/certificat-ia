@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Solution to Point Estimation'
+  title: 'Point Estimation'
   version: '1.0'
 ---
 

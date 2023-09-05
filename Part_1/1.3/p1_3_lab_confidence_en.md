@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Solution to Confidence Intervals'
+  title: 'Confidence Intervals'
   version: '1.0'
 ---
 

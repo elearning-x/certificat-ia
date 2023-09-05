@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Solution to Statistical Tests'
+  title: 'Statistical Tests'
   version: '1.0'
 ---
 
