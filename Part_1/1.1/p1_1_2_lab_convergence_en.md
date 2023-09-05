@@ -166,8 +166,6 @@ successive values of $p_n = \frac{1}{n}\sum_{i=1}^n X_i$ for $n \in [1, N]$.
 
 ```
 
-This plot illustrate the strong law of large numberss that states that $p_n$ converges almost surely to the expectation of $X$.
-
 14. Plot several simulations of $[p_1-m, \dots, \sqrt{N}(p_N-m)]$ as a function of $n\in [1, N]$ (where $m$ is the expectation of $X$) and justify what $\sqrt{n}(p_n - m)$ doesn't converge almost-surely.
 
 
