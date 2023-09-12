@@ -20,7 +20,7 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -31,9 +31,9 @@ import pandas as pd
 import statsmodels.formula.api as smf
 # scikitlearn
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression,  Ridge, ElasticNet, Lasso
+from sklearn.linear_model import LinearRegression,  Ridge, ElasticNetCV, LassoCV
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import KFold  GridSearchCV
+from sklearn.model_selection import KFold,  GridSearchCV
 ```
 
 ## Data
@@ -179,7 +179,9 @@ for app_index, val_index in kf.split(X):
     yapp = y.iloc[app_index, :]
     Xval = X.iloc[val_index, :]
     yval = y.iloc[val_index, :]
-    reg_bic = olsbackward(Xapp, 'maxO3v~ T6+T9+T12+T15+T18+Ne6+Ne9+Ne12+Ne15+Ne18+Vx6+Vy6+Vx9+Vy9+Vx12+Vy12+Vx15+Vy15+Vx18+Vy18')
+    dfapp = Xapp.copy()
+    dfapp["maxO3"] = yapp
+    reg_bic = olsbackward(dfapp, 'maxO3~ T6+T9+T12+T15+T18+Ne6+Ne9+Ne12+Ne15+Ne18+Vx6+Vy6+Vx9+Vy9+Vx12+Vy12+Vx15+Vy15+Vx18+Vy18+max03v')
     RES.choix.iloc[val_index] = reg_bic.predict(Xval).values
 ```
 
@@ -220,3 +222,19 @@ for app_index, val_index in kf.split(X):
     RES.enet.iloc[val_index] = pipe_enetcv.predict(Xval).ravel()
     RES.ridge.iloc[val_index] = cv_ridge.predict(Xval).ravel()
 ```
+
+# Model Selection
+
+prediction mean squared error can be calculated as
+
+
+
+
+```{code-cell} python
+prev = RES.iloc[:,1:]
+print((prev.sub(RES.maxO3, axis=0)**2).mean())
+```
+
+The best modeling have the smaller MSE. We can notice that they have almost the same MSE. To improve the modeling other explanatory variables should be found.
+
+

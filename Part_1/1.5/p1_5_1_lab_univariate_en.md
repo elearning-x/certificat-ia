@@ -20,19 +20,12 @@ nbhosting:
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
+<span>Lisa Bedin<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-+++
-
 # Modules python
 Load pandas (as pd) numpy (as np) matplotlib.pyplot (as plt) et statsmodels.formula.api (as smf).
-
-
-```{code-cell} python
-
-```
 
 # Simple Regression
 
