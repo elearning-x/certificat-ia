@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Solutions to Lab session on Ridge Regression
+  title: 'Solutions to Lab session on Ridge Regression'
   version: '1.0'
 ---
 

@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: TP Inférence
+  title: 'TP Inférence'
   version: '1.0'
 ---
 

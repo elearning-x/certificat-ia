@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: TP de comparaison des méthodes de régressions
+  title: 'TP de comparaison des méthodes de régressions'
   version: '1.0'
 ---
 

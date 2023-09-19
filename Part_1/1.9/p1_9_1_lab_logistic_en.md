@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Lab Session on Logistic Regression
+  title: 'Lab Session on Logistic Regression'
   version: '1.0'
 ---
 

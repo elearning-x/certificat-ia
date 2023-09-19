@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Correction de la régression multiple
+  title: 'Correction de la régression multiple'
   version: '1.0'
 ---
 

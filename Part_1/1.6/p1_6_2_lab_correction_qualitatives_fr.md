@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Correction du TP variables qualitatives
+  title: 'Correction du TP variables qualitatives'
   version: '1.0'
 ---
 

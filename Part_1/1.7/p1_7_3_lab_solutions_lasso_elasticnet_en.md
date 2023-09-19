@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Solutions to Lab session on Lasso and Elastic-Net
+  title: 'Solutions to Lab session on Lasso and Elastic-Net'
   version: '1.0'
 ---
 

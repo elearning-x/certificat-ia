@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Solutions to Lab Session on Variable Selection
+  title: 'Solutions to Lab Session on Variable Selection'
   version: '1.0'
 ---
 

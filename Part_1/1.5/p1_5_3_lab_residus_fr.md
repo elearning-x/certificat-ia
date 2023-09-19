@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: TP résidus
+  title: 'TP résidus'
   version: '1.0'
 ---
 

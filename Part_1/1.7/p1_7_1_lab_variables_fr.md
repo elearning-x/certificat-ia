@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: TP choix de variables
+  title: 'TP choix de variables'
   version: '1.0'
 ---
 

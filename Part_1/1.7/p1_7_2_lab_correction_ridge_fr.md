@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Correction du TP régression ridge
+  title: 'Correction du TP régression ridge'
   version: '1.0'
 ---
 
