@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Lab session on Ridge Regression'
+  title: Lab session on Ridge Regression
   version: '1.0'
 ---
 
@@ -24,64 +24,40 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-## Modules
+# Modules
 
 
+## Importing modules
 
-### Importing modules
-
-
-
-Import the modules pandas (as `pd`) and numpy (as `np`)
-Import the sub-module `pyplot` from `matplotlib` as `plt`
-Import the function `StandardScaler` from `sklearn.preprocessing`
-Import the function `Ridge` from `sklearn.linear_model`
-Import the function `RidgeCV` from `sklearn.linear_model`
-Import the function `Pipeline` from `sklearn.pipeline`
-Import the function `cross_val_predict` from `sklearn.model_selection`
-Import the function `KFold` from `sklearn.model_selection`
-
-
-
+Import the modules pandas (as `pd`) and numpy (as `np`) Import the sub-module `pyplot` from `matplotlib` as `plt` Import the function `StandardScaler` from `sklearn.preprocessing` Import the function `Ridge` from `sklearn.linear_model` Import the function `RidgeCV` from `sklearn.linear_model` Import the function `Pipeline` from `sklearn.pipeline` Import the function `cross_val_predict` from `sklearn.model_selection` Import the function `KFold` from `sklearn.model_selection`
 
 ```{code-cell} python
 
 ```
 
-## Ridge Regression on Ozone Data
+
+# Ridge Regression on Ozone Data
 
 
+## Importing Data
 
-### Importing Data
-
-
-
-Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is in `data/`) and remove the last two qualitative variables
-Summarize each variable using methods `astype` on DataFrame columns and `describe` on DataFrame instance
-
-
-
+Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is in `data/`) and remove the last two qualitative variables Summarize each variable using methods `astype` on DataFrame columns and `describe` on DataFrame instance
 
 ```{code-cell} python
 
 ```
 
-### Creating numpy Arrays
 
-
+## Creating numpy Arrays
 
 Create numpy arrays `y` and `X` using instance methods `iloc` or `loc` (using the underlying `values` attribute of DataFrame)
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Centering and Scaling
 
-
+## Centering and Scaling
 
 Center and scale variables using `StandardScaler` with the following steps:
 
@@ -89,16 +65,12 @@ Center and scale variables using `StandardScaler` with the following steps:
 2.  Fit the instance using `fit` method with the numpy array `X`
 3.  Transform the array `X` to a scaled array using `transform` method
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Ridge Regression Calculation for $\lambda=0.00485$
 
-
+## Ridge Regression Calculation for $\lambda=0.00485$
 
 1.  Estimation/fitting: Use centered and scaled data for $X$ and vector `y` to estimate Ridge regression model:
     -   Instantiate a `Ridge` model (note: in scikit-learn, $\lambda$ is denoted as $\alpha$ for Ridge, Lasso, and Elastic-Net)
@@ -106,42 +78,33 @@ Center and scale variables using `StandardScaler` with the following steps:
 2.  Display $\hat\beta(\lambda)$
 3.  Predict a value for $x^*=(17, 18.4, 5, 5, 7, -4.3301, -4, -3, 87)'$ (the second row of the initial table)
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Pipeline
 
+## Pipeline
 
-
-Since we need to remove mean and divide by standard deviation for new values, let&rsquo;s automate the process:
+Since we need to remove mean and divide by standard deviation for new values, let's automate the process:
 
 -   Verify that `scalerX.transform(X[1,:].reshape(1, 10))` yields `Xcr[1,:]`
--   Automate the sequence &ldquo;transform X&rdquo; followed by &ldquo;modeling&rdquo; using a [Pipeline](https://scikit-learn.org/stable/tutorial/statistical_inference/putting_together.html):
+-   Automate the sequence "transform X" followed by "modeling" using a [Pipeline](https://scikit-learn.org/stable/tutorial/statistical_inference/putting_together.html):
     1.  Create a `StandardScaler` instance
     2.  Create a Ridge Regression instance
     3.  Create a `Pipeline` instance with `steps` argument as a list of tuples (step name and instance from previous steps)
     4.  Fit this pipeline instance using `fit` method with `X` and `y` data
-    5.  Retrieve $\hat\beta(\lambda)$ by accessing the &ldquo;ridge&rdquo; (chosen step name) coordinate of the `named_steps` attribute
+    5.  Retrieve $\hat\beta(\lambda)$ by accessing the "ridge" (chosen step name) coordinate of the `named_steps` attribute
     6.  Retrieve adjustment for $x^*$
-
-
-
 
 ```{code-cell} python
 
 ```
 
-### Coefficient Evolution with $\lambda$
+
+## Coefficient Evolution with $\lambda$
 
 
-
-### Calculating a $\lambda$ grid
-
-
+## Calculating a $\lambda$ grid
 
 Create a grid similar to lasso grid, based on:
 
@@ -150,89 +113,59 @@ Create a grid similar to lasso grid, based on:
 3.  Multiply the grid by $\lambda_0$
 4.  For Ridge regression, multiply the above grid (lasso grid) by $100$ or $1000$
 
-Create this grid using `np.linspace`, `transpose` method, `dot` and `max` (don&rsquo;t forget the `shape` attribute for $n$)
-
-
-
+Create this grid using `np.linspace`, `transpose` method, `dot` and `max` (don't forget the `shape` attribute for $n$)
 
 ```{code-cell} python
 
 ```
 
-### Plotting Coefficient Evolution with $\lambda$
 
-
+## Plotting Coefficient Evolution with $\lambda$
 
 Plot the coefficients $\hat\beta(\lambda)$ against the logarithm of $\lambda$ values from the grid
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Optimal $\hat\lambda$ (by 10-fold Cross Validation)
+
+## Optimal $\hat\lambda$ (by 10-fold Cross Validation)
 
 
-
-### Splitting into 10 Folds
-
-
+## Splitting into 10 Folds
 
 Split the data into 10 folds using the [KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html#sklearn.model_selection.KFold) function, creating an instance named `kf`
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Selecting Optimal $\hat\lambda$
 
-
+## Selecting Optimal $\hat\lambda$
 
 1.  Create a DataFrame `res` with 100 columns of zeros
 2.  Loop through all folds; use `split` method on `kf` with `X` data
-3.  For each fold iteration:
-    
-    1.  Estimate Ridge models for each $\lambda$ from the grid using data from 9 training folds
-    2.  Predict the data from the validation fold
-    3.  Store the predicted values in corresponding rows of `res` for the 100 Ridge models
-    
-    Calculate the optimal model (and $\hat\lambda$) based on the sum of squared error (SSE) $\|Y - \hat Y(\lambda)\|^2$ using the `apply` method on `res` and `argmin`
-
-
-
+3.  For each fold iteration: a. Estimate Ridge models for each $\lambda$ from the grid using data from 9 training folds b. Predict the data from the validation fold c. Store the predicted values in corresponding rows of `res` for the 100 Ridge models Calculate the optimal model (and $\hat\lambda$) based on the sum of squared error (SSE) $\|Y - \hat Y(\lambda)\|^2$ using the `apply` method on `res` and `argmin`
 
 ```{code-cell} python
 
 ```
 
-### Visualizing SSE evolution with $\lambda$
 
-
+## Visualizing SSE evolution with $\lambda$
 
 Plot the logarithm of $\lambda$ values from the grid on the x-axis and the calculated SSE (previous question) on the y-axis
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Quick Modeling
 
-
+## Quick Modeling
 
 1.  The previous questions can be combined quickly using `cross_val_predict` (manually calculate the grid):
 2.  For RidgeCV, use the `'neg_mean_squared_error'` loss in the `scoring` argument and get almost the same
-3.  Construct a score &ldquo;sum of quadratic errors per fold&rdquo; using `make_scorer` and use it in RidgeCV to get the result of the first question (manually calculate the grid)
-
-
-
+3.  Construct a score "sum of quadratic errors per fold" using `make_scorer` and use it in RidgeCV to get the result of the first question (manually calculate the grid)
 
 ```{code-cell} python
 

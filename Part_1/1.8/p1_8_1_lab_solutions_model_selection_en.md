@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Solutions to Lab Session on Model Selection'
+  title: Solutions to Lab Session on Model Selection
   version: '1.0'
 ---
 
@@ -24,22 +24,21 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
+# Modules
+
 ```{code-cell} python
 import scipy
 import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
-# scikitlearn
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression,  Ridge, ElasticNetCV, LassoCV
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold,  GridSearchCV
 ```
 
-## Data
 
-
-
+# Data
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozone_transf.txt", header=0, sep=";", index_col=0)
@@ -48,28 +47,22 @@ X = ozone.iloc[:, 1:]
 y = ozone.iloc[:, :1]
 ```
 
-## 10-fold Cross-validation and Results DataFrame
 
-
-
+# 10-fold Cross-validation and Results DataFrame
 
 ```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 RES = pd.DataFrame(ozone.maxO3)
 ```
 
-## Initial Models
+
+# Initial Models
 
 
-
-### Multiple Regression
-
+## Multiple Regression
 
 
 ### Full OLS
-
-
-
 
 ```{code-cell} python
 RES = RES.assign(MCO=0.0)
@@ -82,14 +75,10 @@ for app_index, val_index in kf.split(X):
     RES.MCO.iloc[val_index] = reg_lin.predict(Xval).ravel()
 ```
 
+
 ### BIC-based Model Selection for OLS
 
-
-
 Backward selection (seen in a previous lab session)
-
-
-
 
 ```{code-cell} python
 def olsbackward(data, start, crit="aic", verbose=False):
@@ -169,9 +158,6 @@ def olsbackward(data, start, crit="aic", verbose=False):
 
 and the modeling
 
-
-
-
 ```{code-cell} python
 RES = RES.assign(choix=0.0)
 for app_index, val_index in kf.split(X):
@@ -181,14 +167,12 @@ for app_index, val_index in kf.split(X):
     yval = y.iloc[val_index, :]
     dfapp = Xapp.copy()
     dfapp["maxO3"] = yapp
-    reg_bic = olsbackward(dfapp, 'maxO3~ T6+T9+T12+T15+T18+Ne6+Ne9+Ne12+Ne15+Ne18+Vx6+Vy6+Vx9+Vy9+Vx12+Vy12+Vx15+Vy15+Vx18+Vy18+max03v')
+    reg_bic = olsbackward(dfapp, 'maxO3~ T6+T9+T12+T15+T18+Ne6+Ne9+Ne12+Ne15+Ne18+Vx6+Vy6+Vx9+Vy9+Vx12+Vy12+Vx15+Vy15+Vx18+Vy18+maxO3v')
     RES.choix.iloc[val_index] = reg_bic.predict(Xval).values
 ```
 
+
 ## Ridge, Lasso, Elastic Net
-
-
-
 
 ```{code-cell} python
 RES = RES.assign(lasso=0.0, enet=0.0, ridge=0.0)
@@ -223,18 +207,14 @@ for app_index, val_index in kf.split(X):
     RES.ridge.iloc[val_index] = cv_ridge.predict(Xval).ravel()
 ```
 
+
 # Model Selection
 
 prediction mean squared error can be calculated as
-
-
-
 
 ```{code-cell} python
 prev = RES.iloc[:,1:]
 print((prev.sub(RES.maxO3, axis=0)**2).mean())
 ```
 
-The best modeling have the smaller MSE. We can notice that they have almost the same MSE. To improve the modeling other explanatory variables should be found.
-
-
+The best modeling have the smaller MSE: here the lasso modeling. We can notice that they have almost the same MSE. To improve the modeling other explanatory variables should be found.

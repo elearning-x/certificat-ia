@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'TP régression Logistique'
+  title: TP régression Logistique
   version: '1.0'
 ---
 
@@ -24,229 +24,150 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-## Modules python
+# Modules python
 
-
-
-Importer les modules pandas (comme `pd`) numpy (commme `np`)
-matplotlib.pyplot (comme  `plt`) et statsmodels.formula.api (comme `smf`).
-
-
-
+Importer les modules pandas (comme `pd`) numpy (commme `np`) matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme `smf`).
 
 ```{code-cell} python
 
 ```
+
+
+# Régression logistique
+
+
+## Importation des données
+
+Importer les données `artere.txt` dans le DataFrame pandas `artere` \[`read_csv` de `numpy` \]. Sur Fun Campus le chemin est `data/artere.txt`. Outre l'age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne les classes d'age (`agegrp`)
+
+```{code-cell} python
+
+```
+
+
+## Nuage de points
+
+Tracer le nuage de points avec `age` en abscisses et `chd` en ordonnées \[`plt.plot` \]
+
+```{code-cell} python
+
+```
+
 
 ## Régression logistique
 
-
-
-### Importation des données
-
-
-
-Importer les données `artere.txt` dans le DataFrame pandas `artere`
-[ `read_csv` de `numpy` ]. Sur Fun Campus le chemin est `data/artere.txt`. Outre l&rsquo;age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne
-les classes d&rsquo;age (`agegrp`)
-
-
-
-
-```{code-cell} python
-
-```
-
-### Nuage de points
-
-
-
-Tracer le nuage de points avec `age` en  abscisses et `chd` en ordonnées
-[ `plt.plot` ]
-
-
-
-
-```{code-cell} python
-
-```
-
-### Régression logistique
-
-
-
-Effectuer une régression logistique où `age` est  la variable
-explicative et `chd` la variable binaire à expliquer. Stocker le résultat
-dans l&rsquo;objet `reg` et
+Effectuer une régression logistique où `age` est la variable explicative et `chd` la variable binaire à expliquer. Stocker le résultat dans l'objet `reg` et
 
 1.  effectuer le résumé de cette modélisation;
-2.  afficher l&rsquo;attribut contenant les paramètres estimés par régression logistique;
+2.  afficher l'attribut contenant les paramètres estimés par régression logistique;
 
-[ `logit` de `smf`, méthode `fit`,
-méthode `summary` pour l&rsquo;instance/modèle ajusté,
-attributs `params`. ]
-
-
-
+\[`logit` de `smf`, méthode `fit`, méthode `summary` pour l'instance/modèle ajusté, attributs `params`.\]
 
 ```{code-cell} python
 
 ```
 
-### Prévision et probabilités estimées
 
+## Prévision et probabilités estimées
 
+Afficher l'ajustement/prévision pour les données de l'échantillon via la méthode `predict` (sans arguments) sur le modèle `reg`. Que représente ce vecteur:
 
-Afficher l&rsquo;ajustement/prévision pour les données de l&rsquo;échantillon via la méthode `predict` (sans arguments) sur le modèle `reg`. Que représente ce vecteur:
-
--   une probabilité d&rsquo;être malade pour chaque valeur de l&rsquo;age de l&rsquo;échantillon
--   une probabilité d&rsquo;être non-malade pour chaque valeur de l&rsquo;age de l&rsquo;échantillon
--   une prévision de l&rsquo;état malade/non-malade pour chaque valeur de l&rsquo;age de l&rsquo;échantillon.
-
-
-
+-   une probabilité d'être malade pour chaque valeur de l'age de l'échantillon
+-   une probabilité d'être non-malade pour chaque valeur de l'age de l'échantillon
+-   une prévision de l'état malade/non-malade pour chaque valeur de l'age de l'échantillon.
 
 ```{code-cell} python
 
 ```
 
-Donner la prévision de l&rsquo;état malade/non-malade avec l&rsquo;indicatrice que $\hat p(x)>s$ où $s$ est le seuil classique de 0.5.
-
-
-
+Donner la prévision de l'état malade/non-malade avec l'indicatrice que $\hat p(x)>s$ où $s$ est le seuil classique de 0.5.
 
 ```{code-cell} python
 
 ```
 
-### Matrice de confusion
 
+## Matrice de confusion
 
-
-Afficher la matrice de confusion estimée sur les données de
-l&rsquo;échantillon pour un seuil choisi à 0.5.
-
-
-
+Afficher la matrice de confusion estimée sur les données de l'échantillon pour un seuil choisi à 0.5.
 
 ```{code-cell} python
 
 ```
 
-### Résidus
 
-
+## Résidus
 
 Représenter graphiquement les résidus de déviance avec
 
-1.  en abscisse la variable `age` et en ordonnée les résidus
-    [ attribut `resid_dev` du modèle ];
+1.  en abscisse la variable `age` et en ordonnée les résidus \[attribut `resid_dev` du modèle\];
 2.  en abscisse le numéro de ligne du tableau (index) après permutation aléatoire et en ordonnées les résidus.
 
-[ `plt.plot`, méthode `predict` pour l&rsquo;instance/modèle ajusté et
-`np.arange` pour générer iles numéros de ligne avec l&rsquo;attribut `shape`
-du DataFrame ; créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.permutation`
-sur les numéros de ligne ]
-
-
-
+\[`plt.plot`, méthode `predict` pour l'instance/modèle ajusté et `np.arange` pour générer iles numéros de ligne avec l'attribut `shape` du DataFrame ; créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.permutation` sur les numéros de ligne\]
 
 ```{code-cell} python
 
 ```
 
-## Simulation de données  Variabilité de $\hat \beta_2$
+
+# Simulation de données  Variabilité de $\hat \beta_2$
 
 
-
-### Simulation
-
-
+## Simulation
 
 1.  Générer $n=100$ valeurs de $X$ uniformément entre 0 et 1.
-2.  Pour chaque valeur $X_i$ simuler $Y_i$ selon un modèle logistique
-    de paramètres $\beta_1=-5$ et $\beta_2=10$
+2.  Pour chaque valeur $X_i$ simuler $Y_i$ selon un modèle logistique de paramètres $\beta_1=-5$ et $\beta_2=10$
 
-[ créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.uniform` et `rng.binomial` ]
-
-
-
+\[créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.uniform` et `rng.binomial` \]
 
 ```{code-cell} python
 
 ```
 
-### Estimation
 
-
+## Estimation
 
 Estimer les paramètres $\beta_1$ et $\beta_2$
 
-
-
-
 ```{code-cell} python
 
 ```
 
-### Variabilité de l&rsquo;estimation
 
-
+## Variabilité de l'estimation
 
 Refaire les deux questions ci-dessus 500 fois et constater par un graphique adapté la variabilité de $\hat \beta_2$.
 
+```{code-cell} python
+
+```
 
 
+# Deux régressions logistiques simples
+
+
+## Importation des données
+
+Importer les données `artere.txt` dans le DataFrame pandas `artere` \[`read_csv` de `numpy` \]. Sur Fun Campus le chemin est `data/artere.txt`. Outre l'age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne les classes d'age (`agegrp`)
 
 ```{code-cell} python
 
 ```
 
-## Deux régressions logistiques simples
 
+## Deux régressions logistiques
 
-
-### Importation des données
-
-
-
-Importer les données `artere.txt` dans le DataFrame pandas `artere`
-[ `read_csv` de `numpy` ]. Sur Fun Campus le chemin est `data/artere.txt`. Outre l&rsquo;age et la présence=1/absence=0 de la maladie cardio-vasculaire (`chd`) une variable qualitative à 8 modalités donne
-les classes d&rsquo;age (`agegrp`)
-
-
-
+1.  Effectuer une régression logistique simple où `age` est la variable explicative et `chd` la variable binaire à expliquer;
+2.  Refaire la même chose avec la racine carrée de `age` comme variable explicative;
 
 ```{code-cell} python
 
 ```
 
-### Deux régressions logistiques
 
+## Comparaison
 
-
-1.  Effectuer une régression logistique simple où `age` est la
-    variable explicative et `chd` la variable binaire à expliquer;
-2.  Refaire la même chose avec la racine carrée de `age`
-    comme variable explicative;
-
-
-
-
-```{code-cell} python
-
-```
-
-### Comparaison
-
-
-
-Ajouter au nuage de points les 2 ajustements (la droite et la &ldquo;racine carrée&rdquo;)
-et choisir le meilleur modèle via un critère numérique.
-[ méthode `argsort` sur une colonne du DataFrame et `plt.plot` ; utiliser le résumé des modèles ]
-
-
-
+Ajouter au nuage de points les 2 ajustements (la droite et la "racine carrée") et choisir le meilleur modèle via un critère numérique. \[méthode `argsort` sur une colonne du DataFrame et `plt.plot` ; utiliser le résumé des modèles\]
 
 ```{code-cell} python
 

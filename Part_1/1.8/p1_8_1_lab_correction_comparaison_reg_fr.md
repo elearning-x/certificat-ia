@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Correction du TP de comparaison des méthodes de régressions'
+  title: Correction du TP de comparaison des méthodes de régressions
   version: '1.0'
 ---
 
@@ -36,10 +36,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import KFold,  GridSearchCV
 ```
 
-## Données
 
-
-
+# Données
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozone_transf.txt", header = 0, sep = ";", index_col=0)
@@ -48,28 +46,22 @@ X = ozone.iloc[:,1:]
 y = ozone.iloc[:,:1]
 ```
 
-## decoupage en 10 fold et df résultats
 
-
-
+# decoupage en 10 fold et df résultats
 
 ```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 RES = pd.DataFrame(ozone.maxO3)
 ```
 
-## Premiers modeles
+
+# Premiers modeles
 
 
-
-### reg multiple
-
+## regression multiple
 
 
-### MCO complet
-
-
-
+### Modèle complet
 
 ```{code-cell} python
 RES  = RES.assign(MCO=0.0)
@@ -82,14 +74,10 @@ for app_index, val_index in kf.split(X):
     RES.MCO.iloc[val_index] = reg_lin.predict(Xval).ravel()
 ```
 
-### MCO choix par BIC
 
-
+### Modèle choix par BIC
 
 La fonction de selection backward (déjà vue en TP)
-
-
-
 
 ```{code-cell} python
 def olsbackward(data, start, crit="aic", verbose=False):
@@ -169,9 +157,6 @@ def olsbackward(data, start, crit="aic", verbose=False):
 
 et la modélisation
 
-
-
-
 ```{code-cell} python
 RES = RES.assign(choix=0.0)
 for app_index, val_index in kf.split(X):
@@ -185,10 +170,8 @@ for app_index, val_index in kf.split(X):
     RES.choix.iloc[val_index] = reg_bic.predict(Xval).values
 ```
 
+
 ## Ridge, lasso, elastic net
-
-
-
 
 ```{code-cell} python
 RES  = RES.assign(lasso=0.0, enet=0.0, ridge=0.0)
@@ -222,16 +205,14 @@ for app_index, val_index in kf.split(X):
     RES.ridge.iloc[val_index] = cv_ridge.predict(Xval).ravel()
 ```
 
-# Selection de modèle
 
-Calculons l&rsquo;écart entre prédiction et vraie valeur, écart mesuré par la moyenne des écarts au carrés (MSE)
+# Sélection de modèle
 
+Calculons l'écart entre prédiction et vraie valeur, écart mesuré par la moyenne des écarts au carrés (MSE)
 
 ```{code-cell} python
 prev = RES.iloc[:,1:]
 print((prev.sub(RES.maxO3, axis=0)**2).mean())
 ```
 
-Le meilleur modèle est celui avec le MSE le plus faible. Remarquons qu&rsquo;ils sont assez comparables. Pour améliorer la performance il faudrait donc essayer de trouver de nouvelles variables explicatives.
-
-
+Le meilleur modèle est celui avec le MSE le plus faible. Remarquons qu'ils sont assez comparables. Pour améliorer la performance il faudrait donc essayer de trouver de nouvelles variables explicatives.

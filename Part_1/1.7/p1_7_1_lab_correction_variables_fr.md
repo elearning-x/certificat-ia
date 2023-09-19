@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Correction du TP choix de variables'
+  title: Correction du TP choix de variables
   version: '1.0'
 ---
 
@@ -24,16 +24,9 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-## Modules
+# Modules
 
-
-
-Importer les modules pandas (comme `pd`) numpy (commme `np`)
-matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme
-`smf`).
-
-
-
+Importer les modules pandas (comme `pd`) numpy (commme `np`) matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme `smf`).
 
 ```{code-cell} python
 import pandas as pd
@@ -42,22 +35,13 @@ import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
 ```
 
-## Régression ridge sur les données d&rsquo;ozone
+
+# Régression ridge sur les données d'ozone
 
 
+## Importation des données
 
-### Importation des données
-
-
-
-Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les
-données sont dans le répertoire `data/`) et éliminer les deux dernières
-variables (qualitatives) et faites un résumé numérique par variable
-[ méthode `astype` sur la colonne du DataFrame et méthode `describe` sur
-l&rsquo;instance DataFrame ]
-
-
-
+Importer les données d'ozone `ozonecomplet.csv` (dans Fun Campus les données sont dans le répertoire `data/`) et éliminer les deux dernières variables (qualitatives) et faites un résumé numérique par variable \[méthode `astype` sur la colonne du DataFrame et méthode `describe` sur l'instance DataFrame\]
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
@@ -65,38 +49,27 @@ ozone = ozone.drop(['nomligne', 'Ne', 'Dv'], axis=1)
 ozone.describe()
 ```
 
-### Sélection descendante/backward
 
+## Sélection descendante/backward
 
-
-Proposer une fonction qui permet la sélection descendante/backward. Elle
-utilisera les formules de `statsmodels` et incluera toujours la
-constante. En entrée serviront trois arguments: le DataFrame des
-données, la formule de départ et le critère (AIC ou BIC). La fonction
-retournera le modèle estimé via `smf.ols`
+Proposer une fonction qui permet la sélection descendante/backward. Elle utilisera les formules de `statsmodels` et incluera toujours la constante. En entrée serviront trois arguments: le DataFrame des données, la formule de départ et le critère (AIC ou BIC). La fonction retournera le modèle estimé via `smf.ols`
 
 La fonction commence avec le modèle complet.
 
 -   Nous séparons la variable réponse (objet `response`) des variables explicatives,
 -   Ces dernières sont transformées en un ensemble (objet `start_explanatory`),
--   L&rsquo;ensemble le plus petit est l&rsquo;ensemble vide (objet `lower_explanatory`),
+-   L'ensemble le plus petit est l'ensemble vide (objet `lower_explanatory`),
 -   Les variables potentielles à supprimer sont obtenues par différence (objet `remove`),
 
-Nous initialisons l&rsquo;ensemble des variables sélectionnées (objet `selected`) et réalisons notre première formule en utilisant toutes les variables sélectionnées. En utilisant `smf.ols` nous obtenons l&rsquo;AIC ou le BIC du modèle de départ (`current_score`).
+Nous initialisons l'ensemble des variables sélectionnées (objet `selected`) et réalisons notre première formule en utilisant toutes les variables sélectionnées. En utilisant `smf.ols` nous obtenons l'AIC ou le BIC du modèle de départ (`current_score`).
 
 La boucle while commence :
 
--   pour chaque variable (boucle for) à supprimer, nous effectuons une régression avec l&rsquo;ensemble actuel des variables moins cette variable candidate.
-    Nous construisons une liste de triplets `score` (AIC/BIC), signe (toujours &ldquo;-&rdquo;  car nous effectuons une sélection backward) et la variable candidate à supprimer du modèle actuel.
+-   pour chaque variable (boucle for) à supprimer, nous effectuons une régression avec l'ensemble actuel des variables moins cette variable candidate. Nous construisons une liste de triplets `score` (AIC/BIC), signe (toujours "-" car nous effectuons une sélection backward) et la variable candidate à supprimer du modèle actuel.
 
--   A la fin de la boucle for, nous trions toute la liste des triplets en utilisant le score et si le meilleur triplet a
-    un `score` meilleur que `current_score` nous mettons à jour `remove`, `selected` et `current_score`,
-    si ce n&rsquo;est pas le cas, nous interrompons la boucle while.
+-   A la fin de la boucle for, nous trions toute la liste des triplets en utilisant le score et si le meilleur triplet a un `score` meilleur que `current_score` nous mettons à jour `remove`, `selected` et `current_score`, si ce n'est pas le cas, nous interrompons la boucle while.
 
 A la fin, nous ajustons le modèle actuel et le renvoyons comme résultat.
-
-
-
 
 ```{code-cell} python
 def olsbackward(data, start, crit="aic", verbose=False):
@@ -176,17 +149,11 @@ def olsbackward(data, start, crit="aic", verbose=False):
 
 La mise en oeuvre
 
-
-
-
 ```{code-cell} python
 modelefinal = olsbackward(ozone,"O3~T9+T12+T15+Ne9+Ne12+Ne15+Vx9+Vx12+Vx15+O3v", verbose=True)
 ```
 
 Le modèle sélectionné
-
-
-
 
 ```{code-cell} python
 modelefinal.summary()

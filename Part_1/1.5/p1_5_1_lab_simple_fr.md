@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'TP régression simple'
+  title: TP régression simple
   version: '1.0'
 ---
 

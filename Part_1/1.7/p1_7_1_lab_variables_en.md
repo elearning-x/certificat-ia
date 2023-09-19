@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Lab Session on Variable Selection'
+  title: Lab Session on Variable Selection
   version: '1.0'
 ---
 
@@ -24,45 +24,30 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-## Modules
-
-
+# Modules
 
 Import the modules pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`), and statsmodels.formula.api (as `smf`).
 
+```{code-cell} python
+
+```
 
 
+# Ridge Regression on Ozone Data
+
+
+## Data Import
+
+Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and remove the last two variables (categorical). Then provide a summary of numerical variables. [Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]
 
 ```{code-cell} python
 
 ```
 
-## Ridge Regression on Ozone Data
 
-
-
-### Data Import
-
-
-
-Import the ozone data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and remove the last two variables (categorical). Then provide a summary of numerical variables.
-[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.]
-
-
-
-
-```{code-cell} python
-
-```
-
-### Backward Selection
-
-
+## Backward Selection
 
 Propose a function that performs backward selection. It will use the formulas from `statsmodels` and will always include the intercept. The function will take three arguments as input: the DataFrame of data, the initial formula, and the criterion (AIC or BIC). The function will return the estimated model using `smf.ols`.
-
-
-
 
 ```{code-cell} python
 

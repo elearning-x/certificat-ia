@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Lab Session on Residuals'
+  title: Lab Session on Residuals
   version: '1.0'
 ---
 

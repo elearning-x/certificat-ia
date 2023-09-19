@@ -14,7 +14,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'TP choix de variables'
+  title: TP choix de variables
   version: '1.0'
 ---
 
@@ -24,54 +24,30 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-## Modules
+# Modules
 
-
-
-Importer les modules pandas (comme `pd`) numpy (commme `np`)
-matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme
-`smf`).
-
-
-
+Importer les modules pandas (comme `pd`) numpy (commme `np`) matplotlib.pyplot (comme `plt`) et statsmodels.formula.api (comme `smf`).
 
 ```{code-cell} python
 
 ```
 
-## Régression ridge sur les données d&rsquo;ozone
+
+# Régression ridge sur les données d'ozone
 
 
+## Importation des données
 
-### Importation des données
-
-
-
-Importer les données d&rsquo;ozone `ozonecomplet.csv` (dans Fun Campus les
-données sont dans le répertoire `data/`) et éliminer les deux dernières
-variables (qualitatives) et faites un résumé numérique par variable
-[ méthode `astype` sur la colonne du DataFrame et méthode `describe` sur
-l&rsquo;instance DataFrame ]
-
-
-
+Importer les données d'ozone `ozonecomplet.csv` (dans Fun Campus les données sont dans le répertoire `data/`) et éliminer les deux dernières variables (qualitatives) et faites un résumé numérique par variable \[méthode `astype` sur la colonne du DataFrame et méthode `describe` sur l'instance DataFrame\]
 
 ```{code-cell} python
 
 ```
 
-### Sélection descendante/backward
 
+## Sélection descendante/backward
 
-
-Proposer une fonction qui permet la sélection descendante/backward. Elle
-utilisera les formules de `statsmodels` et incluera toujours la
-constante. En entrée serviront trois arguments: le DataFrame des
-données, la formule de départ et le critère (AIC ou BIC). La fonction
-retournera le modèle estimé via `smf.ols`
-
-
-
+Proposer une fonction qui permet la sélection descendante/backward. Elle utilisera les formules de `statsmodels` et incluera toujours la constante. En entrée serviront trois arguments: le DataFrame des données, la formule de départ et le critère (AIC ou BIC). La fonction retournera le modèle estimé via `smf.ols`
 
 ```{code-cell} python
 
