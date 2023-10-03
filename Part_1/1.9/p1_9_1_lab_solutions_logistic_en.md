@@ -107,7 +107,8 @@ The first method is
 
 ```{code-cell} python
 yhat = modele.predict()>0.5
-pd.crosstab(index=df['Age'], columns=df['Grade'])
+df = pd.DataFrame({"yhat" : yhat, "chd": artere.chd})
+pd.crosstab(index=df['chd'], columns=df['yhat'])
 ```
 
 but a direct method can be used (only for fitted confusion matrix)

@@ -104,7 +104,8 @@ Une méthode manuelle est la suivante
 
 ```{code-cell} python
 yhat = modele.predict()>0.5
-pd.crosstab(index=df['Age'], columns=df['Grade'])
+df = pd.DataFrame({"yhat" : yhat, "chd": artere.chd})
+pd.crosstab(index=df['chd'], columns=df['yhat'])
 ```
 
 mais il existe aussi une fonction adptée uniquement à l'estimation de la matrice de confusion en ajustement:
