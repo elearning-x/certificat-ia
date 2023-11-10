@@ -64,7 +64,7 @@ Perform a logistic regression with `age` as the explanatory variable and `chd` a
 1.  Perform a summary of the model.
 2.  Display the parameters estimated by logistic regression.
 
-\[`logit` de `smf`, méthode `fit`, méthode `summary` pour l'instance/modèle ajusté, attributs `params`.\]
+\[`logit` from `smf`, method `fit`, method `summary` from instance/fitted model, attribute `params`.\]
 
 ```{code-cell} python
 
@@ -73,7 +73,7 @@ Perform a logistic regression with `age` as the explanatory variable and `chd` a
 
 ## Prediction and Estimated Probabilities
 
-Display the predictions for the sample data using the `predict` method (without arguments) on the `reg` model. What does this vector represent?
+Display the predictions for the sample data using the `predict` method (without arguments) on the `modele` model. What does this vector represent?
 
 -   Probability of having a disease for each age value in the sample.
 -   Probability of not having a disease for each age value in the sample.
@@ -97,6 +97,8 @@ Display the estimated confusion matrix for the sample data using a threshold of 
 ```{code-cell} python
 
 ```
+
+\[method `pred_table` on modeling and/or method `predict` on modeling and `pd.crosstab` on a two columns DataFrame created for this purpose\]
 
 
 ## Residuals

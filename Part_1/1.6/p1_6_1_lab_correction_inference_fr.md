@@ -146,7 +146,7 @@ modele3 = smf.ols("O3 ~ T12 + Vx + Ne12",data=ozone).fit()
 
 Intéressons nous aux deux premières variables `T12` et `Vx` de coefficients notés ici $\beta_2$ et $\beta_3$ (le coefficient $\beta_1$ est celui pour la variable constante/intercept).
 
-Notons $F_{2:3}= \|\hat\beta/{2:3} - \beta/{2:3}\|^2_{\hat V_{\hat\beta/{2:3}}^{-1}}$ et introduisons la notation suivante: $\hat V/{\hat\beta/{2:3}}=\hat\sigma [(X'X)^{-1}]/{2:3,2:3} = \hat\sigma \Sigma$. On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{{1/2}=U\Delta}{1/2} U'$ ($U$ matrice orthogonale des vecteurs propres de $\Sigma$ et $\Delta$ matrice diagonale des valeurs propres positives ou nulles).
+Notons $F_{2:3}= \|\hat\beta/{2:3} - \beta/{2:3}\|^2_{\hat V_{\hat\beta_{2:3}}^{-1}}$ et introduisons la notation suivante: $\hat V/{\hat\beta_{2:3}}=\hat\sigma [(X'X)^{-1}]_{2:3,2:3} = \hat\sigma \Sigma$. On notera aussi que $\Sigma=U\Lambda U'$ et $\Sigma^{{1/2}=U\Delta}{1/2} U'$ ($U$ matrice orthogonale des vecteurs propres de $\Sigma$ et $\Delta$ matrice diagonale des valeurs propres positives ou nulles).
 
 1.  Montrer que $F_{2:3,2:3}$ suit une loi de Fisher $\mathcal{F}(2,n-4)$. Calculer son quantile à 95% avec la fonction `f` du sous module `scipy.stats` (méthode `isf`).
     

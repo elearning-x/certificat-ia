@@ -56,7 +56,7 @@ Tracer le nuage de points avec `age` en abscisses et `chd` en ordonnées \[`plt.
 
 ## Régression logistique
 
-Effectuer une régression logistique où `age` est la variable explicative et `chd` la variable binaire à expliquer. Stocker le résultat dans l'objet `reg` et
+Effectuer une régression logistique où `age` est la variable explicative et `chd` la variable binaire à expliquer. Stocker le résultat dans l'objet `modele` et
 
 1.  effectuer le résumé de cette modélisation;
 2.  afficher l'attribut contenant les paramètres estimés par régression logistique;
@@ -81,29 +81,6 @@ Afficher l'ajustement/prévision pour les données de l'échantillon via la mét
 ```
 
 Donner la prévision de l'état malade/non-malade avec l'indicatrice que $\hat p(x)>s$ où $s$ est le seuil classique de 0.5.
-
-```{code-cell} python
-
-```
-
-
-## Matrice de confusion
-
-Afficher la matrice de confusion estimée sur les données de l'échantillon pour un seuil choisi à 0.5.
-
-```{code-cell} python
-
-```
-
-
-## Résidus
-
-Représenter graphiquement les résidus de déviance avec
-
-1.  en abscisse la variable `age` et en ordonnée les résidus \[attribut `resid_dev` du modèle\];
-2.  en abscisse le numéro de ligne du tableau (index) après permutation aléatoire et en ordonnées les résidus.
-
-\[`plt.plot`, méthode `predict` pour l'instance/modèle ajusté et `np.arange` pour générer iles numéros de ligne avec l'attribut `shape` du DataFrame ; créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.permutation` sur les numéros de ligne\]
 
 ```{code-cell} python
 

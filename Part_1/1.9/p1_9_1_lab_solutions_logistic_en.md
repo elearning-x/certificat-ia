@@ -63,7 +63,7 @@ plt.show()
 
 ## Logistic Regression
 
-Perform a logistic regression with `age` as the explanatory variable and `chd` as the binary response variable. Store the result in the `reg` object. Steps:
+Perform a logistic regression with `age` as the explanatory variable and `chd` as the binary response variable. Store the result in the `modele` object. Steps:
 
 1.  Perform a summary of the model.
     
@@ -97,51 +97,6 @@ Display the prediction of the disease status (sick/healthy) with the indicator t
 ```{code-cell} python
 print(modele.predict()>0.5)
 ```
-
-
-## Confusion Matrix
-
-Display the estimated confusion matrix for the sample data using a threshold of 0.5.
-
-The first method is
-
-```{code-cell} python
-yhat = modele.predict()>0.5
-df = pd.DataFrame({"yhat" : yhat, "chd": artere.chd})
-pd.crosstab(index=df['chd'], columns=df['yhat'])
-```
-
-but a direct method can be used (only for fitted confusion matrix)
-
-```{code-cell} python
-modele.pred_table(threshold=0.5)
-```
-
-
-## Residuals
-
-Graphically represent the deviance residuals:
-
-1.  Age on the x-axis and deviance residuals on the y-axis (using the `resid_dev` attribute of the model).
-2.  Make a random permutation on row index and use it on the x-axis and use the residuals on the y-axis (using `plt.plot`, `predict` method on the fitted model, and `np.arange` to generate row numbers using the `shape` attribute of the DataFrame ; create an instance of the default random generator using `np.random.default_rng` and use `rng.permutation`
-
-on row index).
-
-```{code-cell} python
-plt.plot(artere.age, modele.resid_dev, "+")
-plt.show()
-```
-
-We get the usual shape of residuals vs $\hat p$ (or age here). This kind of graphics is not used.
-
-```{code-cell} python
-rng = np.random.default_rng(seed=1234)
-indexp = rng.permutation(np.arange(artere.shape[0]))
-plt.plot(indexp, modele.resid_dev, "+")
-plt.show()
-```
-
-No observation have an absolute value of residual really high (in comparison to others): the modeling fits well the data.
 
 
 # Data Simulation: Variability of $\hat \beta_2$

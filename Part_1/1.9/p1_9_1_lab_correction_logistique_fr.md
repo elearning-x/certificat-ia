@@ -60,7 +60,7 @@ plt.show()
 
 ## Régression logistique
 
-Effectuer une régression logistique où `age` est la variable explicative et `chd` la variable binaire à expliquer. Stocker le résultat dans l'objet `reg` et
+Effectuer une régression logistique où `age` est la variable explicative et `chd` la variable binaire à expliquer. Stocker le résultat dans l'objet `modele` et
 
 1.  effectuer le résumé de cette modélisation;
     
@@ -94,51 +94,6 @@ Donner la prévision de l'état malade/non-malade avec l'indicatrice que $\hat p
 ```{code-cell} python
 print(modele.predict()>0.5)
 ```
-
-
-## Matrice de confusion
-
-Afficher la matrice de confusion estimée sur les données de l'échantillon pour un seuil choisi à 0.5.
-
-Une méthode manuelle est la suivante
-
-```{code-cell} python
-yhat = modele.predict()>0.5
-df = pd.DataFrame({"yhat" : yhat, "chd": artere.chd})
-pd.crosstab(index=df['chd'], columns=df['yhat'])
-```
-
-mais il existe aussi une fonction adptée uniquement à l'estimation de la matrice de confusion en ajustement:
-
-```{code-cell} python
-modele.pred_table(threshold=0.5)
-```
-
-
-## Résidus
-
-Représenter graphiquement les résidus de déviance avec
-
-1.  en abscisse la variable `age` et en ordonnée les résidus \[attribut `resid_dev` du modèle\];
-2.  en abscisse le numéro de ligne du tableau (index) après permutation aléatoire et en ordonnées les résidus.
-
-\[`plt.plot`, méthode `predict` pour l'instance/modèle ajusté et `np.arange` pour générer les numéros de ligne avec l'attribut `shape` du DataFrame ; créer une instance de générateur aléatoire `np.random.default_rng` et utiliser `rng.permutation` sur les numéros de ligne\]
-
-```{code-cell} python
-plt.plot(artere.age, modele.resid_dev, "+")
-plt.show()
-```
-
-Nous retrouvons l'allure caractéristique du graphique résidus fonction de $\hat p$ (ou de l'age ici). Ce type de graphique n'est pas utilisé en pratique.
-
-```{code-cell} python
-rng = np.random.default_rng(seed=1234)
-indexp = rng.permutation(np.arange(artere.shape[0]))
-plt.plot(indexp, modele.resid_dev, "+")
-plt.show()
-```
-
-Aucune observation avec des valeurs extrèmes, le modèle ajuste bien les données.
 
 
 # Simulation de données  Variabilité de $\hat \beta_2$
@@ -233,4 +188,4 @@ plt.plot(artere.age.iloc[sel], modele1.predict()[sel], "b-", artere.age.iloc[sel
 plt.show()
 ```
 
-Comme les deux modèles ont le même nombre de variables explicatives nous pouvons comparer celles-ci et la plus élevée donne le meilleur modèle. C'est le modèle 1 qui l'emporte mais les log-vraisemblances sont assez comparables.
+Comme les deux modèles ont le même nombre de variables explicatives nous pouvons comparer les log-vraisemblances et la plus élevée donne le meilleur modèle. C'est le modèle 1 qui l'emporte mais les log-vraisemblances sont assez comparables.
