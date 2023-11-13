@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: 'Lab Session on Model Selection for Logistic Regression'
+  title: Lab Session on Model Selection for Logistic Regression
   version: '1.0'
 ---
 
@@ -41,6 +41,6 @@ Using the data from `spambase.data`, select the best logistic regression model a
 
 \[`logit` de statsmodels.formula.api, `StandardScaler` de `sklearn.preprocessing`, `LogisticRegressionCV` de `sklearn.linear_model`, et `Pipeline` de `sklearn.pipeline` \]
 
-```{code-cell} python
+```{code-cell} ipython3
 
 ```
