@@ -31,6 +31,9 @@ nbhosting:
 
 Import the following modules: pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`), and statsmodels.formula.api (as `smf`).
 
+```{code-cell} python
+
+```
 
 # Logistic Regression
 
@@ -39,11 +42,17 @@ Import the following modules: pandas (as `pd`), numpy (as `np`), matplotlib.pypl
 
 Import the data from `artere.txt` into the pandas DataFrame `artere` using `read_csv` from `numpy`. The file path on Fun Campus is `data/artere.txt`. Besides age and the presence (1) or absence (0) of cardiovascular disease (`chd`), there is a qualitative variable with 8 categories representing age groups (`agegrp`).
 
+```{code-cell} python
+
+```
 
 ## Logistic Regression
 
 Perform a logistic regression with `age` as the explanatory variable and `chd` as the binary response variable. Store the result in the `modele` object.
 
+```{code-cell} python
+
+```
 
 ## Confusion Matrix
 
@@ -51,6 +60,9 @@ Display the estimated confusion matrix for the sample data using a threshold of 
 
 \[method `pred_table` on modelling and/or method `predict` on modelling and `pd.crosstab` on a DataFrame of 2 columns created for that purpose\]
 
+```{code-cell} python
+
+```
 
 ## Residuals
 
@@ -60,3 +72,7 @@ Graphically represent the deviance residuals:
 2.  Make a random permutation on row index and use it on the x-axis and use the residuals on the y-axis (using `plt.plot`, `predict` method on the fitted model, and `np.arange` to generate row numbers using the `shape` attribute of the DataFrame ; create an instance of the default random generator using `np.random.default_rng` and use `rng.permutation`
 
 on row index).
+```{code-cell} python
+
+```
+
