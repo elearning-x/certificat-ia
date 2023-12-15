@@ -5,6 +5,14 @@ static-mappings:
     destination: data
 
 tracks:
+  - name: "Intro"
+    id: introduction
+    description: ""
+    sections:
+    - name: intro
+      id: intro
+      notebooks:
+      *.md
   - name: "Part 1"
     id: part1
     description: "Partie 1"
