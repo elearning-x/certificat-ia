@@ -3,3 +3,76 @@ static-mappings:
     destination: media
   - source: data
     destination: data
+
+tracks:
+  - name: "Part 1"
+    id: part1
+    description: "Partie 1"
+    sections:
+    - name: "1.1"
+      notebooks:
+      - Part_1/1.1/*.md
+    - name: "1.2"
+      notebooks:
+      - Part_1/1.2/*.md
+    - name: "1.3"
+      notebooks:
+      - Part_1/1.3/*.md
+    - name: "1.4"
+      notebooks:
+      - Part_1/1.4/*.md
+    - name: "1.5"
+      notebooks:
+      - Part_1/1.5/*.md
+    - name: "1.6"
+      notebooks:
+      - Part_1/1.6/*.md
+    - name: "1.7"
+      notebooks:
+      - Part_1/1.7/*.md
+    - name: "1.8"
+      notebooks:
+      - Part_1/1.8/*.md
+    - name: "1.9"
+      notebooks:
+      - Part_1/1.9/*.md
+- name: "Part 2"
+  id: part2
+  description: "Partie 2"
+  sections: 
+  - name: "2.1 Introduction to Supervised learning"
+    notebooks:
+    - Part2/2.1/*.md
+  - name: "2.2 Kernel methods"
+    notebooks:
+    - Part2/2.2/*.md
+  - name: "2.3 Decision Trees"
+    notebooks:
+    - Part2/2.3/*.md
+  - name: "2.4 Random Forests and Tree boosting"
+    notebooks:
+    - Part2/2.4/*.md
+  - name: "2.5 Optimization (1)"
+    notebooks:
+    - Part2/2.5/*.md
+  - name: "2.6 Optimization (2)"
+    notebooks:
+    - Part2/2.6/*.md
+  - name: "2.7 Introduction to Deep Learning"
+    notebooks:
+    - Part2/2.7/*.md
+  - name: "2.8 Neural Network tuning"
+    notebooks:
+    - Part2/2.8/*.md
+  - name: "2.9 Optimization (3)"
+    notebooks:
+    - Part2/2.9/*.md
+  - name: "2.10 Deep Learning (III)"
+    notebooks:
+    - Part2/2.10/*.md
+  - name: "2.11 Deep Learning (IV)"
+    notebooks:
+    - Part2/2.11/*.md
+  - name: "2.12 Deep Learning (V)"
+    notebooks:
+    - Part2/2.12/*.md
