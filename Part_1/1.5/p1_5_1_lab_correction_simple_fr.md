@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Correction du TP régression simple'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -39,11 +39,12 @@ import statsmodels.formula.api as smf
 # Régression simple
 
 ## Importation des données
-Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
+Importer les données d'eucalytus dans le DataFrame pandas `eucalypt` depuis
+le dossier `data/`
 
 
 ```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ## Nuage de points
@@ -122,11 +123,12 @@ graphique est moins adapté pour la variance dans ce problème.
 # Variabilité de l'estimation
 
 ## Importation des données
-Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
+Importer les données d'eucalytus dans le DataFrame pandas `eucalypt` depuis
+le dossier `data/`
 
 
 ```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ## estimation sur \$n=100\$ données
@@ -181,11 +183,12 @@ normal dans ce type d'essai.
 # Deux modèles
 
 ## Importation des données
-Importer les données d'eucalytus dans le DataFrame pandas `eucalypt`
+Importer les données d'eucalytus dans le DataFrame pandas `eucalypt` depuis
+le dossier `data/`
 
 
 ```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ## Nuage de points
