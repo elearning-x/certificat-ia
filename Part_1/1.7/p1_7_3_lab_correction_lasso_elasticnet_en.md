@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Solutions to Lab session on Lasso and Elastic-Net'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -64,7 +64,7 @@ from sklearn.model_selection import KFold
 
 
 
--   Import the ozone data `ozonecomplet.csv`
+-   Import the ozone data `ozonecomplet.csv` (dans Fun Campus les données sont dans le répertoire `data/`)
 -   Drop the last two qualitative variables and provide a summary of each variable using `astype` on the DataFrame column and the `describe` method on the DataFrame instance
 
 

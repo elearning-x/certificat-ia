@@ -44,7 +44,7 @@ import statsmodels.api as sm
 
 ## Data Import
 
-Import the data `ozonecomplet.csv` and convert the last two variables into qualitative variables. Then, provide a numerical summary for each variable. \[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]
+Import the data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and convert the last two variables into qualitative variables. Then, provide a numerical summary for each variable. \[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")

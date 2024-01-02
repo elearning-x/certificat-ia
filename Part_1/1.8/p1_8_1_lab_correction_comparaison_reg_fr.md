@@ -15,8 +15,10 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Correction du TP de comparaison des méthodes de régressions'
-  version: '1.0'
+  version: '1.1'
 ---
+
++++
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>

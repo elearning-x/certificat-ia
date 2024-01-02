@@ -24,7 +24,9 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-Using the data from `ozone_transf.txt`, select the best regression model among all modeling already presented (simple regression, multiple regression, variable selection, ridge, lasso, and elastic-net). A 10 fold cross validation will be used to make the selection. A data-frame containing the various predictions (one column per model and as many rows as there are observations) is mandatory.
++++
+
+Using the data from `ozone_transf.txt` (in Fun Campus, data is located in the `data/` directory), select the best regression model among all modeling already presented (simple regression, multiple regression, variable selection, ridge, lasso, and elastic-net). A 10 fold cross validation will be used to make the selection. A data-frame containing the various predictions (one column per model and as many rows as there are observations) is mandatory.
 
 ```{code-cell} python
 

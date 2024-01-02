@@ -23,6 +23,7 @@ nbhosting:
 <span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
 +++
 
 # Modules
@@ -274,7 +275,7 @@ l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
 alphas_ridge = l0*100*10**(llc)
 ```
     
-    Cross Validation 10 fold
+Cross Validation 10 fold
     
 ```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
@@ -283,7 +284,7 @@ for j, ll in enumerate(alphas_ridge):
     resbis.iloc[:,j] = cross_val_predict(Ridge(alpha=ll),Xcr,y,cv=kf)
 ```
     
-    and results as in previous questions
+and results as in previous questions
 
 2.  Build the grid
     
@@ -295,14 +296,14 @@ l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
 alphas_ridge = l0*100*10**(llc)
 ```
     
-    We use `RidgeCV` with `kf` (as always)
+We use `RidgeCV` with `kf` (as always)
     
 ```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = 'neg_mean_squared_error').fit(Xcr, y)
 ```
     
-    The result is a ridge model already fitted with $\hat\lambda$
+The result is a ridge model already fitted with $\hat\lambda$
     
 ```{code-cell} python
 print(modele_ridge.alpha_)
@@ -317,14 +318,14 @@ def my_custom_loss_func(y_true, y_pred):
 myscore = make_scorer(my_custom_loss_func, greater_is_better=False)
 ```
     
-    We can use this score using:
+We can use this score using:
     
 ```{code-cell} python
 kf = KFold(n_splits=10, shuffle=True, random_state=0)
 modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = myscore).fit(Xcr, y)
 ```
     
-    And the result is a ridge model already fitted and $\hat\lambda$ is
+And the result is a ridge model already fitted and $\hat\lambda$ is
     
 ```{code-cell} python
 print(modele_ridge.alpha_)
