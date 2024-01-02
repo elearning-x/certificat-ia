@@ -196,20 +196,20 @@ We want to determine if these eight provenances are identical.
 
 2.  Graphical Representation Graphically represent the data used to answer the question.
     
-  ```{code-cell} python
-  camal.groupby(by="provenance").boxplot(False)
-  plt.show()
-    ```
+```{code-cell} python
+camal.groupby(by="provenance").boxplot(False)
+plt.show()
+```
     
     Provenances 2 and 4 seem significantly higher.
 
 3.  Answer the Question Are the eight provenances identical? Where does the `bloc` variable indirectly intervene in the used test statistic?
     
-  ```{code-cell} python
-  modele0 = smf.ols("hauteur ~ bloc", data=camal).fit()
-  modele1 = smf.ols("hauteur ~ bloc + provenance", data=camal).fit()
-  sm.stats.anova_lm(modele0, modele1)
-  ```
+```{code-cell} python
+modele0 = smf.ols("hauteur ~ bloc", data=camal).fit()
+modele1 = smf.ols("hauteur ~ bloc + provenance", data=camal).fit()
+sm.stats.anova_lm(modele0, modele1)
+```
     
     The test statistic value is $26.65$, and its critical probability is almost zero, smaller than $\alpha=1\%$. Hence, we reject $\mathrm{H}_0$. Provenance has an effect (confirming the previous graph).
     
@@ -217,14 +217,14 @@ We want to determine if these eight provenances are identical.
 
 4.  Residual Analysis Analyze the residuals of the retained model. Plot the residuals against the `bloc` variable.
     
-  ```{code-cell} python
-  camal["rstudent"] = modele1.get_influence().resid_studentized_external
-  plt.plot(modele1.predict(), camal.rstudent, "*")
-      # .boxplot()
-  ```
+```{code-cell} python
+camal["rstudent"] = modele1.get_influence().resid_studentized_external
+plt.plot(modele1.predict(), camal.rstudent, "*")
+    # .boxplot()
+```
     
-  ```{code-cell} python
-  camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
-  ```
+```{code-cell} python
+camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
+```
     
     The residuals seem appropriate, the test is highly significant, thus we are quite certain of our conclusion: provenance indeed has an effect on the height.
