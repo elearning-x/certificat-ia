@@ -24,6 +24,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 # Python Modules
 
 Import the modules: pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `plt`), and statsmodels.formula.api (as `smf`).
@@ -269,15 +271,15 @@ In previous labs, we performed various modeling tasks. For single-variable model
 
 1.  Compare these two models using a $T$ test \[use the `summary` method\].
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 2.  Compare these two models using an $F$ test \[`stats.anova_lm` from the `statsmodels.api` submodule\].
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 
 # Does Age Influence Leisure Time?
@@ -286,27 +288,27 @@ An investigation was conducted on 40 individuals to study the relationship betwe
 
 1.  What is the data type of the variables?
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 2.  How is the most common relationship between these two variables calculated?
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 3.  How do we test if age has an influence on leisure time using regression? Perform this test and draw a conclusion.
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 4.  Represent the data and discuss the rationale behind the previous test.
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 
 # Does Obesity Influence Blood Pressure?
@@ -315,14 +317,18 @@ An investigation was conducted on 102 individuals to study the relationship betw
 
 1.  What is the data type of the variables?
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```
 
 2.  How is the most common relationship between these two variables calculated?
 
+```{code-cell} python
+
+```
+
 3.  How do we test if obesity has an influence on blood pressure using regression? Perform this test and draw a conclusion.
     
-    ```{code-cell} python
-    
-    ```
+```{code-cell} python
+
+```

@@ -314,17 +314,17 @@ reg = smf.ols('ht~I(np.sqrt(circ)) + circ', data=eucalypt).fit()
 
 1.  Compare these two models using a $T$ test [use the `summary` method\].
     
-    ```{code-cell} python
-    reg.summary()
-    ```
+```{code-cell} python
+reg.summary()
+```
     
     The row `circ` of the table provides the estimation of the coefficient $\hat\beta_3$, the estimated standard deviation of the coefficient, the value of the $t$ statistic for the test $\mathrm{H}_0: \beta_3=0$ against $\mathrm{H}_1: \beta_3\neq 0$, which is -8.336 in this case, and its nearly zero critical probability. Hence, we reject $\mathrm{H}_0$, and the model `reg` appears to be a better fit.
 
 2.  Compare these two models using an $F$ test [=stats.anova<sub>lm</sub>= from the `statsmodels.api` submodule\].
     
-    ```{code-cell} python
-    import statsmodels.api as sm
-    sm.stats.anova_lm(regsqrt,reg)
+```{code-cell} python
+import statsmodels.api as sm
+sm.stats.anova_lm(regsqrt,reg)
     ```
     
     We obtain the same results as before (since $F=t^2$).
@@ -336,34 +336,34 @@ An investigation was conducted on 40 individuals to study the relationship betwe
 
 1.  What is the data type of the variables?
     
-    ```{code-cell} python
-    tpslibre = pd.read_csv("data/temps_libre.csv", header=0, sep=";")
-    tpslibre.columns = [ "age", "tempslibre" ]
-    tpslibre.describe()
-    ```
+```{code-cell} python
+tpslibre = pd.read_csv("data/temps_libre.csv", header=0, sep=";")
+tpslibre.columns = [ "age", "tempslibre" ]
+tpslibre.describe()
+```
     
     Both variables are quantitatives. We do modify the '.' as it is bad understood by `smf`.
 2.  How is the most common relationship between these two variables calculated?
     
-    ```{code-cell} python
-    tpslibre.corr()
-    ```
+```{code-cell} python
+tpslibre.corr()
+```
     
     The measure of the relationship is the linear correlation (whose square is the R2), and here it is very weak, suggesting that there is no linear relationship between the two variables.
 
 3.  How do we test if age has an influence on leisure time using regression? Perform this test and draw a conclusion.
     
-    ```{code-cell} python
-    reg = smf.ols("tempslibre~1+age", data=tpslibre).fit()
-    reg.summary()
-    ```
+```{code-cell} python
+reg = smf.ols("tempslibre~1+age", data=tpslibre).fit()
+reg.summary()
+```
     
     The row `age` of the table provides the estimation of the coefficient $\hat\beta_2$, the estimated standard deviation of the coefficient, the value of the $t$ statistic for the test $\mathrm{H}_0: \beta_2=0$ against $\mathrm{H}_1: \beta_2\neq 0$, which is 0.285 in this case, and its critical probability which is 0.777. Therefore, we retain $\mathrm{H}_0$, and it seems that there is no linear relationship.
 4.  Represent the data and discuss the rationale behind the previous test.
     
-    ```{code-cell} python
-    plt.plot(tpslibre.age, tpslibre.tempslibre, "*")
-    ```
+```{code-cell} python
+plt.plot(tpslibre.age, tpslibre.tempslibre, "*")
+```
     
     Clearly, we observe two regimes: between 30 and 60 years, there is little leisure time, and before 30 or after 60, there is more leisure time. There is an influence of age, but it's not linear (more like piecewise constant). The previous test is inappropriate.
 
@@ -374,32 +374,32 @@ An investigation was conducted on 102 individuals to study the relationship betw
 
 1.  What is the data type of the variables?
     
-    ```{code-cell} python
-    obesite = pd.read_csv("data/obesite.csv", header=0, sep=";")
-    obesite.describe()
-    ```
+```{code-cell} python
+obesite = pd.read_csv("data/obesite.csv", header=0, sep=";")
+obesite.describe()
+```
     
     Both variables are quantitatives.
 
 2.  How is the most common relationship between these two variables calculated?
     
-    ```{code-cell} python
-    obesite.corr()
-    ```
+```{code-cell} python
+obesite.corr()
+```
     
     Linear correlation seems moderate here.
 
 3.  How do we test if obesity has an influence on blood pressure using regression? Perform this test and draw a conclusion.
     
-    ```{code-cell} python
-    plt.plot(obesite.obesite, obesite.pression, "o")
-    ```
+```{code-cell} python
+plt.plot(obesite.obesite, obesite.pression, "o")
+```
     
     Even though the points don't exactly lie on a straight line, we can still consider that this model might roughly fit. Let's perform simple regression and a nullity slope $t$ test.
     
-    ```{code-cell} python
-    reg = smf.ols("pression~1+obesite", data=obesite).fit()
-    reg.summary()
-    ```
+```{code-cell} python
+reg = smf.ols("pression~1+obesite", data=obesite).fit()
+reg.summary()
+```
     
     The row `obesity` of the table provides the estimation of the coefficient $\hat\beta_2$, the estimated standard deviation of the coefficient, the value of the $t$ statistic for the test $\mathrm{H}_0: \beta_2=0$ against $\mathrm{H}_1: \beta_2\neq 0$, which is 3.45 in this case, and its critical probability which is 0.001. Hence, we reject $\mathrm{H}_0$, and there seems to be a linear relationship (albeit roughly; this model won't predict blood pressure effectively).
