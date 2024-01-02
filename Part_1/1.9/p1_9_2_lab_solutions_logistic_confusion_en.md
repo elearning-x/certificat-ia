@@ -24,6 +24,8 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 # Python Modules
 
 
@@ -57,10 +59,10 @@ Perform a logistic regression with `age` as the explanatory variable and `chd` a
 
 1.  Perform a summary of the model.
     
-    ```{code-cell} python
-    modele = smf.logit('chd~age', data=artere).fit()
-    print(modele.summary())
-    ```
+```{code-cell} python
+modele = smf.logit('chd~age', data=artere).fit()
+print(modele.summary())
+```
 
 
 ## Confusion Matrix
