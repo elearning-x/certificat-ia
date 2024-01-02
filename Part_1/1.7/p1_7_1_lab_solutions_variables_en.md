@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Solutions to Lab Session on Variable Selection'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -23,6 +23,7 @@ nbhosting:
 <span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
++++
 
 # Modules
 

@@ -201,7 +201,7 @@ camal.groupby(by="provenance").boxplot(False)
 plt.show()
 ```
     
-    Provenances 2 and 4 seem significantly higher.
+Provenances 2 and 4 seem significantly higher.
 
 3.  Answer the Question Are the eight provenances identical? Where does the `bloc` variable indirectly intervene in the used test statistic?
     
@@ -211,9 +211,9 @@ modele1 = smf.ols("hauteur ~ bloc + provenance", data=camal).fit()
 sm.stats.anova_lm(modele0, modele1)
 ```
     
-    The test statistic value is $26.65$, and its critical probability is almost zero, smaller than $\alpha=1\%$. Hence, we reject $\mathrm{H}_0$. Provenance has an effect (confirming the previous graph).
-    
-    The $F$ statistic compares the variability between provenances (numerator) and the residual variability ($\hat\sigma^2$ in the denominator). To enhance the test's sensitivity, it's important to have small residual variability. Thus, including explanatory variables, even if they were not initially questioned (e.g., the variable `bloc`), is crucial.
+The test statistic value is $26.65$, and its critical probability is almost zero, smaller than $\alpha=1\%$. Hence, we reject $\mathrm{H}_0$. Provenance has an effect (confirming the previous graph).
+
+The $F$ statistic compares the variability between provenances (numerator) and the residual variability ($\hat\sigma^2$ in the denominator). To enhance the test's sensitivity, it's important to have small residual variability. Thus, including explanatory variables, even if they were not initially questioned (e.g., the variable `bloc`), is crucial.
 
 4.  Residual Analysis Analyze the residuals of the retained model. Plot the residuals against the `bloc` variable.
     
@@ -227,4 +227,4 @@ plt.plot(modele1.predict(), camal.rstudent, "*")
 camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
 ```
     
-    The residuals seem appropriate, the test is highly significant, thus we are quite certain of our conclusion: provenance indeed has an effect on the height.
+The residuals seem appropriate, the test is highly significant, thus we are quite certain of our conclusion: provenance indeed has an effect on the height.

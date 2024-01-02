@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Lab session on Ridge Regression'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -23,6 +23,8 @@ nbhosting:
 <span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
 
 # Modules
 

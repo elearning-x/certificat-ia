@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Solutions to Lab session on Ridge Regression'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -23,6 +23,7 @@ nbhosting:
 <span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
++++
 
 # Modules
 
@@ -88,74 +89,74 @@ Xcr= scalerX.transform(X)
 1.  Estimation/adjustment: Use centered and scaled data for `X` and vector `y` to estimate the Ridge regression model:
     -   Instantiate a `Ridge` model using the same name
         
-        ```{code-cell} python
-        ridge = Ridge(alpha=0.00485)
-        ```
+```{code-cell} python
+ridge = Ridge(alpha=0.00485)
+```
         
         We recall that $\lambda$ parameter of ridge regression is called $\alpha$ in scikit-learn.
     -   Estimate the model with $\lambda=0.00485$ using the `fit` instance method
         
-        ```{code-cell} python
-        ridge.fit(Xcr, y)
-        ```
+```{code-cell} python
+ridge.fit(Xcr, y)
+```
 
 2.  Display $\hat\beta(\lambda)$ coefficients
     
-    ```{code-cell} python
-    print(ridge.coef_)
-    ```
+```{code-cell} python
+print(ridge.coef_)
+```
 
 3.  Predict a value for $x^*=(17, 18.4, 5, 5, 7, -4.3301, -4, -3, 87)'$
     
-    ```{code-cell} python
-    print(ridge.predict(Xcr[1,:].reshape(1, 10)))
-    ```
+```{code-cell} python
+print(ridge.predict(Xcr[1,:].reshape(1, 10)))
+```
 
 
 ## Using Pipeline
 
 -   Verify that `scalerX.transform(X[1,:].reshape(1, 10))` gives `Xcr[1,:]`. However, the sequence of "X transformation" followed by "modeling" can be automated using a [Pipeline](https://scikit-learn.org/stable/tutorial/statistical_inference/putting_together.html)
     
-    ```{code-cell} python
-    np.all(np.abs( scalerX.transform(X[1,:].reshape(1, 10))[0,:] - Xcr[1,:])<1e-10)
-    ```
+```{code-cell} python
+np.all(np.abs( scalerX.transform(X[1,:].reshape(1, 10))[0,:] - Xcr[1,:])<1e-10)
+```
 -   Create a `Pipeline` instance
     1.  Create an instance for StandardScaler
         
-        ```{code-cell} python
-        cr = StandardScaler()
-        ```
+```{code-cell} python
+cr = StandardScaler()
+```
     
     2.  Create an instance for Ridge
         
-        ```{code-cell} python
-        ridge = Ridge(alpha=0.00485)
-        ```
+```{code-cell} python
+ridge = Ridge(alpha=0.00485)
+```
     
     3.  Create a `Pipeline` instance with the `steps` argument, where each step is a tuple with the step's name (e.g., `"cr"` or `"ridge"`) and the instance of the step (created in the previous steps)
         
-        ```{code-cell} python
-        pipe = Pipeline(steps=[("cr", cr) , ("ridge",  ridge)])
-        ```
+```{code-cell} python
+pipe = Pipeline(steps=[("cr", cr) , ("ridge",  ridge)])
+```
 
 -   Fit the pipeline instance with the `fit` instance method using the data `X` and `y`
     
-    ```{code-cell} python
-    pipe.fit(X,y)
-    ```
+```{code-cell} python
+pipe.fit(X,y)
+```
 
 -   Retrieve $\hat\beta(\lambda)$ by accessing the `"ridge"` coordinate (chosen step's name) from the `named_steps` attribute of the pipeline object
     
-    ```{code-cell} python
-    er=pipe.named_steps["ridge"]
-    print(er.coef_)
-    ```
+```{code-cell} python
+er=pipe.named_steps["ridge"]
+print(er.coef_)
+```
 
 -   Predict the adjustment for $x^*$
     
-    ```{code-cell} python
-    print(pipe.predict(X[1,:].reshape(1,10)))
-    ```
+```{code-cell} python
+print(pipe.predict(X[1,:].reshape(1,10)))
+```
 
 
 ## Coefficient Evolution with $\lambda$
@@ -226,18 +227,18 @@ kf = KFold(n_splits = 10, shuffle=True, random_state=0)
 2.  Loop through all blocks; use the `split` instance method on `kf` with data `X`
 3.  For each block: a. Estimate Ridge models for each $\lambda$ on the training data (9 blocks) b. Predict the validation data for each $\lambda$ c. Store the predicted values in the corresponding rows of `res` for the 100 Ridge models
     
-    ```{code-cell} python
-    kf = KFold(n_splits=10, shuffle=True, random_state=0)
-    res = pd.DataFrame(np.zeros((X.shape[0], len(alphas_ridge))))
-    for app_index, val_index in kf.split(X):
-        Xapp = Xcr[app_index,:]
-        yapp = y[app_index]
-        Xval = Xcr[val_index,:]
-        yval = y[val_index]
-        for j, ll in enumerate(alphas_ridge):
-            rr = Ridge(alpha=ll).fit(Xapp, yapp)
-            res.iloc[val_index,j] = rr.predict(Xval)
-    ```
+```{code-cell} python
+kf = KFold(n_splits=10, shuffle=True, random_state=0)
+res = pd.DataFrame(np.zeros((X.shape[0], len(alphas_ridge))))
+for app_index, val_index in kf.split(X):
+    Xapp = Xcr[app_index,:]
+    yapp = y[app_index]
+    Xval = Xcr[val_index,:]
+    yval = y[val_index]
+    for j, ll in enumerate(alphas_ridge):
+        rr = Ridge(alpha=ll).fit(Xapp, yapp)
+        res.iloc[val_index,j] = rr.predict(Xval)
+```
 
 
 ### Optimal $\hat\lambda$ Selection
@@ -265,66 +266,66 @@ The previous questions can be chained more quickly using `cross_val_predict`
 
 1.  Chain the previous questions using `cross_val_predict` (calculate the grid manually) Build the grid
     
-    ```{code-cell} python
-    scalerX = StandardScaler().fit(X)
-    Xcr= scalerX.transform(X)
-    llc = np.linspace(0, -4, 100)
-    l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
-    alphas_ridge = l0*100*10**(llc)
-    ```
+```{code-cell} python
+scalerX = StandardScaler().fit(X)
+Xcr= scalerX.transform(X)
+llc = np.linspace(0, -4, 100)
+l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
+alphas_ridge = l0*100*10**(llc)
+```
     
     Cross Validation 10 fold
     
-    ```{code-cell} python
-    kf = KFold(n_splits=10, shuffle=True, random_state=0)
-    resbis = pd.DataFrame(np.zeros((X.shape[0], len(alphas_ridge))))
-    for j, ll in enumerate(alphas_ridge):
-        resbis.iloc[:,j] = cross_val_predict(Ridge(alpha=ll),Xcr,y,cv=kf)
-    ```
+```{code-cell} python
+kf = KFold(n_splits=10, shuffle=True, random_state=0)
+resbis = pd.DataFrame(np.zeros((X.shape[0], len(alphas_ridge))))
+for j, ll in enumerate(alphas_ridge):
+    resbis.iloc[:,j] = cross_val_predict(Ridge(alpha=ll),Xcr,y,cv=kf)
+```
     
     and results as in previous questions
 
 2.  Build the grid
     
-    ```{code-cell} python
-    scalerX = StandardScaler().fit(X)
-    Xcr= scalerX.transform(X)
-    llc = np.linspace(0, -4, 100)
-    l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
-    alphas_ridge = l0*100*10**(llc)
-    ```
+```{code-cell} python
+scalerX = StandardScaler().fit(X)
+Xcr= scalerX.transform(X)
+llc = np.linspace(0, -4, 100)
+l0 = np.abs(Xcr.transpose().dot(y)).max()/X.shape[0]
+alphas_ridge = l0*100*10**(llc)
+```
     
     We use `RidgeCV` with `kf` (as always)
     
-    ```{code-cell} python
-    kf = KFold(n_splits=10, shuffle=True, random_state=0)
-    modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = 'neg_mean_squared_error').fit(Xcr, y)
-    ```
+```{code-cell} python
+kf = KFold(n_splits=10, shuffle=True, random_state=0)
+modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = 'neg_mean_squared_error').fit(Xcr, y)
+```
     
     The result is a ridge model already fitted with $\hat\lambda$
     
-    ```{code-cell} python
-    print(modele_ridge.alpha_)
-    ```
+```{code-cell} python
+print(modele_ridge.alpha_)
+```
 
 3.  If we prefer the sum of squared error (SSE) we need to construct a loss function and a score object:
     
-    ```{code-cell} python
-    def my_custom_loss_func(y_true, y_pred):
-        sse = np.sum((y_true - y_pred)**2)
-        return sse
-    myscore = make_scorer(my_custom_loss_func, greater_is_better=False)
-    ```
+```{code-cell} python
+def my_custom_loss_func(y_true, y_pred):
+    sse = np.sum((y_true - y_pred)**2)
+    return sse
+myscore = make_scorer(my_custom_loss_func, greater_is_better=False)
+```
     
     We can use this score using:
     
-    ```{code-cell} python
-    kf = KFold(n_splits=10, shuffle=True, random_state=0)
-    modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = myscore).fit(Xcr, y)
-    ```
+```{code-cell} python
+kf = KFold(n_splits=10, shuffle=True, random_state=0)
+modele_ridge = RidgeCV(alphas=alphas_ridge, cv=kf, scoring = myscore).fit(Xcr, y)
+```
     
     And the result is a ridge model already fitted and $\hat\lambda$ is
     
-    ```{code-cell} python
-    print(modele_ridge.alpha_)
-    ```
+```{code-cell} python
+print(modele_ridge.alpha_)
+```
