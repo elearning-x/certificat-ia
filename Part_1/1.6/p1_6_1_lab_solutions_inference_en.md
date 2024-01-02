@@ -147,40 +147,40 @@ Define $F_{2:3}= \|\hat\beta_{2:3} - \beta_{2:3}\|^2_{\hat V_{\hat\beta_{2:3}}^{
 
 1.  Show that $F_{2:3,2:3}$ follows a Fisher distribution $\mathcal{F}(2,n-4)$. Calculate its 95% quantile using the `f` function from the `scipy.stats` sub-module (use the `isf` method).
     
-    ```{code-cell} python
-    f.isf(0.05, 2, modele3.nobs - 2)
-    ```
+```{code-cell} python
+f.isf(0.05, 2, modele3.nobs - 2)
+```
 
 2.  Deduce that the confidence region for $\beta_{1:2}$ is the image of a disk by a matrix. Calculate this matrix in Python [use the `cov_params` method for the `modele3` instance, functions `eigh` from the `np.linalg` sub-module, `np.matmul`, `np.diag`, `np.sqrt` \].
     
-    ```{code-cell} python
-    hatSigma = modele3.cov_params().iloc[1:3,1:3]
-    valpr,vectpr = np.linalg.eigh(hatSigma)
-    hatSigmademi = np.matmul(vectpr, np.diag(np.sqrt(valpr)))
-    ```
+```{code-cell} python
+hatSigma = modele3.cov_params().iloc[1:3,1:3]
+valpr,vectpr = np.linalg.eigh(hatSigma)
+hatSigmademi = np.matmul(vectpr, np.diag(np.sqrt(valpr)))
+```
 
 3.  Generate 500 points on the circle [=cos= and `sin` from =np=\]
     
-    ```{code-cell} python
-    theta = np.linspace(0, 2 * math.pi, 500)
-    rho = (2 * f.isf(0.05, 2, modele3.nobs - 2))**0.5
-    x = rho * np.cos(theta)
-    y = rho * np.sin(theta)
-    XX = np.array([x, y])
-    ```
+```{code-cell} python
+theta = np.linspace(0, 2 * math.pi, 500)
+rho = (2 * f.isf(0.05, 2, modele3.nobs - 2))**0.5
+x = rho * np.cos(theta)
+y = rho * np.sin(theta)
+XX = np.array([x, y])
+```
 
 4.  Transform these points using the matrix to obtain the confidence ellipse.
     
-    ```{code-cell} python
-    ZZ = np.add(np.matmul(hatSigmademi, XX).transpose(), np.array(modele3.params[1:3]))
-    ```
+```{code-cell} python
+ZZ = np.add(np.matmul(hatSigmademi, XX).transpose(), np.array(modele3.params[1:3]))
+```
 
 5.  Plot the ellipse \[`plt.fill` (for the ellipse), `plt.plot` (for the center)\]
     
-    ```{code-cell} python
-    plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
-    plt.plot(modele3.params[1], modele3.params[2], "+")
-    ```
+```{code-cell} python
+plt.fill(ZZ[:, 0], ZZ[:, 1], facecolor='yellow', edgecolor='black', linewidth=1)
+plt.plot(modele3.params[1], modele3.params[2], "+")
+```
 
 
 ## Univariate CIs
@@ -290,7 +290,7 @@ pd.DataFrame(np.quantile(COEFF, [0.025, 0.975], axis=0).T)
 
 ## Data Import
 
-Import the eucalyptus data into the pandas DataFrame `eucalypt` using [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
+Import the eucalyptus data into the pandas DataFrame `eucalypt` using \[`read_csv` from `numpy`\]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
@@ -325,7 +325,7 @@ reg.summary()
 ```{code-cell} python
 import statsmodels.api as sm
 sm.stats.anova_lm(regsqrt,reg)
-    ```
+```
     
     We obtain the same results as before (since $F=t^2$).
 
