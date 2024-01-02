@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Solutions to Lab Session on Logistic Regression'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -23,6 +23,8 @@ nbhosting:
 <span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
 
 # Python Modules
 
@@ -67,17 +69,17 @@ Perform a logistic regression with `age` as the explanatory variable and `chd` a
 
 1.  Perform a summary of the model.
     
-    ```{code-cell} python
-    modele = smf.logit('chd~age', data=artere).fit()
-    print(modele.summary())
-    ```
-    
-    The modeling has a log-likelihood of -53.677. The modeling using only the intercept (named as the Null model here) have a log-likelihood of -68.331. Adding `age` to the Null model (and obtaining our `modele`) leads to a substantial improvement of the log-likelihood.
+```{code-cell} python
+modele = smf.logit('chd~age', data=artere).fit()
+print(modele.summary())
+```
+
+The modeling has a log-likelihood of -53.677. The modeling using only the intercept (named as the Null model here) have a log-likelihood of -68.331. Adding `age` to the Null model (and obtaining our `modele`) leads to a substantial improvement of the log-likelihood.
 2.  Display the parameters estimated by logistic regression.
-    
-    ```{code-cell} python
-    print(modele.params)
-    ```
+
+```{code-cell} python
+print(modele.params)
+```
 
 
 ## Prediction and Estimated Probabilities
