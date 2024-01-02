@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Solutions to Lab Session on Inference'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
