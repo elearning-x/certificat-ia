@@ -15,7 +15,7 @@ language_info:
   pygments_lexer: ipython3
 nbhosting:
   title: 'Lab Session on Qualitative Variables'
-  version: '1.0'
+  version: '1.1'
 ---
 
 <div class="licence">
@@ -23,6 +23,8 @@ nbhosting:
 <span>Lisa BEDIN<br />Pierre André CORNILLON<br />Eric MATZNER-LOBER</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
 
 # Python Modules
 
@@ -160,24 +162,24 @@ We want to determine if these eight provenances are identical.
 
 1.  Data Import Import the data from the file `eucalyptus_camaldulensis.txt` and provide a numerical summary. \[Use the `astype` method on the DataFrame columns and the `describe` method on the DataFrame instance.\]
     
-    ```{code-cell} python
-    
-    ```
+  ```{code-cell} python
+  
+  ```
 
 2.  Graphical Representation Graphically represent the data used to answer the question.
     
-    ```{code-cell} python
-    
-    ```
+  ```{code-cell} python
+  
+  ```
 
 3.  Answer the Question Are the eight provenances identical? Where does the `bloc` variable indirectly intervene in the used test statistic?
     
-    ```{code-cell} python
-    
-    ```
+  ```{code-cell} python
+  
+  ```
 
 1.  Residual Analysis Analyze the residuals of the retained model. Plot the residuals against the `bloc` variable.
     
-    ```{code-cell} python
-    
-    ```
+  ```{code-cell} python
+  
+  ```
