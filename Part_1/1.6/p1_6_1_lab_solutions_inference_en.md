@@ -118,7 +118,7 @@ plt.legend(handles=[lesic, lesic2], loc='upper left')
 
 ## Data Import
 
-Import the 'ozone.txt' data into the pandas DataFrame `ozone`.
+Import the ozone data into the pandas DataFrame `ozone` \[`read_csv` from `pandas` \]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
@@ -211,7 +211,7 @@ The goal of this lab is to construct a confidence interval using the Bootstrap.
 
 ## Data Import
 
-Import the ozone data into the pandas DataFrame `ozone` [=read<sub>csv</sub>= from `numpy=]. In Fun Campus, the datasets are located in the =data/` directory.
+Import the ozone data into the pandas DataFrame `ozone` \[`read_csv` from `pandas` \]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
@@ -291,7 +291,7 @@ pd.DataFrame(np.quantile(COEFF, [0.025, 0.975], axis=0).T)
 
 ## Data Import
 
-Import the eucalyptus data into the pandas DataFrame `eucalypt` using \[`read_csv` from `numpy`\]. In Fun Campus, the datasets are located in the `data/` directory.
+Import the eucalyptus data into the pandas DataFrame `eucalypt` using \[`read_csv` from `pandas`\]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")

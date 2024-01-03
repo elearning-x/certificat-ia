@@ -40,7 +40,7 @@ Import the modules: pandas (as `pd`), numpy (as `np`), matplotlib.pyplot (as `pl
 
 ## Data Importation
 
-Import the data from eucalyptus into the pandas DataFrame `eucalypt`. Use `read_csv` from `numpy`. In Fun Campus, the datasets are located in the directory `data/`.
+Import the data from eucalyptus into the pandas DataFrame `eucalypt`. Use `read_csv` from `pandas`. In Fun Campus, the datasets are located in the directory `data/`.
 
 ```{code-cell} python
 
@@ -110,7 +110,7 @@ from scipy.stats import f
 
 ## Data Import
 
-Import the ozone data into the pandas DataFrame `ozone` \[`read_csv` from `numpy` \]. In Fun Campus, the datasets are located in the `data/` directory.
+Import the ozone data into the pandas DataFrame `ozone` \[`read_csv` from `pandas` \]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 
@@ -185,7 +185,7 @@ The goal of this lab is to construct a confidence interval using the Bootstrap.
 
 ## Data Import
 
-Import the ozone data into the pandas DataFrame `ozone` \[`read_csv` from `numpy` \]. In Fun Campus, the datasets are located in the `data/` directory.
+Import the ozone data into the pandas DataFrame `ozone` \[`read_csv` from `pandas` \]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 
@@ -248,7 +248,7 @@ From the $B=1000$ values $\hat\beta^{(b)}$, propose a 95% confidence interval us
 
 ## Data Import
 
-Import the eucalyptus data into the pandas DataFrame `eucalypt` using \[`read_csv` from `numpy` \]. In Fun Campus, the datasets are located in the `data/` directory.
+Import the eucalyptus data into the pandas DataFrame `eucalypt` using \[`read_csv` from `pandas` \]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 

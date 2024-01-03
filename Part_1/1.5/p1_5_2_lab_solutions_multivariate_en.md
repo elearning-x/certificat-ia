@@ -42,8 +42,7 @@ import statsmodels.formula.api as smf
 # Multiple Regression on Ozone data (2 variables)
 
 ## Data import
-Import ozone data into pandas `ozone` DataFrame.
-
+Import ozone data into pandas `ozone` DataFrame \[`read_csv` of `pandas`\]. On Fun Campus the path is `data/ozone.txt`.
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozone.txt", header=0, sep=";")
@@ -94,7 +93,7 @@ reg.summary()
 # Multiple Regression (course model) for Ozone Data
 
 ## Data import
-Import ozone data into pandas `ozone` DataFrame
+Import ozone data into pandas `ozone` DataFrame \[`read_csv` of `pandas`\]. On Fun Campus the path is `data/ozone.txt`.
 
 
 ```{code-cell} python
@@ -140,7 +139,7 @@ reg.scale
 
 ## Importing data
 Import eucalytus data into pandas `eucalypt` DataFrame
-
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalypt.txt`.
 
 ```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")

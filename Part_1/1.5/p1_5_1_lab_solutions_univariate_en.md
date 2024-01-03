@@ -42,6 +42,7 @@ import statsmodels.formula.api as smf
 
 ## Data Loading
 Load eucalyptus data into a pandas DataFrame `eucalypt`
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python
@@ -123,7 +124,8 @@ The fluctuations in the mean of the residuals can be seen again, but this graph 
 # Estimatation variability
 
 ## Data Loading
-Import eucalytus data into pandas `eucalypt` DataFrame
+Load eucalyptus data into a pandas DataFrame `eucalypt`
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python
@@ -181,7 +183,8 @@ sample is different from the others. Among all the trees in the field, some (a s
 # Two models
 
 ## Data Loading
-Import eucalytus data into pandas `eucalypt` DataFrame
+Load eucalyptus data into a pandas DataFrame `eucalypt`
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 
 ```{code-cell} python

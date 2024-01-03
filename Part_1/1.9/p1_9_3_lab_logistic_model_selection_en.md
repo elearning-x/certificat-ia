@@ -28,7 +28,7 @@ nbhosting:
 
 +++
 
-The dataset we want to process is `spambase.data`. This file contains 4601 observations and 58 variables have been measured. It corresponds to the analysis of emails. The last column of `spambase.data` denotes whether the e-mail was considered spam (1) or not (0), i.e. unsolicited commercial e-mail. This is the variable to be predicted. Most of the attributes indicate whether a particular word or character was frequently occuring in the e-mail. The run-length attributes (55-57) measure the length of sequences of consecutive capital letters. Here are the definitions of the attributes (see [UCI](http://archive.ics.uci.edu/dataset/94/spambase) for details):
+The dataset we want to process is `spambase.data` located in `data/` directory. This file contains 4601 observations and 58 variables have been measured. It corresponds to the analysis of emails. The last column of `spambase.data` denotes whether the e-mail was considered spam (1) or not (0), i.e. unsolicited commercial e-mail. This is the variable to be predicted. Most of the attributes indicate whether a particular word or character was frequently occuring in the e-mail. The run-length attributes (55-57) measure the length of sequences of consecutive capital letters. Here are the definitions of the attributes (see [UCI](http://archive.ics.uci.edu/dataset/94/spambase) for details):
 
 -   48 continuous real : percentage of words in the e-mail that match WORD, i.e. 100 \* (number of times the WORD appears in the e-mail) / total number of words in e-mail.
 -   6 continuous real : percentage of characters in the e-mail that match CHAR, i.e. 100 \* (number of CHAR occurences) / total characters in e-mail

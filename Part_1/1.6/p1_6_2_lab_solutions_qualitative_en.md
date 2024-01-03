@@ -44,7 +44,7 @@ import statsmodels.api as sm
 
 ## Data Import
 
-Import the data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and convert the last two variables into qualitative variables. Then, provide a numerical summary for each variable. \[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]
+Import the data `ozonecomplet.csv` (in Fun Campus, data is located in the `data/` directory) and convert the last two variables into qualitative variables. Then, provide a numerical summary for each variable. \[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 ozone = pd.read_csv("data/ozonecomplet.csv", header=0, sep=";")
@@ -106,8 +106,8 @@ The summary row in `reg` corresponding to `Nord` provides the test for the nulli
 
 We have measurements of folate concentration (in $\mu\mathrm{g/l}$) in red blood cells during anesthesia for $n=22$ patients. Anesthesia involves three ventilation methods:
 
--   50-50 mixture of $\mathrm{N}<sub>2</sub>$O (nitrous oxide or laughing gas) and $\mathrm{O}_2$ for 24 hours (coded `N2O+O2,24h`)
--   50-50 mixture of $\mathrm{N}<sub>2</sub>$O and $\mathrm{O}_2$ only during surgery (coded `N2O+O2,op`)
+-   50-50 mixture of $\mathrm{N}_2$O (nitrous oxide or laughing gas) and $\mathrm{O}_2$ for 24 hours (coded `N2O+O2,24h`)
+-   50-50 mixture of $\mathrm{N}_2$O and $\mathrm{O}_2$ only during surgery (coded `N2O+O2,op`)
 -   Pure oxygen ventilation for 24 hours (coded `O2,24h`)
 
 We aim to determine if these three ventilation methods are equivalent.
@@ -115,7 +115,7 @@ We aim to determine if these three ventilation methods are equivalent.
 
 ## Data Import
 
-Import the data from the file `gr.csv` and provide a numerical summary. \[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]
+Import the data from the file `gr.csv` and provide a numerical summary. \[Use the `astype` method on the DataFrame column and the `describe` method on the DataFrame instance.\]. In Fun Campus, the datasets are located in the `data/` directory.
 
 ```{code-cell} python
 gr = pd.read_csv("data/gr.csv", header=0, sep=";")
@@ -185,7 +185,7 @@ We have the average height measurements of 8 provenances of eucalyptus camaldule
 
 We want to determine if these eight provenances are identical.
 
-1.  Data Import Import the data from the file `eucalyptus_camaldulensis.txt` and provide a numerical summary. \[Use the `astype` method on the DataFrame columns and the `describe` method on the DataFrame instance.\]
+1.  Import the data from the file `eucalyptus_camaldulensis.txt` and provide a numerical summary. \[Use the `astype` method on the DataFrame columns and the `describe` method on the DataFrame instance.\]. In Fun Campus, the datasets are located in the `data/` directory.
     
   ```{code-cell} python
   camal = pd.read_csv("data/eucalyptus_camaldulensis.txt", header=0, sep=" ", decimal=",")

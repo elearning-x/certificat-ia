@@ -56,7 +56,7 @@ from sklearn.model_selection import KFold
 
 ## Data Import
 
--   Import the ozone data `ozonecomplet.csv`
+-   Import the ozone data `ozonecomplet.csv` from `data/` directory
 -   Drop the last two qualitative variables and provide a summary of each variable using `astype` on the DataFrame column and the `describe` method on the DataFrame instance
 
 ```{code-cell} python
@@ -158,7 +158,7 @@ print(rl.predict(xetcr))
 
 ## Data Import
 
--   Import the ozone data `ozonecomplet.csv`
+-   Import the ozone data `ozonecomplet.csv` from `data/` directory
 -   Drop the last two qualitative variables and provide a summary of each variable using `astype` on the DataFrame column and the `describe` method on the DataFrame instance
 
 ```{code-cell} python

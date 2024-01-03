@@ -13,8 +13,8 @@ import statsmodels.formula.api as smf
 # Simple Regression
 
 ### Data Loading
-Load eucalyptus data into a pandas DataFrame `eucalypt`
-
+Load eucalyptus data into a pandas DataFrame `eucalypt.txt`
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 ```{code-cell} python
 eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
@@ -224,11 +224,11 @@ The fluctuations in the mean of the residuals can be seen again, but this graph 
 # Estimatation variability
 
 ### Data Loading
-Import eucalytus data into pandas `eucalypt` DataFrame
-
+Import eucalytus data into pandas `eucalypt.txt` DataFrame
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 ```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Estimation on \$n=100\$ data
@@ -318,10 +318,10 @@ sample is different from the others. Among all the trees in the field, some (a s
 
 ### Data Loading
 Import eucalytus data into pandas `eucalypt` DataFrame
-
+\[`read_csv` of `pandas`\]. On Fun Campus the path is `data/eucalyptus.txt`.
 
 ```{code-cell} python
-eucalypt = pd.read_csv("eucalyptus.txt", header=0, sep=";")
+eucalypt = pd.read_csv("data/eucalyptus.txt", header=0, sep=";")
 ```
 
 ### Point Cloud
