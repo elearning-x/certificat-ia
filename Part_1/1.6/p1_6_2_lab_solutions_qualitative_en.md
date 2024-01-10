@@ -135,7 +135,7 @@ plt.plot(gr.ventilation, gr.folate, "o")
 We observe that the sample sizes in each group are small, the means seem different, and the variabilities appear comparable. A boxplot is also informative, although less suitable for small sample sizes per group.
 
 ```{code-cell} python
-gr.groupby(by='ventilation').boxplot(False)
+gr.groupby(by='ventilation', observed=False).boxplot(False)
 plt.show()
 ```
 
@@ -197,7 +197,7 @@ We want to determine if these eight provenances are identical.
 2.  Graphical Representation Graphically represent the data used to answer the question.
     
 ```{code-cell} python
-camal.groupby(by="provenance").boxplot(False)
+camal.groupby(by="provenance", observed=False).boxplot(False)
 plt.show()
 ```
     
@@ -224,7 +224,7 @@ plt.plot(modele1.predict(), camal.rstudent, "*")
 ```
     
 ```{code-cell} python
-camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc").boxplot(False)
+camal.loc[:,["rstudent", "bloc"]].groupby(by="bloc", observed=False).boxplot(False)
 ```
     
 The residuals seem appropriate, the test is highly significant, thus we are quite certain of our conclusion: provenance indeed has an effect on the height.
