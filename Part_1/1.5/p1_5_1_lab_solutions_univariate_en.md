@@ -148,8 +148,8 @@ for k in range(500):
     lines = rng.choice(eucalypt.shape[0], size=10, replace=False)
     euca100 = eucalypt.iloc[lines]
     reg100 = smf.ols('ht~circ', data=euca100).fit()
-    beta1.append(reg100.params[0])
-    beta2.append(reg100.params[1])
+    beta1.append(reg100.params.iloc[0])
+    beta2.append(reg100.params.iloc[1])
     
 ```
 
