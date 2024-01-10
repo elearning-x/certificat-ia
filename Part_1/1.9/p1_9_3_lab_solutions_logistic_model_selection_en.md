@@ -198,14 +198,16 @@ After we intantiate all the modelling as follows
 ```{code-cell} python
 # instanciation steps
 cr = StandardScaler()
-lassocv = LogisticRegressionCV(cv=10, penalty="l1", n_jobs=3, solver="liblinear")
-ridgecv = LogisticRegressionCV(cv=10, penalty="l2", n_jobs=3)
-enetcv = LogisticRegressionCV(cv=10, penalty="elasticnet", n_jobs=3, solver="saga", l1_ratios=[0.5])
+lassocv = LogisticRegressionCV(cv=10, penalty="l1", n_jobs=3, solver="liblinear", max_iter=200)
+ridgecv = LogisticRegressionCV(cv=10, penalty="l2", n_jobs=3, max_iter=1000)
+enetcv = LogisticRegressionCV(cv=10, penalty="elasticnet", n_jobs=3, solver="saga", l1_ratios=[0.5], max_iter=10000)
 # instanciation pipeline
 pipe_lassocv = Pipeline(steps=[("cr", cr), ("lassocv", lassocv)])
 pipe_ridgecv = Pipeline(steps=[("cr", cr), ("ridgecv", ridgecv)])
 pipe_enetcv = Pipeline(steps=[("cr", cr), ("enetcv", enetcv)])
 ```
+
+For some values of $\lambda$ for some folds, the algorithm (lasso) failed to converge. This usually occurs for uninteresting modelling (for example for small $\lambda$) and leads to worse modelling than if the algorithm was to converge. But as this occurs for uninteresting modelling this is harmless.
 
 We fit/estimate all the models and use them for prediction (the `predict` method returns label not probability)
 
