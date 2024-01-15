@@ -1,57 +1,32 @@
 ---
-
 jupytext:
-
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
-
   notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version, -jupytext.text_representation.format_version,
-
     -language_info.version, -language_info.codemirror_mode.version, -language_info.codemirror_mode,
-
     -language_info.file_extension, -language_info.mimetype, -toc
-
   text_representation:
-
     extension: .md
-
     format_name: myst
-
 kernelspec:
-
   display_name: Python 3 (ipykernel)
-
   language: python
-
   name: python3
-
 language_info:
-
   name: python
-
   nbconvert_exporter: python
-
   pygments_lexer: ipython3
-
 nbhosting:
-
-  title: Simple regression
-
+  title: CNN in Pytorch
   version: '1.0'
-
 ---
-
  
-
 <div class="licence">
-
 <span><img src="media/logo_IPParis.png" /></span>
-
 <span>Alasdair James NEWSON</span>
-
 <span>Licence CC BY-NC-ND</span>
-
 </div>
 
++++
 
 # TP Coding Convolutional Neural Networks in Pytorch - part 1
 
@@ -90,7 +65,7 @@ You need to add the missing parts in the code (parts between # --- START CODE HE
 # Load packages
 
 
-```python
+```{code-cell} python
 %matplotlib inline
 import matplotlib.pyplot as plt
 import numpy as np
@@ -114,7 +89,7 @@ There are several ways to write a CNN model in pytorch. In this lab, you will be
 We first import MNIST dataset. We use the ```torch.utils.data.DataLoader``` function of Pytorch to easily iterate over mini-batches of data.
 
 
-```python
+```{code-cell} python
 # convert input to Pytorch tensors
 input_transform=transforms.Compose( [transforms.ToTensor()])
 # extract mnist data
@@ -147,7 +122,7 @@ The images are contained in a sub-structure of ```mnist_trainset``` called ```da
 __NOTE__ In general, if you want to find out what a structure contains, use the command ```dir()```, this will give you a list of the sub-structures.
 
 
-```python
+```{code-cell} python
 print(dir(mnist_trainset))
 
 print("Size of training data : ", mnist_trainset.data.shape)
@@ -158,14 +133,14 @@ print("Size of training labels : ", mnist_trainset.targets.shape)
 The mnist dataset has 10 classes. These are the following :
 
 
-```python
+```{code-cell} python
 mnist_list = [ '0', '1','2','3','4','5','6','7','8','9']
 ```
 
 ### Display some of the images
 
 
-```python
+```{code-cell} python
 plt.figure(figsize=(10, 6))
 for idx in range(0,10):
     plt.subplot(2, 5, idx+1)
@@ -195,7 +170,7 @@ Pytorch carries out the softmax which we would expect at the end of our network 
 Now, we define the following hyper-parameters of the model :
 
 
-```python
+```{code-cell} python
 
 learning_rate = 0.01
 n_epochs = 10
@@ -237,7 +212,7 @@ Look at the documentation online to find the correct parameters. For example:
 
 
 
-```python
+```{code-cell} python
 # BEGIN STUDENT CODE
 mnist_model = torch.nn.Sequential(...)
 # END STUDENT CODE
@@ -253,7 +228,7 @@ Pytorch provides an easy way to define the loss criterion to optimise. The synta
 Fill in the following code, choosing the correct criterion to optimise.
 
 
-```python
+```{code-cell} python
 # BEGIN STUDENT CODE
 criterion = ...
 optimizer = ...
@@ -272,7 +247,7 @@ The inputs to this function will be Pytorch tensors, so you can use the followin
 Create this function now.
 
 
-```python
+```{code-cell} python
 def vector_to_class(x):
   # BEGIN STUDENT CODE
   y = ...
@@ -285,7 +260,7 @@ def vector_to_class(x):
 Now, define a function which calcualtes the accuracy of the output of the neural network, with respect to the input labels. We consider that the input is a vector of class numbers (the final prediction of the CNN).
 
 
-```python
+```{code-cell} python
 def cnn_accuracy(predict,labels):
   # BEGIN STUDENT CODE
   accuracy = ...
@@ -298,7 +273,7 @@ def cnn_accuracy(predict,labels):
 Now, we carry out the actual training of the model.
 
 
-```python
+```{code-cell} python
 
 train_losses=[]
 valid_losses=[]
@@ -324,7 +299,7 @@ for epoch in range(0,n_epochs):
 ```
 
 
-```python
+```{code-cell} python
 
 # Calculate accuracy on the training set and the test set
 
@@ -344,7 +319,7 @@ print("Test Accuracy:", test_accuracy)
 ```
 
 
-```python
+```{code-cell} python
 print("Visual results : ")
 
 plt.figure(figsize=(10, 6))
@@ -364,7 +339,7 @@ We are now going to train the same network architecture on a more difficult data
 First, we import the CIFAR10 data and carry out some pre-processing :
 
 
-```python
+```{code-cell} python
 # convert input to Pytorch tensors
 input_transform=transforms.Compose( [transforms.ToTensor()])
 # extract mnist data
@@ -391,7 +366,7 @@ nb_channels = X_train.shape[-1]
 ```
 
 
-```python
+```{code-cell} python
 # the CIFAR10 categories
 cifar_10_list = [ 'airplane', 'automobile','bird','cat','deer','dog','frog','horse','ship','truck']
 
@@ -404,7 +379,7 @@ n_epochs = 30
 ### Display some of the images
 
 
-```python
+```{code-cell} python
 plt.figure(figsize=(10, 6))
 for idx in range(0,10):
     plt.subplot(2, 5, idx+1)
@@ -437,7 +412,7 @@ In this case, we are going to add a layer because the data is more complex. Ther
     - Dense (fully connected) layer
 
 
-```python
+```{code-cell} python
 
 learning_rate = 0.01
 n_epochs = 50
@@ -461,7 +436,7 @@ n_h_3 = nb_filters
 Now, modify the previous code (you can copy/paste/modify the necessary parts) to define the model for CIFAR10.
 
 
-```python
+```{code-cell} python
 # BEGIN STUDENT CODE
 
 cifar_model = torch.nn.Sequential(...)
@@ -474,7 +449,7 @@ optimizer = ...
 Now, carry out training on the CIFAR10 dataset (use the previous code as an example).
 
 
-```python
+```{code-cell} python
 
 # BEGIN STUDENT CODE
 # END STUDENT CODE
@@ -498,7 +473,7 @@ In particular, the convolutional weights are contained in the ```weights``` sub-
 Now, display all (32) trained filters of the first convolutional layer, taking only the first channel of each filter :
 
 
-```python
+```{code-cell} python
 
 plt.figure(figsize=(10, 6))
 for num in range(0,32):
@@ -513,6 +488,6 @@ What do you think ? Pretty incomprehensible no ? Do not spend too long trying to
 Many different techniques exist for trying to interpret CNNs, but just know that it is a new research domain, so no solid theory exists yet.
 
 
-```python
+```{code-cell} python
 
 ```
