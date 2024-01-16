@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: CNN Pytroch correction
+  title: CNN Pytorch correction
   version: '1.0'
 ---
 
