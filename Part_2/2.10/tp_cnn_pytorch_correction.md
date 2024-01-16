@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: CNN Pytorch correction
+  title: Neural networks correction
   version: '1.0'
 ---
 
@@ -54,7 +54,7 @@ We will first code the simple ConvNet described below using the Pytorch environm
     - A softmax activation function which outputs are the $P(y_c | X)$ (multi-class problem)
 
 
-<IMG SRC='https://perso.telecom-paristech.fr/anewson/doc/ima_205/images/TP_ima_CNN.png'>
+<IMG SRC='media/Part_2/2.10/TP_ima_CNN.png'>
     
 You should use the "SAME" border conditions.
     
