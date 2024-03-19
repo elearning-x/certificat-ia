@@ -1,3 +1,34 @@
+---
+jupytext:
+  cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
+  notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version, -jupytext.text_representation.format_version,
+    -language_info.version, -language_info.codemirror_mode.version, -language_info.codemirror_mode,
+    -language_info.file_extension, -language_info.mimetype, -toc
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
+nbhosting:
+  title: Deep Learning and Optimization
+  version: '1.0'
+---
+
+ 
+<div class="licence">
+<span><img src="media/logo_IPParis.png" /></span>
+<span>Aymeric DIEULEVEUT</span>
+<span>Licence CC BY-NC-ND</span>
+</div>
+
++++
+
 # Deep Learning and Optimization
 ## Lab 2 - Optimization
 
@@ -11,7 +42,7 @@ features, and visualize the results.
 If you have time, you can look at the files `helpers.py` and `plots.py`, and make sure you understand them.
 
 
-```python
+```{code-cell} python
 # Useful starting lines
 %matplotlib inline
 import numpy as np
@@ -60,7 +91,7 @@ Enough with simulated data! In this lab, you will be happy to know that we will 
 Here is a short (and very basic) video to illustrate Linear Regression : https://www.youtube.com/watch?v=CtsRRUddV2s&ab_channel=VisuallyExplained
 
 
-```python
+```{code-cell} python
 import datetime
 from helpers import *
 
@@ -109,7 +140,7 @@ $$
 
 
 
-```python
+```{code-cell} python
 plt.plot(tx[:, 1], y, '.')
 
 plt.xlabel('Height')
@@ -143,7 +174,7 @@ $\tilde X_{32}$ represent ?
 In helpers.py, we have already provided code to form arrays for $y$ and $\tilde X$. Have a look at the code, and make sure you understand how they are constructed.
 
 
-```python
+```{code-cell} python
 ################## TODO BLOCK
 print("The design matrix contains", tx.shape[1], "columns, with one column of 1's, thus there is only one input variable")
 print("The data set contains", len(y), "observations")
@@ -178,7 +209,7 @@ where
 **3) Compute the cost functions by running the code below.**
 
 
-```python
+```{code-cell} python
 def compute_loss(y, tx, w, loss="mse"):
     """Calculate the loss.
 
@@ -223,7 +254,7 @@ It is possible to compute it, but it requires to calculate the inverse of a $d \
 **5) Compute the least square estimate $\hat{\beta}$ and the value of the loss at optimum. Comment.**
 
 
-```python
+```{code-cell} python
 def compute_exat_solution(y, tx):
     #
     return np.linalg.inv(tx.T@tx)@(tx.T@y) #TODO LINE
@@ -263,7 +294,7 @@ In the following, we will compute and plot the **excess loss** $ \mathcal  L(w)-
 **6) We are now going to implement a Grid Search to find an approximate solution of our problem. Use the two following cells to do a Grid Search. What parameter can you tune to optimize the precision/computation time of Grid Search?**
 
 
-```python
+```{code-cell} python
 #Function that takes the data set and a list of parameters as input and output losses corresponding to each pair of parameters
 
 def grid_search(y, tx, w0, w1):
@@ -280,7 +311,7 @@ def grid_search(y, tx, w0, w1):
 Let us play with the grid search demo now!
 
 
-```python
+```{code-cell} python
 from grid_search import generate_w, get_best_parameters
 from plots import grid_visualization
 
@@ -351,7 +382,7 @@ $$
 ########## END TODO BLOCK 
 
 
-```python
+```{code-cell} python
 def compute_gradient(y, tx, w):
     """Compute the gradient."""
     err = y - tx.dot(w) # TODO OPERAND
@@ -378,7 +409,7 @@ where $\gamma > 0$ is the step size, and $\nabla \mathcal L \in \mathbb{R}^2$ is
 
 
 
-```python
+```{code-cell} python
 def gradient_descent(y, tx, initial_w, max_iters, gamma):
     """Gradient descent algorithm."""
     # Define parameters to store w and loss
@@ -411,7 +442,7 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
 **Test your gradient descent function through gradient descent demo shown below.**
 
 
-```python
+```{code-cell} python
 # from gradient_descent import *
 from plots import gradient_descent_visualization
 
@@ -475,7 +506,7 @@ print("Gradient Descent: execution time=%.3f seconds for %i iterations" %(execti
 
 
 
-```python
+```{code-cell} python
 # Time Visualization
 from ipywidgets import IntSlider, interact
 def plot_figure(n_iter):
@@ -514,7 +545,7 @@ interact(plot_figure, n_iter=IntSlider(min=1, max=len(gradient_ws)))
 **9) Plot the evolution of the logarithm of the excess loss as a function of the number of iterations. What can be said about the convergence speed ?**
 
 
-```python
+```{code-cell} python
 ######## TODO BLOCK
 plt.semilogy(gradient_losses)
 plt.title('Evolution of the excess loss with the number of iterations')
@@ -582,7 +613,7 @@ The Hessian matrix is equal to the identity for this problem, as shown by the ne
 ############## END TODO BLOCK 
 
 
-```python
+```{code-cell} python
 # Computation of the Hessian matrix
 
 
@@ -618,7 +649,7 @@ On the graph above, we can check that the log excess loss, decays from $10^2$ to
 **12) What is the maximal step size $\gamma$ you can choose? Try different values for $\gamma$. What do you notice?**
 
 
-```python
+```{code-cell} python
 def plot_excess_loss_of_gd_for_different_gamma(gammas):
     ############## TODO BLOCK
     for gamma in gammas:
@@ -720,7 +751,7 @@ plot_excess_loss_of_gd_for_different_gamma(gammas=[.1, .5, .9, 1., 1.2, 2, 2.2])
 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -759,7 +790,7 @@ Here is a short (and very basic) video to illustrate SGD : https://www.youtube.c
 **13) Fill in the following code to implement Stochastic Gradient Descent.**
 
 
-```python
+```{code-cell} python
 def compute_stochastic_gradient(y, tx, w, batch_size):
     """Compute a stochastic gradient from just few examples n and their corresponding y_n labels."""
 
@@ -813,7 +844,7 @@ def stochastic_gradient_descent(y, tx, initial_w, batch_size, max_iters, gamma):
 
 
 
-```python
+```{code-cell} python
 # Define the parameters of the algorithm.
 max_iters = 100000
 gamma = 0.5
@@ -846,7 +877,7 @@ print("SGD: execution ime=%.3f seconds for %i iterations" %(exection_time, max_i
 
 
 
-```python
+```{code-cell} python
 # Time Visualization
 from ipywidgets import IntSlider, interact
 def plot_figure(n_iter):
@@ -871,7 +902,7 @@ interact(plot_figure, n_iter=IntSlider(min=1, max=len(gradient_ws)))
 **14) Plot the evolution of the logarithm of the excess loss as a function of the number of iterations.**
 
 
-```python
+```{code-cell} python
 plt.semilogy(sgd_losses) #TODO LINE
 
 
@@ -898,7 +929,7 @@ plt.ylabel('log(L(w)-L(w^*))')
 **15) How does the choice of the step size impact the convergence of SGD?**
 
 
-```python
+```{code-cell} python
 def plot_excess_loss_of_sgd_for_different_gamma(gammas):
     ############## TODO BLOCK
     for gamma in gammas:
@@ -912,7 +943,7 @@ def plot_excess_loss_of_sgd_for_different_gamma(gammas):
 ```
 
 
-```python
+```{code-cell} python
 plot_excess_loss_of_sgd_for_different_gamma(gammas=[.1, .2, .5, 1.])
 
 ```
@@ -950,7 +981,7 @@ In order to improve convergence, we use decaying steps, $\gamma_k = \frac{\gamma
 What is the complexity per iteration of GD, SGD? Compare the theoretical complexity and the time required per iteration for the algorithm. Interpret.**
 
 
-```python
+```{code-cell} python
 plt.figure(figsize=(10,10))
 ######## TODO BLOCK 
 plt.semilogy(num_samples * np.arange(10), gradient_losses[:10], 'r', label='GD')
@@ -996,7 +1027,7 @@ Another approach is to use decaying step size for SGD. This way, when we get clo
 **17) Plot the evolution of the log of the excess loss for SGD with decaying step size, and for GD in the same graph.**
 
 
-```python
+```{code-cell} python
 def stochastic_gradient_descent_decaying_step_sizes(y, tx, initial_w, batch_size, gammas):
     """Stochastic gradient descent."""
     # Define parameters to store w and loss
@@ -1033,7 +1064,7 @@ sgd_losses_squared, _ = stochastic_gradient_descent_decaying_step_sizes(y, tx, [
 
 
 
-```python
+```{code-cell} python
 plt.figure(figsize=(10,10))
 ########### TODO BLOCK 
 plt.semilogy(num_samples * np.arange(10), gradient_losses[:10], 'r', label='GD')
@@ -1070,7 +1101,7 @@ $$\bar w_k= \frac{k-1}{k} \bar w_{k-1} +\frac{1}{k} w_k.$$
 **18) Plot the evolution of the log of the excess loss for SGD with Polyak-Ruppert averaging, and for GD in the same graph.**
 
 
-```python
+```{code-cell} python
 def stochastic_gradient_descent_rupert_averaging(y, tx, initial_w, batch_size, gammas):
     """Stochastic gradient descent."""
     # Define parameters to store w and loss
@@ -1110,7 +1141,7 @@ def stochastic_gradient_descent_rupert_averaging(y, tx, initial_w, batch_size, g
 
 
 
-```python
+```{code-cell} python
 sgd_losses, _ = stochastic_gradient_descent_rupert_averaging(y, tx, [0, 0], 16, 1/np.arange(1, 10 * num_samples+1))
 sgd_losses_sqrt, _ = stochastic_gradient_descent_rupert_averaging(y, tx, [0, 0], 16, 1/np.sqrt(np.arange(1, 10 * num_samples+1)))
 
@@ -1152,7 +1183,7 @@ This is a reason why some people increase the batch size during the training to 
 **19) We have solved a very specific problem since it is quadratic and the Hessian of the risk is the identity. For most problems, the hessian matrix won't be the identity. We could create a problem in which the Hessian is a non-diagonal covariance matrix, by having 2 explanatory variables that are not independent. For example, we can use height and height^3. You can re-run the entire lab with $tx$ re-defined with those two features.**
 
 
-```python
+```{code-cell} python
 ############ TODO BLOCK
 
 feature_height2 = (tx[:,1]**3)
