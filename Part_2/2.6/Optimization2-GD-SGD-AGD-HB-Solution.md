@@ -1,3 +1,34 @@
+---
+jupytext:
+  cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
+  notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version, -jupytext.text_representation.format_version,
+    -language_info.version, -language_info.codemirror_mode.version, -language_info.codemirror_mode,
+    -language_info.file_extension, -language_info.mimetype, -toc
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
+nbhosting:
+  title: Deep Learning and Optimization
+  version: '1.0'
+---
+
+ 
+<div class="licence">
+<span><img src="media/logo_IPParis.png" /></span>
+<span>Aymeric DIEULEVEUT</span>
+<span>Licence CC BY-NC-ND</span>
+</div>
+
++++
+
 # Gradient Descent Methods - GD, SGD, AGD, HB
 
 The aim of this material is to code 
@@ -118,7 +149,7 @@ plt.legend()
 
 
     
-![png](Optimization2-GD-SGD-AGD-HB-Solution_files/Optimization2-GD-SGD-AGD-HB-Solution_7_1.png)
+![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_7_1.png)
     
 
 
@@ -194,7 +225,7 @@ plt.title("Logistic regression simulation", fontsize=18)
 
 
     
-![png](Optimization2-GD-SGD-AGD-HB-Solution_files/Optimization2-GD-SGD-AGD-HB-Solution_10_1.png)
+![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_10_1.png)
     
 
 
@@ -325,7 +356,7 @@ plt.title("Model weights")
 
 
     
-![png](Optimization2-GD-SGD-AGD-HB-Solution_files/Optimization2-GD-SGD-AGD-HB-Solution_14_1.png)
+![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_14_1.png)
     
 
 
@@ -527,7 +558,7 @@ print('Checkgrad returns %.2e' % (check_grad(model.loss, model.grad, w))) # This
 
 
     
-![png](Optimization2-GD-SGD-AGD-HB-Solution_files/Optimization2-GD-SGD-AGD-HB-Solution_22_1.png)
+![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_22_1.png)
     
 
 
@@ -733,7 +764,7 @@ plot_callbacks([callback_gd], ["GD"], obj_min, "Gradient descent")
 
 
     
-![png](Optimization2-GD-SGD-AGD-HB-Solution_files/Optimization2-GD-SGD-AGD-HB-Solution_40_2.png)
+![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_40_2.png)
     
 
 
