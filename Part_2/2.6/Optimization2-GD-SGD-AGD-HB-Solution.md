@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Deep Learning and Optimization
+  title: GD, SGD, AGD, HB
   version: '1.0'
 ---
 
