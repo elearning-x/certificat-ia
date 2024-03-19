@@ -1,3 +1,34 @@
+---
+jupytext:
+  cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
+  notebook_metadata_filter: all, -jupytext.text_representation.jupytext_version, -jupytext.text_representation.format_version,
+    -language_info.version, -language_info.codemirror_mode.version, -language_info.codemirror_mode,
+    -language_info.file_extension, -language_info.mimetype, -toc
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+language_info:
+  name: python
+  nbconvert_exporter: python
+  pygments_lexer: ipython3
+nbhosting:
+  title: Gradient Descent Methods
+  version: '1.0'
+---
+
+ 
+<div class="licence">
+<span><img src="media/logo_IPParis.png" /></span>
+<span>Aymeric DIEULEVEUT</span>
+<span>Licence CC BY-NC-ND</span>
+</div>
+
++++
+
 # Gradient Descent Methods - GD, SGD, AGD, HB
 
 The aim of this material is to code 
@@ -36,7 +67,7 @@ and apply them on the linear regression and logistic regression models, with rid
 We'll start by generating sparse vectors and simulating data
 
 
-```python
+```{code-cell} python
 from math import sqrt
 import numpy as np
 import matplotlib.pyplot as plt
@@ -49,14 +80,14 @@ np.set_printoptions(precision=2) # to have simpler print outputs with numpy
 ## 1.2. Simulation of a linear model
 
 
-```python
+```{code-cell} python
 from numpy.random import randn
 from numpy.random import multivariate_normal
 from scipy.linalg import toeplitz
 ```
 
 
-```python
+```{code-cell} python
 def simu_linreg(w0, n_samples=1000, corr=0.5, std=0.5):
     """Simulation of a linear regression model with Gaussian features
     and a Toeplitz covariance, with Gaussian noise.
@@ -95,7 +126,7 @@ def simu_linreg(w0, n_samples=1000, corr=0.5, std=0.5):
 ```
 
 
-```python
+```{code-cell} python
 n_samples = 500
 w0 = np.array([0.5])
 
@@ -112,7 +143,7 @@ plt.legend()
 ## 1.3. Simulation of a logistic regression model
 
 
-```python
+```{code-cell} python
 def sigmoid(t):
     """Sigmoid function (overflow-proof)"""
     idx = t > 0
@@ -157,7 +188,7 @@ def simu_logreg(w0, n_samples=1000, corr=0.5):
 ```
 
 
-```python
+```{code-cell} python
 n_samples = 500
 w0 = np.array([-3, 3.])
 
@@ -203,7 +234,7 @@ Below is the full implementation for linear regression.
 ## 2.1 Linear regression
 
 
-```python
+```{code-cell} python
 from numpy.linalg import norm
 
 
@@ -277,7 +308,7 @@ class ModelLinReg:
 ## 2.2 Checks for the linear regression model
 
 
-```python
+```{code-cell} python
 ## Simulation setting
 n_features = 50
 nnz = 20
@@ -291,7 +322,7 @@ plt.title("Model weights")
 ```
 
 
-```python
+```{code-cell} python
 from scipy.optimize import check_grad
 
 X, y = simu_linreg(w0, corr=0.6)
@@ -302,7 +333,7 @@ print(check_grad(model.loss, model.grad, w)) # This must be a number (of order 1
 ```
 
 
-```python
+```{code-cell} python
 print("lip=", model.lip())
 print("lip_max=", model.lip_max())
 print("lip_coordinates=", model.lip_coordinates())
@@ -328,7 +359,7 @@ print("lip_coordinates=", model.lip_coordinates())
 **2) Fill in the functions below for the computation of $f$, $\nabla f$, $\nabla f_i$ and $\frac{\partial f(w)}{\partial w_j}$ for logistic regression in the ModelLogReg class below.**
 
 
-```python
+```{code-cell} python
 class ModelLogReg:
     """A class giving first order information for logistic regression
     
@@ -418,7 +449,7 @@ class ModelLogReg:
 **3) Use the function `simu_logreg` to simulate data according to the logistic regression model. Check numerically the gradient using the function ``checkgrad`` from ``scipy.optimize``, as we did for linear regression above.**
 
 
-```python
+```{code-cell} python
 ## Simulation setting
 n_features = 50
 nnz = 20
@@ -441,7 +472,7 @@ print('Checkgrad returns %.2e' % (check_grad(model.loss, model.grad, w))) # This
 ```
 
 
-```python
+```{code-cell} python
 print("lip=", model.lip())
 print("lip_max=", model.lip_max())
 print("lip_coordinates=", model.lip_coordinates())
@@ -455,7 +486,7 @@ $\nabla f_i(w)$ and $\frac{\partial f(w)}{\partial w_j}$ for the objective $f$
 given by linear and logistic regression. We want now to code and compare several solvers to minimize $f$.
 
 
-```python
+```{code-cell} python
 def true_parameters(n_features):    
     nnz = 20 # Number of non-zeros coordinates.
     idx = np.arange(n_features)
@@ -477,7 +508,7 @@ W_TRUE = true_parameters(n_features)
 ```
 
 
-```python
+```{code-cell} python
 # Choose which kind of regression to do.
 
 TYPE_REGRESSION = "Linear" # or "Logistic"
@@ -495,7 +526,7 @@ else:
 ```
 
 
-```python
+```{code-cell} python
 from scipy.optimize import check_grad
 
 
@@ -508,7 +539,7 @@ print(check_grad(model.loss, model.grad, w0)) # This must be a number (of order 
 The following tools store the loss after each epoch
 
 
-```python
+```{code-cell} python
 def inspector(model, n_iter, verbose=True):
     """A closure called to update metrics after each iteration.
     Don't even look at it, we'll just use it in the solvers."""
@@ -539,7 +570,7 @@ Next, we will plot for each algorithm the excess loss $f(w) - f(w_\star)$ to che
 
 
 
-```python
+```{code-cell} python
 def gd(model, w0, step,  n_iter, callback, verbose=True):
     """Gradient descent
     """
@@ -565,7 +596,7 @@ def gd(model, w0, step,  n_iter, callback, verbose=True):
 Now we compute the optimal loss $f_\star \triangleq f(w_\star)$.
 
 
-```python
+```{code-cell} python
 callback_long = inspector(model, n_iter=10000, verbose=False)
 w_star = gd(model, w0, step=1/model.lip(), n_iter=10000, callback=callback_long, verbose=False)
 obj_min = callback_long.objectives[-1]
@@ -574,7 +605,7 @@ obj_min = callback_long.objectives[-1]
 The excess loss will be plotted using the below function.
 
 
-```python
+```{code-cell} python
 def plot_callbacks(callbacks, names, obj_min, title):
 
     plt.figure(figsize=(6, 6))
@@ -596,18 +627,18 @@ def plot_callbacks(callbacks, names, obj_min, title):
 ```
 
 
-```python
+```{code-cell} python
 n_iter=50
 ```
 
 
-```python
+```{code-cell} python
 callback_gd = inspector(model, n_iter=n_iter)
 w_gd = gd(model, w0, step= 1/model.lip(),  n_iter=n_iter, callback=callback_gd)
 ```
 
 
-```python
+```{code-cell} python
 plot_callbacks([callback_gd], ["GD"], obj_min, "Gradient descent")
 ```
 
@@ -632,7 +663,7 @@ You can implement different strategy for the step size:
 - Decaying step size: use $$ \forall k \in \mathbb N, \gamma_k = \frac{1}{L\sqrt{k + 1}}~.$$
 
 
-```python
+```{code-cell} python
 def sgd(model, w0, n_iter, step, callback, stepsize_strategy="constant",
         pr_averaging=False, verbose=True):
     
@@ -683,7 +714,7 @@ def sgd(model, w0, n_iter, step, callback, stepsize_strategy="constant",
 ```
 
 
-```python
+```{code-cell} python
 step = 1
 
 callback_sgd_constant = inspector(model, n_iter=n_iter)
@@ -702,7 +733,7 @@ sgd(model, w0, n_iter=n_iter, step=step, callback=callback_sgd_decaying_PR,
 ```
 
 
-```python
+```{code-cell} python
 callbacks_sgd = [callback_sgd_constant, callback_sgd_decaying, callback_sgd_constant_PR, callback_sgd_decaying_PR]
 
 names_sgd = ["SGD constant", "SGD decaying", "PR constant", "PR decaying"]
@@ -729,7 +760,7 @@ $$ \beta_k = \frac{t_{k-1} -1}{t_k}, \quad \text{with} \quad t_k = \frac{1}{2} (
 This value can be approximated by $$\beta_k = \frac{k}{k+3}.$$
 
 
-```python
+```{code-cell} python
 def agd(model, w0, n_iter, callback, verbose=True, momentum_strategy="constant"):
     """(Nesterov) Accelerated gradient descent.
     
@@ -764,7 +795,7 @@ def agd(model, w0, n_iter, callback, verbose=True, momentum_strategy="constant")
 ```
 
 
-```python
+```{code-cell} python
 callback_agd_constant = inspector(model, n_iter=n_iter)
 callback_agd_convex = inspector(model, n_iter=n_iter)
 callback_agd_convex_approx = inspector(model, n_iter=n_iter)
@@ -777,7 +808,7 @@ agd(model, w0, n_iter=n_iter, callback=callback_agd_strongly_convex, momentum_st
 ```
 
 
-```python
+```{code-cell} python
 callbacks_agd = [callback_agd_constant, callback_agd_convex, callback_agd_convex_approx, 
                  callback_agd_strongly_convex]
 names_agd = ["AGD constant", "AGD cvx", "AGD cvx approx", "AGD stgly cvx"]
@@ -792,7 +823,7 @@ names_agd = ["AGD constant", "AGD cvx", "AGD cvx approx", "AGD stgly cvx"]
 **8) Complete the function `hb` below that implements the Heavy ball (HB) method and test it using the next cell.**
 
 
-```python
+```{code-cell} python
 def heavy_ball(model, w0, n_iter, step, momentum, callback, verbose=True):
     
     w = w0.copy()
@@ -841,7 +872,7 @@ There exists a famous strongly convex smooth function (not quadratic) which Heav
 Below, the function `hb_optimized` implements the Heavy ball method with optimized tunning (for quadratic functions), test it using the next cells.
 
 
-```python
+```{code-cell} python
 def heavy_ball_optimized(model, w0, n_iter, callback, verbose=True):
         
     mu = model.strength
@@ -865,13 +896,13 @@ def heavy_ball_optimized(model, w0, n_iter, callback, verbose=True):
 ```
 
 
-```python
+```{code-cell} python
 callback_hb = inspector(model, n_iter=n_iter)
 
 heavy_ball_optimized(model, w0, n_iter=n_iter, callback=callback_hb)
 ```
 
 
-```python
+```{code-cell} python
 
 ```
