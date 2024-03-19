@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Gradient Descent Methods
+  title: GD, SGD, AGD, HB
   version: '1.0'
 ---
 
