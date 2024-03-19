@@ -1,4 +1,4 @@
-# MAP545 - Deep Learning and Optimization
+# Deep Learning and Optimization
 ## Lab 2 - Optimization
 
 In this lab, you will apply different techniques to find the best parameter values to a simple linear regression problem. After defining the empirical risk of the corresponding problem, you will apply a **Grid Search strategy** to output an approximation of the best parameter based on the data set. As this strategy cannot be used for most of real-world data sets, you will then implement and compare **Gradient Descent (GD)** and **Stochastic Gradient Descent (SGD)**. 
@@ -125,7 +125,7 @@ plt.ylabel('Weight')
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_6_1.png)
+![png](media/Part_2/2.5/Optimisation-Solution_6_1.png)
     
 
 
@@ -311,7 +311,7 @@ fig.savefig("grid_plot")  # Optional saving
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_20_1.png)
+![png](media/Part_2/2.5/Optimisation-Solution_20_1.png)
     
 
 
@@ -541,7 +541,7 @@ print("The algorithm converges and the convergence is linear in a log scale")
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_33_2.png)
+![png](media/Part_2/2.5/Optimisation-Solution_33_2.png)
     
 
 
@@ -715,7 +715,7 @@ plot_excess_loss_of_gd_for_different_gamma(gammas=[.1, .5, .9, 1., 1.2, 2, 2.2])
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_40_2.png)
+![png](media/Part_2/2.5/Optimisation-Solution_40_2.png)
     
 
 
@@ -891,7 +891,7 @@ plt.ylabel('log(L(w)-L(w^*))')
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_48_1.png)
+![png](media/Part_2/2.5/Optimisation-Solution_48_1.png)
     
 
 
@@ -932,7 +932,7 @@ plot_excess_loss_of_sgd_for_different_gamma(gammas=[.1, .2, .5, 1.])
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_51_2.png)
+![png](media/Part_2/2.5/Optimisation-Solution_51_2.png)
     
 
 
@@ -973,7 +973,7 @@ plt.ylabel('log(L(w)-L(w^*))')
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_54_1.png)
+![png](media/Part_2/2.5/Optimisation-Solution_54_1.png)
     
 
 
@@ -1058,7 +1058,7 @@ plt.ylabel('log(L(w)-L(w^*))')
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_58_1.png)
+![png](media/Part_2/2.5/Optimisation-Solution_58_1.png)
     
 
 
@@ -1140,7 +1140,7 @@ plt.ylabel('log(L(w)-L(w^*))')
 
 
     
-![png](Optimisation-Solution_files/Optimisation-Solution_61_2.png)
+![png](media/Part_2/2.5/Optimisation-Solution_61_2.png)
     
 
 
