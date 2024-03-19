@@ -42,11 +42,7 @@ features, and visualize the results.
 If you have time, you can look at the files `helpers.py` and `plots.py`, and make sure you understand them.
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # Useful starting lines
 %matplotlib inline
 import numpy as np
@@ -65,11 +61,7 @@ Enough with simulated data! In this lab, you will be happy to know that we will 
 Here is a short (and very basic) video to illustrate Linear Regression : https://www.youtube.com/watch?v=CtsRRUddV2s&ab_channel=VisuallyExplained
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 import datetime
 from helpers import *
 
@@ -118,11 +110,7 @@ $$
 
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 plt.plot(tx[:, 1], y, '.')
 
 plt.xlabel('Height')
@@ -143,11 +131,7 @@ $\tilde X_{32}$ represent ?
 In helpers.py, we have already provided code to form arrays for $y$ and $\tilde X$. Have a look at the code, and make sure you understand how they are constructed.
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 
 #
 #
@@ -170,11 +154,7 @@ In helpers.py, we have already provided code to form arrays for $y$ and $\tilde 
 **3) Compute the cost functions by running the code below.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def compute_loss(y, tx, w, loss="mse"):
     """Calculate the loss.
 
@@ -210,11 +190,7 @@ def compute_loss(y, tx, w, loss="mse"):
 **5) Compute the least square estimate $\hat{\beta}$ and the value of the loss at optimum. Comment.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def compute_exat_solution(y, tx):
     #
     # YOUR CODE OR ANSWER HERE
@@ -245,11 +221,7 @@ In the following, we will compute and plot the **excess loss** $ \mathcal  L(w)-
 **6) We are now going to implement a Grid Search to find an approximate solution of our problem. Use the two following cells to do a Grid Search. What parameter can you tune to optimize the precision/computation time of Grid Search?**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 #Function that takes the data set and a list of parameters as input and output losses corresponding to each pair of parameters
 
 def grid_search(y, tx, w0, w1):
@@ -266,11 +238,7 @@ def grid_search(y, tx, w0, w1):
 Let us play with the grid search demo now!
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 from grid_search import generate_w, get_best_parameters
 from plots import grid_visualization
 
@@ -327,11 +295,7 @@ Here is a short (and very basic) video to illustrate GD : https://www.youtube.co
 
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def compute_gradient(y, tx, w):
     """Compute the gradient."""
     err = # YOUR CODE OR ANSWER HERE
@@ -354,11 +318,7 @@ where $\gamma > 0$ is the step size, and $\nabla \mathcal L \in \mathbb{R}^2$ is
 
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def gradient_descent(y, tx, initial_w, max_iters, gamma):
     """Gradient descent algorithm."""
     # Define parameters to store w and loss
@@ -384,11 +344,7 @@ def gradient_descent(y, tx, initial_w, max_iters, gamma):
 **Test your gradient descent function through gradient descent demo shown below.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # from gradient_descent import *
 from plots import gradient_descent_visualization
 
@@ -411,11 +367,7 @@ print("Gradient Descent: execution time=%.3f seconds for %i iterations" %(execti
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # Time Visualization
 from ipywidgets import IntSlider, interact
 def plot_figure(n_iter):
@@ -443,11 +395,7 @@ interact(plot_figure, n_iter=IntSlider(min=1, max=len(gradient_ws)))
 **9) Plot the evolution of the logarithm of the excess loss as a function of the number of iterations. What can be said about the convergence speed ?**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 
 #
 #
@@ -476,11 +424,7 @@ print("The algorithm converges and the convergence is linear in a log scale")
 
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # Computation of the Hessian matrix
 
 
@@ -506,11 +450,7 @@ HINT: Run gradient descent with a step size $\gamma=0.5$.
 **12) What is the maximal step size $\gamma$ you can choose? Try different values for $\gamma$. What do you notice?**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def plot_excess_loss_of_gd_for_different_gamma(gammas):
     
     #
@@ -529,11 +469,7 @@ plot_excess_loss_of_gd_for_different_gamma(gammas=[.1, .5, .9, 1., 1.2, 2, 2.2])
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 
 ```
 
@@ -554,11 +490,7 @@ Here is a short (and very basic) video to illustrate SGD : https://www.youtube.c
 **13) Fill in the following code to implement Stochastic Gradient Descent.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def compute_stochastic_gradient(y, tx, w, batch_size):
     """Compute a stochastic gradient from just few examples n and their corresponding y_n labels."""
 
@@ -605,11 +537,7 @@ def stochastic_gradient_descent(y, tx, initial_w, batch_size, max_iters, gamma):
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # Define the parameters of the algorithm.
 max_iters = 100000
 gamma = 0.5
@@ -631,11 +559,7 @@ print("SGD: execution ime=%.3f seconds for %i iterations" %(exection_time, max_i
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # Time Visualization
 from ipywidgets import IntSlider, interact
 def plot_figure(n_iter):
@@ -649,11 +573,7 @@ interact(plot_figure, n_iter=IntSlider(min=1, max=len(gradient_ws)))
 **14) Plot the evolution of the logarithm of the excess loss as a function of the number of iterations.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 # YOUR CODE OR ANSWER HERE
 
 
@@ -667,11 +587,7 @@ plt.ylabel('log(L(w)-L(w^*))')
 **15) How does the choice of the step size impact the convergence of SGD?**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def plot_excess_loss_of_sgd_for_different_gamma(gammas):
     
     #
@@ -687,11 +603,7 @@ def plot_excess_loss_of_sgd_for_different_gamma(gammas):
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 plot_excess_loss_of_sgd_for_different_gamma(gammas=[.1, .2, .5, 1.])
 
 ```
@@ -710,11 +622,7 @@ plot_excess_loss_of_sgd_for_different_gamma(gammas=[.1, .2, .5, 1.])
 What is the complexity per iteration of GD, SGD? Compare the theoretical complexity and the time required per iteration for the algorithm. Interpret.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 plt.figure(figsize=(10,10))
 
 #
@@ -745,11 +653,7 @@ Another approach is to use decaying step size for SGD. This way, when we get clo
 **17) Plot the evolution of the log of the excess loss for SGD with decaying step size, and for GD in the same graph.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def stochastic_gradient_descent_decaying_step_sizes(y, tx, initial_w, batch_size, gammas):
     """Stochastic gradient descent."""
     # Define parameters to store w and loss
@@ -778,11 +682,7 @@ sgd_losses_squared, _ = stochastic_gradient_descent_decaying_step_sizes(y, tx, [
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 plt.figure(figsize=(10,10))
 
 #
@@ -807,11 +707,7 @@ $$\bar w_k= \frac{k-1}{k} \bar w_{k-1} +\frac{1}{k} w_k.$$
 **18) Plot the evolution of the log of the excess loss for SGD with Polyak-Ruppert averaging, and for GD in the same graph.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 def stochastic_gradient_descent_rupert_averaging(y, tx, initial_w, batch_size, gammas):
     """Stochastic gradient descent."""
     # Define parameters to store w and loss
@@ -839,11 +735,7 @@ def stochastic_gradient_descent_rupert_averaging(y, tx, initial_w, batch_size, g
 ```
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 sgd_losses, _ = stochastic_gradient_descent_rupert_averaging(y, tx, [0, 0], 16, 1/np.arange(1, 10 * num_samples+1))
 sgd_losses_sqrt, _ = stochastic_gradient_descent_rupert_averaging(y, tx, [0, 0], 16, 1/np.sqrt(np.arange(1, 10 * num_samples+1)))
 
@@ -868,11 +760,7 @@ This is a reason why some people increase the batch size during the training to 
 **19) We have solved a very specific problem since it is quadratic and the Hessian of the risk is the identity. For most problems, the hessian matrix won't be the identity. We could create a problem in which the Hessian is a non-diagonal covariance matrix, by having 2 explanatory variables that are not independent. For example, we can use height and height^3. You can re-run the entire lab with $tx$ re-defined with those two features.**
 
 
-<<<<<<<<< Temporary merge branch 1
-```python
-=========
 ```{code-cell} python
->>>>>>>>> Temporary merge branch 2
 
 #
 #
