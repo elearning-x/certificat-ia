@@ -65,8 +65,8 @@ The labels are retrieved in the variable $y$ - it contains *len(texts)* of them:
 ```{code-cell} python
 from glob import glob
 # We get the files from the path: ./aclImdb/train/neg for negative reviews, and ./aclImdb/train/pos for positive reviews
-train_filenames_neg = sorted(glob(op.join('/data', 'aclImdb', 'train', 'neg', '*.txt')))
-train_filenames_pos = sorted(glob(op.join('/data', 'aclImdb', 'train', 'pos', '*.txt')))
+train_filenames_neg = sorted(glob(op.join('data', 'aclImdb', 'train', 'neg', '*.txt')))
+train_filenames_pos = sorted(glob(op.join('data', 'aclImdb', 'train', 'pos', '*.txt')))
 
 """
 test_filenames_neg = sorted(glob(op.join('.', 'aclImdb', 'test', 'neg', '*.txt')))
