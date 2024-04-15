@@ -15,11 +15,14 @@ language_info:
   name: python
   nbconvert_exporter: python
   pygments_lexer: ipython3
+nbhosting:
+  title: Text pre-processing and features
+  version: '1.0'
 ---
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
-<span>Matthieu LABEAU<br/ >Chloé CLAVEL</span>
+<span>Matthieu LABEAU<br />Chloé CLAVEL</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
 
@@ -33,15 +36,6 @@ language_info:
 2. Use the features for classification and sentence similarity tasks with simple models
 3. Try to improve results with pre-processing tools from Natural Language Processing
 
-## Necessary dependancies
-
-We will need the following packages:
-- The Machine Learning API Scikit-learn : http://scikit-learn.org/stable/install.html
-- The Natural Language Toolkit : http://www.nltk.org/install.html
-
-Both are available with Anaconda: https://anaconda.org/anaconda/nltk and https://anaconda.org/anaconda/scikit-learn
-
-
 ```{code-cell} python
 import os.path as op
 import re 
@@ -53,10 +47,8 @@ import matplotlib.pyplot as plt
 
 ### I.1 Loading data
 
-**Download the dataset at the link: https://ai.stanford.edu/~amaas/data/sentiment/**
-
-**Unzip the ```aclImdb.zip``` file in the current directory !**
-
+We use data from **https://ai.stanford.edu/~amaas/data/sentiment/**
+The archive file has been unzipped on the server and the data are available in **/data/aclImdb**<br />
 We retrieve the textual data in the variable *texts*.
 
 The labels are retrieved in the variable $y$ - it contains *len(texts)* of them: $0$ indicates that the corresponding review is negative while $1$ indicates that it is positive.
@@ -64,13 +56,13 @@ The labels are retrieved in the variable $y$ - it contains *len(texts)* of them:
 
 ```{code-cell} python
 from glob import glob
-# We get the files from the path: ./aclImdb/train/neg for negative reviews, and ./aclImdb/train/pos for positive reviews
+# We get the files from the path: data/aclImdb/train/neg for negative reviews, and data/aclImdb/train/pos for positive reviews
 train_filenames_neg = sorted(glob(op.join('data', 'aclImdb', 'train', 'neg', '*.txt')))
 train_filenames_pos = sorted(glob(op.join('data', 'aclImdb', 'train', 'pos', '*.txt')))
 
 """
-test_filenames_neg = sorted(glob(op.join('.', 'aclImdb', 'test', 'neg', '*.txt')))
-test_filenames_pos = sorted(glob(op.join('.', 'aclImdb', 'test', 'pos', '*.txt')))
+test_filenames_neg = sorted(glob(op.join('data', 'aclImdb', 'test', 'neg', '*.txt')))
+test_filenames_pos = sorted(glob(op.join('data', 'aclImdb', 'test', 'pos', '*.txt')))
 """
 
 # Each files contains a review that consists in one line of text: we put this string in two lists, that we concatenate
@@ -97,7 +89,7 @@ test_labels[:len(test_texts_neg)] = 0.
 
 
 ```{code-cell} python
-open("/data/aclImdb/train/neg/0_3.txt", encoding="utf8").read()
+open("data/aclImdb/train/neg/0_3.txt", encoding="utf8").read()
 ```
 
 **In this lab, the impact of our choice of representations upon our results will also depend on the quantity of data we use:** try to see how changing the parameter ```k``` affects our results !
