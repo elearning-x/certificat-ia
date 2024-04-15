@@ -37,6 +37,6 @@ RUN true \
     && apt-get install -y graphviz \
     && pip install graphviz \
     && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu \
-    && pip install nltk \
+    && pip install --user -U nltk \
     && pip install scikit-learn \
     && true
