@@ -164,6 +164,8 @@ For text cleansing, there are many scripts, based on different tools (regular ex
 
 ```{code-cell} python
 # We might want to clean the file with various strategies:
+import nltk
+nltk.download('punkt')
 def clean_and_tokenize(text):
     """
     Cleaning a document with:
