@@ -42,7 +42,7 @@ We will need the following packages:
 Both are available with Anaconda: https://anaconda.org/anaconda/nltk and https://anaconda.org/anaconda/scikit-learn
 
 
-```python
+```{code-cell} python
 import os.path as op
 import re 
 import numpy as np
@@ -62,7 +62,7 @@ We retrieve the textual data in the variable *texts*.
 The labels are retrieved in the variable $y$ - it contains *len(texts)* of them: $0$ indicates that the corresponding review is negative while $1$ indicates that it is positive.
 
 
-```python
+```{code-cell} python
 from glob import glob
 # We get the files from the path: ./aclImdb/train/neg for negative reviews, and ./aclImdb/train/pos for positive reviews
 train_filenames_neg = sorted(glob(op.join('.', 'aclImdb', 'train', 'neg', '*.txt')))
@@ -96,14 +96,14 @@ test_labels[:len(test_texts_neg)] = 0.
 ```
 
 
-```python
+```{code-cell} python
 open("./aclImdb/train/neg/0_3.txt", encoding="utf8").read()
 ```
 
 **In this lab, the impact of our choice of representations upon our results will also depend on the quantity of data we use:** try to see how changing the parameter ```k``` affects our results !
 
 
-```python
+```{code-cell} python
 # This number of documents may be high for most computers: we can select a fraction of them (here, one in k)
 # Use an even number to keep the same number of positive and negative reviews
 k = 10
@@ -116,12 +116,12 @@ print('Number of documents:', len(train_texts_reduced))
 We can use a function from sklearn, ```train_test_split```, to separate data into training and validation sets:
 
 
-```python
+```{code-cell} python
 from sklearn.model_selection import train_test_split
 ```
 
 
-```python
+```{code-cell} python
 train_texts_splt, val_texts, train_labels_splt, val_labels = train_test_split(train_texts_reduced, train_labels_reduced, test_size=.2)
 ```
 
@@ -136,7 +136,7 @@ Thus, for a document extracted from a set of documents containing $|V|$ differen
 We can use the **CountVectorizer** class from scikit-learn to obtain these representations:
 
 
-```python
+```{code-cell} python
 from sklearn.feature_extraction.text import CountVectorizer
 
 from sklearn.model_selection import cross_val_score
@@ -144,7 +144,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 ```
 
 
-```python
+```{code-cell} python
 corpus = ['I walked down down the boulevard',
           'I walked down the avenue',
           'I ran down the boulevard',
@@ -170,7 +170,7 @@ We will therefore use a function adapted to our needs - but this is a job that w
 For text cleansing, there are many scripts, based on different tools (regular expressions, for example) that allow you to prepare data. The division of the text into words and the management of punctuation is handled in a step called *tokenization*; if needed, a python package like NLTK contains many different *tokenizers*.
 
 
-```python
+```{code-cell} python
 # We might want to clean the file with various strategies:
 def clean_and_tokenize(text):
     """
@@ -219,7 +219,7 @@ The vocabulary, which was in the form of a *list* in the previous example, can b
             Code:</div>
 
 
-```python
+```{code-cell} python
 def count_words(texts):
     #
     # To complete
@@ -228,7 +228,7 @@ def count_words(texts):
 ```
 
 
-```python
+```{code-cell} python
 Voc, X = count_words(corpus)
 print(Voc)
 print(X)
@@ -237,7 +237,7 @@ print(X)
 Now, if we want to represent text that was not available when building the vocabulary, we will not be able to represent **new words** ! Let's take a look at how CountVectorizer does it:
 
 
-```python
+```{code-cell} python
 val_corpus = ['I walked up the street']
 Bow = vectorizer.transform(val_corpus)
 Bow.toarray()
@@ -248,7 +248,7 @@ Modify the ```count_words``` function to be able to deal with new documents when
             Code:</div>
 
 
-```python
+```{code-cell} python
 def count_words(texts, voc = None):
     
     if voc == None:
@@ -268,25 +268,25 @@ def count_words(texts, voc = None):
 Careful: check the memory that the representations are going to use (given the way they are build). What ```CountVectorizer``` argument allows to avoid the issue ? 
 
 
-```python
+```{code-cell} python
 voc, train_bow = count_words(train_texts_splt)
 print(train_bow.shape)
 ```
 
 
-```python
+```{code-cell} python
 _, val_bow = count_words(val_texts, voc)
 print(val_bow.shape)
 ```
 
 
-```python
+```{code-cell} python
 # Create and fit the vectorizer to the training data
 
 ```
 
 
-```python
+```{code-cell} python
 # Transform the validation data
 
 ```
@@ -298,7 +298,7 @@ We are going to use the scikit-learn ```MultinomialNB```, an implementation of t
             Code:</div>
 
 
-```python
+```{code-cell} python
 from sklearn.naive_bayes import MultinomialNB
 # Fit the model on the training data
 
@@ -308,7 +308,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classifica
 ```
 
 
-```python
+```{code-cell} python
 # Same with the other representations
 
 ```
@@ -320,7 +320,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classifica
 - Let us look at the *features* built by the ```vectorizer```. How can we improve them ? 
 
 
-```python
+```{code-cell} python
 print(vectorizer.get_feature_names_out()[:100])
 ```
 
@@ -347,12 +347,12 @@ To accelerate experiments, use the ```Pipeline``` tool from scikit-learn.
             Code:</div>
 
 
-```python
+```{code-cell} python
 from sklearn.pipeline import Pipeline
 ```
 
 
-```python
+```{code-cell} python
 pipeline_base = Pipeline([
     ('vect', CountVectorizer(max_features=30000, analyzer='word', stop_words=None)),
     ('clf', MultinomialNB()),
@@ -363,17 +363,17 @@ print(classification_report(val_labels, val_pred))
 ```
 
 
-```python
+```{code-cell} python
 
 ```
 
 
-```python
+```{code-cell} python
 
 ```
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -392,7 +392,7 @@ It can be adapted to our case by considering that the context of the second word
             Code:</div>
 
 
-```python
+```{code-cell} python
 from sklearn.preprocessing import normalize
 
 def tfidf(bow):
@@ -418,22 +418,22 @@ Experiment with this new representations and compare with the ```TfidfTransforme
             Code:</div>
 
 
-```python
+```{code-cell} python
 
 ```
 
 
-```python
+```{code-cell} python
 
 ```
 
 
-```python
+```{code-cell} python
 from sklearn.feature_extraction.text import TfidfTransformer
 ```
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -447,7 +447,7 @@ For more flexibility, we will implement separately a function returning the voca
             Code:</div>
 
 
-```python
+```{code-cell} python
 def vocabulary(corpus, count_threshold=5, voc_threshold=10000):
     """    
     Function using word counts to build a vocabulary - can be improved with a second parameter for 
@@ -476,7 +476,7 @@ def vocabulary(corpus, count_threshold=5, voc_threshold=10000):
 ```
 
 
-```python
+```{code-cell} python
 # Example for testing:
 
 corpus = ['I walked down down the boulevard',
@@ -512,7 +512,7 @@ We would like to get an idea of what's in these film reviews. So we'll get the v
             Code:</div>
 
 
-```python
+```{code-cell} python
 # We would like to display the curve of word frequencies given their rank (index) in the vocabulary
 vocab, word_counts = vocabulary(train_texts)
 #
@@ -542,7 +542,7 @@ print('Part of the corpus by taking the "x" most frequent words ?')
 Word2vec's implementation cuts the vocabulary size by using **only words with at least 5 occurences**, by default. What vocabulary size would it give here ? Does it seem like a good compromise, looking at the graph ? 
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -556,7 +556,7 @@ Allows to go back to the root of a word: you can group different words around th
 ```from nltk import SnowballStemmer```
 
 
-```python
+```{code-cell} python
 from nltk import SnowballStemmer
 stemmer = SnowballStemmer("english")
 ```
@@ -564,7 +564,7 @@ stemmer = SnowballStemmer("english")
 **Example:**
 
 
-```python
+```{code-cell} python
 words = ['singers', 'cat', 'generalization', 'philosophy', 'psychology', 'philosopher']
 for word in words:
     print('word : %s ; stemmed : %s' %(word, stemmer.stem(word)))#.decode('utf-8'))))
@@ -575,7 +575,7 @@ for word in words:
             Code:</div>
 
 
-```python
+```{code-cell} python
 def stem(X): 
     X_stem = []
     #
@@ -590,7 +590,7 @@ To generalize, we can also use the Part of Speech (POS) of the words, which will
 ```from nltk import pos_tag, word_tokenize```
 
 
-```python
+```{code-cell} python
 import nltk
 from nltk import pos_tag, word_tokenize
 ```
@@ -598,7 +598,7 @@ from nltk import pos_tag, word_tokenize
 **Example:**
 
 
-```python
+```{code-cell} python
 import nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
@@ -611,7 +611,7 @@ pos_tag(word_tokenize(('I am Sam')))
             Code:</div>
 
 
-```python
+```{code-cell} python
 def pos_tag_filter(X, good_tags=['NN', 'VB', 'ADJ', 'RB']):
     X_pos = []
     #
@@ -631,7 +631,7 @@ Re-draw the Zipf distribution of our data **after reducing their vocabulary with
             Code:</div>        
 
 
-```python
+```{code-cell} python
 
 ```
 
@@ -646,7 +646,7 @@ $s_2$: A race car driver is driving his car through the mud.
 This task poses a regression problem, so instead of a Naïve Bayes classifier we will use sklearn's ```LinearRegression``` model. The feature we will feed as input to the regressor - and which will represent a pair of sentences - is the cosine distance between their vector representations.
 
 
-```python
+```{code-cell} python
 import os
 from scipy.spatial.distance import cosine
 from scipy.stats import spearmanr
@@ -660,7 +660,7 @@ We will use data from the STSBenchmark. The dataset comes with a pre-defined tra
 Download the data from here http://ixa2.si.ehu.es/stswiki/images/4/48/Stsbenchmark.tar.gz and decompress it:
 
 
-```python
+```{code-cell} python
 def load_data(path):
     data = {'train':dict(), 'test':dict()}
     for fn in os.listdir(path):
@@ -685,7 +685,7 @@ Using the code of the ```load_data``` function, get an insight into the structur
             Code:</div>
 
 
-```python
+```{code-cell} python
 ### Having a look at the data...
 print("Some examples from the dataset:")
 for i in range(5):
@@ -711,46 +711,46 @@ To obtain vector representations, use the functions we previously created and us
             Code:</div>
 
 
-```python
+```{code-cell} python
 # Obtain all the sentences in only one list (no pairs) to be able to get the vocabulary
 
 ```
 
 
-```python
+```{code-cell} python
 # Obtain the voc/Fit the vectorizer on the training data
 
 ```
 
 
-```python
+```{code-cell} python
 # Transform train and test data. Calculate the cosine between the representations of each sentence pair
 
 ```
 
 
-```python
+```{code-cell} python
 from sklearn.linear_model import LinearRegression
 ```
 
 
-```python
+```{code-cell} python
 # Train a linear regression model, make predictions on test set, evaluate it using spearman's r
 
 ```
 
 
-```python
+```{code-cell} python
 # Repeat the last two steps with tf-idf instead
 
 ```
 
 
-```python
+```{code-cell} python
 
 ```
 
 
-```python
+```{code-cell} python
 
 ```
