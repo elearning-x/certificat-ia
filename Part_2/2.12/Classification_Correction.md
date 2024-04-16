@@ -15,6 +15,9 @@ language_info:
   name: python
   nbconvert_exporter: python
   pygments_lexer: ipython3
+nbhosting:
+  title: Classification correction
+  version: '1.0'
 ---
 
 <div class="licence">
