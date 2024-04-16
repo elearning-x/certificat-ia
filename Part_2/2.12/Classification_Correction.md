@@ -74,7 +74,6 @@ pprint(dir(ng_train))
     ['DESCR', 'data', 'filenames', 'target', 'target_names']
 
 
-
 ```{code-cell} python
 # Let's look at the categories
 pprint(ng_train.target_names)
@@ -236,7 +235,7 @@ for i in range(5000, len(vocab), 5000):
 
 
     
-![png](Lab_Part_2_Classification_Correction_files/Lab_Part_2_Classification_Correction_18_1.png)
+![png](media/Part_2/2.12/Lab_Part_2_Classification_Correction_18_1.png)
     
 
 
@@ -1226,7 +1225,7 @@ plt.plot(train_losses)
 
 
     
-![png](Lab_Part_2_Classification_Correction_files/Lab_Part_2_Classification_Correction_97_1.png)
+![png](media/Part_2/2.12/Lab_Part_2_Classification_Correction_97_1.png)
     
 
 
