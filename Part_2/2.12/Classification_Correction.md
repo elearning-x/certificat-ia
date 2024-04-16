@@ -152,6 +152,8 @@ We will first need to apply some pre-processing. Choose your tokenizer and the p
 
 ```{code-cell} python
 from nltk import word_tokenize
+import nltk
+nltk.download('punkt')
 ```
 
 
