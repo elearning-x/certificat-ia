@@ -734,7 +734,7 @@ def load_data(path):
                     data[subset]['scores'].append(float(l[4]) / 5) # mapping the score to the 0-1 range 
     return data
 
-sts_dataset = load_data(path="stsbenchmark")
+sts_dataset = load_data(path="data/stsbenchmark")
 ```
 
 Using the code of the ```load_data``` function, get an insight into the structure of the dataset. Print the first few examples ($s_1$, $s_2$ and the score) and the number of examples in the dataset.
