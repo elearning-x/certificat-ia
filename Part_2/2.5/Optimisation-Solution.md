@@ -47,42 +47,10 @@ If you have time, you can look at the files `helpers.py` and `plots.py`, and mak
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-%load_ext autoreload
+%reload_ext autoreload
 %autoreload 2
 %precision 2
-
-
 ```
-
-    The autoreload extension is already loaded. To reload it, use:
-      %reload_ext autoreload
-    
-    
-    (If this cell runs for more than 30 seconds, stop it and rerun it.) 
-    
-    
-    Enter your name: 
-     -->a
-    
-     
-     Your teacher: depending on your teacher, enter either 
-     - ataylor 
-     - pbianchi 
-     - constantin.philippenko 
-     - renaud.gaucher 
-     - bgoujaud 
-     -->a
-    
-     
-     You should get as an output <Response [200]> below. If not, you probably have a typo in the teacher name, retry :)
-
-
-
-
-
-    <Response [400]>
-
-
 
 # Part 1 - Loading the data set and preliminary analysis
 
@@ -97,7 +65,7 @@ from helpers import *
 
 #Load the data
 #You need to check that the file helpers.py and height_weight_genders.csv are in the current folder
-height, weight, gender = load_data(filename = "height_weight_genders.csv", sub_sample=False, add_outlier=False)
+height, weight, gender = load_data(filename = "data/height_weight_genders.csv", sub_sample=False, add_outlier=False)
 x, mean_x, std_x = standardize(height)
 
 #Create the design matrix and the output vector 
