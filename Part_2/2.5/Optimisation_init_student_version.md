@@ -47,7 +47,7 @@ If you have time, you can look at the files `helpers.py` and `plots.py`, and mak
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
-%load_ext autoreload
+%reload_ext autoreload
 %autoreload 2
 %precision 2
 
@@ -67,7 +67,7 @@ from helpers import *
 
 #Load the data
 #You need to check that the file helpers.py and height_weight_genders.csv are in the current folder
-height, weight, gender = load_data(filename = "height_weight_genders.csv", sub_sample=False, add_outlier=False)
+height, weight, gender = load_data(filename = "data/height_weight_genders.csv", sub_sample=False, add_outlier=False)
 x, mean_x, std_x = standardize(height)
 
 #Create the design matrix and the output vector 
