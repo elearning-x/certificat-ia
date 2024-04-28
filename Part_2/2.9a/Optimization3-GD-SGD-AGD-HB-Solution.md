@@ -1,4 +1,4 @@
-# Gradient Descent Methods - GD, SGD, AGD, HB
+# Optimization 3: Algorithms  - GD, SGD, AGD, HB
 
 ---
 jupytext:
@@ -18,7 +18,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: GD, SGD, AGD, HB
+  title: Optimization 3: Algorithms  - GD, SGD, AGD, HB
   version: '1.0'
 ---
 

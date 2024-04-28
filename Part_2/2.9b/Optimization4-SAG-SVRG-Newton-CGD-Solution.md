@@ -1,5 +1,4 @@
-# Gradient Descent Methods 2 - SAG-SVRG-Newton-CGD
-
+# Optimization 4: Algorithms SAG-SVRG-Newton-CGD 
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -18,7 +17,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: SAG-SVRG-Newton-CGD
+  title: Optimization 4: SAG-SVRG-Newton-CGD
   version: '1.0'
 ---
 
