@@ -1,3 +1,5 @@
+# Gradient Descent Methods - GD, SGD, AGD, HB
+
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -26,10 +28,6 @@ nbhosting:
 <span>Aymeric DIEULEVEUT</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
-
-# Gradient Descent Methods - GD, SGD, AGD, HB
 
 The aim of this material is to code 
 - coordinate gradient descent (CD)
@@ -348,13 +346,7 @@ print("lip_coordinates=", model.lip_coordinates())
 
 **1) Compute (on paper) the gradient $\nabla f$, the gradient of $\nabla f_i$ and the gradient of the coordinate function $\frac{\partial f(w)}{\partial w_j}$ of $f$ for logistic regression (fill the class given below).**
 
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
+Write your answer below
 
 **2) Fill in the functions below for the computation of $f$, $\nabla f$, $\nabla f_i$ and $\frac{\partial f(w)}{\partial w_j}$ for logistic regression in the ModelLogReg class below.**
 
@@ -644,14 +636,7 @@ plot_callbacks([callback_gd], ["GD"], obj_min, "Gradient descent")
 
 **5) Which step size did you choose? What is the expected rate of convergence?**
 
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
-
+Write your answer below
 
 <a id='sgd'></a>
 ## 3.3 Stochastic gradient descent
@@ -738,7 +723,7 @@ callbacks_sgd = [callback_sgd_constant, callback_sgd_decaying, callback_sgd_cons
 
 names_sgd = ["SGD constant", "SGD decaying", "PR constant", "PR decaying"]
 
-
+plot_callbacks(callbacks_sgd, names_sgd, obj_min, "Different strategies for SGD")
 ```
 
 <a id='agd'></a>
@@ -813,7 +798,7 @@ callbacks_agd = [callback_agd_constant, callback_agd_convex, callback_agd_convex
                  callback_agd_strongly_convex]
 names_agd = ["AGD constant", "AGD cvx", "AGD cvx approx", "AGD stgly cvx"]
 
-
+plot_callbacks(callbacks_agd, names_agd, obj_min, "Different strategies for AGD")
 
 ```
 
@@ -900,6 +885,11 @@ def heavy_ball_optimized(model, w0, n_iter, callback, verbose=True):
 callback_hb = inspector(model, n_iter=n_iter)
 
 heavy_ball_optimized(model, w0, n_iter=n_iter, callback=callback_hb)
+```
+
+
+```{code-cell} python
+plot_callbacks([callback_hb], ["HB"], obj_min, "Heavy ball method")
 ```
 
 

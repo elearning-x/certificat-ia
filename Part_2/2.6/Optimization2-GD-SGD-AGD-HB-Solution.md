@@ -1,3 +1,5 @@
+# Gradient Descent Methods - GD, SGD, AGD, HB
+
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -27,9 +29,7 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
-+++
 
-# Gradient Descent Methods - GD, SGD, AGD, HB
 
 The aim of this material is to code 
 - coordinate gradient descent (CD)
@@ -140,19 +140,6 @@ plt.legend()
 
 ```
 
-
-
-
-    <matplotlib.legend.Legend at 0x10fd87a50>
-
-
-
-
-    
-![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_7_1.png)
-    
-
-
 ## 1.3. Simulation of a logistic regression model
 
 
@@ -215,19 +202,6 @@ plt.ylabel(r"$x_i^2$", fontsize=16)
 plt.title("Logistic regression simulation", fontsize=18)
 
 ```
-
-
-
-
-    Text(0.5, 1.0, 'Logistic regression simulation')
-
-
-
-
-    
-![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_10_1.png)
-    
-
 
 <a id='models'></a>
 # 2. Models gradients and losses
@@ -348,19 +322,6 @@ plt.title("Model weights")
 ```
 
 
-
-
-    Text(0.5, 1.0, 'Model weights')
-
-
-
-
-    
-![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_14_1.png)
-    
-
-
-
 ```{code-cell} python
 from scipy.optimize import check_grad
 
@@ -371,23 +332,12 @@ w = np.random.randn(n_features)
 print(check_grad(model.loss, model.grad, w)) # This must be a number (of order 1e-6)
 ```
 
-    3.4019493913804284e-06
-
-
 
 ```{code-cell} python
 print("lip=", model.lip())
 print("lip_max=", model.lip_max())
 print("lip_coordinates=", model.lip_coordinates())
 ```
-
-    lip= 4.184918885817737
-    lip_max= 133.5350649298213
-    lip_coordinates= [1.   0.96 1.   0.9  0.91 0.96 1.01 0.98 0.99 0.96 0.95 0.98 1.03 1.07
-     1.07 1.05 0.97 0.97 0.94 0.93 0.96 0.99 1.01 1.01 0.96 0.96 0.98 0.98
-     1.   0.99 1.01 1.14 1.05 0.98 0.92 0.99 1.01 1.   1.05 1.04 1.07 0.99
-     0.97 1.   1.09 1.11 1.08 0.97 0.97 0.98]
-
 
 <a id='models_logistic'></a>
 
@@ -398,7 +348,10 @@ print("lip_coordinates=", model.lip_coordinates())
 
 **1) Compute (on paper) the gradient $\nabla f$, the gradient of $\nabla f_i$ and the gradient of the coordinate function $\frac{\partial f(w)}{\partial w_j}$ of $f$ for logistic regression (fill the class given below).**
 
-################## TODO BLOCK
+Write your answer below
+
+##### HIDE CELL
+#### Solution:
 
 Let $w$ in $\mathbb R^d$.
 
@@ -430,7 +383,6 @@ $$
 \nabla^2 f(w) = \frac{1}{n}\sum_{i=1}^n \frac{\exp(y_i x_i^\top w)}{(1 + \exp(y_i x_i^\top w))^2} x_i x_i^\top + \lambda I_d.
 $$
 
-################## END TODO BLOCK
 
 **2) Fill in the functions below for the computation of $f$, $\nabla f$, $\nabla f_i$ and $\frac{\partial f(w)}{\partial w_j}$ for logistic regression in the ModelLogReg class below.**
 
@@ -553,29 +505,12 @@ print('Checkgrad returns %.2e' % (check_grad(model.loss, model.grad, w))) # This
 
 ```
 
-    Checkgrad returns 1.58e-07
-
-
-
-    
-![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_22_1.png)
-    
-
-
 
 ```{code-cell} python
 print("lip=", model.lip())
 print("lip_max=", model.lip_max())
 print("lip_coordinates=", model.lip_coordinates())
 ```
-
-    lip= 1.0045384237353767
-    lip_max= 26.097945626980646
-    lip_coordinates= [0.24 0.23 0.24 0.25 0.24 0.25 0.25 0.26 0.24 0.25 0.25 0.26 0.25 0.26
-     0.25 0.23 0.26 0.26 0.24 0.25 0.26 0.25 0.25 0.24 0.24 0.25 0.25 0.25
-     0.24 0.24 0.22 0.25 0.24 0.24 0.23 0.26 0.24 0.25 0.26 0.23 0.25 0.25
-     0.26 0.24 0.26 0.24 0.25 0.25 0.24 0.25]
-
 
 <a id='solvers'></a>
 ## 3. Solvers
@@ -631,9 +566,6 @@ from scipy.optimize import check_grad
 
 print(check_grad(model.loss, model.grad, w0)) # This must be a number (of order 1e-6)
 ```
-
-    2.0349870236764773e-07
-
 
 <a id='tools'></a>
 ## 3.1 Tools for the solvers
@@ -736,48 +668,25 @@ callback_gd = inspector(model, n_iter=n_iter)
 w_gd = gd(model, w0, step= 1/model.lip(),  n_iter=n_iter, callback=callback_gd)
 ```
 
-    Lauching GD solver...
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 3.058695e-01
-          20 | 1.735939e-01
-          30 | 1.410041e-01
-          40 | 1.325032e-01
-          50 | 1.301809e-01
-
-
 
 ```{code-cell} python
 plot_callbacks([callback_gd], ["GD"], obj_min, "Gradient descent")
 ```
 
-    /var/folders/c0/s8t504vd0w52xgnvj9cb82w40000gn/T/ipykernel_4815/3220526258.py:17: UserWarning: The figure layout has changed to tight
-      plt.tight_layout()
-
-
-
-
-
-    <module 'matplotlib.pyplot' from '/Users/aymericdieuleveut/anaconda3/lib/python3.11/site-packages/matplotlib/pyplot.py'>
-
-
-
-
-    
-![png](media/Part_2/2.6/Optimization2-GD-SGD-AGD-HB-Solution_40_2.png)
-    
-
-
 **5) Which step size did you choose? What is the expected rate of convergence?**
 
-################## TODO BLOCK
+Write your answer below
+
+##### HIDE CELL
+#### Solution:
+
+
 
 Using $\gamma = 1/L$, we expect a linear convergence rate as we have the following bound:
 $$
 \forall k \in \mathbb N, f(w_k) - f_\star \leq \left(1 - \frac{\mu}{L} \right)^{2k} (f(w_0) - f_\star)
 $$
 
-################## END TODO BLOCK
 
 
 <a id='sgd'></a>
@@ -859,55 +768,13 @@ sgd(model, w0, n_iter=n_iter, step=step, callback=callback_sgd_decaying_PR,
     stepsize_strategy="decaying", pr_averaging=True)
 ```
 
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 1.511222e-01
-          20 | 1.430586e-01
-          30 | 1.383071e-01
-          40 | 1.443209e-01
-          50 | 1.421153e-01
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 3.996369e-01
-          20 | 3.044064e-01
-          30 | 2.562626e-01
-          40 | 2.260614e-01
-          50 | 2.056450e-01
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 1.347116e-01
-          20 | 1.309255e-01
-          30 | 1.300001e-01
-          40 | 1.297700e-01
-          50 | 1.295899e-01
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 5.166539e-01
-          20 | 4.229672e-01
-          30 | 3.679644e-01
-          40 | 3.306047e-01
-          50 | 3.030793e-01
-
-
-
-
-
-    array([-0.6 ,  0.41, -0.42,  0.4 , -0.3 ,  0.33, -0.29,  0.24, -0.25,
-            0.2 , -0.14,  0.15, -0.18,  0.12, -0.12,  0.16, -0.11,  0.1 ,
-           -0.07,  0.05,  0.05,  0.  , -0.  , -0.01,  0.01, -0.01,  0.01,
-            0.04,  0.  , -0.02, -0.03, -0.02,  0.02,  0.02, -0.05, -0.04,
-            0.04,  0.02,  0.01,  0.01,  0.02,  0.02, -0.03,  0.03,  0.02,
-           -0.01,  0.  , -0.03,  0.03, -0.03])
-
-
-
 
 ```{code-cell} python
 callbacks_sgd = [callback_sgd_constant, callback_sgd_decaying, callback_sgd_constant_PR, callback_sgd_decaying_PR]
 
 names_sgd = ["SGD constant", "SGD decaying", "PR constant", "PR decaying"]
 
-
+plot_callbacks(callbacks_sgd, names_sgd, obj_min, "Different strategies for SGD")
 ```
 
 <a id='agd'></a>
@@ -995,59 +862,13 @@ agd(model, w0, n_iter=n_iter, callback=callback_agd_convex_approx, momentum_stra
 agd(model, w0, n_iter=n_iter, callback=callback_agd_strongly_convex, momentum_strategy="strongly_convex")
 ```
 
-    Lauching AGD solver...
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 1.998992e-01
-          20 | 1.339184e-01
-          30 | 1.307708e-01
-          40 | 1.296213e-01
-          50 | 1.292931e-01
-    Lauching AGD solver...
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 1.567916e-01
-          20 | 1.319428e-01
-          30 | 1.295094e-01
-          40 | 1.292887e-01
-          50 | 1.292625e-01
-    Lauching AGD solver...
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 1.627660e-01
-          20 | 1.316508e-01
-          30 | 1.294428e-01
-          40 | 1.292826e-01
-          50 | 1.292596e-01
-    Lauching AGD solver...
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 3.150460e-01
-          20 | 1.573048e-01
-          30 | 1.401637e-01
-          40 | 1.361139e-01
-          50 | 1.315355e-01
-
-
-
-
-
-    array([-0.95,  0.85, -0.78,  0.69, -0.62,  0.63, -0.52,  0.47, -0.44,
-            0.39, -0.34,  0.33, -0.31,  0.21, -0.24,  0.28, -0.22,  0.2 ,
-           -0.17,  0.1 ,  0.04,  0.02, -0.02, -0.01,  0.01, -0.01,  0.02,
-            0.05, -0.04, -0.01, -0.  , -0.02, -0.  ,  0.02, -0.04, -0.01,
-            0.06, -0.01, -0.  ,  0.01,  0.01,  0.  , -0.02,  0.01,  0.04,
-           -0.01, -0.02,  0.01,  0.03, -0.03])
-
-
-
 
 ```{code-cell} python
 callbacks_agd = [callback_agd_constant, callback_agd_convex, callback_agd_convex_approx, 
                  callback_agd_strongly_convex]
 names_agd = ["AGD constant", "AGD cvx", "AGD cvx approx", "AGD stgly cvx"]
 
-
+plot_callbacks(callbacks_agd, names_agd, obj_min, "Different strategies for AGD")
 
 ```
 
@@ -1136,27 +957,10 @@ callback_hb = inspector(model, n_iter=n_iter)
 heavy_ball_optimized(model, w0, n_iter=n_iter, callback=callback_hb)
 ```
 
-    0.933633086901322 0.9397486207495583
-       it    |   obj   
-           0 | 9.507018e-01
-          10 | 1.101912e+00
-          20 | 6.438818e-01
-          30 | 1.942308e-01
-          40 | 2.644666e-01
-          50 | 2.215504e-01
 
-
-
-
-
-    array([-1.08,  0.95, -0.83,  0.64, -0.66,  0.65, -0.62,  0.44, -0.52,
-            0.34, -0.42,  0.31, -0.31,  0.11, -0.26,  0.32, -0.31,  0.21,
-           -0.22,  0.14,  0.02,  0.04, -0.06,  0.07, -0.04,  0.01,  0.01,
-            0.08, -0.02, -0.04,  0.02,  0.06, -0.03,  0.07, -0.04,  0.02,
-            0.1 , -0.05,  0.03,  0.07, -0.03,  0.05,  0.04, -0.07,  0.12,
-            0.01, -0.04,  0.04,  0.03, -0.03])
-
-
+```{code-cell} python
+plot_callbacks([callback_hb], ["HB"], obj_min, "Heavy ball method")
+```
 
 
 ```{code-cell} python
