@@ -1,3 +1,5 @@
+## Lab 2 - Optimization
+
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -16,21 +18,16 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Deep Learning and Optimization
+  title: Optimization
   version: '1.0'
 ---
 
- 
+
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
 <span>Aymeric DIEULEVEUT</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
-
-+++
-
-# Deep Learning and Optimization
-## Lab 2 - Optimization
 
 In this lab, you will apply different techniques to find the best parameter values to a simple linear regression problem. After defining the empirical risk of the corresponding problem, you will apply a **Grid Search strategy** to output an approximation of the best parameter based on the data set. As this strategy cannot be used for most of real-world data sets, you will then implement and compare **Gradient Descent (GD)** and **Stochastic Gradient Descent (SGD)**. 
 
@@ -58,7 +55,7 @@ import matplotlib.pyplot as plt
 
 Enough with simulated data! In this lab, you will be happy to know that we will use a real-world data set. However, first things first, we are going to study a very simple one. We will try to build a linear model of the weight based on the height. Yes, this is crazy ML!
 
-Here is a short (and very basic) video to illustrate Linear Regression : https://www.youtube.com/watch?v=CtsRRUddV2s&ab_channel=VisuallyExplained
+You can refer to your previous lecture on Linear Regression : https://lms.fun-campus.fr/courses/course-v1:Polytechnique+03021+session01/courseware/f51a28341577458ab273c9c1fac79229/c03155aeea8011ed91fdfaa3e5744326/] 
 
 
 ```{code-cell} python
@@ -67,7 +64,7 @@ from helpers import *
 
 #Load the data
 #You need to check that the file helpers.py and height_weight_genders.csv are in the current folder
-height, weight, gender = load_data(filename = "data/height_weight_genders.csv", sub_sample=False, add_outlier=False)
+height, weight, gender = load_data(filename = "height_weight_genders.csv", sub_sample=False, add_outlier=False)
 x, mean_x, std_x = standardize(height)
 
 #Create the design matrix and the output vector 
@@ -179,12 +176,7 @@ def compute_loss(y, tx, w, loss="mse"):
 
 **4) Is it possible to solve exactly the previous optimization problem? Justify.**
 
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
+Write your solution below
 
 
 **5) Compute the least square estimate $\hat{\beta}$ and the value of the loss at optimum. Comment.**
@@ -205,13 +197,7 @@ print("The value of the loss at optimum is {:.2f}.".format(loss_at_opt))
 ```
 
 ### Comments:
-
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
+Write your comments here
 
 
 In the following, we will compute and plot the **excess loss** $ \mathcal  L(w)- \mathcal L(w^{\star})$ instead of the loss, as most theoretical results provide guarantees on the excess loss.
@@ -270,14 +256,6 @@ Discuss with your peers :
 - Repeat the above exercise by changing the grid spacing to 10 instead of 50. Compare the new fit to the old one.
 - How does increasing the number of values affect the computational cost ? How fast or slow does your code run ?
 
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
-
 # 3) Implementing Gradient Descent
 
 Here is a short (and very basic) video to illustrate GD : https://www.youtube.com/watch?v=qg4PchTECck&ab_channel=VisuallyExplained
@@ -285,14 +263,7 @@ Here is a short (and very basic) video to illustrate GD : https://www.youtube.co
 **7) The first thing to do when implementing a Gradient Descent is to define the gradient of the loss. Then,  fill in the functions `compute_gradient` below and check that your implementation is correct.**
 
 ## Comments:
-
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
+Write your comments below
 
 
 ```{code-cell} python
@@ -384,14 +355,6 @@ interact(plot_figure, n_iter=IntSlider(min=1, max=len(gradient_ws)))
 - Is the algorithm converging ? What can be said about the convergence speed ?
 - How good are the final values of $w_1$ and $w_0$ found ?
 
-##############
-
-- The difference between the loss and its optimum reaches machine precision after 13 iterations.
-- The algorithm converges as the excess loss reaches zero after 6 iterations (or machine precision after 13 iterations). 
-- The values of $w_0$ and $w_1$ are very good, thus the linear line approximated well the point cloud.
-
-##############
-
 **9) Plot the evolution of the logarithm of the excess loss as a function of the number of iterations. What can be said about the convergence speed ?**
 
 
@@ -416,14 +379,6 @@ print("The algorithm converges and the convergence is linear in a log scale")
 **10) Did we expect this behavior for the loss? Justify.**
 
 
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
-
-
 ```{code-cell} python
 # Computation of the Hessian matrix
 
@@ -438,14 +393,6 @@ print("The hessian is:\n", hessian)
 **11) Is the theoretical rate verified?**
 
 HINT: Run gradient descent with a step size $\gamma=0.5$.
-
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
 
 **12) What is the maximal step size $\gamma$ you can choose? Try different values for $\gamma$. What do you notice?**
 
@@ -472,14 +419,6 @@ plot_excess_loss_of_gd_for_different_gamma(gammas=[.1, .5, .9, 1., 1.2, 2, 2.2])
 ```{code-cell} python
 
 ```
-
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
 
 # 4) Implementing Stochastic Gradient Descent
 
@@ -610,14 +549,6 @@ plot_excess_loss_of_sgd_for_different_gamma(gammas=[.1, .2, .5, 1.])
 
 ### Comments:
 
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
-
 **16) Plot the evolution of the log of the excess loss for SGD and for GD in the same graph. 
 What is the complexity per iteration of GD, SGD? Compare the theoretical complexity and the time required per iteration for the algorithm. Interpret.**
 
@@ -639,14 +570,6 @@ plt.ylabel('log(L(w)-L(w^*))')
 ```
 
 ### Comments:
-
-
-#
-#
-# YOUR CODE OR ANSWER HERE
-#
-#
-
 
 Another approach is to use decaying step size for SGD. This way, when we get closer to the neighborhood of the optimal point, the step size is reduced, reducing oscillation and improving the convergence toward the optimum.
 
