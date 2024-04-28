@@ -1,4 +1,4 @@
-## Lab 2 - Optimization
+## Optimization 2: GD and SGD
 
 ---
 jupytext:
@@ -18,7 +18,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Optimization
+  title: Optimization 2: SGD and SGD
   version: '1.0'
 ---
 
