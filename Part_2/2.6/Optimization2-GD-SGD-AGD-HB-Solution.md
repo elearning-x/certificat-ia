@@ -30,14 +30,14 @@ nbhosting:
 </div>
 
 
-
 The aim of this material is to code 
-- coordinate gradient descent (CD)
 - gradient descent (GD)
 - stochastic gradient descent (SGD)
 - accelerated gradient descent (AGD)
-
+- Heavy Ball methods (HB)
 and apply them on the linear regression and logistic regression models, with ridge penalization.
+
+Importantly, interpretation of the rates is one key aspect.
 
 # Table of content
 
