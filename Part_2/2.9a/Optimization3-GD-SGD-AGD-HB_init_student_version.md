@@ -1,4 +1,3 @@
-# Optimization 3: Algorithms  - GD, SGD, AGD, HB
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -17,16 +16,19 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Optimization 3: Algorithms  - GD, SGD, AGD, HB
+  title: 'Optimization 3: Algorithms  - GD, SGD, AGD, HB'
   version: '1.0'
 ---
-
  
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
 <span>Aymeric DIEULEVEUT</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
+
+# Optimization 3: Algorithms  - GD, SGD, AGD, HB
 
 The aim of this material is to code 
 - gradient descent (GD)
