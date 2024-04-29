@@ -1,4 +1,3 @@
-# Optimization 4: Algorithms SAG-SVRG-Newton-CGD 
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -17,10 +16,9 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Optimization 4: SAG-SVRG-Newton-CGD
+  title: 'Optimization 4: SAG-SVRG-Newton-CGD'
   version: '1.0'
 ---
-
 
 
 <div class="licence">
@@ -28,6 +26,10 @@ nbhosting:
 <span>Aymeric DIEULEVEUT</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
+
+# Optimization 4: Algorithms SAG-SVRG-Newton-CGD 
 
 The aim of this material is implement the follogin algorithms, in the same setup as the previous lab, and to provide a global comparison of all the algorithms, interpret rates, etc.
 
