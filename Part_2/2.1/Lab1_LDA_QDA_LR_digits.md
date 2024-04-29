@@ -248,9 +248,8 @@ This plot and analysis will help you understand the behavior of each classificat
 ## Question 7:
 How what so you think of the perfomance of QDA?
 
-#HIDE CELL
 
-Solution:  
+#### Solution:  
 
 we observe that the performance of QDA is close to chance on the test set. The first guess is that QDA has more parameters so could be prone to overfitting. It is thus reasonnable to verify the performance on the train set.
 
@@ -324,7 +323,6 @@ plt.grid(True)
 plt.show()
 ```
 
-#HIDE CELL
 
 ## Solution: 
 
@@ -335,7 +333,6 @@ Overfitting:
 ## Question 9:
 So how can you explain the poor performance of QDA?
 
-#HIDE CELL
 
 ## Solution:  
 - overfitting is not sufficient to explain the poor perfomance: the performance diminishes with the train size !!
