@@ -1,5 +1,3 @@
-# Lab: Exploring Convex and Non-Convex Functions
-
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -21,7 +19,6 @@ nbhosting:
   title: Optimization 1: visualization, Taylor, convexity
   version: '1.0'
 ---
-
  
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
@@ -34,6 +31,10 @@ nbhosting:
 <span>Aymeric DIEULEVEUT</span>
 <span>Licence CC BY-NC-ND</span>
 </div>
+
++++
+
+# Exploring Convex and Non-Convex Functions
 
 ## Part 1: Understanding Convexity and Non-Convexity
 
