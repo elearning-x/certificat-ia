@@ -1,5 +1,3 @@
-## Optimization 2: GD and SGD
-
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -18,10 +16,9 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 nbhosting:
-  title: Optimization 2: SGD and SGD
+  title: 'Optimization 2: SGD and SGD'
   version: '1.0'
 ---
-
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
@@ -29,9 +26,13 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
+## Optimization 2: GD and SGD
+
 In this lab, you will apply different techniques to find the best parameter values to a simple linear regression problem. After defining the empirical risk of the corresponding problem, you will apply a **Grid Search strategy** to output an approximation of the best parameter based on the data set. As this strategy cannot be used for most of real-world data sets, you will then implement and compare **Gradient Descent (GD)** and **Stochastic Gradient Descent (SGD)**. 
 
-We will use the dataset `height_weight_genders.csv`. We have provided
+We will use the dataset `data/height_weight_genders.csv`. We have provided
 sample code templates that already contain useful snippets of code required for this lab.
 You will be working in this notebook by filling in the corresponding functions. The
 notebook already provides a lot of template codes, as well as a code to load the data, normalize the
@@ -63,8 +64,8 @@ import datetime
 from helpers import *
 
 #Load the data
-#You need to check that the file helpers.py and height_weight_genders.csv are in the current folder
-height, weight, gender = load_data(filename = "height_weight_genders.csv", sub_sample=False, add_outlier=False)
+#You need to check that the file helpers.py and data/height_weight_genders.csv are in the current folder
+height, weight, gender = load_data(filename = "data/height_weight_genders.csv", sub_sample=False, add_outlier=False)
 x, mean_x, std_x = standardize(height)
 
 #Create the design matrix and the output vector 
