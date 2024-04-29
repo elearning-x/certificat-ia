@@ -1,5 +1,3 @@
-# Lab 1: Binary Classification on MNIST Dataset
-
 ---
 jupytext:
   cell_metadata_filter: all, -hidden, -heading_collapsed, -run_control, -trusted
@@ -28,11 +26,13 @@ nbhosting:
 <span>Licence CC BY-NC-ND</span>
 </div>
 
++++
+
 In this Jupyter Notebook, the goal is to explore three different classification methods to distinguish between odd and even digits from the MNIST dataset using:
 
 -    Linear Discriminant Analysis (LDA)
- -   Quadratic Discriminant Analysis (QDA)
- -   Logistic Regression
+-    Quadratic Discriminant Analysis (QDA)
+-    Logistic Regression
 
 The MNIST dataset consists of handwritten digits, each being a 28x28 pixel grayscale image, that were mentioned in the lecture. For the purpose of this exercise, the digits will be divided into two classes:
 
@@ -42,7 +42,6 @@ The MNIST dataset consists of handwritten digits, each being a 28x28 pixel grays
 This is meant to have a binary classification task
 
 You will preprocess the data, apply each of the three classifiers, and assess their performance.
-
 
 
 #### Setup and Data Preprocessing
