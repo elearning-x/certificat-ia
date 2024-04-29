@@ -20,6 +20,8 @@ nbhosting:
   version: '1.0'
 ---
 
+# Lab 1: Binary Classification on MNIST Dataset
+
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
 <span>Aymeric DIEULEVEUT</span>
