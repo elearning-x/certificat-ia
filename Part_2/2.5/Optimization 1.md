@@ -19,12 +19,6 @@ nbhosting:
   title: 'Optimization 1: visualization, Taylor, convexity'
   version: '1.0'
 ---
- 
-<div class="licence">
-<span><img src="media/logo_IPParis.png" /></span>
-<span>Aymeric DIEULEVEUT</span>
-<span>Licence CC BY-NC-ND</span>
-</div>
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
@@ -101,21 +95,10 @@ f_quadratic(x).subs(x, 3), f_non_quadratic(x).subs(x, 3)
 
 
 
-
-    (9, cos(3) + 27)
-
-
-
-
 ```{code-cell} python
 # Get the first 2 derivatives of f
 diff_functions(f_quadratic(x), x)
 ```
-
-
-
-
-    (2*x, 2)
 
 
 
@@ -127,10 +110,6 @@ derivs = diff_functions(f_quadratic(x), x)
 derivs[0].subs(x,-5)
 ```
 
-
-
-
-$\displaystyle -10$
 
 
 
@@ -205,16 +184,6 @@ plot_function_and_taylor(f_non_quadratic(x), (-10, 10), 1)
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_15_0.png)
-    
-
-
-
-    
-![png](Optimization%201_files/Optimization%201_15_1.png)
-    
-
 
 ### Question 2:
 - What can you say about the second order taylor approximation for a quadratic function
@@ -267,22 +236,6 @@ plot_function_second_order_upper_bound(f_quadratic(x), (-5, 5), 3)
 plot_function_second_order_upper_bound(f_non_quadratic(x), (0, 5), 3)
 ```
 
-    2
-
-
-
-    
-![png](Optimization%201_files/Optimization%201_17_1.png)
-    
-
-
-    29.716337814536775
-
-
-
-    
-![png](Optimization%201_files/Optimization%201_17_3.png)
-    
 
 
 ### Question 3:
@@ -325,10 +278,6 @@ plt.grid(True)
 plt.show()
 ```
 
-
-    
-![png](Optimization%201_files/Optimization%201_19_0.png)
-    
 
 
 ### Question 4:
@@ -376,11 +325,6 @@ plt.show()
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_21_0.png)
-    
-
-
 ## Part 2: Machine learning - link between method and convexity, smoothness, etc.
 
 In the second part, we consider binary classification with 01 loss, logistic loss, hinge loss and a small neural network
@@ -419,10 +363,6 @@ plt.show()
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_24_0.png)
-    
-
 
 ## 2.1 One dimensional parameter space
 
@@ -456,10 +396,6 @@ plt.show()
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_26_0.png)
-    
-
 
 ### Question 5:
 - Is the 01 empirical risk convex as a function of w?
@@ -491,10 +427,6 @@ plt.grid(True)
 plt.show()
 ```
 
-
-    
-![png](Optimization%201_files/Optimization%201_29_0.png)
-    
 
 
 ### Question 7:
@@ -528,10 +460,6 @@ plt.show()
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_32_0.png)
-    
-
 
 ### Question 9:
 - Is the hinge empirical risk convex as a function of w?
@@ -561,10 +489,6 @@ plt.grid(True)
 plt.show()
 ```
 
-
-    
-![png](Optimization%201_files/Optimization%201_35_0.png)
-    
 
 
 ## 2.1 Two dimensional parameter space
@@ -601,15 +525,6 @@ plt.show()
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_37_0.png)
-    
-
-
-
-```{code-cell} python
-
-```
 
 ### Question 10:
 - Complete the codes to compute the ER for each loss
@@ -713,17 +628,7 @@ plt.xlabel('Weight 1')
 plt.tight_layout()
 plt.show()
 ```
-
-
-    
-![png](Optimization%201_files/Optimization%201_43_0.png)
-    
-
-
-
-    
-![png](Optimization%201_files/Optimization%201_43_1.png)
-    
+ 
 
 
 ### We plot the optimal parameter and the associated decision frontier
@@ -781,11 +686,6 @@ plt.show()
 ```
 
 
-    
-![png](Optimization%201_files/Optimization%201_47_0.png)
-    
-
-
 
 ```{code-cell} python
 # Plotting decision boundaries and training points
@@ -811,8 +711,4 @@ plt.tight_layout()
 plt.show()
 ```
 
-
-    
-![png](Optimization%201_files/Optimization%201_48_0.png)
-    
 

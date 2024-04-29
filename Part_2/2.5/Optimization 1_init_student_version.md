@@ -19,12 +19,6 @@ nbhosting:
   title: 'Optimization 1: visualization, Taylor, convexity'
   version: '1.0'
 ---
- 
-<div class="licence">
-<span><img src="media/logo_IPParis.png" /></span>
-<span>Aymeric DIEULEVEUT</span>
-<span>Licence CC BY-NC-ND</span>
-</div>
 
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
