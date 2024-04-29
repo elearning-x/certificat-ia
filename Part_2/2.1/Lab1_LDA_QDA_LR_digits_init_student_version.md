@@ -20,8 +20,6 @@ nbhosting:
   version: '1.0'
 ---
 
-# Lab 1: Binary Classification on MNIST Dataset
-
 <div class="licence">
 <span><img src="media/logo_IPParis.png" /></span>
 <span>Aymeric DIEULEVEUT</span>
@@ -29,6 +27,8 @@ nbhosting:
 </div>
 
 +++
+
+# Lab 1: Binary Classification on MNIST Dataset
 
 In this Jupyter Notebook, the goal is to explore three different classification methods to distinguish between odd and even digits from the MNIST dataset using:
 
