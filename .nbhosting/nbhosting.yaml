@@ -3,6 +3,8 @@ static-mappings:
     destination: media
   - source: data
     destination: data
+  - source: static
+    destination: static    
 
 tracks:
   - name: "Intro"
@@ -72,9 +74,12 @@ tracks:
     - name: "2.8 Neural Network tuning"
       notebooks:
       - Part_2/2.8/*.md
-    - name: "2.9 Optimization (3)"
+    - name: "2.9a Optimization (3)"
       notebooks:
-      - Part_2/2.9/*.md
+      - Part_2/2.9a/*.md
+    - name: "2.9b Optimization (3)"
+      notebooks:
+      - Part_2/2.9b/*.md
     - name: "2.10 Deep Learning (III)"
       notebooks:
       - Part_2/2.10/*.md
