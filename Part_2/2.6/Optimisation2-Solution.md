@@ -37,7 +37,7 @@ sample code templates that already contain useful snippets of code required for 
 You will be working in this notebook by filling in the corresponding functions. The
 notebook already provides a lot of template codes, as well as a code to load the data, normalize the
 features, and visualize the results.
-If you have time, you can look at the files `helpers.py` and `plots.py`, and make sure you understand them.
+If you have time, you can look at the files [`helpers.py`](static/helpers.py.pdf) and [`plots.py`](static/plots.py.pdf), and make sure you understand them.
 
 
 ```{code-cell} python
@@ -56,7 +56,7 @@ import matplotlib.pyplot as plt
 
 Enough with simulated data! In this lab, you will be happy to know that we will use a real-world data set. However, first things first, we are going to study a very simple one. We will try to build a linear model of the weight based on the height. Yes, this is crazy ML!
 
-You can refer to your previous lecture on Linear Regression : https://lms.fun-campus.fr/courses/course-v1:Polytechnique+03021+session01/courseware/f51a28341577458ab273c9c1fac79229/c03155aeea8011ed91fdfaa3e5744326/] 
+You can refer to your previous lecture on [Linear Regression](https://lms.fun-campus.fr/courses/course-v1:Polytechnique+03021+session01/courseware/f51a28341577458ab273c9c1fac79229/c03155aeea8011ed91fdfaa3e5744326/) 
 
 
 ```{code-cell} python
@@ -130,18 +130,15 @@ In helpers.py, we have already provided code to form arrays for $y$ and $\tilde 
 
 
 ```{code-cell} python
-################## TODO BLOCK
 print("The design matrix contains", tx.shape[1], "columns, with one column of 1's, thus there is only one input variable")
 print("The data set contains", len(y), "observations")
 print("Each column represents a variable, and each row an observation/an individual")
 print("We have added a column of one to take into account a constant effect (intercept) in the model")
 print("If we had only three individuals, the design matrix would be of size 3x2, where X_{32} represents the height of the third individual")
-################## END TODO BLOCK
 ```
 
 **2) We want to build a linear model to predict the weight as a function of the height. We consider the square loss. What is the optimization problem we want to solve?**
 
-################## TODO BLOCK
 
 We aim to solve the following minimization problem:
 \begin{align}
@@ -152,7 +149,7 @@ where
 \mathcal L(w) = \frac{1}{2n}  \| y - \tilde X w \|^2_2 = \frac{1}{2n}  \sum_{i=1}^n (y_i - (w_0 + w_1 \tilde X_{i,2}))^2.
 \end{align*}
 
-################## END TODO BLOCK
+
 
 **3) Compute the cost functions by running the code below.**
 
