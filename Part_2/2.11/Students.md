@@ -653,7 +653,7 @@ from scipy.stats import spearmanr
 
 We will use data from the STSBenchmark. The dataset comes with a pre-defined train/dev/test split. For simplicity we will use the train and dev portions together as our training set.
 
-Download the data from here http://ixa2.si.ehu.es/stswiki/images/4/48/Stsbenchmark.tar.gz and decompress it:
+The data is downloaded from http://ixa2.si.ehu.es/stswiki/images/4/48/Stsbenchmark.tar.gz. You can access it in **data/stsbenchmark**.
 
 
 ```{code-cell} python
@@ -673,7 +673,7 @@ def load_data(path):
                     data[subset]['scores'].append(float(l[4]) / 5) # mapping the score to the 0-1 range 
     return data
 
-sts_dataset = load_data(path="stsbenchmark")
+sts_dataset = load_data(path="data/stsbenchmark")
 ```
 
 Using the code of the ```load_data``` function, get an insight into the structure of the dataset. Print the first few examples ($s_1$, $s_2$ and the score) and the number of examples in the dataset.

@@ -204,12 +204,11 @@ $$f(x)
 \end{cases}$$
 
 
-Usually, we choose $\alpha=0.75$ and $x_{\max} = 100$, although these parameters may need to be changed depending on the data. The following code uses word embeddings from the ```gensim``` API to retrieve pre-trained representations (word embeddings take space - a long loading time is expected). They are store in **data/gensim-data/glove-wiki-gigaword-300.gz**.
-
+Usually, we choose $\alpha=0.75$ and $x_{\max} = 100$, although these parameters may need to be changed depending on the data. The following code uses word embeddings from the ```gensim``` API to retrieve pre-trained representations (word embeddings take space - a long loading time is expected). They are store in **data/gensim-data/glove-wiki-gigaword-300/glove-wiki-gigaword-300.gz**.
 
 ```{code-cell} python
 from gensim.models import KeyedVectors
-loaded_glove_model = KeyedVectors.load_word2vec_format("data/gensim-data/glove-wiki-gigaword-300.gz")
+loaded_glove_model = KeyedVectors.load_word2vec_format("data/gensim-data/glove-wiki-gigaword-300/glove-wiki-gigaword-300.gz")
 ```
 
 We can extract the embedding matrix this way, and check its size:
