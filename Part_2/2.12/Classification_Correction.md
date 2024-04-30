@@ -38,7 +38,7 @@ The goal of this lab are to:
 Besides ```torch```, we will use ```gensim``` to obain word embeddings, and ```scikit-learn``` for simple classification models.  
 
 
-```python
+```{code-cell} python
 import os.path as op
 import re 
 import numpy as np
@@ -53,12 +53,12 @@ from pprint import pprint
 We're going to work with the **20NewsGroup** data. This dataset is available in ```scikit-learn```, you can find all relevant information in the [documentation](https://scikit-learn.org/0.19/datasets/twenty_newsgroups.html).
 
 
-```python
+```{code-cell} python
 from sklearn.datasets import fetch_20newsgroups
 ```
 
 
-```python
+```{code-cell} python
 # Import training data
 ng_train = fetch_20newsgroups(subset='train',
                               remove=('headers', 'footers', 'quotes')
@@ -66,19 +66,19 @@ ng_train = fetch_20newsgroups(subset='train',
 ```
 
 
-```python
+```{code-cell} python
 # Let's look at what is in this object
 pprint(dir(ng_train))
 ```
 
 
-```python
+```{code-cell} python
 # Let's look at the categories
 pprint(ng_train.target_names)
 ```
 
 
-```python
+```{code-cell} python
 # .. and the data itself
 pprint(ng_train.data[0])
 print("Target: ", ng_train.target_names[ng_train.target[0]])
@@ -87,7 +87,7 @@ print("Target: ", ng_train.target_names[ng_train.target[0]])
 The dataset can be rather difficult as it is; especially, some categories are very close to each other. We can simplify the task by using the higher-level categorisation of the newsgroups, thanks to the following function:
 
 
-```python
+```{code-cell} python
 def aggregate_labels(label):
     # comp
     if label in [1,2,3,4,5]:
@@ -115,7 +115,7 @@ We will first need to apply some pre-processing. We will here use our own tokeni
             Code:</div>
 
 
-```python
+```{code-cell} python
 import nltk
 # The first time you import this tokenizer, you need to download some data
 nltk.download('punkt')
@@ -123,14 +123,14 @@ from nltk import word_tokenize
 ```
 
 
-```python
+```{code-cell} python
 # Pre-processing 
 ng_train_text = [ng_train.data[i] for i in range(len(ng_train.data)) if len(word_tokenize(ng_train.data[i])) > 0]
 ng_train_labels = [aggregate_labels(ng_train.target[i]) for i in range(len(ng_train.data)) if len(word_tokenize(ng_train.data[i])) > 0]
 ```
 
 
-```python
+```{code-cell} python
 ng_test = fetch_20newsgroups(subset='test',
                              remove=('headers', 'footers', 'quotes')
                             )
@@ -146,7 +146,7 @@ Now that the data is cleaned, the first step we will follow is to pick a common 
             Code:</div>
 
 
-```python
+```{code-cell} python
 def vocabulary(corpus, voc_threshold = None):
     """    
     Function using word counts to build a vocabulary - can be improved with a second parameter for 
@@ -178,7 +178,7 @@ def vocabulary(corpus, voc_threshold = None):
 What do you think is the **appropriate vocabulary size here** ? Would any further pre-processing make sense ? Motivate your answer. 
 
 
-```python
+```{code-cell} python
 vocab, word_counts = vocabulary(ng_train_text)
 rank_counts = {w:[vocab[w], word_counts[w]] for w in vocab}
 rank_counts_array = np.array(list(rank_counts.values()))
@@ -199,13 +199,13 @@ for i in range(5000, len(vocab), 5000):
 Before creating the vocabulary, put aside some training data for a **validation set** ! 
 
 
-```python
+```{code-cell} python
 from sklearn.model_selection import train_test_split
 train_texts_splt, val_texts, train_labels_splt, val_labels = train_test_split(ng_train_text, ng_train_labels, test_size=.2)
 ```
 
 
-```python
+```{code-cell} python
 vocab_cut, word_counts_cut = vocabulary(train_texts_splt, 10000)
 ```
 
@@ -239,18 +239,18 @@ $$f(x)
 \end{cases}$$
 
 
-Usually, we choose $\alpha=0.75$ and $x_{\max} = 100$, although these parameters may need to be changed depending on the data. The following code uses the ```gensim``` API to retrieve pre-trained representations (word embeddings take space - a long loading time is expected).
+Usually, we choose $\alpha=0.75$ and $x_{\max} = 100$, although these parameters may need to be changed depending on the data. The following code uses word embeddings from the ```gensim``` API to retrieve pre-trained representations (word embeddings take space - a long loading time is expected). They are store in **data/gensim-data/glove-wiki-gigaword-300.gz**.
 
 
-```python
+```{code-cell} python
 from gensim.models import KeyedVectors
-loaded_glove_model = KeyedVectors.load_word2vec_format("./glove-wiki-gigaword-300.gz")
+loaded_glove_model = KeyedVectors.load_word2vec_format("data/gensim-data/glove-wiki-gigaword-300.gz")
 ```
 
 We can extract the embedding matrix this way, and check its size:
 
 
-```python
+```{code-cell} python
 loaded_glove_embeddings = loaded_glove_model.vectors
 print(loaded_glove_embeddings.shape)
 ```
@@ -258,7 +258,7 @@ print(loaded_glove_embeddings.shape)
 We can see that there are $400,000$ words represented, and that the embeddings are of size $300$. We define a function that returns, from the loaded model, the vocabulary and the embedding matrix according to the structures we used before. We add, here again, an unknown word "UNK" in case there are words in our data that are not part of the $400,000$ words represented here. 
 
 
-```python
+```{code-cell} python
 def get_glove_voc_and_embeddings(glove_model):
     voc = {word : index for word, index in enumerate(glove_model.index_to_key)}
     voc['UNK'] = len(voc)
@@ -267,14 +267,14 @@ def get_glove_voc_and_embeddings(glove_model):
 ```
 
 
-```python
+```{code-cell} python
 loaded_glove_voc, loaded_glove_embeddings = get_glove_voc_and_embeddings(loaded_glove_model)
 ```
 
 To be able to merge these $400.000$ words with those that are in our vocabulary, we can create a specific function that will extract the representations of the words that are in our vocabulary and return a matrix of the appropriate size:
 
 
-```python
+```{code-cell} python
 def get_glove_adapted_embeddings(glove_model, input_voc):
     keys = {i: glove_model.key_to_index.get(w, None) for w, i in input_voc.items()}
     index_dict = {i: key for i, key in keys.items() if key is not None}
@@ -288,12 +288,12 @@ This function takes as input the model loaded using the Gensim API, as well as a
 
 
 
-```python
+```{code-cell} python
 GloveEmbeddings = get_glove_adapted_embeddings(loaded_glove_model, vocab_cut)
 ```
 
 
-```python
+```{code-cell} python
 print(GloveEmbeddings.shape)
 ```
 
@@ -350,7 +350,7 @@ Although different, this new objective function is a sufficient approximation of
 We will use the ```gensim``` library for its implementation of word2vec in python. We'll have to make a specific use of it, since we want to keep the same vocabulary as before: we'll first create the class, then get the vocabulary we generated above. 
 
 
-```python
+```{code-cell} python
 from gensim.models import Word2Vec
 
 model = Word2Vec(vector_size=300,
@@ -366,7 +366,7 @@ In this case, you also need to indicate to the model the number of examples it s
             Code:</div>
 
 
-```python
+```{code-cell} python
 ng_train_text_tokenized = []
 ex = 0
 for sent in train_texts_splt:
@@ -376,12 +376,12 @@ for sent in train_texts_splt:
 ```
 
 
-```python
+```{code-cell} python
 model.train(ng_train_text_tokenized, total_examples=ex, epochs=30, report_delay=1)
 ```
 
 
-```python
+```{code-cell} python
 W2VEmbeddings = model.wv.vectors
 print(W2VEmbeddings.shape)
 ```
@@ -397,7 +397,7 @@ The basic model will be constructed in two steps:
             Code:</div>
 
 
-```python
+```{code-cell} python
 def sentence_representations(texts, vocabulary, embeddings, np_func=np.mean):
     """
     Represent the sentences as a combination of the vector of its words.
@@ -424,7 +424,7 @@ def sentence_representations(texts, vocabulary, embeddings, np_func=np.mean):
 ```
 
 
-```python
+```{code-cell} python
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import cross_val_score
 
@@ -436,7 +436,7 @@ print(clf.score(val_rep, val_labels))
 ```
 
 
-```python
+```{code-cell} python
 train_rep_w2v = sentence_representations(train_texts_splt, vocab_cut, W2VEmbeddings)
 val_rep_w2v = sentence_representations(val_texts, vocab_cut, W2VEmbeddings)
 clf_w2v = LogisticRegression().fit(train_rep_w2v, train_labels_splt)
@@ -449,7 +449,7 @@ print(clf_w2v.score(val_rep_w2v, val_labels))
 - Why can we expect that the results obtained with embeddings extracted from representations pre-trained with Glove are much better than word2vec ? What would be a 'fair' way to compare Glove with word2vec ?
 
 
-```python
+```{code-cell} python
 # Glove embeddings have been trained on a much larger dataset
 # We would need to train a Glove model on the current 20ng dataset
 ```
@@ -459,7 +459,7 @@ print(clf_w2v.score(val_rep_w2v, val_labels))
 The goal of this second part of the lab is double: an introduction to using Pytorch for treating textual data, and implementing neural classification models that we can apply to IMDB data - and then compare it to the models implemented previously. 
 
 
-```python
+```{code-cell} python
 import torch
 import torch.nn as nn
 ```
@@ -470,7 +470,7 @@ Pytorch Tensors are very similar to Numpy arrays, with the added benefit of bein
 The important things to note are that Tensors can be created empty, from lists, and it is very easy to convert a numpy array into a pytorch tensor, and inversely.
 
 
-```python
+```{code-cell} python
 a = torch.LongTensor(5)
 b = torch.LongTensor([5])
 
@@ -479,7 +479,7 @@ print(b)
 ```
 
 
-```python
+```{code-cell} python
 a = torch.FloatTensor([2])
 b = torch.FloatTensor([3])
 
@@ -492,7 +492,7 @@ One way to easily cut a tensor from the computational once it is not needed anym
 More info on automatic differentiation in pytorch on [this link](https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html#sphx-glr-beginner-blitz-autograd-tutorial-py).
 
 
-```python
+```{code-cell} python
 x = torch.tensor(1., requires_grad=True)
 w = torch.tensor(2., requires_grad=True)
 b = torch.tensor(3., requires_grad=True)
@@ -510,7 +510,7 @@ print(b.grad)    # b.grad = 1
 ```
 
 
-```python
+```{code-cell} python
 x = torch.randn(10, 3)
 y = torch.randn(10, 2)
 
@@ -539,7 +539,7 @@ print ('dL/db: ', linear.bias.grad)
 ```
 
 
-```python
+```{code-cell} python
 # You can perform gradient descent manually, with an in-place update ...
 linear.weight.data.sub_(0.01 * linear.weight.grad.data)
 linear.bias.data.sub_(0.01 * linear.bias.grad.data)
@@ -551,7 +551,7 @@ print('Loss after one update: ', loss.item())
 ```
 
 
-```python
+```{code-cell} python
 # Use the optim package to define an Optimizer that will update the weights of the model.
 optimizer = torch.optim.SGD(linear.parameters(), lr=0.01)
 
@@ -579,7 +579,7 @@ print('Loss after two updates: ', loss.item())
 Here is a toy example: 
 
 
-```python
+```{code-cell} python
 toy_corpus = ['I walked down down the boulevard',
               'I walked down the avenue',
               'I ran down the boulevard',
@@ -590,7 +590,7 @@ toy_categories = [0, 0, 1, 0, 0]
 ```
 
 
-```python
+```{code-cell} python
 from torch.utils.data import Dataset, DataLoader
 
 class CustomDataset(Dataset):
@@ -621,12 +621,12 @@ class CustomDataset(Dataset):
 ```
 
 
-```python
+```{code-cell} python
 toy_dataset = CustomDataset(toy_corpus, toy_categories)
 ```
 
 
-```python
+```{code-cell} python
 print(len(toy_dataset))
 for i in range(len(toy_dataset)):
     print(toy_dataset[i])
@@ -639,12 +639,12 @@ for i in range(len(toy_dataset)):
 and can be created very simply from a ```Dataset```. Continuing on our simple example: 
 
 
-```python
+```{code-cell} python
 toy_dataloader = DataLoader(toy_dataset, batch_size = 2, shuffle = True)
 ```
 
 
-```python
+```{code-cell} python
 for e in range(3):
     print("Epoch:" + str(e))
     for x, y in toy_dataloader:
@@ -659,7 +659,7 @@ Now, we would like to apply what we saw to our case, and **create a specific cla
 - Have a ```__getitem__``` method that allows us to use the class with a ```Dataloader``` to easily build batches.
 
 
-```python
+```{code-cell} python
 from torch.nn import functional as F
 import random
 
@@ -679,14 +679,14 @@ The idea behind **padding** is to transform a list of pytorch tensors (of maybe 
 **Careful: the symbol 0 is then reserved for padding. That means the vocabulary must begin at 1 !** 
 
 
-```python
+```{code-cell} python
 tensor_1 = torch.LongTensor([1, 4, 5])
 tensor_2 = torch.LongTensor([2])
 tensor_3 = torch.LongTensor([6, 7])
 ```
 
 
-```python
+```{code-cell} python
 tensor_padded = pad_sequence([tensor_1, tensor_2, tensor_3], batch_first=True, padding_value = 0)
 print(tensor_padded)
 ```
@@ -695,7 +695,7 @@ print(tensor_padded)
             Code:</div>
 
 
-```python
+```{code-cell} python
 class TextClassificationDataset(Dataset):
     def __init__(self, data, categories, vocab = None, max_length = 200, voc_threshold = 10000):
         # Get all the data in a list
@@ -750,31 +750,31 @@ class TextClassificationDataset(Dataset):
 ```
 
 
-```python
+```{code-cell} python
 training_dataset = TextClassificationDataset(train_texts_splt, train_labels_splt)
 training_word2idx, training_idx2word = training_dataset.get_vocab()
 ```
 
 
-```python
+```{code-cell} python
 valid_dataset = TextClassificationDataset(val_texts, val_labels, (training_word2idx, training_idx2word))
 test_dataset = TextClassificationDataset(ng_test_text, ng_test_labels, (training_word2idx, training_idx2word))
 ```
 
 
-```python
+```{code-cell} python
 training_dataloader = DataLoader(training_dataset, batch_size = 200, shuffle=True)
 valid_dataloader = DataLoader(valid_dataset, batch_size = 25)
 test_dataloader = DataLoader(test_dataset, batch_size = 25)
 ```
 
 
-```python
+```{code-cell} python
 print(valid_dataset[1])
 ```
 
 
-```python
+```{code-cell} python
 example_batch = next(iter(training_dataloader))
 print(example_batch[0].size())
 print(example_batch[1].size())
@@ -785,7 +785,7 @@ print(example_batch[1].size())
 Now, we will implement in Pytorch what we did in the previous TP: a simple averaging model. For each model we will implement, we need to create a class which inherits from ```nn.Module``` and redifine the ```__init__``` method as well as the ```forward``` method.
 
 
-```python
+```{code-cell} python
 import torch.optim as optim
 ```
 
@@ -793,7 +793,7 @@ import torch.optim as optim
             Code:</div>
 
 
-```python
+```{code-cell} python
 class AveragingModel(nn.Module):
     
     def __init__(self, embedding_dim, vocabulary_size, categories_num):
@@ -813,7 +813,7 @@ class AveragingModel(nn.Module):
 ```
 
 
-```python
+```{code-cell} python
 model = AveragingModel(300, len(training_word2idx), max(ng_train_labels)+1)
 # Create an optimizer
 opt = optim.Adam(model.parameters(), lr=0.0025, betas=(0.9, 0.999))
@@ -826,7 +826,7 @@ criterion = nn.CrossEntropyLoss()
             Code:</div>
 
 
-```python
+```{code-cell} python
 # Implement a training function, which will train the model with the corresponding optimizer and criterion,
 # with the appropriate dataloader, for one epoch.
 
@@ -857,7 +857,7 @@ def train_epoch(model, opt, criterion, dataloader):
             Code:</div>
 
 
-```python
+```{code-cell} python
 # Same for the evaluation ! We don't need the optimizer here. 
 
 def eval_model(model, criterion, evalloader):
@@ -877,7 +877,7 @@ def eval_model(model, criterion, evalloader):
 ```
 
 
-```python
+```{code-cell} python
 # A function which will help you execute experiments rapidly - with a early_stopping option when necessary.
 
 def experiment(model, opt, criterion, num_epochs = 10, early_stopping = True):
@@ -902,12 +902,12 @@ def experiment(model, opt, criterion, num_epochs = 10, early_stopping = True):
 ```
 
 
-```python
+```{code-cell} python
 train_losses = experiment(model, opt, criterion)
 ```
 
 
-```python
+```{code-cell} python
 import matplotlib.pyplot as plt
 plt.plot(train_losses)
 ```
@@ -917,7 +917,7 @@ plt.plot(train_losses)
 Now, we would like to integrate pre-trained word embeddings into our model ! However, we need to not forget to add a vector for the padding symbol.
 
 
-```python
+```{code-cell} python
 def get_glove_adapted_embeddings(glove_model, input_voc):
     keys = {i: glove_model.key_to_index.get(w, None) for w, i in input_voc.items()}
     index_dict = {i: key for i, key in keys.items() if key is not None}
@@ -931,7 +931,7 @@ GloveEmbeddings = get_glove_adapted_embeddings(loaded_glove_model, training_word
 ```
 
 
-```python
+```{code-cell} python
 print(GloveEmbeddings.shape)
 ```
 
@@ -940,7 +940,7 @@ Here, implement a ```PretrainedAveragingModel``` very similar to the previous mo
             Code:</div>
 
 
-```python
+```{code-cell} python
 class PretrainedAveragingModel(nn.Module):
     
     def __init__(self, embedding_dim, categories_num, embeddings, fine_tuning=False):
@@ -964,31 +964,31 @@ class PretrainedAveragingModel(nn.Module):
 - Use the ```sklearn``` function from the previous lab to analyze these results in more details. 
 
 
-```python
+```{code-cell} python
 model_pre_trained = PretrainedAveragingModel(300, max(ng_train_labels)+1, torch.FloatTensor(GloveEmbeddings), True)
 opt_pre_trained = optim.Adam(model_pre_trained.parameters(), lr=0.0025, betas=(0.9, 0.999))
 ```
 
 
-```python
+```{code-cell} python
 train_losses = experiment(model_pre_trained, opt_pre_trained, criterion)
 ```
 
 
-```python
+```{code-cell} python
 model_pre_trained_light = PretrainedAveragingModel(300, max(ng_train_labels)+1, torch.FloatTensor(GloveEmbeddings), False)
 opt_pre_trained_light = optim.Adam(model_pre_trained_light.parameters(), lr=0.0025, betas=(0.9, 0.999))
 ```
 
 
-```python
+```{code-cell} python
 train_losses = experiment(model_pre_trained_light, opt_pre_trained_light, criterion)
 ```
 
 ### II.5 With a LSTM model
 
 
-```python
+```{code-cell} python
 # Create a toy example of LSTM: 
 lstm = nn.LSTM(3, 3)  # Input dim is 3, output dim is 3
 inputs = [torch.randn(1, 3) for _ in range(5)]  # make a sequence of length 5
@@ -1038,7 +1038,7 @@ We'll implement now a LSTM model, taking the same inputs and also outputing a sc
             Code:</div>
 
 
-```python
+```{code-cell} python
 # Models are usually implemented as custom nn.Module subclass
 # We need to redefine the __init__ method, which creates the object
 # We also need to redefine the forward method, which transform the input into outputs
@@ -1065,13 +1065,13 @@ class LSTMModel(nn.Module):
 ```
 
 
-```python
+```{code-cell} python
 recurrent_model = LSTMModel(300, len(training_word2idx), 100, max(ng_train_labels)+1)
 opt_recurrent = optim.Adam(recurrent_model.parameters(), lr=0.0025, betas=(0.9, 0.999))
 ```
 
 
-```python
+```{code-cell} python
 train_losses = experiment(recurrent_model, opt_recurrent, criterion)
 ```
 
@@ -1082,7 +1082,7 @@ train_losses = experiment(recurrent_model, opt_recurrent, criterion)
 - What do you think may be happening in this case ? 
 
 
-```python
+```{code-cell} python
 # If you apply the model without thinking too much about it, it will not work well
 # It will overfit, will be harder to train 
 # Training it properly with regularization and the right hyperparameters may not be worth it
