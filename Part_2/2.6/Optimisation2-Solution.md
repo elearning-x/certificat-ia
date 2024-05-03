@@ -16,7 +16,7 @@ language_info:
   nbconvert_exporter: python
   pygments_lexer: ipython3
 downloads:
-  - file: ./static/helpers.py.pdf
+  - file: static/helpers.py.pdf
     title: helpers.py
 nbhosting:
   title: 'Optimization 2: SGD and SGD'
@@ -41,7 +41,8 @@ You will be working in this notebook by filling in the corresponding functions. 
 notebook already provides a lot of template codes, as well as a code to load the data, normalize the
 features, and visualize the results.
 If you have time, you can look at the files [`helpers.py`](static/helpers.py.pdf) and [`plots.py`](static/plots.py.pdf), and make sure you understand them.
-{download}`l'essentiel de Python sur 2 pages<./cheatsheets/cheatsheet-python3.pdf>`
+
+{download}`helpers.py <static/helpers.py.pdf>`
 
 
 ```{code-cell} python
