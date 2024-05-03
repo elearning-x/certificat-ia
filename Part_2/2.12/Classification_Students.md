@@ -117,8 +117,8 @@ We will first need to apply some pre-processing. We will here use our own tokeni
 
 ```{code-cell} python
 import nltk
-# The first time you import this tokenizer, you need to download some data
-nltk.download('punkt')
+# The first time you import this tokenizer, you need to get some data
+nltk.data.path.append('data/nltk_data')
 from nltk import word_tokenize
 ```
 
@@ -390,7 +390,7 @@ from sklearn.model_selection import cross_val_score
 # Example with Glove Embeddings
 train_rep = sentence_representations(train_texts_splt, vocab_cut, GloveEmbeddings)
 val_rep = sentence_representations(val_texts, vocab_cut, GloveEmbeddings)
-clf = LogisticRegression().fit(train_rep, train_labels_splt)
+clf = LogisticRegression(max_iter=1000).fit(train_rep, train_labels_splt)
 print(clf.score(val_rep, val_labels))
 ```
 

@@ -117,8 +117,8 @@ We will first need to apply some pre-processing. We will here use our own tokeni
 
 ```{code-cell} python
 import nltk
-# The first time you import this tokenizer, you need to download some data
-nltk.download('punkt')
+# The first time you import this tokenizer, you need to get some data
+nltk.data.path.append('data/nltk_data')
 from nltk import word_tokenize
 ```
 
@@ -186,7 +186,7 @@ rank_counts_array = np.array(list(rank_counts.values()))
 plt.figure(figsize=(20,5))
 plt.title('Word counts versus rank')
 plt.yscale('log')
-plt.ylim(0, 1e6)
+plt.ylim(1e-1, 1e6)
 plt.scatter(rank_counts_array[:,0], rank_counts_array[:,1])
 plt.show()
 
@@ -431,7 +431,7 @@ from sklearn.model_selection import cross_val_score
 # Example with Glove Embeddings
 train_rep = sentence_representations(train_texts_splt, vocab_cut, GloveEmbeddings)
 val_rep = sentence_representations(val_texts, vocab_cut, GloveEmbeddings)
-clf = LogisticRegression().fit(train_rep, train_labels_splt)
+clf = LogisticRegression(max_iter=1000).fit(train_rep, train_labels_splt)
 print(clf.score(val_rep, val_labels))
 ```
 
@@ -439,7 +439,7 @@ print(clf.score(val_rep, val_labels))
 ```{code-cell} python
 train_rep_w2v = sentence_representations(train_texts_splt, vocab_cut, W2VEmbeddings)
 val_rep_w2v = sentence_representations(val_texts, vocab_cut, W2VEmbeddings)
-clf_w2v = LogisticRegression().fit(train_rep_w2v, train_labels_splt)
+clf_w2v = LogisticRegression(max_iter=1000).fit(train_rep_w2v, train_labels_splt)
 print(clf_w2v.score(val_rep_w2v, val_labels))
 ```
 
