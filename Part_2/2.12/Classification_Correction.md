@@ -117,8 +117,8 @@ We will first need to apply some pre-processing. We will here use our own tokeni
 
 ```{code-cell} python
 import nltk
-# The first time you import this tokenizer, you need to download some data
-nltk.download('punkt')
+# The first time you import this tokenizer, you need to get some data
+nltk.data.path.append('data/nltk_data')
 from nltk import word_tokenize
 ```
 
