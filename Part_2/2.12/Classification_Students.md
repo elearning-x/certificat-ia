@@ -390,7 +390,7 @@ from sklearn.model_selection import cross_val_score
 # Example with Glove Embeddings
 train_rep = sentence_representations(train_texts_splt, vocab_cut, GloveEmbeddings)
 val_rep = sentence_representations(val_texts, vocab_cut, GloveEmbeddings)
-clf = LogisticRegression().fit(train_rep, train_labels_splt)
+clf = LogisticRegression(max_iter=1000).fit(train_rep, train_labels_splt)
 print(clf.score(val_rep, val_labels))
 ```
 

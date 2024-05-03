@@ -826,6 +826,9 @@ training_representations = [count_words(sentence_pair, voc_sts)[1] for sentence_
 train_x = np.array([cosine(s1, s2) for s1, s2 in training_representations]).reshape(-1, 1)
 test_representations = [count_words(sentence_pair, voc_sts)[1] for sentence_pair in sts_dataset['test']['data']]                             
 test_x = np.array([cosine(s1, s2) for s1, s2 in test_representations]).reshape(-1, 1)
+# You may notice a warning telling you that there is a division by zero in computing the cosine distance.
+# This is provoked by the fact that some vector of counts may be empty, having a norm of zero.
+# Why would a vector of count be empty ? For example, when a test sentence is made up of words which are not in the vocabulary !
 
 training_representations_sk = [vectorizer_sts.transform(sentence_pair).toarray() for sentence_pair in sts_dataset['train']['data']]                             
 train_x_sk = np.array([cosine(s1, s2) for s1, s2 in training_representations_sk]).reshape(-1, 1)
@@ -864,6 +867,7 @@ training_representations_tfidf = [tfidf(sentence_pair) for sentence_pair in trai
 train_x_tfidf = np.array([cosine(s1, s2) for s1, s2 in training_representations_tfidf]).reshape(-1, 1)
 test_representations_tfidf = [tfidf(sentence_pair) for sentence_pair in test_representations]                     
 test_x_tfidf = np.array([cosine(s1, s2) for s1, s2 in test_representations_tfidf]).reshape(-1, 1)
+# As before, we may encounter empty tf-idf representations and obtain a warning
 
 training_representations_sk_tfidf = [tfidf_tr.transform(sentence_pair).toarray() for sentence_pair in training_representations]                     
 train_x_sk_tfidf = np.array([cosine(s1, s2) for s1, s2 in training_representations_sk_tfidf]).reshape(-1, 1)
