@@ -40,4 +40,5 @@ RUN true \
     && pip install --user -U nltk \
     && pip install scikit-learn \
     && pip install --upgrade gensim \
+    && pip install jupyterlab-myst \
     && true
