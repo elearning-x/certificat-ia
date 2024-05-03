@@ -40,6 +40,7 @@ sample code templates that already contain useful snippets of code required for 
 You will be working in this notebook by filling in the corresponding functions. The
 notebook already provides a lot of template codes, as well as a code to load the data, normalize the
 features, and visualize the results.
+
 If you have time, you can look at the files [`helpers.py`](static/helpers.py.pdf) and [`plots.py`](static/plots.py.pdf), and make sure you understand them.
 
 {download}`helpers.py <static/helpers.py.pdf>`
