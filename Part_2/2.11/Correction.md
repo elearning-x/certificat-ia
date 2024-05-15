@@ -20,11 +20,14 @@ nbhosting:
   version: '1.0'
 ---
 
-<div class="licence">
-<span><img src="media/logo_IPParis.png" /></span>
-<span>Matthieu LABEAU<br />Chloé CLAVEL</span>
-<span>Licence CC BY-NC-ND</span>
-</div>
+```{list-table} 
+:header-rows: 0
+:widths: 33% 34% 33%
+
+* - ![Logo](media/logo_IPParis.png)
+  - Matthieu LABEAU<br />Chloé CLAVEL
+  - Licence CC BY-NC-ND
+```
 
 +++
 
